@@ -6,16 +6,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { EASE_OUT_EXPO, motionVariants } from '@/components/shared/motion/variants';
+import { LANDING_HERO } from '@/constants/component/landing-data';
 import { useCanAnimate } from '@/hooks/use-can-animate';
 
-const ROTATING_PHRASES = [
-  'Scale Seamlessly.',
-  'Drive Outcomes.',
-  'Perform Under Load.',
-  'Solves Problems',
-  'Creates Value.',
-  'Win Markets.',
-] as const;
+const ROTATING_PHRASES = LANDING_HERO.phrases;
 
 const TEAM_AVATARS = [
   {
@@ -151,7 +145,7 @@ export default function Hero() {
             variants={motionVariants(reduced, fadeUp)}
             className="text-balance text-4xl font-black leading-[1.08] tracking-tight text-neutral-900 md:text-5xl lg:text-[clamp(3rem,5vw,4rem)]"
           >
-            Building Products that
+            {LANDING_HERO.lead}
             <RotatingPhrase reduced={reduced} />
           </motion.h1>
 
@@ -159,8 +153,7 @@ export default function Hero() {
             variants={motionVariants(reduced, fadeUp)}
             className="mt-lg text-pretty text-base leading-relaxed font-medium text-neutral-700"
           >
-            We build scalable digital products that solve complex business challenges, accelerate
-            growth, improve efficiency, and create lasting value.
+            {LANDING_HERO.intro}
           </motion.p>
 
           <motion.div

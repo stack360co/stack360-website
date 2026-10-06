@@ -1,3 +1,21 @@
+/**
+ * Hero headline and intro. The hero renders in the browser only, so its server-rendered fallback
+ * repeats this copy to give crawlers and first paint a real H1.
+ */
+export const LANDING_HERO = {
+  lead: 'Building Products that',
+  phrases: [
+    'Scale Seamlessly.',
+    'Drive Outcomes.',
+    'Perform Under Load.',
+    'Solves Problems',
+    'Creates Value.',
+    'Win Markets.',
+  ],
+  intro:
+    'We build scalable digital products that solve complex business challenges, accelerate growth, improve efficiency, and create lasting value.',
+} as const;
+
 export const LANDING_STATS = [
   { value: '200+', label: 'Projects delivered' },
   { value: '200+', label: 'Active clients' },

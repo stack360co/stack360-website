@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CookieSettingsButton } from '@/components/analytics/ConsentBanner';
 import {
   COMPANY_LINKS,
   CONTACT,
@@ -166,10 +167,22 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-2xl border-t border-neutral-200 pt-xl">
+        <div className="mt-2xl flex flex-col items-center gap-sm border-t border-neutral-200 pt-xl sm:flex-row sm:justify-between">
           <p className="text-center text-sm text-neutral-600">
             © {currentYear} {SITE_NAME}. All Rights Reserved
           </p>
+          <nav
+            aria-label="Legal"
+            className="flex items-center gap-lg text-sm text-neutral-600 sm:pr-[9rem]"
+          >
+            <Link href="/privacy" className="transition-colors hover:text-primary">
+              Privacy
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-primary">
+              Terms
+            </Link>
+            <CookieSettingsButton className="cursor-pointer transition-colors hover:text-primary" />
+          </nav>
         </div>
       </div>
     </footer>

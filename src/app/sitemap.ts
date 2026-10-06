@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getBlogSlugs } from '@/constants/component/blog-posts-data';
+import { getCaseStudySlugs } from '@/constants/component/our-work-case-studies-data';
 import { SITE_URL } from '@/constants/site';
 
 /** Stable lastModified — avoids false “freshness” on every deploy. */
@@ -26,6 +27,7 @@ const ROUTES = [
   '/who-we-help/enterprises',
   '/our-work',
   '/our-work/case-studies',
+  ...getCaseStudySlugs().map((slug) => `/our-work/case-studies/${slug}`),
   '/our-work/featured-projects',
   '/our-work/client-success-stories',
   '/blog',
@@ -39,6 +41,8 @@ const ROUTES = [
   '/work-with-us/software-partner',
   '/work-with-us/hire',
   '/work-with-us/careers',
+  '/privacy',
+  '/terms',
 ] as readonly string[];
 
 export default function sitemap(): MetadataRoute.Sitemap {
