@@ -93,3 +93,31 @@ export function breadcrumbJsonLd(items: readonly { name: string; path: string }[
     })),
   };
 }
+
+export function blogPostingJsonLd(post: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  category: string;
+}): JsonLd {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    articleSection: post.category,
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    image: `${SITE_URL}/opengraph-image`,
+    author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/stack360-icon.png` },
+    },
+  };
+}

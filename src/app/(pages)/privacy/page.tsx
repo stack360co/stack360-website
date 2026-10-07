@@ -42,6 +42,22 @@ export default function PrivacyPage() {
               confidentiality.
             </p>
           </div>
+          <div id="cookies" className="scroll-mt-24 space-y-sm">
+            <h2 className="text-lg font-bold text-neutral-900">Cookies and analytics</h2>
+            <p className="text-pretty">
+              We use Google Analytics, loaded through Google Tag Manager, to understand how visitors
+              find and use this site: which pages are viewed, where visits come from, and when a
+              contact or hire form is sent. Google Analytics sets cookies (named <code>_ga</code>{' '}
+              and <code>_ga_*</code>) that last up to two years. We don&apos;t use them for
+              advertising.
+            </p>
+            <p className="text-pretty">
+              If you&apos;re in the European Economic Area, the UK or Switzerland, these cookies are
+              only set after you accept them in the cookie banner. Elsewhere they&apos;re on by
+              default. Wherever you are, you can change your choice at any time from &ldquo;Cookie
+              settings&rdquo; at the bottom of every page.
+            </p>
+          </div>
           <div className="space-y-sm">
             <h2 className="text-lg font-bold text-neutral-900">Contact</h2>
             <p className="text-pretty">

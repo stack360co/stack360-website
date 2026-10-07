@@ -9,6 +9,7 @@ import {
   type HireNeedId,
   type HireSkillId,
 } from '@/constants/component/hire-talent-data';
+import { pushEvent } from '@/lib/analytics';
 import { type HireFormData, hireSchema } from '@/schema/hire';
 import { cn } from '@/styles/tailwind.utils';
 
@@ -184,6 +185,7 @@ export default function HireForm() {
       }
 
       setStatus('sent');
+      pushEvent('generate_lead', { form_name: 'hire' });
       setFormValues({ name: '', email: '', company: '', notes: '' });
       setSkills([]);
       setNeed('');

@@ -10,6 +10,9 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+// Every slug is known at build time; anything else is a real 404, not a 200 "not found" page.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getCaseStudySlugs().map((slug) => ({ slug }));
 }

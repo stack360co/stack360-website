@@ -12,6 +12,18 @@ type PageMetaInput = {
 };
 
 /**
+ * Every page sets its own openGraph, which replaces the root's wholesale, so the generated
+ * share images (app/opengraph-image.tsx, app/twitter-image.tsx) are referenced here explicitly.
+ */
+const OG_IMAGE = {
+  url: '/opengraph-image',
+  width: 1200,
+  height: 630,
+  alt: `${SITE_NAME} | ${SITE_TAGLINE}`,
+};
+const TWITTER_IMAGE = '/twitter-image';
+
+/**
  * Build page Metadata with Open Graph, Twitter, and canonical.
  * Nested OG/Twitter do not inherit page title/description — set explicitly.
  */
@@ -37,11 +49,13 @@ export function pageMeta({
       url: canonical,
       title: shareTitle,
       description,
+      images: [OG_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title: shareTitle,
       description,
+      images: [TWITTER_IMAGE],
     },
   };
 }
@@ -309,7 +323,7 @@ export const seo = {
   whatWeBuildCloud: pageMeta({
     absoluteTitle: 'Cloud Migration Services & Cloud Solutions | Stack360',
     description:
-      'Modernize your infrastructure with Stack360 cloud migration services, managed cloud solutions, security, and scalable application development for growing businesses.',
+      'Cloud migration, managed cloud and security from Stack360. We modernize infrastructure and build scalable applications for growing businesses.',
     path: '/what-we-build/cloud',
     keywords: [
       'Cloud Migration Services',
@@ -326,7 +340,7 @@ export const seo = {
   whatWeBuildDevops: pageMeta({
     absoluteTitle: 'DevOps Consulting Services | DevOps Solutions | Stack360',
     description:
-      'Improve software delivery with Stack360 DevOps consulting services. We automate infrastructure, streamline deployments, strengthen reliability, and optimize cloud environments.',
+      'Stack360 DevOps consulting: automated infrastructure, faster and safer deployments, stronger reliability, and optimized cloud environments.',
     path: '/what-we-build/devops',
     keywords: [
       'DevOps Consulting Services',
@@ -339,7 +353,7 @@ export const seo = {
   whatWeBuildAutomation: pageMeta({
     absoluteTitle: 'Business Process Automation Services | Stack360',
     description:
-      'Automate repetitive business processes with Stack360. We build intelligent workflows that reduce manual work, connect systems, improve efficiency, and scale operations.',
+      'Automate repetitive business processes with Stack360. We build workflows that connect your systems, cut manual work, and scale operations.',
     path: '/what-we-build/automation',
     keywords: ['Business Process Automation Services', 'QA Automation Services'],
   }),
@@ -372,7 +386,7 @@ export const seo = {
   whoWeHelpSmes: pageMeta({
     title: 'SME Digital Transformation',
     description:
-      'Scale your business with tailored tech — legacy modernization, automation, and custom software without operational disruption. Proven ROI and flexible engagement models.',
+      'Scale your business with tailored tech: legacy modernization, automation, and custom software without operational disruption, on flexible terms.',
     path: '/who-we-help/smes',
     keywords:
       'SME software development, digital transformation SME, legacy modernization, business automation, custom software SME, ROI software development',
@@ -429,7 +443,8 @@ export const seo = {
 
   whoWeAre: pageMeta({
     title: 'Who We Are',
-    description: 'History, culture, and how Stack360 ships complex software systems.',
+    description:
+      'Meet Stack360: our history, our engineering culture, and how we design, build, and ship complex software for startups, SMEs, and enterprises.',
     path: '/who-we-are',
   }),
 

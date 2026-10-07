@@ -4,6 +4,7 @@ import { AlertCircle, CheckCircle2, X } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { type ChangeEvent, type FocusEvent, type FormEvent, useEffect, useState } from 'react';
 import { CONTACT_FORM_FIELDS } from '@/constants/component/contact-data';
+import { pushEvent } from '@/lib/analytics';
 import { type ContactFormData, contactSchema } from '@/schema/contact';
 
 type Status = 'idle' | 'loading' | 'sent' | 'error';
@@ -126,6 +127,7 @@ export default function ContactForm() {
       }
 
       setStatus('sent');
+      pushEvent('generate_lead', { form_name: 'contact' });
       setFormValues({ name: '', email: '', company: '', message: '' });
       setFieldErrors({});
     } catch (error) {
