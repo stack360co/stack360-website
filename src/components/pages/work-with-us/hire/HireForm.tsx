@@ -15,10 +15,15 @@ import { cn } from '@/styles/tailwind.utils';
 
 type Status = 'idle' | 'loading' | 'sent' | 'error';
 
-export default function HireForm() {
+interface HireFormProps {
+  /** Skills ticked when the form first renders, e.g. from a technology page. */
+  defaultSkills?: HireSkillId[];
+}
+
+export default function HireForm({ defaultSkills = [] }: HireFormProps = {}) {
   const formId = useId();
   const [status, setStatus] = useState<Status>('idle');
-  const [skills, setSkills] = useState<HireSkillId[]>([]);
+  const [skills, setSkills] = useState<HireSkillId[]>(defaultSkills);
   const [need, setNeed] = useState<HireNeedId | ''>('');
 
   const [formValues, setFormValues] = useState<Record<string, string>>({
@@ -187,7 +192,7 @@ export default function HireForm() {
       setStatus('sent');
       pushEvent('generate_lead', { form_name: 'hire' });
       setFormValues({ name: '', email: '', company: '', notes: '' });
-      setSkills([]);
+      setSkills(defaultSkills);
       setNeed('');
       setFieldErrors({});
     } catch (error) {

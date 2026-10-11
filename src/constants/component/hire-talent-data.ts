@@ -37,8 +37,12 @@ export const HIRE_CONTACT = [
 
 export const HIRE_SKILLS = [
   { id: 'react', label: 'React', iconSlug: 'react' },
+  { id: 'react-native', label: 'React Native', iconSlug: 'reactnative' },
+  { id: 'swift', label: 'Swift / iOS', iconSlug: 'swift' },
+  { id: 'flutter', label: 'Flutter', iconSlug: 'flutter' },
   { id: 'angular', label: 'Angular', iconSlug: 'angular' },
   { id: 'nodejs', label: 'Node.js', iconSlug: 'nodedotjs' },
+  { id: 'ruby-on-rails', label: 'Ruby on Rails', iconSlug: 'rubyonrails' },
   { id: 'dotnet', label: '.NET', iconSlug: 'dotnet' },
   { id: 'python', label: 'Python', iconSlug: 'python' },
   { id: 'gen-ai', label: 'Generative AI', iconSlug: 'huggingface' },

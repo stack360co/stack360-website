@@ -109,15 +109,15 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // Hire Talent
+      // Hire Talent: technologies with their own page go there, the rest to the hire page
       {
         source: '/hire-talent/react-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/react-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/angular-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/angular-developers',
         permanent: true,
       },
       {
@@ -127,12 +127,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/next-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/react-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/ror-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/ruby-on-rails-developers',
         permanent: true,
       },
       {
@@ -152,12 +152,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/node-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/nodejs-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/nest-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/nodejs-developers',
         permanent: true,
       },
       {
@@ -167,12 +167,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/react-native-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/react-native-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/flutter-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/flutter-developers',
         permanent: true,
       },
       {
@@ -182,7 +182,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/swift-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/swift-developers',
         permanent: true,
       },
 

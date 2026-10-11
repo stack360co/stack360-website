@@ -41,6 +41,7 @@ const TRUST_BADGES: readonly TrustBadge[] = [
     src: '/assets/badges/Fiverr.webp',
     label: 'Fiverr — Top Rated Seller',
     alt: 'Fiverr Top Rated Seller badge',
+    href: SITE_PROFILES.fiverr,
   },
 ];
 
