@@ -4,6 +4,7 @@ import {
   SITE_NAME,
   SITE_OFFICES,
   SITE_PHONE_E164,
+  SITE_PROFILES,
   SITE_SOCIAL,
   SITE_URL,
 } from '@/constants/site';
@@ -15,6 +16,7 @@ export function organizationJsonLd(): JsonLd {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE_NAME,
+    alternateName: 'Stack 360',
     url: SITE_URL,
     logo: `${SITE_URL}/stack360-icon.png`,
     description: SITE_DESCRIPTION,
@@ -26,6 +28,7 @@ export function organizationJsonLd(): JsonLd {
       SITE_SOCIAL.x,
       SITE_SOCIAL.instagram,
       SITE_SOCIAL.facebook,
+      ...Object.values(SITE_PROFILES),
     ],
     address: SITE_OFFICES.map((office) => ({
       '@type': 'PostalAddress',

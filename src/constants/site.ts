@@ -30,6 +30,17 @@ export const SITE_SOCIAL = {
   facebook: 'https://www.facebook.com/stack360co',
 } as const;
 
+/**
+ * Third-party review and directory profiles that link back to stack360.co.
+ * Listed in the Organization JSON-LD `sameAs` so Google can tell us apart from
+ * other companies called Stack360. Only add a profile after checking it is ours.
+ */
+export const SITE_PROFILES = {
+  clutch: 'https://clutch.co/profile/stack360',
+  goodfirms: 'https://www.goodfirms.co/company/stack360',
+  designrush: 'https://www.designrush.com/agency/profile/stack-360',
+} as const;
+
 export const SITE_OFFICES = [
   // {
   //   country: 'Pakistan',

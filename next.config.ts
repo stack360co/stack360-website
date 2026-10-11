@@ -29,14 +29,16 @@ const nextConfig: NextConfig = {
         destination: 'https://stack360.co/:path*',
         permanent: true,
       },
+      // Old URLs still collect impressions in Search Console; send each one to the
+      // page that matches its intent rather than the home page.
       {
         source: '/about-us',
-        destination: '/',
+        destination: '/who-we-are',
         permanent: true,
       },
       {
         source: '/services',
-        destination: '/',
+        destination: '/what-we-build',
         permanent: true,
       },
       {

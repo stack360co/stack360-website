@@ -4,6 +4,7 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import {
   dropdownPanel,
   fadeUp,
@@ -37,6 +38,36 @@ export default function NavItemDesktop({
     col.items.some((subItem) => isPathActive(pathname, subItem.href))
   );
   const isItemSelected = isPathActive(pathname, item.href) || Boolean(hasActiveSubItem);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [panelShift, setPanelShift] = useState(0);
+
+  // The panel is centred under its trigger, which pushes the outer menus past the
+  // screen edge on laptop widths. Nudge it back inside a 16px gutter.
+  useEffect(() => {
+    const panel = panelRef.current;
+    const anchor = panel?.parentElement;
+    if (!panel || !anchor) {
+      return;
+    }
+    const place = () => {
+      const gutter = 16;
+      const viewport = document.documentElement.clientWidth;
+      const trigger = anchor.getBoundingClientRect();
+      const left = trigger.left + trigger.width / 2 - panel.offsetWidth / 2;
+      const right = left + panel.offsetWidth;
+      if (left < gutter) {
+        setPanelShift(gutter - left);
+      } else if (right > viewport - gutter) {
+        setPanelShift(viewport - gutter - right);
+      } else {
+        setPanelShift(0);
+      }
+    };
+    place();
+    document.fonts?.ready.then(place);
+    window.addEventListener('resize', place);
+    return () => window.removeEventListener('resize', place);
+  }, []);
 
   if (item.type === 'link') {
     return (
@@ -131,10 +162,12 @@ export default function NavItemDesktop({
           closed panels are invisible and inert, so they can't be clicked or tabbed into. */}
       {item.columns && (
         <motion.div
+          ref={panelRef}
           variants={motionVariants(reduced, dropdownPanel)}
           initial={false}
           animate={isDropdownOpen ? 'show' : 'exit'}
           inert={!isDropdownOpen}
+          style={{ marginLeft: panelShift }}
           className={cn(
             'absolute left-1/2 top-full z-40 w-[min(48rem,calc(100vw-2rem))] -translate-x-1/2 pt-xs transition-[visibility]',
             isDropdownOpen ? 'visible delay-0' : 'pointer-events-none invisible delay-200'
