@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -127,80 +127,94 @@ export default function NavItemDesktop({
         </motion.span>
       )}
 
-      <AnimatePresence>
-        {isDropdownOpen && item.columns && (
-          <motion.div
-            key={item.label}
-            variants={motionVariants(reduced, dropdownPanel)}
-            initial="hidden"
-            animate="show"
-            exit="exit"
-            className="absolute left-1/2 top-full z-40 w-[min(48rem,calc(100vw-2rem))] -translate-x-1/2 pt-xs"
-            onMouseEnter={() => onMouseEnter(item.label)}
-            onMouseLeave={onMouseLeave}
-          >
-            <div className="overflow-hidden rounded-2xl border border-neutral-300/80 bg-linear-to-b from-neutral-100/90 via-white to-white p-lg shadow-2xl shadow-neutral-900/15 backdrop-blur-xl">
-              <motion.div
-                variants={motionVariants(reduced, staggerContainer)}
-                initial="hidden"
-                animate="show"
-                className="grid grid-cols-2 gap-lg"
-              >
-                {item.columns.map((col) => (
-                  <div key={col.title ?? col.items[0]?.title} className="space-y-sm">
-                    {col.title && (
-                      <h4 className="px-sm font-mono text-[11px] font-bold uppercase tracking-wider text-neutral-500">
-                        {col.title}
-                      </h4>
-                    )}
-                    <ul className="space-y-xs">
-                      {col.items.map((subItem) => {
-                        const isSubItemSelected = isPathActive(pathname, subItem.href);
+      {/* Always in the DOM so the sub-page links are in the server HTML for crawlers;
+          closed panels are invisible and inert, so they can't be clicked or tabbed into. */}
+      {item.columns && (
+        <motion.div
+          variants={motionVariants(reduced, dropdownPanel)}
+          initial={false}
+          animate={isDropdownOpen ? 'show' : 'exit'}
+          inert={!isDropdownOpen}
+          className={cn(
+            'absolute left-1/2 top-full z-40 w-[min(48rem,calc(100vw-2rem))] -translate-x-1/2 pt-xs transition-[visibility]',
+            isDropdownOpen ? 'visible delay-0' : 'pointer-events-none invisible delay-200'
+          )}
+          onMouseEnter={() => onMouseEnter(item.label)}
+          onMouseLeave={onMouseLeave}
+        >
+          <div className="overflow-hidden rounded-2xl border border-neutral-300/80 bg-linear-to-b from-neutral-100/90 via-white to-white p-lg shadow-2xl shadow-neutral-900/15 backdrop-blur-xl">
+            <motion.div
+              variants={motionVariants(reduced, staggerContainer)}
+              initial={false}
+              animate={isDropdownOpen ? 'show' : 'hidden'}
+              className="grid grid-cols-2 gap-lg"
+            >
+              {item.columns.map((col) => (
+                <div key={col.title ?? col.items[0]?.title} className="space-y-sm">
+                  {col.title && (
+                    <h4 className="px-sm font-mono text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+                      {col.title}
+                    </h4>
+                  )}
+                  <ul className="space-y-xs">
+                    {col.items.map((subItem) => {
+                      const isSubItemSelected = isPathActive(pathname, subItem.href);
 
-                        return (
-                          <motion.li key={subItem.title} variants={motionVariants(reduced, fadeUp)}>
-                            <Link
-                              href={subItem.href}
-                              onClick={onCloseDropdown}
+                      return (
+                        <motion.li key={subItem.title} variants={motionVariants(reduced, fadeUp)}>
+                          <Link
+                            href={subItem.href}
+                            onClick={onCloseDropdown}
+                            className={cn(
+                              'group/item flex flex-col rounded-lg p-sm transition-all duration-200',
+                              isSubItemSelected
+                                ? 'bg-neutral-200/60 shadow-2xs'
+                                : 'hover:bg-neutral-200/40'
+                            )}
+                          >
+                            <div
                               className={cn(
-                                'group/item flex flex-col rounded-lg p-sm transition-all duration-200',
+                                'flex items-center justify-between text-sm font-bold transition-colors',
                                 isSubItemSelected
-                                  ? 'bg-neutral-200/60 shadow-2xs'
-                                  : 'hover:bg-neutral-200/40'
+                                  ? 'text-primary'
+                                  : 'text-neutral-900 group-hover/item:text-primary'
                               )}
                             >
-                              <div
-                                className={cn(
-                                  'flex items-center justify-between text-sm font-bold transition-colors',
-                                  isSubItemSelected
-                                    ? 'text-primary'
-                                    : 'text-neutral-900 group-hover/item:text-primary'
-                                )}
-                              >
-                                <span>{subItem.title}</span>
-                                <ArrowRight
-                                  aria-hidden
-                                  strokeWidth={2}
-                                  className="size-3.5 shrink-0 -translate-x-1 text-neutral-400 opacity-0 transition-all duration-200 group-hover/item:translate-x-0 group-hover/item:text-primary group-hover/item:opacity-100"
-                                />
-                              </div>
-                              {subItem.desc && (
-                                <p className="mt-0.5 text-xs leading-relaxed text-neutral-600 line-clamp-2">
-                                  {subItem.desc}
-                                </p>
-                              )}
-                            </Link>
-                          </motion.li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                              <span>{subItem.title}</span>
+                              <ArrowRight
+                                aria-hidden
+                                strokeWidth={2}
+                                className="size-3.5 shrink-0 -translate-x-1 text-neutral-400 opacity-0 transition-all duration-200 group-hover/item:translate-x-0 group-hover/item:text-primary group-hover/item:opacity-100"
+                              />
+                            </div>
+                            {subItem.desc && (
+                              <p className="mt-0.5 text-xs leading-relaxed text-neutral-600 line-clamp-2">
+                                {subItem.desc}
+                              </p>
+                            )}
+                          </Link>
+                        </motion.li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+            </motion.div>
+            {item.href && (
+              <div className="mt-md border-t border-neutral-200 pt-sm">
+                <Link
+                  href={item.href}
+                  onClick={onCloseDropdown}
+                  className="group/item flex items-center justify-between rounded-lg p-sm text-sm font-bold text-neutral-900 transition-colors hover:bg-neutral-200/40 hover:text-primary"
+                >
+                  <span>{item.label} overview</span>
+                  <ArrowRight aria-hidden strokeWidth={2} className="size-3.5 shrink-0" />
+                </Link>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

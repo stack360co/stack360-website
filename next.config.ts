@@ -7,12 +7,28 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'flagcdn.com' },
-      { protocol: 'https', hostname: 'cdn.simpleicons.org' },
       { protocol: 'https', hostname: 'randomuser.me' },
     ],
   },
+  async headers() {
+    return [
+      {
+        // Brand logos rarely change; rename the file if one ever does.
+        source: '/brand-icons/:file*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000' }],
+      },
+    ];
+  },
   async redirects() {
     return [
+      // The Netlify default domain serves a duplicate copy of the site; send it to
+      // the real domain. Exact host only, so deploy previews keep working.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'stack360static.netlify.app' }],
+        destination: 'https://stack360.co/:path*',
+        permanent: true,
+      },
       {
         source: '/about-us',
         destination: '/',
