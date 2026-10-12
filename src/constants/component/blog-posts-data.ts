@@ -104,18 +104,19 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'how-long-software-projects-take',
     title: 'How Long Software Projects Take: Data From 28 of Our Projects',
     seoTitle: 'How Long Software Projects Take: 28 Projects',
+    author: { name: 'Ali Haider', role: 'Co-Founder & CTO' },
     reviewedBy: 'Azmat Rana',
     excerpt:
       'Most software projects we build take three to six months. Durations, team sizes and hours from 28 real projects, and what made each one short or long.',
     date: '2026-10-12',
     category: 'Data',
-    readTime: '5 min',
+    readTime: '6 min',
     intro:
       'Most software projects we take on need three to six months to build. Simple ones, such as a GoHighLevel sales setup or a Xamarin to .NET MAUI migration, take one to three. We checked that against the 28 projects in our portfolio. The portfolio records how long we worked on each one, including work after launch.',
     sections: [
       {
         heading: 'The numbers',
-        body: 'Across the 28 projects, the median is 8 months. The shortest took one month, and the two longest ran for 30.\n\n1. One to three months: 3 projects.\n\n2. Four to six months: 9 projects.\n\n3. Seven to twelve months: 10 projects.\n\n4. More than a year: 6 projects.\n\nThe median sits above three to six months because these durations include work after launch. Several of these products kept us on for new features long after their first release.',
+        body: 'Across the 28 projects, the median is 8 months. The shortest took one month, and the two longest ran for 30.\n\n1. One to three months: 3 projects.\n\n2. Four to six months: 9 projects.\n\n3. Seven to twelve months: 10 projects.\n\n4. More than a year: 6 projects.\n\nThe median sits above three to six months because these durations include work after launch, as the longest projects show.',
       },
       {
         heading: 'Durations by type of project',
@@ -127,7 +128,11 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'What made the long ones long',
-        body: 'The longest projects were products we kept building, not single builds. AutoBuffy’s 20 months covered an Angular upgrade, Elasticsearch search, a real-time inventory service and buy now, pay later at checkout. BuffyHub’s 19 months included syncing with Amazon, eBay and Walmart.\n\nThe pattern is integrations. Every outside system, from a marketplace to a shipping carrier, brings its own rules, test accounts and failure cases. Compliance adds time in the same way: Fisar, a GDPR compliance tool, took 12 months.',
+        body: 'The longest projects were products we kept building, not single builds. AutoBuffy, ATC and Coach Catalyst each had a first version live within three to six months. Everything after that was new work.\n\nAutoBuffy’s 20 months covered an Angular upgrade, Elasticsearch search, a real-time inventory service and buy now, pay later at checkout. BuffyHub’s 19 months included syncing with Amazon, eBay and Walmart.\n\nThe pattern is integrations. Every outside system, from a marketplace to a shipping carrier, brings its own rules, test accounts and failure cases. Compliance adds time in the same way: Fisar, a GDPR compliance tool, took 12 months.',
+      },
+      {
+        heading: 'Why projects run late',
+        body: 'When one of our projects runs longer than planned, it is usually for one of four reasons.\n\n1. Scope changes. New features get requested halfway through, and each one moves the end date.\n\n2. Integrations. A third-party API, marketplace or payment provider behaves differently than expected.\n\n3. Waiting on the client. Feedback, content, designs or access arrive later than planned, and the work waits with them.\n\n4. Unclear requirements. The real requirements only become clear once people start using the first screens.\n\nThe first and last are linked. A short discovery phase and a written change process catch most of both.',
       },
       {
         heading: 'Team size and hours',
@@ -135,7 +140,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'How to plan yours',
-        body: '1. Count the systems it connects to, not the screens. Payments, marketplaces, shipping and compliance rules add more time than pages do.\n\n2. Ship the smallest version people will use, then plan the rest as a series of releases. Cinekit’s one-month build shows what a tight first scope looks like.\n\n3. Plan for work after launch. Frameworks, app stores and payment rules keep changing, so live software needs regular attention.\n\n4. Keep the same team if you can. The engineers who built version one already know where everything is.',
+        body: '1. Count the systems it connects to, not the screens. Payments, marketplaces, shipping and compliance rules add more time than pages do.\n\n2. Ship the smallest version people will use, then plan the rest as a series of releases. Cinekit’s one-month build shows what a tight first scope looks like.\n\n3. Plan for work after launch. Frameworks, app stores and payment rules keep changing, so live software needs regular attention.\n\n4. Agree who signs off each milestone, and how quickly. Late feedback moves the end date as much as late code.\n\n5. Keep the same team if you can. The engineers who built version one already know where everything is.',
       },
     ],
     conclusion: {
@@ -144,7 +149,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
         'How long does it take to build custom software? Most of our projects take three to six months. Simple ones take one to three, and products that keep growing can run for years.',
         'What is the fastest project we have delivered? Cinekit, a camera gear rental marketplace, in one month.',
         'How many engineers does a project need? Most of our case studies ran with two. The largest, AutoBuffy, had six.',
-        'Why do projects run over? Mid-project feature requests are the usual cause. On Klingit, we added a change process that records each request and agrees its effect on scope before work starts.',
+        'Why do projects run over? Scope changes, integrations, late feedback or access, and requirements that only become clear once building starts. On Klingit, we added a change process that records each request and agrees its effect on scope before work starts.',
       ],
     },
     related: [
@@ -160,13 +165,17 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     seoTitle: 'How to Vet Remote Developers: A Checklist',
     reviewedBy: 'Azmat Rana',
     excerpt:
-      'A checklist for vetting a remote developer before they start: interview them, check what they built, test them on real work and settle access and ownership.',
+      'A checklist for vetting a remote developer before they start, and the four checks every engineer passes before they reach a client’s shortlist with us.',
     date: '2026-10-12',
     category: 'Hiring',
-    readTime: '4 min',
+    readTime: '5 min',
     intro:
       'Vet a remote developer the way you would vet an employee. Interview them yourself, check which parts of their past projects they built, and watch them work on your own code. Settle access and ownership before day one. Here is the checklist we suggest to clients, and how each step works when the developer comes from us.',
     sections: [
+      {
+        heading: 'What we check before you meet anyone',
+        body: 'Every engineer passes four checks before they reach a client’s shortlist.\n\n1. A technical interview with one of our senior engineers, on the stack they will work in.\n\n2. A coding test, either live or as a take-home task.\n\n3. A review of code and projects they built before, so we know which parts were theirs.\n\n4. A communication check in spoken and written English, including how clearly they explain their own work.\n\nYour interview comes after all four, so your time goes on fit, not on basics.',
+      },
       {
         heading: 'Interview the person, not the agency',
         body: 'Ask to interview the developer who will actually do the work. Talk through something they built: what they chose, what went wrong and what they would change. Someone who did the work can answer follow-up questions without notes.\n\nWith us, you get a shortlist within 2 days, and you interview the engineers yourself before anyone starts.',
@@ -189,15 +198,16 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Decide how long you need them',
-        body: 'Be clear whether you need someone for a few months or for years, because it changes who fits. We place engineers for short engagements under six months, for six to twelve months, and in long-term roles. There is no long-term contract to start.',
+        body: 'Be clear whether you need someone for a few months or for years, because it changes who fits. We place engineers for short engagements under six months, for six to twelve months, and in long-term roles. There is no long-term contract to start. If someone turns out not to be the right fit, we replace them and handle the handover.',
       },
     ],
     conclusion: {
       heading: 'Common questions',
       paragraphs: [
         'How fast can a developer start? We send a shortlist within 2 days, and you can hire in as fast as a week.',
-        'Do we interview them ourselves? Yes. You meet the engineers on the shortlist before you decide.',
+        'Do we interview them ourselves? Yes. You meet the engineers on the shortlist before you decide, after they have passed our four checks.',
         'Do they work only on our project? Yes. Our engineers work full time on your project.',
+        'What if the developer isn’t the right fit? We find a replacement and handle the handover.',
         'Who owns the code? You do, including the intellectual property in it.',
       ],
     },
@@ -207,55 +217,6 @@ export const BLOG_POSTS: readonly BlogPost[] = [
         label: 'Staff augmentation vs. outsourcing',
         href: '/blog/staff-augmentation-vs-outsourcing',
       },
-      { label: 'Work with us as a software partner', href: '/work-with-us/software-partner' },
-    ],
-  },
-  {
-    slug: 'hiring-developers-in-pakistan',
-    title: 'Hiring Developers in Pakistan: Time Zones, Holidays and What to Expect',
-    seoTitle: 'Hire Developers in Pakistan: What to Expect',
-    reviewedBy: 'Azmat Rana',
-    excerpt:
-      'What US and UK teams should know before hiring developers in Pakistan: the time difference through the year, overlap hours, holidays and how the work runs.',
-    date: '2026-10-12',
-    category: 'Hiring',
-    readTime: '4 min',
-    intro:
-      'Pakistan is 9 or 10 hours ahead of New York and 4 or 5 hours ahead of London, depending on the time of year. English is an official language, alongside Urdu. Our team works from Lahore for clients in the US and UK. Here is what to plan for when you hire developers in Pakistan.',
-    sections: [
-      {
-        heading: 'The time difference through the year',
-        body: 'Pakistan Standard Time is UTC+5 all year, because Pakistan doesn’t change its clocks. The US and UK do, so the gap moves twice a year.\n\n1. New York is 9 hours behind Pakistan in summer and 10 in winter.\n\n2. Los Angeles is 12 hours behind in summer and 13 in winter.\n\n3. London is 4 hours behind in summer and 5 in winter.\n\nThe US changes its clocks on the second Sunday of March and the first Sunday of November. The UK changes on the last Sundays of March and October. Recurring meetings shift by an hour on those dates, so check them.',
-      },
-      {
-        heading: 'How the hours overlap',
-        body: 'A 9 to 6 working day in Lahore runs from 5 a.m. to 2 p.m. in London in summer. That covers the whole UK morning, so standups and reviews fit without anyone moving their day.\n\nFor US teams, a normal Lahore day ends at 9 a.m. in New York in summer, so the two working days don’t overlap. Engineers working with US clients move their hours later instead. Ours overlap with US hours when your schedule needs it.',
-      },
-      {
-        heading: 'Holidays move every year',
-        body: 'Pakistan’s two Eid holidays follow the Islamic lunar calendar. They come about 11 days earlier each year, and the exact dates depend on the moon sighting. So they are confirmed only close to the day.\n\nFixed public holidays include Pakistan Day on March 23, Independence Day on August 14 and Quaid-e-Azam Day on December 25. Ask for the holiday calendar at the start of the year, and plan releases around both Eids.',
-      },
-      {
-        heading: 'How the work runs',
-        body: 'With staff augmentation, the engineer joins your team: your repo, your sprint and your tools. Full Blown Media ran its project with us through Slack and Trello. On a project we deliver, you get a plan with milestones and a weekly demo of working software.\n\nWritten updates matter more across time zones. A short end-of-day note means your team starts the morning knowing what changed overnight.',
-      },
-      {
-        heading: 'Contracts and ownership',
-        body: 'You contract with us, so you don’t need a company in Pakistan to hire our engineers. You own everything they write for you, including the source code and its intellectual property.\n\nThere is no long-term contract to start. Engagements run from under six months to long-term roles.',
-      },
-    ],
-    conclusion: {
-      heading: 'Common questions',
-      paragraphs: [
-        'What time zone is Pakistan in? Pakistan Standard Time, UTC+5, with no daylight saving time.',
-        'Can developers in Pakistan work US hours? Yes, by moving their day later. Ours overlap with US hours when a client’s schedule needs it.',
-        'How fast can we start? We send a shortlist within 2 days, and you can hire in as fast as a week.',
-        'Who owns the code? You do, including the intellectual property in it.',
-      ],
-    },
-    related: [
-      { label: 'Hire developers', href: '/work-with-us/hire' },
-      { label: 'How to vet a remote developer', href: '/blog/how-to-vet-remote-developers' },
       { label: 'Work with us as a software partner', href: '/work-with-us/software-partner' },
     ],
   },
