@@ -28,7 +28,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'HIPAA-aligned platforms with unified clinical data, role-based access, and automated compliance audit trails.',
-    result: 'Cut admin costs 30%',
+    result: 'Our project: Nuvana · chronic-care billing for clinics',
   },
   {
     name: 'FinTech',
@@ -40,7 +40,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'PCI-DSS ready architecture with real-time fraud signals, tokenized payments, and modular banking APIs.',
-    result: 'Reduced fraud losses 40%',
+    result: 'Our project: CashKart · verified-agent cash-outs',
   },
   {
     name: 'E-commerce',
@@ -52,7 +52,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'Scalable storefronts with real-time inventory sync, conversion-optimized checkout, and elastic cloud infrastructure.',
-    result: 'Lifted conversion 25%',
+    result: 'Our project: AutoBuffy · +50% sales via buy now, pay later',
   },
   {
     name: 'Logistics',
@@ -64,7 +64,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'Route optimization engines, live tracking dashboards, and ERP-integrated dispatch automation.',
-    result: 'Cut delivery costs 30%',
+    result: 'Our project: Truck-4 · fleet rentals that absorb traffic spikes',
   },
   {
     name: 'Education',
@@ -76,7 +76,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'Unified learning platforms with progress analytics, automated assessment pipelines, and parent/admin portals.',
-    result: 'Improved completion rates 35%',
+    result: 'Our project: Fisar · GDPR requests for schools',
   },
   {
     name: 'Manufacturing',
@@ -88,7 +88,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'IoT-integrated MES with predictive maintenance alerts, production traceability, and quality dashboards.',
-    result: 'Reduced downtime 28%',
+    result: 'Our project: Cad Cam Masters · dental labs matched with CAD designers',
   },
   {
     name: 'Real Estate',
@@ -100,7 +100,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'Property management portals with CRM integration, digital leasing flows, and portfolio analytics.',
-    result: 'Shortened lease cycles 40%',
+    result: 'Our project: Houzi · property app with 360° views',
   },
   {
     name: 'Media',
@@ -112,7 +112,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'Rights-aware CMS with CDN-backed delivery, audience segmentation, and programmatic monetization layers.',
-    result: 'Increased ad yield 22%',
+    result: 'Our project: Aiode · AI-assisted music creation',
   },
 ] as const;
 
@@ -120,7 +120,7 @@ export const INDUSTRIES_TRUST = {
   title: 'Compliance and certifications you can defend',
   description:
     'We build for auditors, not slide decks. Our delivery teams align architecture, access controls, and documentation with the standards your industry demands.',
-  certifications: ['HIPAA aligned', 'PCI-DSS ready', 'SOC 2 practices', 'ISO 27001 aligned'],
+  certifications: ['HIPAA aligned', 'PCI-DSS ready'],
   caseStudyLink: {
     label: 'View industry case studies',
     href: '/our-work/case-studies',

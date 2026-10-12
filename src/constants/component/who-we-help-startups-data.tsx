@@ -10,9 +10,9 @@ export const STARTUPS_HERO = {
 
 export const STARTUPS_HIGHLIGHTS = [
   {
-    title: 'MVP in weeks, not quarters',
+    title: 'An MVP in one to three months',
     description:
-      'Focused discovery, lean scope, and sprint delivery — first investor demo in 6–8 weeks for most greenfield products.',
+      'Focused discovery, lean scope and sprint delivery. Most MVPs take one to three months, and Cinekit’s took one.',
     icon: <Rocket className="h-5 w-5" />,
   },
   {
@@ -37,8 +37,8 @@ export const STARTUPS_HIGHLIGHTS = [
 
 export const STARTUPS_METRICS = [
   { value: '50+', label: 'Startups funded after MVP delivery' },
-  { value: '6-8 wk', label: 'Typical MVP timeline' },
-  { value: '95%', label: 'Founder retention rate' },
+  { value: '1-3 mo', label: 'Typical MVP timeline' },
+  { value: '30 mo', label: 'Our longest client engagements' },
 ] as const;
 
 export const STARTUPS_PARTNERSHIPS = {
@@ -65,7 +65,7 @@ export const STARTUPS_TRUST = [
   },
   {
     title: 'Post-launch support',
-    description: 'Production monitoring, bug SLAs, and a path to a dedicated pod as you grow.',
+    description: 'Production monitoring, bug fixes and a path to a dedicated team as you grow.',
   },
 ] as const;
 

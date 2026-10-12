@@ -16,8 +16,8 @@ export const SOFTWARE_PARTNER_STATS = [
 
 export const SOFTWARE_PARTNER_BENEFITS = [
   {
-    title: '24/7 Support',
-    description: 'Follow-the-sun coverage keeps delivery moving across time zones.',
+    title: '4+ Hours of US Overlap',
+    description: 'Our engineers in Lahore overlap at least 4 hours with a US working day.',
     icon: <Headphones className="h-5 w-5" />,
   },
   {

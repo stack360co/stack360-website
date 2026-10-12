@@ -460,10 +460,10 @@ export const seo = {
   whoWeHelpEnterprises: pageMeta({
     title: 'Enterprise Software Development',
     description:
-      'Enterprise-grade security with startup agility. SOC 2 and ISO aligned delivery, dedicated teams, legacy integration, and 24/7 support on AWS, Azure, and GCP.',
+      'Enterprise software development: dedicated teams, legacy system integration and cloud work on AWS, Azure and GCP, from our Lahore team for US and UK companies.',
     path: '/who-we-help/enterprises',
     keywords:
-      'enterprise software development, SOC 2 software partner, ISO compliant development, dedicated development team, legacy system integration, enterprise cloud migration',
+      'enterprise software development, dedicated development team, legacy system integration, enterprise cloud migration',
   }),
 
   ourWork: pageMeta({

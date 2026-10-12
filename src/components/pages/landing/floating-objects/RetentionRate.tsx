@@ -11,9 +11,9 @@ export default function RetentionRate() {
       floatDuration={5.3}
       contentClassName={`-rotate-1 ${STAT_CARD}`}
     >
-      <p className="text-xl font-bold leading-none text-primary">95%</p>
+      <p className="text-xl font-bold leading-none text-primary">30 mo</p>
       <p className="mt-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-neutral-500">
-        Retention rate
+        Longest engagements
       </p>
     </FloatingObject>
   );
