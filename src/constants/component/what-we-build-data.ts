@@ -150,6 +150,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'web-apps',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/slow-react-app',
+      label: 'Your React app is slow. It’s probably not React.',
+    },
     hero: {
       eyebrow: 'What We Build · Web Apps',
       title: 'Web App Development',
@@ -341,6 +345,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'mobile-apps',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/react-native-or-flutter',
+      label: 'React Native or Flutter? How we choose for client apps',
+    },
     hero: {
       eyebrow: 'What We Build · Mobile Apps',
       title: 'Mobile App Development',
@@ -725,6 +733,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'ai-solutions',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/stop-ai-chatbot-hallucinations',
+      label: 'How to stop an AI chatbot from making things up',
+    },
     hero: {
       eyebrow: 'What We Build · AI Solutions',
       title: 'AI Development',
@@ -1306,6 +1318,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'saas',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/vue-2-to-vue-3-migration',
+      label: 'Moving a live SaaS from Vue 2 to Vue 3',
+    },
     hero: {
       eyebrow: 'What We Build · SaaS',
       title: 'SaaS Development',
@@ -1496,6 +1512,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'custom-software',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/how-long-software-projects-take',
+      label: 'How long software projects take: data from 28 of our projects',
+    },
     hero: {
       eyebrow: 'What We Build · Custom Software',
       title: 'Custom Software Development',
@@ -2111,6 +2131,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'legacy-modernization',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/xamarin-to-dotnet-maui-migration',
+      label: 'Moving a Xamarin app to .NET MAUI, step by step',
+    },
     hero: {
       eyebrow: 'What We Build · Legacy Modernization',
       title: 'Modernize Legacy Software',
@@ -2299,6 +2323,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'software-maintenance',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/angular-8-to-13-upgrade',
+      label: 'Upgrading a live store from Angular 8 to 13 in 20 days',
+    },
     hero: {
       eyebrow: 'What We Build · Maintenance & Support',
       title: 'Software Maintenance',
@@ -2454,6 +2482,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'marketplace-development',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/marketplace-payments-stripe',
+      label: 'Marketplace payments with Stripe: deposits, payouts and refunds',
+    },
     hero: {
       eyebrow: 'What We Build · Marketplaces',
       title: 'Build A Marketplace',

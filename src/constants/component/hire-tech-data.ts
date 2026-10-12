@@ -1235,6 +1235,12 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
           'With xUnit, run in Docker so tests behave the same on every machine. That is how ATC is covered.',
       },
       {
+        id: 'maui',
+        question: 'Can you move our Xamarin app to .NET MAUI?',
+        answer:
+          'Yes. Xamarin support ended on May 1, 2024, and Xamarin apps can no longer ship store updates. A Xamarin.Forms app keeps most of its C# and XAML in .NET MAUI, so we upgrade the projects instead of rebuilding the app. Our own Xamarin.Forms to .NET MAUI migration took under three months.',
+      },
+      {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:

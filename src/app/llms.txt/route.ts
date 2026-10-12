@@ -1,3 +1,4 @@
+import { BLOG_POSTS } from '@/constants/component/blog-posts-data';
 import { HIRE_TECH_PAGES } from '@/constants/component/hire-tech-data';
 import { CASE_STUDIES_DETAILS } from '@/constants/component/our-work-case-studies-data';
 import { WHO_WE_ARE_HUB } from '@/constants/component/section-hubs-data';
@@ -78,6 +79,13 @@ export function GET() {
     '',
     ...CASE_STUDIES_DETAILS.map((study) =>
       link(study.name, `/our-work/case-studies/${study.slug}`, study.tagline)
+    ),
+    '',
+    '## Articles',
+    '',
+    // Reviewed posts written from our own project records.
+    ...BLOG_POSTS.filter((post) => post.reviewedBy).map((post) =>
+      link(post.title, `/blog/${post.slug}`, post.excerpt)
     ),
     '',
     '## Company',
