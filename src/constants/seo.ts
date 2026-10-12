@@ -123,8 +123,7 @@ export const seo = {
 
   home: pageMeta({
     absoluteTitle: 'Stack360 | Software Development Agency, 200+ Projects',
-    description:
-      'Stack360 designs and builds complex software ecosystems — ERP, CRM, AI, SaaS, mobile, web, cloud, and DevOps — for startups, SMEs, and enterprises.',
+    description: SITE_DESCRIPTION,
     path: '/',
   }),
 
