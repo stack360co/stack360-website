@@ -10,7 +10,7 @@ export const SOFTWARE_PARTNER_HERO = {
 
 export const SOFTWARE_PARTNER_STATS = [
   { value: '200+', label: 'Projects Delivered' },
-  { value: '95%', label: 'Client Satisfaction' },
+  { value: '100%', label: 'Success Rate' },
   { value: '48h', label: 'Typical Kickoff' },
 ] as const;
 

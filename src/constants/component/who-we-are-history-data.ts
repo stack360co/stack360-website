@@ -8,9 +8,9 @@ export const HISTORY_HERO = {
 
 export const HISTORY_STATS = [
   { value: '200+', label: 'Projects Delivered' },
-  { value: '200+', label: 'Active Clients' },
-  { value: '10+', label: 'Years of Innovation' },
-  { value: '95%', label: 'Client Satisfaction' },
+  { value: '200+', label: 'Clients Served' },
+  { value: '2021', label: 'Founded' },
+  { value: '100%', label: 'Success Rate' },
 ] as const;
 
 export const HISTORY_MILESTONES = [

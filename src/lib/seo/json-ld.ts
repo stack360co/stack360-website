@@ -28,6 +28,8 @@ export function organizationJsonLd(): JsonLd {
     email: SITE_EMAIL,
     telephone: SITE_PHONE_E164,
     founder: { '@type': 'Person', name: CULTURE_FOUNDER.name, jobTitle: 'CEO' },
+    foundingDate: '2021',
+    numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 10, maxValue: 49 },
     knowsAbout: [
       'Custom software development',
       'Web application development',
