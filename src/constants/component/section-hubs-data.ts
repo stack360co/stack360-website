@@ -124,7 +124,7 @@ export const WHO_WE_ARE_HUB: SectionHubProps = {
   title: 'The studio behind',
   highlight: 'the systems.',
   description:
-    'A disciplined engineering team centered on technical integrity — history, culture, and how we actually ship.',
+    'Stack360 is a software development agency founded in 2021 by Azmat Rana. Here is our history, our culture and how we ship.',
   exploreBlurb: 'Learn how Stack360 is built — history, culture, and delivery rituals.',
   facts: {
     title: 'Stack360 at a glance',

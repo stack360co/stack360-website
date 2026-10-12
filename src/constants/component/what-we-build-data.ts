@@ -82,6 +82,8 @@ export interface CapabilityPageData {
   story?: CapabilityStory;
   /** Who reviewed the page; shown under the hero and in the page schema. */
   reviewer?: CapabilityReviewer;
+  /** Date the page content last changed (YYYY-MM-DD). Shown beside the byline; update it when you edit the page. */
+  updated?: string;
   processTitle: string;
   processIntro: string;
   process: { title: string; description: string; phase?: string }[];
@@ -137,12 +139,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   'web-apps': {
     slug: 'web-apps',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Web Apps',
       title: 'Build Powerful Web Apps For',
       highlight: 'Growing Businesses',
       description:
-        'We build custom web applications that streamline operations, connect business systems, improve user experiences, and support scalable digital growth.',
+        'A web app is software your customers or staff log in to and use in a browser, such as a marketplace, a portal or an ordering system. We build them in React, Next.js and Rails, from Cercle’s fashion rentals to Autobuffy’s 100,000-part store.',
       cta: { label: 'Build Your Web App', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -329,12 +332,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   'mobile-apps': {
     slug: 'mobile-apps',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Mobile Apps',
       title: 'Build Custom Mobile Apps That',
       highlight: 'Drive Growth',
       description:
-        'We develop custom mobile applications that deliver intuitive experiences, connect business systems, and scale with your users, products, and business goals.',
+        'We build iOS and Android apps in React Native, Flutter and Swift, and take them through App Store and Google Play release. Nextflag, a map-based social app, is one we made faster and more stable for both platforms.',
       cta: { label: 'Build Your Mobile App', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -527,12 +531,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   devops: {
     slug: 'devops',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · DevOps',
       title: 'Build Faster With Smarter',
       highlight: 'DevOps Engineering',
       description:
-        'Our DevOps consulting services improve deployment speed, infrastructure reliability, automation, and collaboration across your software development lifecycle.',
+        'DevOps makes releasing software routine: automated builds, tests and deploys, monitoring that reaches a person, and infrastructure defined in code. For Truck-4 we set up pipelines that deploy every service to Kubernetes the same way.',
       cta: { label: 'Improve Your DevOps', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -717,12 +722,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   'ai-solutions': {
     slug: 'ai-solutions',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · AI Solutions',
       title: 'Build Intelligent AI Solutions',
       highlight: 'For Business Growth',
       description:
-        'We combine AI consulting, software engineering, and machine learning to build intelligent solutions that automate work and improve business outcomes.',
+        'We build AI features that work from your own data: assistants that answer from your documents, document reading, and automated decisions with a person in the loop. Money Ball, our sports-stats assistant, checks a live database before it answers.',
       cta: { label: 'Build Your AI Solution', href: '/contact' },
     },
     capabilitiesTitle: 'AI Challenges & Solutions',
@@ -916,12 +922,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   erp: {
     slug: 'erp',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · ERP',
       title: 'Build Enterprise Software That',
       highlight: 'Drives Business Growth',
       description:
-        'We develop scalable enterprise software that connects teams, streamlines operations, integrates systems, and supports complex business requirements.',
+        'An ERP is the one system that holds your stock, orders, suppliers and finances. We build custom ERPs and connect them to your storefronts, marketplaces and accounting, as we did for BuffyHub, which runs Amazon, eBay and Walmart from one place.',
       cta: { label: 'Start Your Enterprise Project', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -1103,12 +1110,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   crm: {
     slug: 'crm',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · CRM',
       title: 'Build CRM Software That',
       highlight: 'Accelerates Business Growth',
       description:
-        'We develop scalable CRM software that connects customer data, streamlines workflows, automates sales, and helps teams build stronger, lasting customer relationships across every channel and at scale.',
+        'A CRM keeps every client, conversation and commitment where your whole team can see it. We build custom CRMs and client portals when standard tools don’t fit, like Klingit, where clients, designers and managers have run more than 5,000 projects.',
       cta: { label: 'Build Your CRM', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -1295,12 +1303,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   saas: {
     slug: 'saas',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · SaaS',
       title: 'Build Scalable SaaS Products That',
       highlight: 'Drive Growth',
       description:
-        'Our SaaS development services help businesses launch scalable products, streamline operations, and create reliable software experiences built for recurring growth.',
+        'We build and grow subscription software, covering sign-up, billing, roles and the product itself, from the first MVP to a live platform. For Coach Catalyst we added a Stripe Connect marketplace and moved the front end to Vue 3 while customers kept using it.',
       cta: { label: 'Build Your SaaS Product', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -1487,12 +1496,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   'custom-software': {
     slug: 'custom-software',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Custom Software',
       title: 'Build Custom Software',
       highlight: 'Around Your Business',
       description:
-        'We develop custom software that fits your workflows, connects your systems, solves complex challenges, and scales alongside your business as requirements evolve.',
+        'Custom software is built around how your business already works, not how an off-the-shelf product expects you to. We have built it for services firms, clinics and marketplaces, including ATC, a system hundreds of employees use every day.',
       cta: { label: 'Build Custom Software', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -1703,12 +1713,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   cloud: {
     slug: 'cloud',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Cloud',
       title: 'Move To Cloud With',
       highlight: 'Confidence And Scale',
       description:
-        'Our cloud migration services modernize infrastructure, improve scalability, strengthen security, and create flexible environments built around your business requirements.',
+        'We move applications to AWS and Azure and shape the infrastructure around how they are really used, so they stay fast under load and cost less to run. Autobuffy’s 100,000-part store now scales automatically with its traffic.',
       cta: { label: 'Modernize Your Cloud', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',
@@ -1895,12 +1906,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   automation: {
     slug: 'automation',
     reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Automation',
       title: 'Automate Business Processes And',
       highlight: 'Work Smarter',
       description:
-        'Our business process automation services eliminate repetitive work, connect systems, streamline workflows, and help teams improve productivity and operational efficiency.',
+        'Business process automation takes repetitive, rule-based jobs off your team, such as alerts, follow-ups, data syncs and checks. For Luxe Excursions, staff hear about every booking instantly and every guest gets one review request after their trip.',
       cta: { label: 'Automate Your Processes', href: '/contact' },
     },
     capabilitiesTitle: 'Challenges & Solutions',

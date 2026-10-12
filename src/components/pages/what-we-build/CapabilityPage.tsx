@@ -121,6 +121,7 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
             faqs: data.faqs,
             about: String(service['@id']),
             reviewedByFounder: Boolean(data.reviewer),
+            dateModified: data.updated,
           }),
           service,
         ]}
@@ -152,6 +153,18 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
                 {data.reviewer.name}
               </Link>
               , {data.reviewer.role}
+              {data.updated ? (
+                <>
+                  {' · Updated '}
+                  <time dateTime={data.updated}>
+                    {new Date(`${data.updated}T00:00:00Z`).toLocaleDateString('en-US', {
+                      month: 'long',
+                      year: 'numeric',
+                      timeZone: 'UTC',
+                    })}
+                  </time>
+                </>
+              ) : null}
             </p>
           </div>
         </div>

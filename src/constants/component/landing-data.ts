@@ -13,7 +13,7 @@ export const LANDING_HERO = {
     'Win Markets.',
   ],
   intro:
-    'We build scalable digital products that solve complex business challenges, accelerate growth, improve efficiency, and create lasting value.',
+    'Stack360 is a software development agency founded in 2021. We have delivered more than 200 web, mobile, AI and SaaS projects for companies in the US, the UK and beyond.',
 } as const;
 
 export const LANDING_STATS = [

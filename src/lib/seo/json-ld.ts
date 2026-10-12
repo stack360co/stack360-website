@@ -221,6 +221,8 @@ export interface PageSchemaInput {
   about?: string;
   /** True on pages that show the "Reviewed by Azmat Rana" byline. */
   reviewedByFounder?: boolean;
+  /** When the page content last changed (YYYY-MM-DD). */
+  dateModified?: string;
 }
 
 /**
@@ -246,6 +248,7 @@ export function pageJsonLd(input: PageSchemaInput): JsonLd[] {
     ...(crumbs.length > 0 ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
     ...(input.about ? { about: { '@id': input.about } } : {}),
     ...(input.reviewedByFounder ? { reviewedBy: { '@id': FOUNDER_ID } } : {}),
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
     ...(input.faqs
       ? {
           mainEntity: input.faqs.map((item) => ({
