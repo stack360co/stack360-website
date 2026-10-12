@@ -1,3 +1,4 @@
+import { CULTURE_FOUNDER } from '@/constants/component/who-we-are-culture-data';
 import {
   SITE_DESCRIPTION,
   SITE_EMAIL,
@@ -11,10 +12,14 @@ import {
 
 type JsonLd = Record<string, unknown>;
 
+/** One stable identifier, so every page's schema points at the same company record. */
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
 export function organizationJsonLd(): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORGANIZATION_ID,
     name: SITE_NAME,
     alternateName: 'Stack 360',
     url: SITE_URL,
@@ -22,6 +27,17 @@ export function organizationJsonLd(): JsonLd {
     description: SITE_DESCRIPTION,
     email: SITE_EMAIL,
     telephone: SITE_PHONE_E164,
+    founder: { '@type': 'Person', name: CULTURE_FOUNDER.name, jobTitle: 'CEO' },
+    knowsAbout: [
+      'Custom software development',
+      'Web application development',
+      'Mobile app development',
+      'AI solutions',
+      'SaaS development',
+      'ERP and CRM development',
+      'Cloud and DevOps',
+      'Staff augmentation',
+    ],
     sameAs: [
       SITE_SOCIAL.linkedin,
       SITE_SOCIAL.github,
@@ -57,11 +73,7 @@ export function websiteJsonLd(): JsonLd {
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
+    publisher: { '@id': ORGANIZATION_ID },
   };
 }
 
