@@ -11,6 +11,11 @@ import {
   MotionStaggerItem,
 } from '@/components/shared/motion/MotionStagger';
 import type { CaseStudyDetail } from '@/constants/component/our-work-case-studies-data';
+import {
+  CAPABILITY_SERVICE_NAMES,
+  type CapabilitySlug,
+  getCapabilityForStory,
+} from '@/constants/component/what-we-build-data';
 
 interface CaseStudyDetailProps {
   study: CaseStudyDetail;
@@ -28,6 +33,11 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 export default function CaseStudyDetailView({ study }: CaseStudyDetailProps) {
+  // The service this project belongs to, plus the service page that tells its story when that differs.
+  const serviceSlugs = [
+    study.domainHref.replace('/what-we-build/', '') as CapabilitySlug,
+    getCapabilityForStory(`/our-work/case-studies/${study.slug}`),
+  ].filter((slug, index, all): slug is CapabilitySlug => !!slug && all.indexOf(slug) === index);
   return (
     <div className="flex w-full flex-col">
       {/* Hero */}
@@ -210,13 +220,18 @@ export default function CaseStudyDetailView({ study }: CaseStudyDetailProps) {
               <ArrowLeft size={15} />
               All case studies
             </Link>
-            <Link
-              href={study.domainHref}
-              className="inline-flex items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
-            >
-              Explore this capability
-              <ArrowUpRight size={15} />
-            </Link>
+            <div className="flex flex-wrap items-center gap-md">
+              {serviceSlugs.map((slug) => (
+                <Link
+                  key={slug}
+                  href={`/what-we-build/${slug}`}
+                  className="inline-flex items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
+                >
+                  {CAPABILITY_SERVICE_NAMES[slug]}
+                  <ArrowUpRight size={15} />
+                </Link>
+              ))}
+            </div>
           </MotionReveal>
         </div>
       </MotionSection>

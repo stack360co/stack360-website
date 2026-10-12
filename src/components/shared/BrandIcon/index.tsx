@@ -66,7 +66,7 @@ export default function BrandIcon({
   const isServiceIcon = slug in SERVICE_ICONS;
   const useLocalOnly = LOCAL_ONLY_SLUGS.has(slug) || LOCAL_ONLY_SLUGS.has(resolved);
   // Simple Icons SVGs (CC0) are self-hosted in /public/brand-icons, named
-  // `<slug>.svg` (brand colour) and `<slug>-<hex>.svg` (tinted).
+  // `<slug>.svg` (brand color) and `<slug>-<hex>.svg` (tinted).
   const src = color ? `/brand-icons/${resolved}-${color}.svg` : `/brand-icons/${resolved}.svg`;
 
   // Service icons, known-missing CDN brands, and failed loads → Lucide.

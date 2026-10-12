@@ -122,14 +122,14 @@ export const seo = {
   },
 
   home: pageMeta({
-    absoluteTitle: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    absoluteTitle: 'Stack360 | Software Development Agency, 200+ Projects',
     description:
       'Stack360 designs and builds complex software ecosystems — ERP, CRM, AI, SaaS, mobile, web, cloud, and DevOps — for startups, SMEs, and enterprises.',
     path: '/',
   }),
 
   contact: pageMeta({
-    title: 'Contact',
+    absoluteTitle: 'Contact Stack360 | We Reply Within One Business Day',
     description:
       'Talk to Stack360 about your next build — partnerships desk for project inquiries and talent requests.',
     path: '/contact',
@@ -150,14 +150,14 @@ export const seo = {
   }),
 
   whatWeBuild: pageMeta({
-    title: 'What We Build',
+    title: 'Software Development Services: Web, Mobile, AI',
     description:
       'ERP, CRM, AI, SaaS, mobile, web, cloud, DevOps, and automation — systems Stack360 architects end to end.',
     path: '/what-we-build',
   }),
 
   whatWeBuildErp: pageMeta({
-    absoluteTitle: 'Enterprise Software Development Company | Stack360',
+    absoluteTitle: 'Custom ERP Software Development Company | Stack360',
     description:
       'Build scalable enterprise software with Stack360. We develop custom enterprise applications that connect systems, streamline operations, and drive growth.',
     path: '/what-we-build/erp',
@@ -175,7 +175,7 @@ export const seo = {
   }),
 
   whatWeBuildCrm: pageMeta({
-    absoluteTitle: 'CRM Development Company | Custom CRM Solutions',
+    absoluteTitle: 'Custom CRM Development Company | Stack360',
     description:
       'Build custom CRM software with Stack360. We develop scalable CRM solutions that connect customer data, automate workflows, and improve business growth.',
     path: '/what-we-build/crm',
@@ -195,7 +195,7 @@ export const seo = {
   }),
 
   whatWeBuildAiSolutions: pageMeta({
-    absoluteTitle: 'AI Development Services | AI Solutions Company',
+    absoluteTitle: 'AI Development Company: RAG, Chatbots, Agents | Stack360',
     description:
       'Build intelligent AI solutions with Stack360. We provide AI consulting and development services for custom applications, automation, agents, chatbots, and more.',
     path: '/what-we-build/ai-solutions',
@@ -222,7 +222,7 @@ export const seo = {
   }),
 
   whatWeBuildSaas: pageMeta({
-    absoluteTitle: 'SaaS Development Services & Company | Stack360',
+    absoluteTitle: 'SaaS Development Company: MVP to Scale | Stack360',
     description:
       'Build scalable SaaS products with Stack360. Our SaaS development services cover custom platforms, MVPs, integrations, automation, and AI-powered solutions.',
     path: '/what-we-build/saas',
@@ -338,7 +338,7 @@ export const seo = {
   }),
 
   whatWeBuildDevops: pageMeta({
-    absoluteTitle: 'DevOps Consulting Services | DevOps Solutions | Stack360',
+    absoluteTitle: 'DevOps Consulting and CI/CD Services | Stack360',
     description:
       'Stack360 DevOps consulting: automated infrastructure, faster and safer deployments, stronger reliability, and optimized cloud environments.',
     path: '/what-we-build/devops',
@@ -358,8 +358,73 @@ export const seo = {
     keywords: ['Business Process Automation Services', 'QA Automation Services'],
   }),
 
+  whatWeBuildLegacyModernization: pageMeta({
+    absoluteTitle: 'Legacy Software Modernization Services | Stack360',
+    description:
+      'Modernize legacy software without stopping the business. We upgrade old frameworks, data feeds and hosting in stages, as for Autobuffy and Coach Catalyst.',
+    path: '/what-we-build/legacy-modernization',
+    keywords: [
+      'legacy software modernization',
+      'application modernization services',
+      'angularjs migration',
+      'legacy system upgrade',
+    ],
+  }),
+
+  whatWeBuildSoftwareMaintenance: pageMeta({
+    absoluteTitle: 'Software Maintenance and Support Services | Stack360',
+    description:
+      'Keep live software secure, fast and working after launch. Stack360 handles updates, bug fixes, monitoring and small improvements for web and mobile products.',
+    path: '/what-we-build/software-maintenance',
+    keywords: [
+      'software maintenance services',
+      'application support and maintenance',
+      'app maintenance services',
+      'software support company',
+    ],
+  }),
+
+  whatWeBuildMarketplaceDevelopment: pageMeta({
+    absoluteTitle: 'Marketplace Development Company | Stack360',
+    description:
+      'Build a two-sided marketplace with listings, bookings, Stripe payments and payouts. Stack360 built Cad Cam Masters, Cinekit, Cercle and Truck-4.',
+    path: '/what-we-build/marketplace-development',
+    keywords: [
+      'marketplace development company',
+      'marketplace app development',
+      'rental marketplace development',
+      'b2b marketplace development',
+    ],
+  }),
+
+  whatWeBuildQaTesting: pageMeta({
+    absoluteTitle: 'QA and Test Automation Services | Stack360',
+    description:
+      'QA and test automation that catches problems before customers do: unit, integration and Selenium browser tests, code checks in CI and manual testing.',
+    path: '/what-we-build/qa-testing',
+    keywords: [
+      'qa testing services',
+      'test automation services',
+      'software testing company',
+      'selenium testing services',
+    ],
+  }),
+
+  whatWeBuildDigitalMarketing: pageMeta({
+    absoluteTitle: 'SEO and Google Ads Services | Stack360',
+    description:
+      'SEO and Google Ads run from inside your website: technical SEO, GA4 tracking, Business Profile and search campaigns, as we do for Luxe Excursions.',
+    path: '/what-we-build/digital-marketing',
+    keywords: [
+      'seo services',
+      'google ads management',
+      'technical seo services',
+      'google business profile management',
+    ],
+  }),
+
   whoWeHelp: pageMeta({
-    title: 'Who We Help',
+    title: 'Who We Help: Startups, SMEs and Enterprises',
     description:
       'Stack360 partners with startups, SMEs, and enterprises across Healthcare, FinTech, and Logistics.',
     path: '/who-we-help',
@@ -377,7 +442,7 @@ export const seo = {
   whoWeHelpStartups: pageMeta({
     title: 'Startup MVP Development',
     description:
-      'From zero to funded — build investor-ready MVPs in weeks. Scalable architecture, transparent pricing, and agile delivery for startups that need to move fast.',
+      'From zero to funded — build investor-ready MVPs in weeks. Scalable architecture, clear scope, and agile delivery for startups that need to move fast.',
     path: '/who-we-help/startups',
     keywords:
       'startup MVP development, investor-ready software, startup software partner, agile MVP, scalable startup architecture, funded startup development',
@@ -402,7 +467,7 @@ export const seo = {
   }),
 
   ourWork: pageMeta({
-    title: 'Our Work',
+    title: 'Our Work: Case Studies and Client Projects',
     description:
       'Case studies, featured projects, client success stories, and studio insights from Stack360.',
     path: '/our-work',
@@ -416,7 +481,7 @@ export const seo = {
   }),
 
   ourWorkFeaturedProjects: pageMeta({
-    title: 'Featured Projects',
+    title: 'Featured Projects: Apps and Platforms We Built',
     description:
       'Highest-impact systems Stack360 has shipped — engineering depth with measurable outcomes.',
     path: '/our-work/featured-projects',
@@ -442,7 +507,7 @@ export const seo = {
   }),
 
   whoWeAre: pageMeta({
-    title: 'Who We Are',
+    absoluteTitle: 'About Stack360 | Software Development Agency Since 2019',
     description:
       'Meet Stack360: our history, our engineering culture, and how we design, build, and ship complex software for startups, SMEs, and enterprises.',
     path: '/who-we-are',
@@ -476,14 +541,14 @@ export const seo = {
   }),
 
   workWithUsSoftwarePartner: pageMeta({
-    title: 'Software Partner',
+    title: 'Software Development Partner: Start in 48 Hours',
     description:
       'Engage Stack360 as your software partner — staff augmentation and full product delivery for roadmap-critical systems.',
     path: '/work-with-us/software-partner',
   }),
 
   workWithUsHire: pageMeta({
-    title: 'Hire Talent',
+    title: 'Hire Developers: Shortlists Within 2 Days',
     description:
       'Hire vetted full-time remote software engineers: React, React Native, Swift, Flutter, Node.js, Ruby on Rails, Angular, Python and .NET. Shortlists in 2 days.',
     path: '/work-with-us/hire',

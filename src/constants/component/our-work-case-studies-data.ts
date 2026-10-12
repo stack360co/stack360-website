@@ -26,6 +26,8 @@ export interface CaseStudyDetail {
   slug: string;
   name: string;
   tagline: string;
+  /** Search snippet, when the tagline runs past the ~160 characters Google shows. */
+  metaDescription?: string;
   industry: string;
   platform: string;
   durationHours: string;
@@ -575,6 +577,8 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
     name: 'Cercle',
     tagline:
       'A fashion rental platform that lets users rent clothing, shoes, and accessories from lenders — promoting borrow-over-buy sustainability at a fraction of retail cost.',
+    metaDescription:
+      'How Stack360 built Cercle, a UK fashion rental marketplace: faster pages, store credit for refunds and catalog sync with Facebook.',
     industry: 'Fashion · eCommerce',
     platform: 'Web',
     durationHours: '2,112 hrs',
@@ -603,7 +607,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
         challenge:
           'Expanding reach meant users expected seamless shopping on social channels as well as the site.',
         solution:
-          'We integrated Facebook e-commerce APIs so catalogues, inventory, and orders stay in sync between the site and Facebook.',
+          'We integrated Facebook e-commerce APIs so catalogs, inventory, and orders stay in sync between the site and Facebook.',
       },
       {
         challenge:
@@ -705,6 +709,8 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
     name: 'Klingit',
     tagline:
       'A tech-powered creative services platform that helps brands scale marketing with a global pool of creatives — DesignOps, deliverables, and transparent collaboration in one place.',
+    metaDescription:
+      'How Stack360 built Klingit, the DesignOps platform where brands, designers and managers run creative projects in one place.',
     industry: 'Creative · DesignOps',
     platform: 'Web',
     durationHours: '1,400 hrs',
@@ -768,8 +774,9 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
           'Social graphics, presentations, video, websites, and apps under one delivery model.',
       },
       {
-        title: 'Cost-effective solutions',
-        description: 'Transparent, value-driven proposals without hidden pricing surprises.',
+        title: 'Clear proposals',
+        description:
+          'Proposals that set out scope, deliverables and milestones before work starts.',
       },
       {
         title: 'Scalable services',

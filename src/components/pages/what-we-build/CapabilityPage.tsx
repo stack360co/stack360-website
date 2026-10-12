@@ -1,5 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
+import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Link from 'next/link';
 import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
 import JsonLd from '@/components/seo/JsonLd';
@@ -13,26 +15,18 @@ import {
 } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import { getHireTechPage, HIRE_TECH_FOR_CAPABILITY } from '@/constants/component/hire-tech-data';
-import type { CapabilityPageData, CapabilitySlug } from '@/constants/component/what-we-build-data';
-import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
+import {
+  CAPABILITY_ICONS,
+  CAPABILITY_SERVICE_NAMES,
+  type CapabilityPageData,
+  RELATED_CAPABILITIES,
+} from '@/constants/component/what-we-build-data';
+import { pageJsonLdFromMeta, serviceJsonLd } from '@/lib/seo/json-ld';
 import { capitalize } from '@/utils/string';
 
 const TestimonialsSection = dynamic(() => import('@/components/pages/landing/TestimonialsSection'));
-
-/** BrandIcon service slugs (short keys in SERVICE_ICONS). */
-const SERVICE_ICON: Record<CapabilitySlug, string> = {
-  erp: 'erp',
-  crm: 'crm',
-  'ai-solutions': 'ai',
-  saas: 'saas',
-  'custom-software': 'custom',
-  'mobile-apps': 'mobile',
-  'web-apps': 'web',
-  cloud: 'cloud',
-  devops: 'devops',
-  automation: 'automation',
-};
 
 const TECH_LABELS: Record<string, string> = {
   react: 'React',
@@ -94,15 +88,23 @@ function processPhaseLabel(step: { phase?: string }, index: number, total: numbe
 
 interface CapabilityPageProps {
   data: CapabilityPageData;
+  /** The page's `seo` entry, so the schema names the page the way its title does. */
+  meta: Metadata;
 }
 
-export default function CapabilityPage({ data }: CapabilityPageProps) {
-  const iconSlug = SERVICE_ICON[data.slug];
+export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
+  const iconSlug = CAPABILITY_ICONS[data.slug];
   const [lead, ...rest] = data.capabilities;
   const pagePath = `/what-we-build/${data.slug}`;
   const hirePages = (HIRE_TECH_FOR_CAPABILITY[data.slug] ?? [])
     .map((slug) => getHireTechPage(slug))
     .filter((page) => page !== undefined);
+  const service = serviceJsonLd({
+    path: pagePath,
+    name: CAPABILITY_SERVICE_NAMES[data.slug],
+    serviceType: CAPABILITY_SERVICE_NAMES[data.slug],
+    description: typeof meta.description === 'string' ? meta.description : data.hero.description,
+  });
   const capabilityTitle =
     data.hero.eyebrow.split('·').pop()?.trim() ??
     data.slug
@@ -114,12 +116,14 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
     <div className="flex w-full flex-col">
       <JsonLd
         data={[
-          faqPageJsonLd(data.faqs, pagePath),
-          breadcrumbJsonLd([
-            { name: 'Home', path: '/' },
-            { name: 'What We Build', path: '/what-we-build' },
-            { name: capabilityTitle, path: pagePath },
-          ]),
+          ...pageJsonLdFromMeta(meta, {
+            crumb: capabilityTitle,
+            faqs: data.faqs,
+            about: String(service['@id']),
+            reviewedByFounder: Boolean(data.reviewer),
+            dateModified: data.updated,
+          }),
+          service,
         ]}
       />
       <PageHero
@@ -129,6 +133,42 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
         description={data.hero.description}
         cta={data.hero.cta}
       />
+
+      {data.reviewer ? (
+        <div className="border-b border-neutral-200 bg-neutral-50">
+          <div className="site-container flex items-center gap-sm py-md">
+            <Image
+              src={data.reviewer.image}
+              alt=""
+              width={32}
+              height={32}
+              className="h-8 w-8 shrink-0 rounded-full border border-neutral-200 object-cover"
+            />
+            <p className="text-xs text-neutral-600">
+              Reviewed by{' '}
+              <Link
+                href={data.reviewer.href}
+                className="font-bold text-neutral-900 transition-colors hover:text-primary"
+              >
+                {data.reviewer.name}
+              </Link>
+              , {data.reviewer.role}
+              {data.updated ? (
+                <>
+                  {' · Updated '}
+                  <time dateTime={data.updated}>
+                    {new Date(`${data.updated}T00:00:00Z`).toLocaleDateString('en-US', {
+                      month: 'long',
+                      year: 'numeric',
+                      timeZone: 'UTC',
+                    })}
+                  </time>
+                </>
+              ) : null}
+            </p>
+          </div>
+        </div>
+      ) : null}
 
       {/* Capabilities — asymmetric: sticky intro + lead feature + grid */}
       <MotionSection className="border-b border-neutral-200 py-2xl">
@@ -184,6 +224,90 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
         </div>
       </MotionSection>
 
+      {/* Project story — one real job told end to end: problem, changes, outcome */}
+      {data.story ? (
+        <MotionSection className="border-b border-neutral-200 py-2xl">
+          <div className="site-container grid grid-cols-1 gap-2xl lg:grid-cols-12">
+            <MotionStagger className="lg:col-span-5 lg:sticky lg:top-24 lg:self-start">
+              <MotionStaggerItem>
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary">
+                  {data.story.eyebrow}
+                </p>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <h2 className="mt-sm text-balance text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
+                  {data.story.title}
+                </h2>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <p className="mt-md max-w-prose text-pretty text-sm leading-relaxed text-neutral-600">
+                  {data.story.intro}
+                </p>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <dl className="mt-lg grid grid-cols-2 gap-md">
+                  {data.story.facts.map((fact) => (
+                    <div
+                      key={fact.label}
+                      className="rounded-lg border border-neutral-200 bg-neutral-50 p-md"
+                    >
+                      <dt className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                        {fact.label}
+                      </dt>
+                      <dd className="mt-xs text-sm font-bold text-neutral-900">{fact.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </MotionStaggerItem>
+            </MotionStagger>
+
+            <div className="space-y-lg lg:col-span-7">
+              <MotionReveal>
+                <MotionCard className="rounded-xl border border-neutral-200 bg-neutral-100 p-xl">
+                  <h3 className="text-base font-bold text-neutral-900">The problem</h3>
+                  <p className="mt-sm text-pretty text-sm leading-relaxed text-neutral-600">
+                    {data.story.problem}
+                  </p>
+                </MotionCard>
+              </MotionReveal>
+              <MotionReveal>
+                <MotionCard className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl">
+                  <h3 className="text-base font-bold text-neutral-900">What we changed</h3>
+                  <ol className="mt-md space-y-md">
+                    {data.story.changes.map((change, index) => (
+                      <li
+                        key={change}
+                        className="flex gap-md text-sm leading-relaxed text-neutral-600"
+                      >
+                        <span className="font-mono text-xs font-black text-primary">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span>{change}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </MotionCard>
+              </MotionReveal>
+              <MotionReveal>
+                <MotionCard className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl">
+                  <h3 className="text-base font-bold text-neutral-900">Where it stands</h3>
+                  <p className="mt-sm text-pretty text-sm leading-relaxed text-neutral-600">
+                    {data.story.outcome}
+                  </p>
+                  <Link
+                    href={data.story.href}
+                    className="mt-md inline-flex items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
+                  >
+                    {data.story.linkLabel}
+                    <ArrowUpRight size={14} aria-hidden />
+                  </Link>
+                </MotionCard>
+              </MotionReveal>
+            </div>
+          </div>
+        </MotionSection>
+      ) : null}
+
       {/* Process — numbered sequence (order carries meaning) */}
       <MotionSection className="border-b border-neutral-200 bg-neutral-100 py-2xl">
         <div className="site-container">
@@ -215,6 +339,22 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
               </MotionStaggerItem>
             ))}
           </MotionStagger>
+
+          {data.engagement ? (
+            <MotionReveal className="mt-xl rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm">
+              <h3 className="text-lg font-bold text-neutral-900">{data.engagement.title}</h3>
+              <dl className="mt-md grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
+                {data.engagement.items.map((item) => (
+                  <div key={item.label}>
+                    <dt className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                      {item.label}
+                    </dt>
+                    <dd className="mt-xs text-sm leading-relaxed text-neutral-700">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </MotionReveal>
+          ) : null}
         </div>
       </MotionSection>
 
@@ -244,7 +384,7 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
                       slug={slug}
                       size={18}
                       variant="tech"
-                      fallbackSlug={SERVICE_ICON[data.slug]}
+                      fallbackSlug={CAPABILITY_ICONS[data.slug]}
                     />
                     <span className="text-xs font-semibold text-neutral-800">
                       {formatTechLabel(slug)}
@@ -348,6 +488,13 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
       </MotionSection>
 
       {data.showTestimonials ? <TestimonialsSection /> : null}
+
+      <RelatedServices
+        title="Related services"
+        intro="Projects like this one usually involve these as well."
+        services={RELATED_CAPABILITIES[data.slug]}
+        reading={data.reading}
+      />
 
       {hirePages.length > 0 ? (
         <MotionSection className="border-b border-neutral-200 py-2xl">

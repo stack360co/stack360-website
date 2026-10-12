@@ -25,7 +25,6 @@ export const SITE_PHONE_HREF_2 = `tel:${SITE_PHONE_E164_2}` as const;
 export const SITE_SOCIAL = {
   linkedin: 'https://www.linkedin.com/company/stack360co',
   github: 'https://github.com/stack360co',
-  x: 'https://x.com/stack360',
   instagram: 'https://www.instagram.com/stack360co',
   facebook: 'https://www.facebook.com/stack360co',
 } as const;

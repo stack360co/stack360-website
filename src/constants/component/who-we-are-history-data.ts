@@ -9,7 +9,7 @@ export const HISTORY_HERO = {
 export const HISTORY_STATS = [
   { value: '200+', label: 'Projects Delivered' },
   { value: '200+', label: 'Clients Served' },
-  { value: '2021', label: 'Founded' },
+  { value: '2019', label: 'Founded' },
   { value: '100%', label: 'Success Rate' },
 ] as const;
 
@@ -44,12 +44,12 @@ export const HISTORY_VISION = {
   title: 'Our vision',
   paragraphs: [
     'We see a future where our team grows beyond 1,000 dedicated professionals, each bringing unique talent to the forefront of technology and innovation.',
-    'This is not just about headcount, it is about enriching collective skills and perspectives to better serve our clients and community.',
+    'Growing the team is how we add the skills and perspectives our clients and community need.',
     'Our journey forward is marked by a commitment to understanding market needs, driving positive change, and redefining excellence through growth, innovation, and a united team.',
   ],
   image: {
     src: '/assets/who-we-are/leaders/azmat-rana.webp',
-    alt: 'Azmat Rana, CEO of Stack360',
+    alt: 'Azmat Rana, CEO and Founder of Stack360',
   },
 } as const;
 

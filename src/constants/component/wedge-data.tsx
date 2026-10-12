@@ -45,12 +45,12 @@ export const MOCK_WEDGES = [
     tagline: 'END-TO-END EXPERTISE',
     title: 'From Idea To Product Growth',
     description:
-      'We cover strategy, UX, development, cloud, AI, deployment, and optimisation throughout your product lifecycle.',
+      'We cover strategy, UX, development, cloud, AI, deployment, and optimization throughout your product lifecycle.',
     icon: <Workflow />,
     points: [
       { primary: 'Product Strategy', secondary: 'From concept to clear roadmap' },
       { primary: 'Full-Stack Development', secondary: 'Frontend, backend, cloud, and AI' },
-      { primary: 'Continuous Support', secondary: 'Optimisation beyond product launch' },
+      { primary: 'Continuous Support', secondary: 'Optimization beyond product launch' },
     ],
   },
   {

@@ -13,13 +13,13 @@ export const LANDING_HERO = {
     'Win Markets.',
   ],
   intro:
-    'We build scalable digital products that solve complex business challenges, accelerate growth, improve efficiency, and create lasting value.',
+    'Stack360 is a software development agency founded in 2019. We have delivered more than 200 web, mobile, AI and SaaS projects for companies in the US, the UK and beyond.',
 } as const;
 
 export const LANDING_STATS = [
   { value: '200+', label: 'Projects delivered' },
   { value: '200+', label: 'Clients served' },
-  { value: '2021', label: 'Founded' },
+  { value: '2019', label: 'Founded' },
   { value: '100%', label: 'Success rate' },
 ] as const;
 
@@ -43,7 +43,7 @@ export const LANDING_SERVICES = [
       {
         title: 'Model Training & Tuning',
         description:
-          'Train and fine-tune AI models using specialised data, algorithms, and performance optimisation techniques.',
+          'Train and fine-tune AI models using specialized data, algorithms, and performance optimization techniques.',
         icon: 'training',
         href: '/what-we-build/ai-solutions',
         skills: [
@@ -73,7 +73,7 @@ export const LANDING_SERVICES = [
       {
         title: 'MLOps & Pipelines',
         description:
-          'Build scalable MLOps pipelines for machine learning deployment, monitoring, automation, management, and optimisation.',
+          'Build scalable MLOps pipelines for machine learning deployment, monitoring, automation, management, and optimization.',
         icon: 'mlops',
         href: '/what-we-build/ai-solutions',
         skills: [
@@ -354,7 +354,7 @@ export const LANDING_PROCESS = [
     step: '04',
     title: 'Launch & Scale',
     description:
-      'We launch, monitor, optimise, and continuously improve your product with ongoing support built around long-term growth.',
+      'We launch, monitor, optimize, and continuously improve your product with ongoing support built around long-term growth.',
   },
 ] as const;
 

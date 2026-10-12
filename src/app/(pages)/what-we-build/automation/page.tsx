@@ -7,5 +7,5 @@ const data = getCapabilityPage('automation');
 export const metadata = seo.whatWeBuildAutomation;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

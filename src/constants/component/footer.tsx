@@ -40,6 +40,11 @@ export const SERVICE_LINKS: FooterLink[] = [
   { label: 'Mobile App Development', href: '/what-we-build/mobile-apps' },
   { label: 'Web Development', href: '/what-we-build/web-apps' },
   { label: 'Custom Software', href: '/what-we-build/custom-software' },
+  { label: 'SaaS Development', href: '/what-we-build/saas' },
+  { label: 'ERP Development', href: '/what-we-build/erp' },
+  { label: 'CRM Development', href: '/what-we-build/crm' },
+  { label: 'Automation', href: '/what-we-build/automation' },
+  { label: 'All services', href: '/what-we-build' },
 ];
 
 export const COMPANY_LINKS: FooterLink[] = [

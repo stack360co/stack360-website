@@ -24,62 +24,92 @@ export const NAVIGATION_DATA: NavSection[] = [
     },
     columns: [
       {
-        title: 'Core Ecosystems',
+        title: 'Products',
         items: [
           {
-            title: 'AI Solutions',
-            desc: 'Custom neural integrations and intelligent automated workflows.',
-            href: '/what-we-build/ai-solutions',
+            title: 'Custom Software',
+            desc: 'Systems built around how your business already works.',
+            href: '/what-we-build/custom-software',
+          },
+          {
+            title: 'Web Apps',
+            desc: 'Portals, dashboards and stores people log in to.',
+            href: '/what-we-build/web-apps',
+          },
+          {
+            title: 'Mobile Apps',
+            desc: 'iOS and Android apps in Swift, React Native and Flutter.',
+            href: '/what-we-build/mobile-apps',
           },
           {
             title: 'SaaS',
-            desc: 'Multi-tenant cloud products engineered for subscription scale.',
+            desc: 'Subscription products from first MVP to live platform.',
             href: '/what-we-build/saas',
           },
           {
-            title: 'ERP',
-            desc: 'Centralized enterprise resource engines designed for scalability.',
-            href: '/what-we-build/erp',
-          },
-          {
-            title: 'CRM',
-            desc: 'Smarter customer relationship tracking optimized for pipeline velocity.',
-            href: '/what-we-build/crm',
-          },
-          {
-            title: 'Custom Software',
-            desc: 'Bespoke digital tailoring solving complex foundational bottlenecks.',
-            href: '/what-we-build/custom-software',
+            title: 'Marketplaces',
+            desc: 'Two-sided platforms with bookings, deposits and payouts.',
+            href: '/what-we-build/marketplace-development',
           },
         ],
       },
       {
-        title: 'Platform & Infrastructure',
+        title: 'Business Systems',
+        items: [
+          {
+            title: 'AI Solutions',
+            desc: 'AI features that answer from your own data.',
+            href: '/what-we-build/ai-solutions',
+          },
+          {
+            title: 'ERP',
+            desc: 'One system for stock, orders, suppliers and finance.',
+            href: '/what-we-build/erp',
+          },
+          {
+            title: 'CRM',
+            desc: 'Every client, conversation and commitment in one place.',
+            href: '/what-we-build/crm',
+          },
+          {
+            title: 'Automation',
+            desc: 'Alerts, reports and data syncs that run on their own.',
+            href: '/what-we-build/automation',
+          },
+          {
+            title: 'Legacy Modernization',
+            desc: 'Old frameworks and hosting upgraded in stages.',
+            href: '/what-we-build/legacy-modernization',
+          },
+        ],
+      },
+      {
+        title: 'Platform & Growth',
         items: [
           {
             title: 'Cloud',
-            desc: 'Resilient serverless distribution structures mapped to modern frameworks.',
+            desc: 'Migration and hosting on AWS, Azure and Google Cloud.',
             href: '/what-we-build/cloud',
           },
           {
             title: 'DevOps',
-            desc: 'Automated CI/CD pipelines keeping code testing stable.',
+            desc: 'Pipelines, containers and monitoring for routine releases.',
             href: '/what-we-build/devops',
           },
           {
-            title: 'Automation',
-            desc: 'Scraping manual tasks out of day-to-day work operations.',
-            href: '/what-we-build/automation',
+            title: 'QA & Testing',
+            desc: 'Automated and manual testing on every release.',
+            href: '/what-we-build/qa-testing',
           },
           {
-            title: 'Mobile Apps',
-            desc: 'Native-grade portable applications built for iOS and Android environments.',
-            href: '/what-we-build/mobile-apps',
+            title: 'Maintenance & Support',
+            desc: 'Updates, fixes and monitoring after launch.',
+            href: '/what-we-build/software-maintenance',
           },
           {
-            title: 'Web Apps',
-            desc: 'High-speed, modular web applications built with dynamic architecture.',
-            href: '/what-we-build/web-apps',
+            title: 'SEO & Google Ads',
+            desc: 'Technical SEO, tracking, ads and Business Profile.',
+            href: '/what-we-build/digital-marketing',
           },
         ],
       },

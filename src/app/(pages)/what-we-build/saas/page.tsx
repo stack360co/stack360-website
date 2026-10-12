@@ -7,5 +7,5 @@ const data = getCapabilityPage('saas');
 export const metadata = seo.whatWeBuildSaas;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

@@ -8,6 +8,12 @@ export const CAREERS_HERO = {
     'Join a studio where clean execution, strong git history, and production-grade craft are the baseline — not the pitch deck.',
 } as const;
 
+export const CAREERS_INTERNSHIPS = {
+  title: 'Internships in Lahore',
+  description:
+    'We take interns at our Lahore studio. Interns work on real client projects, and senior engineers mentor them through code review and architecture sessions. Internship openings are listed with the roles above when we are hiring.',
+} as const;
+
 export const CAREERS_BENEFITS = [
   {
     title: 'Global delivery culture',

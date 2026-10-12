@@ -3,6 +3,7 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   // Existing configuration options
   reactCompiler: true,
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
@@ -58,12 +59,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/our-work/news',
-        destination: '/',
+        destination: '/blog',
         permanent: true,
       },
       {
         source: '/our-work/learning-sessions',
-        destination: '/',
+        destination: '/blog',
         permanent: true,
       },
 
@@ -85,27 +86,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/services/graphic-designing',
-        destination: '/',
+        destination: '/what-we-build',
         permanent: true,
       },
       {
         source: '/services/ui-ux',
-        destination: '/',
+        destination: '/what-we-build',
         permanent: true,
       },
       {
         source: '/services/quality-assurance',
-        destination: '/',
+        destination: '/what-we-build/qa-testing',
         permanent: true,
       },
       {
         source: '/services/digital-marketing',
-        destination: '/',
+        destination: '/what-we-build/digital-marketing',
         permanent: true,
       },
       {
         source: '/services/data-science',
-        destination: '/',
+        destination: '/what-we-build/ai-solutions',
         permanent: true,
       },
 
@@ -122,7 +123,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/vue-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/vue-developers',
         permanent: true,
       },
       {
@@ -137,17 +138,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/python-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/python-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/dotnet-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/dotnet-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/django-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/python-developers',
         permanent: true,
       },
       {
@@ -177,7 +178,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/xamarin-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/react-native-developers',
         permanent: true,
       },
       {
@@ -186,45 +187,52 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // Case Studies
+      // Old portfolio address for a project that now has a case study
+      {
+        source: '/portfolio/autobuffy',
+        destination: '/our-work/case-studies/autobuffy',
+        permanent: true,
+      },
+
+      // Case Studies: each old address goes to the same study's new page
       {
         source: '/case-studies/truck4-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/truck-4',
         permanent: true,
       },
       {
         source: '/case-studies/autobuffy-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/autobuffy',
         permanent: true,
       },
       {
         source: '/case-studies/coach-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/coach-catalyst',
         permanent: true,
       },
       {
         source: '/case-studies/atc-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/atc',
         permanent: true,
       },
       {
         source: '/case-studies/cercle-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/cercle',
         permanent: true,
       },
       {
         source: '/case-studies/buffyhub-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/buffyhub',
         permanent: true,
       },
       {
         source: '/case-studies/klingit-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/klingit',
         permanent: true,
       },
       {
         source: '/case-studies/nextflag-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/nextflag',
         permanent: true,
       },
     ];

@@ -3,6 +3,7 @@ import MotionSection from '@/components/shared/motion/MotionSection';
 import { MotionStagger, MotionStaggerItem } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import {
   STARTUPS_CTA,
   STARTUPS_HERO,
@@ -125,6 +126,16 @@ export default function StartupsPage() {
           </MotionStagger>
         </div>
       </MotionSection>
+
+      <RelatedServices
+        title="Services startups ask us for"
+        intro="Most first builds are a web or mobile product with sign-up and billing, sometimes with AI at the core."
+        services={['saas', 'web-apps', 'mobile-apps', 'ai-solutions', 'digital-marketing']}
+        reading={{
+          href: '/blog/mvp-development-guide',
+          label: 'MVP Development: Scope, Build, and Launch',
+        }}
+      />
 
       <PageClosingCta {...STARTUPS_CTA} />
     </div>

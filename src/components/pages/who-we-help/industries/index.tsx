@@ -4,6 +4,7 @@ import MotionSection from '@/components/shared/motion/MotionSection';
 import { MotionStagger, MotionStaggerItem } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import {
   INDUSTRIES,
   INDUSTRIES_CTA,
@@ -74,6 +75,12 @@ export default function IndustriesPage() {
           </MotionStagger>
         </div>
       </MotionSection>
+
+      <RelatedServices
+        title="Services behind this work"
+        intro="Whatever the sector, the build is usually one of these."
+        services={['custom-software', 'web-apps', 'mobile-apps', 'ai-solutions']}
+      />
 
       <PageClosingCta {...INDUSTRIES_CTA} />
     </div>

@@ -1,5 +1,8 @@
 import type { HireSkillId } from '@/constants/component/hire-talent-data';
-import type { CapabilitySlug } from '@/constants/component/what-we-build-data';
+import {
+  CAPABILITY_SERVICE_NAMES,
+  type CapabilitySlug,
+} from '@/constants/component/what-we-build-data';
 
 /**
  * Technology-specific hire pages under /work-with-us/hire/<slug>.
@@ -68,7 +71,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       title: 'Hire Swift developers',
       highlight: 'for native iOS apps.',
       description:
-        'Full-time remote iOS engineers who write Swift and SwiftUI, ship through TestFlight and App Store review, and work inside your team’s repo and sprint with overlap on US hours.',
+        'Full-time remote iOS engineers who write Swift and SwiftUI and ship through TestFlight and App Store review. They work inside your team’s repo and sprint, with overlap on US hours.',
     },
     workTitle: 'What our Swift developers work on',
     workIntro:
@@ -162,7 +165,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     linkLabel: 'React and Next.js developers',
     iconSlug: 'react',
     meta: {
-      title: 'Hire React Developers | React and Next.js Engineers',
+      title: 'Hire React and Next.js Developers',
       description:
         'Hire full-time remote React and Next.js developers who have shipped products like Fyxer, Cinekit and Truck-4. Vetted shortlist within 2 days.',
       keywords: [
@@ -229,6 +232,13 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         caseStudy: '/our-work/case-studies/truck-4',
       },
       {
+        name: 'Cercle',
+        summary:
+          'UK fashion rental marketplace on React and Next.js, with store credit for refunds and catalog sync with Facebook.',
+        stack: ['React', 'Next.js', 'Ruby on Rails', 'Stripe'],
+        caseStudy: '/our-work/case-studies/cercle',
+      },
+      {
         name: 'Luxe Excursions',
         summary:
           'Booking platform for a Tenerife tour company with Stripe payments, a staff CMS and automated booking alerts. We also run its SEO, Google Ads and Business Profile.',
@@ -257,7 +267,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'backend',
         question: 'Can your React developers work on the backend too?',
         answer:
-          'Most of our React projects pair it with a Rails, Django, Node or Laravel backend, so we can place an engineer who is comfortable on both sides or put together a small team that covers each.',
+          'Most of our React projects pair it with a Rails, Django, Node or Laravel backend. We can place an engineer comfortable on both sides, or a small team that covers each.',
       },
       {
         id: 'typescript',
@@ -270,6 +280,12 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         question: 'Can they join a codebase that is already in production?',
         answer:
           'Yes. Expect the first days to go on reading the code, running it locally and shipping small fixes, so they learn your conventions before taking on larger features.',
+      },
+      {
+        id: 'slow-app',
+        question: 'Our React app is slow. Is React the problem?',
+        answer:
+          'Usually not. On Cercle, a React and Next.js store, most of the speed fixes were behind the front end: better product data handling, image caching and background jobs. Our engineers check the API and database before rewriting components.',
       },
       {
         id: 'time-zone',
@@ -378,6 +394,12 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         question: 'Can you take over a React Native app another team built?',
         answer:
           'Yes. Much of our Nextflag work was exactly that: fixing the crashes and onboarding drop-offs users hit before adding new features.',
+      },
+      {
+        id: 'xamarin',
+        question: 'Can you move our Xamarin app to React Native?',
+        answer:
+          'Yes. With Xamarin out of support since May 2024, React Native is a common next step, especially if your team already builds for the web in React. We move the app in stages and reuse the backend it already talks to.',
       },
       {
         id: 'time-zone',
@@ -609,6 +631,12 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
           'Yes. We start by getting it building on the current Flutter version, updating packages that have gone stale and fixing what the crash reports show.',
       },
       {
+        id: 'xamarin',
+        question: 'Can you move our Xamarin app to Flutter?',
+        answer:
+          'Yes. Microsoft ended support for Xamarin in May 2024, so most teams now move to .NET MAUI, Flutter or React Native. In Flutter we rebuild the app screen by screen and keep the existing backend and APIs where they still work.',
+      },
+      {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
@@ -623,7 +651,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     linkLabel: 'Ruby on Rails developers',
     iconSlug: 'rubyonrails',
     meta: {
-      title: 'Hire Ruby on Rails Developers | Rails Experts',
+      title: 'Hire Ruby on Rails (RoR) Developers',
       description:
         'Hire full-time remote Ruby on Rails developers. Rails is our deepest stack, behind Autobuffy, LegalAtoms, Klingit and Coach Catalyst. Shortlist in 2 days.',
       keywords: [
@@ -735,7 +763,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'upgrades',
         question: 'Can you upgrade an old Rails app?',
         answer:
-          'Yes. We go one version at a time, run the test suite at every step and write tests first where there are none, so production keeps working through the upgrade.',
+          'Yes. We go one version at a time and run the test suite at every step. Where there are no tests, we write them first, so production keeps working through the upgrade.',
       },
       {
         id: 'frontend',
@@ -779,7 +807,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       title: 'Hire Angular developers',
       highlight: 'for large business web apps.',
       description:
-        'Engineers who have built Angular front ends for an auto parts store with over 100,000 SKUs, legal filing software and a customer messaging platform, on Rails and .NET backends. Full time on your team, with overlap on US hours.',
+        'Engineers who have built Angular front ends on Rails and .NET backends. Their work includes an auto parts store with over 100,000 SKUs, legal filing software and a customer messaging platform. Full time on your team, with overlap on US hours.',
     },
     workTitle: 'What our Angular developers work on',
     workIntro:
@@ -811,7 +839,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         name: 'Autobuffy',
         summary:
-          'Auto parts store with more than 100,000 SKUs, faceted search and dropship fulfilment.',
+          'Auto parts store with more than 100,000 SKUs, faceted search and dropship fulfillment.',
         stack: ['Angular 13 to 16', 'Ruby on Rails', 'Elasticsearch'],
         url: 'https://autobuffy.com',
         caseStudy: '/our-work/case-studies/autobuffy',
@@ -867,6 +895,359 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
   },
+  {
+    slug: 'python-developers',
+    skillId: 'python',
+    name: 'Python and Django',
+    linkLabel: 'Python and Django developers',
+    iconSlug: 'django',
+    meta: {
+      title: 'Hire Python and Django Developers',
+      description:
+        'Hire full-time remote Python and Django developers for SaaS backends, AI features and compliance tools, proven on Money Ball and Natif.ai. Shortlist in 2 days.',
+      keywords: [
+        'hire python developers',
+        'hire django developers',
+        'django developers for hire',
+        'hire python django developer',
+      ],
+    },
+    hero: {
+      eyebrow: 'Work With Us · Hire Python Developers',
+      title: 'Hire Python and Django developers',
+      highlight: 'for backends that do the heavy lifting.',
+      description:
+        'Python engineers who build Django APIs, Celery background workers and the data and AI pipelines behind them. They join your team full time, with overlap on US hours.',
+    },
+    workTitle: 'What our Python developers work on',
+    workIntro:
+      'Most of our Django work sits behind products that process something: documents, records, sports stats or compliance checks. Python fits when the backend does more than serve pages.',
+    work: [
+      {
+        title: 'AI and data features',
+        description:
+          'Retrieval pipelines that make a model look up real data before it answers. Money Ball checks a live NFL database before it replies to a fan.',
+      },
+      {
+        title: 'Document processing',
+        description:
+          'OCR and handwriting recognition queues that pull fields out of scans. Natif.ai runs incoming files through isolated Django workers.',
+      },
+      {
+        title: 'Background jobs and alerts',
+        description:
+          'Celery workers for scheduled checks, renewals and notifications. Alertia warns security firms before a guard’s license expires.',
+      },
+      {
+        title: 'Compliance and audit trails',
+        description:
+          'Role-based access, masked fields and audit logs for sensitive records. Fisar handles GDPR subject access requests for school data protection officers.',
+      },
+    ],
+    projectsTitle: 'Python and Django projects we have delivered',
+    projectsIntro: 'Products from our portfolio with a Django backend.',
+    projects: [
+      {
+        name: 'Money Ball',
+        summary:
+          'AI chatbot that answers NFL stats questions from a live database instead of guessing.',
+        stack: ['Django', 'Node.js', 'PostgreSQL', 'Redis'],
+        url: 'https://app.moneyball-ai.com',
+      },
+      {
+        name: 'Natif.ai',
+        summary:
+          'Document-processing backend with OCR and handwriting recognition, documented with Swagger.',
+        stack: ['Django', 'Vue.js', 'PostgreSQL', 'AWS'],
+      },
+      {
+        name: 'Alertia',
+        summary:
+          'Shift scheduling and live patrol tracking for security firms, with license-expiry alerts.',
+        stack: ['Django', 'Next.js', 'Celery', 'AWS'],
+      },
+      {
+        name: 'Fisar',
+        summary: 'GDPR subject access request tool for school data protection officers.',
+        stack: ['Django', 'PostgreSQL', 'Redis', 'AWS'],
+      },
+      {
+        name: 'Mi Taller',
+        summary:
+          'Garage management with bookings, parts stock and live repair updates for car owners.',
+        stack: ['Django', 'React', 'Celery', 'PostgreSQL'],
+      },
+      {
+        name: 'SiteRanker',
+        summary: 'Crawler that tracks how websites show up in AI search engines.',
+        stack: ['Django', 'Next.js', 'Elasticsearch', 'Celery'],
+      },
+    ],
+    tech: ['python', 'django', 'celery', 'postgresql', 'redis', 'elasticsearch', 'docker'],
+    faqs: [
+      {
+        id: 'django-or-fastapi',
+        question: 'Django or FastAPI: which do you use?',
+        answer:
+          'Django for most products, because its admin, authentication and ORM save weeks of work. FastAPI suits a small, fast API service on its own. The projects we have delivered so far run on Django.',
+      },
+      {
+        id: 'ai',
+        question: 'Can your Python developers build AI features?',
+        answer:
+          'Yes. Money Ball uses retrieval so the model answers from a live database, and Natif.ai reads scans and handwriting. Both run on Django backends our engineers built.',
+      },
+      {
+        id: 'front-end',
+        question: 'Can they work on the front end too?',
+        answer:
+          'Our Django backends have shipped with React, Next.js and Vue.js front ends, so we can place full-stack engineers or pair a Python developer with a front-end one.',
+      },
+      {
+        id: 'existing-app',
+        question: 'Can you take over an existing Django app?',
+        answer:
+          'Yes. We start by getting it running on a supported Python and Django version, then fix what the error logs and slow queries show.',
+      },
+      {
+        id: 'time-zone',
+        question: 'Do they overlap with US working hours?',
+        answer:
+          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+      },
+    ],
+  },
+  {
+    slug: 'vue-developers',
+    skillId: 'vue',
+    name: 'Vue.js',
+    linkLabel: 'Vue.js developers',
+    iconSlug: 'vuedotjs',
+    meta: {
+      title: 'Hire Vue.js Developers for Web Apps and SaaS',
+      description:
+        'Hire full-time remote Vue.js developers for SaaS products, dashboards and Vue 2 to Vue 3 upgrades, proven on Coach Catalyst, ATC and Klingit. Shortlist in 2 days.',
+      keywords: [
+        'hire vue developers',
+        'hire vue.js developers',
+        'vue js developers for hire',
+        'vue 3 migration',
+      ],
+    },
+    hero: {
+      eyebrow: 'Work With Us · Hire Vue.js Developers',
+      title: 'Hire Vue.js developers',
+      highlight: 'who have shipped Vue 3 in production.',
+      description:
+        'Vue.js engineers who build dashboards, portals and SaaS front ends, and move older Vue 2 apps to Vue 3. Full time on your project, with overlap on US hours.',
+    },
+    workTitle: 'What our Vue.js developers work on',
+    workIntro:
+      'Vue sits on top of Rails, .NET and Django backends across our portfolio, from healthcare portals to coaching platforms.',
+    work: [
+      {
+        title: 'Vue 2 to Vue 3 upgrades',
+        description:
+          'Moving to the Composition API without stopping the product. Coach Catalyst switched while coaches kept using it, and its bundle got smaller.',
+      },
+      {
+        title: 'Dashboards and admin tools',
+        description:
+          'Data-heavy screens with filters, charts and live updates. ATC gives hundreds of employees one live view of HR, billing and messaging.',
+      },
+      {
+        title: 'Real-time features',
+        description:
+          'Chat, notifications and live status over WebSockets. Coach Catalyst’s chat was rewritten from CoffeeScript to Vue to hold up under load.',
+      },
+      {
+        title: 'Client portals',
+        description:
+          'Self-serve views where customers follow their own work. Klingit shows clients the state of every creative project.',
+      },
+    ],
+    projectsTitle: 'Vue.js projects we have delivered',
+    projectsIntro: 'Products from our portfolio with a Vue.js front end.',
+    projects: [
+      {
+        name: 'Coach Catalyst',
+        summary:
+          'Coaching platform with scheduling, messaging and a Stripe Connect marketplace, moved from Vue 2 to Vue 3.',
+        stack: ['Vue 3', 'Ruby on Rails', 'PostgreSQL', 'Stripe'],
+        url: 'https://coachcatalyst.com',
+        caseStudy: '/our-work/case-studies/coach-catalyst',
+      },
+      {
+        name: 'ATC',
+        summary:
+          'Vue.js front end for an internal HR, billing and messaging system that hundreds of employees use daily.',
+        stack: ['Vue.js', 'ASP.NET Core', 'PostgreSQL', 'Redis'],
+        caseStudy: '/our-work/case-studies/atc',
+      },
+      {
+        name: 'Klingit',
+        summary:
+          'DesignOps platform where brands, designers and managers run creative projects together.',
+        stack: ['Vue.js', 'Ruby on Rails', 'PostgreSQL', 'Stripe'],
+        url: 'https://klingit.com',
+        caseStudy: '/our-work/case-studies/klingit',
+      },
+      {
+        name: 'Nuvana',
+        summary:
+          'Vue.js portal where clinic staff track chronic-care patients and their interactions.',
+        stack: ['Vue.js', '.NET', 'PostgreSQL', 'Docker'],
+      },
+      {
+        name: 'Microhealth',
+        summary: 'Healthcare price-transparency app that turns pricing data into clear tables.',
+        stack: ['Vue.js', 'Ruby on Rails', 'MySQL', 'AWS'],
+      },
+    ],
+    tech: ['vuedotjs', 'typescript', 'tailwindcss', 'graphql', 'rubyonrails', 'dotnet', 'django'],
+    faqs: [
+      {
+        id: 'vue-or-react',
+        question: 'Vue or React: which should we use?',
+        answer:
+          'If your app already runs on one, stay with it. For a new product both are sound, and React has the larger hiring pool. We build in both and will recommend one for your team.',
+      },
+      {
+        id: 'vue-3',
+        question: 'Can you move our app from Vue 2 to Vue 3?',
+        answer:
+          'Yes. We did it for Coach Catalyst while the platform stayed live, moving components to the Composition API in stages and reducing the bundle size along the way.',
+      },
+      {
+        id: 'backend',
+        question: 'Which backends do your Vue developers work with?',
+        answer:
+          'Ruby on Rails, ASP.NET Core and Django in the projects we have delivered, over REST or GraphQL APIs.',
+      },
+      {
+        id: 'existing-app',
+        question: 'Can you take over an existing Vue app?',
+        answer:
+          'Yes. We start by getting it building on current packages, then fix what the error reports and slow screens show before adding features.',
+      },
+      {
+        id: 'time-zone',
+        question: 'Do they overlap with US working hours?',
+        answer:
+          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+      },
+    ],
+  },
+  {
+    slug: 'dotnet-developers',
+    skillId: 'dotnet',
+    name: '.NET',
+    linkLabel: '.NET developers',
+    iconSlug: 'dotnet',
+    meta: {
+      title: 'Hire .NET Developers for ASP.NET Core Apps',
+      description:
+        'Hire full-time remote .NET developers for ASP.NET Core systems, real-time features with SignalR and scheduled jobs, proven on ATC and Nuvana. Shortlist in 2 days.',
+      keywords: [
+        'hire .net developers',
+        'hire asp.net core developers',
+        'dotnet developers for hire',
+        'hire c# developers',
+      ],
+    },
+    hero: {
+      eyebrow: 'Work With Us · Hire .NET Developers',
+      title: 'Hire .NET developers',
+      highlight: 'for the systems a business runs on.',
+      description:
+        'C# and ASP.NET Core engineers who build internal systems, healthcare portals and messaging platforms, with real-time updates and scheduled jobs. Full time on your project, with overlap on US hours.',
+    },
+    workTitle: 'What our .NET developers work on',
+    workIntro:
+      'Our .NET work is in systems companies depend on every day: HR and billing, patient care and business texting.',
+    work: [
+      {
+        title: 'Internal business systems',
+        description:
+          'HR, invoicing and messaging in one place. ATC runs on ASP.NET Core with a Vue.js front end and is used by hundreds of employees.',
+      },
+      {
+        title: 'Real-time updates',
+        description:
+          'SignalR for live chat, notifications and dashboards that update without a refresh. ATC and One40Connect both use it.',
+      },
+      {
+        title: 'Scheduled and bulk jobs',
+        description:
+          'Hangfire queues for delayed, recurring and bulk work. One40Connect sends instant, delayed and recurring text campaigns from Azure.',
+      },
+      {
+        title: 'Healthcare and secure data',
+        description:
+          'JWT authentication and encrypted storage for patient records. Nuvana tracks chronic-care patients and generates Medicare billing.',
+      },
+    ],
+    projectsTitle: '.NET projects we have delivered',
+    projectsIntro: 'Products from our portfolio with a .NET backend.',
+    projects: [
+      {
+        name: 'ATC',
+        summary:
+          'ASP.NET Core backend with SignalR live updates for an internal HR, billing and messaging system.',
+        stack: ['ASP.NET Core', 'Vue.js', 'PostgreSQL', 'Redis'],
+        caseStudy: '/our-work/case-studies/atc',
+      },
+      {
+        name: 'Nuvana',
+        summary:
+          '.NET backend that generates Medicare billing from tracked patient care, with JWT authentication and encrypted storage.',
+        stack: ['.NET', 'Vue.js', 'PostgreSQL', 'Docker'],
+      },
+      {
+        name: 'One40Connect',
+        summary:
+          'Business texting platform for scheduled and bulk SMS campaigns, with live conversations over SignalR.',
+        stack: ['.NET Core', 'Angular', 'MySQL', 'Azure'],
+      },
+    ],
+    tech: ['dotnet', 'postgresql', 'redis', 'docker', 'vuedotjs', 'angular'],
+    faqs: [
+      {
+        id: 'framework',
+        question: 'Can you work on older .NET Framework apps?',
+        answer:
+          'Yes. Our recent projects run on ASP.NET Core, and we can maintain an older .NET Framework app or plan its move to current .NET in stages.',
+      },
+      {
+        id: 'front-end',
+        question: 'Which front ends do your .NET developers pair with?',
+        answer: 'Vue.js on ATC and Nuvana, and Angular on One40Connect.',
+      },
+      {
+        id: 'hosting',
+        question: 'Do they deploy to Azure or AWS?',
+        answer: 'Both. One40Connect runs on Azure, while ATC and Nuvana run in Docker on AWS.',
+      },
+      {
+        id: 'testing',
+        question: 'How do you test .NET code?',
+        answer:
+          'With xUnit, run in Docker so tests behave the same on every machine. That is how ATC is covered.',
+      },
+      {
+        id: 'maui',
+        question: 'Can you move our Xamarin app to .NET MAUI?',
+        answer:
+          'Yes. Xamarin support ended on May 1, 2024, and Xamarin apps can no longer ship store updates. A Xamarin.Forms app keeps most of its C# and XAML in .NET MAUI, so we upgrade the projects instead of rebuilding the app. Our own Xamarin.Forms to .NET MAUI migration took under three months.',
+      },
+      {
+        id: 'time-zone',
+        question: 'Do they overlap with US working hours?',
+        answer:
+          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+      },
+    ],
+  },
 ];
 
 export function getHireTechPage(slug: string) {
@@ -888,6 +1269,10 @@ export const LEGACY_HIRE_TALENT_REDIRECTS: Readonly<Record<string, string>> = {
   'flutter-developer': 'flutter-developers',
   'ror-developer': 'ruby-on-rails-developers',
   'angular-developer': 'angular-developers',
+  'django-developer': 'python-developers',
+  'python-developer': 'python-developers',
+  'vue-developer': 'vue-developers',
+  'dotnet-developer': 'dotnet-developers',
 };
 
 /** Hire pages offered from each What We Build page, by the stacks used for that work. */
@@ -897,28 +1282,40 @@ export const HIRE_TECH_FOR_CAPABILITY: Readonly<
   'mobile-apps': ['swift-developers', 'react-native-developers', 'flutter-developers'],
   'web-apps': [
     'react-developers',
+    'vue-developers',
     'angular-developers',
     'nodejs-developers',
     'ruby-on-rails-developers',
   ],
-  saas: ['ruby-on-rails-developers', 'react-developers', 'nodejs-developers'],
+  saas: ['ruby-on-rails-developers', 'react-developers', 'vue-developers', 'python-developers'],
   'custom-software': [
     'ruby-on-rails-developers',
     'react-developers',
+    'vue-developers',
+    'dotnet-developers',
     'nodejs-developers',
-    'angular-developers',
   ],
-  erp: ['ruby-on-rails-developers', 'react-developers', 'angular-developers'],
-  crm: ['ruby-on-rails-developers', 'react-developers', 'nodejs-developers'],
-};
-
-const CAPABILITY_LINK_LABELS: Readonly<Partial<Record<CapabilitySlug, string>>> = {
-  'mobile-apps': 'Mobile app development',
-  'web-apps': 'Web app development',
-  saas: 'SaaS development',
-  'custom-software': 'Custom software development',
-  erp: 'ERP development',
-  crm: 'CRM development',
+  erp: ['ruby-on-rails-developers', 'dotnet-developers', 'react-developers', 'angular-developers'],
+  crm: ['ruby-on-rails-developers', 'vue-developers', 'react-developers', 'nodejs-developers'],
+  'ai-solutions': ['python-developers', 'nodejs-developers', 'react-developers'],
+  automation: ['python-developers', 'nodejs-developers', 'ruby-on-rails-developers'],
+  'legacy-modernization': [
+    'angular-developers',
+    'vue-developers',
+    'dotnet-developers',
+    'ruby-on-rails-developers',
+  ],
+  'software-maintenance': [
+    'ruby-on-rails-developers',
+    'react-developers',
+    'react-native-developers',
+    'nodejs-developers',
+  ],
+  'marketplace-development': [
+    'ruby-on-rails-developers',
+    'react-developers',
+    'react-native-developers',
+  ],
 };
 
 /** What We Build pages that list this hire page, for links back the other way. */
@@ -927,6 +1324,14 @@ export function getRelatedCapabilities(techSlug: string) {
     .filter(([, slugs]) => slugs.includes(techSlug))
     .map(([slug]) => ({
       href: `/what-we-build/${slug}`,
-      label: CAPABILITY_LINK_LABELS[slug] ?? slug,
+      label: CAPABILITY_SERVICE_NAMES[slug],
     }));
 }
+
+/** Ownership answer shown on every hire page, worded the same everywhere. */
+export const HIRE_OWNERSHIP_FAQ: HireTechFaq = {
+  id: 'ownership',
+  question: 'Who owns the code our developer writes?',
+  answer:
+    'You do. Everything our engineers write for you, including the source code and the intellectual property in it, belongs to you.',
+};

@@ -5,14 +5,14 @@ import NoJsSiteNav from '@/components/layout/Navbar/NoJsSiteNav';
 import JsonLd from '@/components/seo/JsonLd';
 import FloatingActions from '@/components/shared/FloatingActions';
 import { seo } from '@/constants/seo';
-import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/json-ld';
+import { founderJsonLd, organizationJsonLd, websiteJsonLd } from '@/lib/seo/json-ld';
 
 export const metadata = seo.pages;
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen bg-neutral-50 selection:bg-primary/20 selection:text-primary">
-      <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+      <JsonLd data={[organizationJsonLd(), websiteJsonLd(), founderJsonLd()]} />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-md focus:top-md focus:z-100 focus:rounded-sm focus:bg-primary focus:px-md focus:py-sm focus:text-sm focus:font-bold focus:text-neutral-50"

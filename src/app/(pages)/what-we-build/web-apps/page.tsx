@@ -7,5 +7,5 @@ const data = getCapabilityPage('web-apps');
 export const metadata = seo.whatWeBuildWebApps;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

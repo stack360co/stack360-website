@@ -3,6 +3,7 @@ import MotionSection from '@/components/shared/motion/MotionSection';
 import { MotionStagger, MotionStaggerItem } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import {
   SMES_CTA,
   SMES_ENGAGEMENT,
@@ -33,7 +34,7 @@ export default function SmesPage() {
             <MotionStaggerItem>
               <p className="mt-sm text-sm leading-relaxed text-neutral-600">
                 Digital transformation, legacy modernization, automation, and custom software —
-                scoped to your team size, budget, and risk tolerance.
+                scoped to your team size, timeline, and risk tolerance.
               </p>
             </MotionStaggerItem>
           </MotionStagger>
@@ -127,6 +128,12 @@ export default function SmesPage() {
           </MotionStagger>
         </div>
       </MotionSection>
+
+      <RelatedServices
+        title="Services SMEs ask us for"
+        intro="Usually it starts with the spreadsheets and manual steps a growing team has outgrown."
+        services={['automation', 'custom-software', 'crm', 'erp', 'digital-marketing']}
+      />
 
       <PageClosingCta {...SMES_CTA} />
     </div>
