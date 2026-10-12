@@ -8,12 +8,15 @@ import {
   scaleIn,
   staggerContainer,
 } from '@/components/shared/motion/variants';
+import { SITE_PROFILES } from '@/constants/site';
 import { useMotionVisible } from '@/hooks/use-motion-visible';
 
 interface TrustBadge {
   src: string;
   label: string;
   alt: string;
+  /** Public profile where the rating can be checked. */
+  href?: string;
 }
 
 const TRUST_BADGES: readonly TrustBadge[] = [
@@ -21,11 +24,13 @@ const TRUST_BADGES: readonly TrustBadge[] = [
     src: '/assets/badges/clutch.webp',
     label: 'Clutch — Top Web Development Company 2024',
     alt: 'Clutch Top Web Development Company 2024 badge',
+    href: SITE_PROFILES.clutch,
   },
   {
     src: '/assets/badges/Goodfirms.webp',
     label: 'GoodFirms — Top Rated Web Development',
     alt: 'GoodFirms Top Rated Web Development Company badge',
+    href: SITE_PROFILES.goodfirms,
   },
   {
     src: '/assets/badges/Upwork.webp',
@@ -36,6 +41,7 @@ const TRUST_BADGES: readonly TrustBadge[] = [
     src: '/assets/badges/Fiverr.webp',
     label: 'Fiverr — Top Rated Seller',
     alt: 'Fiverr Top Rated Seller badge',
+    href: SITE_PROFILES.fiverr,
   },
 ];
 
@@ -83,13 +89,30 @@ export default function TrustBadges() {
 
                 <div className="relative flex w-full flex-1 items-center justify-center">
                   <div className="relative h-28 w-full max-w-55 transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:h-32 md:h-40 lg:h-44 lg:max-w-65">
-                    <Image
-                      src={badge.src}
-                      alt={badge.alt}
-                      fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
-                      className="object-contain"
-                    />
+                    {badge.href ? (
+                      <a
+                        href={badge.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                      >
+                        <Image
+                          src={badge.src}
+                          alt={`${badge.alt}. View Stack360 reviews (opens in a new tab)`}
+                          fill
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
+                          className="object-contain"
+                        />
+                      </a>
+                    ) : (
+                      <Image
+                        src={badge.src}
+                        alt={badge.alt}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
+                        className="object-contain"
+                      />
+                    )}
                   </div>
                 </div>
               </motion.li>

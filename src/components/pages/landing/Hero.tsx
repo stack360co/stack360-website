@@ -177,7 +177,7 @@ export default function Hero() {
                 </span>
               ))}
               <span className="-ml-2 z-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-900 text-[8px] font-bold text-neutral-50">
-                500+
+                200+
               </span>
             </div>
             <div className="flex items-center gap-xs" role="img" aria-label="5.0 out of 5 stars">
@@ -188,7 +188,7 @@ export default function Hero() {
             </div>
             <span className="hidden h-4 w-px bg-neutral-200 sm:block" aria-hidden />
             <span className="font-mono text-[10px] font-bold tracking-widest text-neutral-600 uppercase">
-              Trusted by 500+ companies
+              Trusted by 200+ companies
             </span>
           </motion.div>
 

@@ -65,7 +65,11 @@ function CaseStudyCard({
           className="group/link flex items-center gap-xs text-xs font-bold text-neutral-600 transition-colors hover:text-primary"
         >
           View case
-          <span className="transition-transform duration-200 group-hover/link:translate-x-1">
+          <span className="sr-only">: {study.title}</span>
+          <span
+            aria-hidden
+            className="transition-transform duration-200 group-hover/link:translate-x-1"
+          >
             →
           </span>
         </Link>

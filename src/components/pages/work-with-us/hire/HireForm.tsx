@@ -15,10 +15,20 @@ import { cn } from '@/styles/tailwind.utils';
 
 type Status = 'idle' | 'loading' | 'sent' | 'error';
 
-export default function HireForm() {
+interface HireFormProps {
+  /** Skills ticked when the form first renders, e.g. from a technology page. */
+  defaultSkills?: HireSkillId[];
+  /** Form heading; technology pages pass one that names the stack. */
+  title?: string;
+}
+
+export default function HireForm({
+  defaultSkills = [],
+  title = "Let's Build With AI",
+}: HireFormProps = {}) {
   const formId = useId();
   const [status, setStatus] = useState<Status>('idle');
-  const [skills, setSkills] = useState<HireSkillId[]>([]);
+  const [skills, setSkills] = useState<HireSkillId[]>(defaultSkills);
   const [need, setNeed] = useState<HireNeedId | ''>('');
 
   const [formValues, setFormValues] = useState<Record<string, string>>({
@@ -187,7 +197,7 @@ export default function HireForm() {
       setStatus('sent');
       pushEvent('generate_lead', { form_name: 'hire' });
       setFormValues({ name: '', email: '', company: '', notes: '' });
-      setSkills([]);
+      setSkills(defaultSkills);
       setNeed('');
       setFieldErrors({});
     } catch (error) {
@@ -209,7 +219,7 @@ export default function HireForm() {
     <form onSubmit={onSubmit} noValidate aria-labelledby={`${formId}-title`}>
       <div className="mb-lg space-y-sm">
         <h2 id={`${formId}-title`} className="text-2xl font-bold tracking-tight text-neutral-900">
-          Let's Build With AI
+          {title}
         </h2>
         <p className="max-w-prose text-sm leading-relaxed text-neutral-600">
           Select skills and engagement length. We follow up with a shortlist — not a generic
@@ -488,7 +498,7 @@ export default function HireForm() {
           disabled={isLoading}
           className="min-h-11 shrink-0 rounded-md bg-primary px-xl py-md text-sm font-bold text-neutral-50 shadow-md transition-all hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isLoading ? 'Sending...' : 'Submit'}
+          {isLoading ? 'Sending...' : 'Get my shortlist'}
         </button>
       </div>
     </form>

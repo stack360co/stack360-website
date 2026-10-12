@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getBlogSlugs } from '@/constants/component/blog-posts-data';
+import { getHireTechSlugs } from '@/constants/component/hire-tech-data';
 import { getCaseStudySlugs } from '@/constants/component/our-work-case-studies-data';
 import { SITE_URL } from '@/constants/site';
 
@@ -40,6 +41,7 @@ const ROUTES = [
   '/work-with-us',
   '/work-with-us/software-partner',
   '/work-with-us/hire',
+  ...getHireTechSlugs().map((slug) => `/work-with-us/hire/${slug}`),
   '/work-with-us/careers',
   '/privacy',
   '/terms',

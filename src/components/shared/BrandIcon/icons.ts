@@ -29,8 +29,8 @@ import {
 } from 'lucide-react';
 
 /**
- * Map app slugs → Simple Icons CDN slugs.
- * Broken/missing CDN brands are remapped (e.g. reactnative → react) or listed in
+ * Map app slugs → Simple Icons slugs (files in /public/brand-icons).
+ * Missing brands are remapped (e.g. reactnative → react) or listed in
  * LOCAL_ONLY_SLUGS so we never request a 404 URL.
  */
 export const SLUG_ALIASES: Record<string, string> = {
@@ -85,16 +85,19 @@ export const SLUG_ALIASES: Record<string, string> = {
 };
 
 /**
- * Brands removed from / blocked on cdn.simpleicons.org — Lucide only.
- * Keep in sync with CDN 404s so we never flash a broken glyph.
+ * Brands removed from Simple Icons (no file in /public/brand-icons) — Lucide only.
+ * Keep in sync with the folder so we never flash a broken glyph.
  */
 export const LOCAL_ONLY_SLUGS = new Set([
+  'amazon',
   'amazonaws',
   'amazonwebservices',
   'aws',
   'awslambda',
   'azure',
+  'azuredevops',
   'chatgpt',
+  'css3',
   'grpc',
   'heroku',
   'llamaindex',
@@ -103,6 +106,10 @@ export const LOCAL_ONLY_SLUGS = new Set([
   'anthropic',
   'pinecone',
   'salesforce',
+  'sendgrid',
+  'slack',
+  'twilio',
+  'walmart',
 ]);
 
 /** Category / capability icons — always Lucide, never brand logos. */
@@ -130,6 +137,13 @@ export const FALLBACK_ICONS: Record<string, LucideIcon> = {
   aws: CloudCog,
   awslambda: CloudCog,
   azure: Cloud,
+  azuredevops: CloudCog,
+  amazon: Package,
+  walmart: Package,
+  css3: Palette,
+  slack: Share2,
+  twilio: Share2,
+  sendgrid: Share2,
   microsoftazure: Cloud,
   heroku: Cloud,
   salesforce: ContactRound,

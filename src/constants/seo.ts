@@ -485,7 +485,7 @@ export const seo = {
   workWithUsHire: pageMeta({
     title: 'Hire Talent',
     description:
-      'Hire vetted full-time remote software engineers — React, Angular, Node, Python, .NET, Java, and more. Shortlists in 2 days.',
+      'Hire vetted full-time remote software engineers: React, React Native, Swift, Flutter, Node.js, Ruby on Rails, Angular, Python and .NET. Shortlists in 2 days.',
     path: '/work-with-us/hire',
   }),
 

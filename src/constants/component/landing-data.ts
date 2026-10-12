@@ -18,9 +18,9 @@ export const LANDING_HERO = {
 
 export const LANDING_STATS = [
   { value: '200+', label: 'Projects delivered' },
-  { value: '200+', label: 'Active clients' },
-  { value: '10+', label: 'Years building' },
-  { value: '98%', label: 'Client satisfaction' },
+  { value: '200+', label: 'Clients served' },
+  { value: '2021', label: 'Founded' },
+  { value: '100%', label: 'Success rate' },
 ] as const;
 
 export const LANDING_SERVICES = [

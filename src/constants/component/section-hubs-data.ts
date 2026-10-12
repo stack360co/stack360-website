@@ -126,6 +126,19 @@ export const WHO_WE_ARE_HUB: SectionHubProps = {
   description:
     'A disciplined engineering team centered on technical integrity — history, culture, and how we actually ship.',
   exploreBlurb: 'Learn how Stack360 is built — history, culture, and delivery rituals.',
+  facts: {
+    title: 'Stack360 at a glance',
+    summary:
+      'Stack360 is a software development agency founded in 2021 by Azmat Rana. A team of 10 to 49 people builds web, mobile and AI products, and places full-time engineers with client teams in the US, the UK and beyond.',
+    items: [
+      { label: 'Founded', value: '2021' },
+      { label: 'Founder & CEO', value: 'Azmat Rana' },
+      { label: 'Team size', value: '10–49' },
+      { label: 'Projects delivered', value: '200+' },
+      { label: 'Clients served', value: '200+' },
+      { label: 'Success rate', value: '100%' },
+    ],
+  },
   chapters: [
     {
       title: 'History',

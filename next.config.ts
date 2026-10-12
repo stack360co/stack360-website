@@ -7,20 +7,38 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'flagcdn.com' },
-      { protocol: 'https', hostname: 'cdn.simpleicons.org' },
       { protocol: 'https', hostname: 'randomuser.me' },
     ],
   },
-  async redirects() {
+  async headers() {
     return [
       {
+        // Brand logos rarely change; rename the file if one ever does.
+        source: '/brand-icons/:file*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000' }],
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      // The Netlify default domain serves a duplicate copy of the site; send it to
+      // the real domain. Exact host only, so deploy previews keep working.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'stack360static.netlify.app' }],
+        destination: 'https://stack360.co/:path*',
+        permanent: true,
+      },
+      // Old URLs still collect impressions in Search Console; send each one to the
+      // page that matches its intent rather than the home page.
+      {
         source: '/about-us',
-        destination: '/',
+        destination: '/who-we-are',
         permanent: true,
       },
       {
         source: '/services',
-        destination: '/',
+        destination: '/what-we-build',
         permanent: true,
       },
       {
@@ -91,15 +109,15 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // Hire Talent
+      // Hire Talent: technologies with their own page go there, the rest to the hire page
       {
         source: '/hire-talent/react-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/react-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/angular-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/angular-developers',
         permanent: true,
       },
       {
@@ -109,12 +127,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/next-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/react-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/ror-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/ruby-on-rails-developers',
         permanent: true,
       },
       {
@@ -134,12 +152,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/node-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/nodejs-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/nest-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/nodejs-developers',
         permanent: true,
       },
       {
@@ -149,12 +167,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/react-native-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/react-native-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/flutter-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/flutter-developers',
         permanent: true,
       },
       {
@@ -164,7 +182,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/swift-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/swift-developers',
         permanent: true,
       },
 

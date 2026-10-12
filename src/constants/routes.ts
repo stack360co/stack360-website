@@ -2,6 +2,9 @@ import { envVars } from '@/config/env';
 
 const SUITE360_TENANT_ID = '11111111-1111-1111-1111-111111111111';
 
+/** MATTERMOST_WEBHOOK_ID can hold the hook ID or the full https://team.stack360.co/hooks/<id> link. */
+const MATTERMOST_WEBHOOK = String(envVars.MATTERMOST_WEBHOOK_ID ?? '').trim();
+
 export const routes = Object.freeze({
   root: '/',
   ui: {
@@ -20,6 +23,8 @@ export const routes = Object.freeze({
     },
   },
   webhook: {
-    mattermost: `https://team.stack360.co/hooks/${envVars.MATTERMOST_WEBHOOK_ID}`,
+    mattermost: MATTERMOST_WEBHOOK.startsWith('https://')
+      ? MATTERMOST_WEBHOOK
+      : `https://team.stack360.co/hooks/${MATTERMOST_WEBHOOK}`,
   },
 });

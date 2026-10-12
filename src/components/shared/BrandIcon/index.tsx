@@ -65,9 +65,9 @@ export default function BrandIcon({
   const color = VARIANT_COLOR[variant];
   const isServiceIcon = slug in SERVICE_ICONS;
   const useLocalOnly = LOCAL_ONLY_SLUGS.has(slug) || LOCAL_ONLY_SLUGS.has(resolved);
-  const src = color
-    ? `https://cdn.simpleicons.org/${resolved}/${color}`
-    : `https://cdn.simpleicons.org/${resolved}`;
+  // Simple Icons SVGs (CC0) are self-hosted in /public/brand-icons, named
+  // `<slug>.svg` (brand colour) and `<slug>-<hex>.svg` (tinted).
+  const src = color ? `/brand-icons/${resolved}-${color}.svg` : `/brand-icons/${resolved}.svg`;
 
   // Service icons, known-missing CDN brands, and failed loads → Lucide.
   if (isServiceIcon || useLocalOnly || failed) {
@@ -82,10 +82,10 @@ export default function BrandIcon({
     );
   }
 
-  const alt = src.split('/')[3] || '';
+  const alt = resolved;
 
   return (
-    // biome-ignore lint/performance/noImgElement: external brand SVG with onError fallback
+    // biome-ignore lint/performance/noImgElement: static brand SVG with onError fallback
     <img
       src={src}
       alt={alt}

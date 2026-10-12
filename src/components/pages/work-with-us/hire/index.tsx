@@ -1,5 +1,7 @@
-import { Building2, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowRight, Building2, Mail, MapPin, Phone } from 'lucide-react';
+import Link from 'next/link';
 import HireForm from '@/components/pages/work-with-us/hire/HireForm';
+import BrandIcon from '@/components/shared/BrandIcon';
 import MotionCard from '@/components/shared/motion/MotionCard';
 import MotionSection from '@/components/shared/motion/MotionSection';
 import {
@@ -10,6 +12,7 @@ import {
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
 import { HIRE_CTA, HIRE_HERO, HIRE_PROMISE } from '@/constants/component/hire-talent-data';
+import { HIRE_TECH_PAGES } from '@/constants/component/hire-tech-data';
 import ContactChannel from '../../contact/ContactChannel';
 
 const _CONTACT_ICONS = {
@@ -52,7 +55,7 @@ export default function HireTalentPage() {
               </MotionStaggerItem>
             </MotionStagger>
 
-            <ContactChannel />
+            <ContactChannel testimonialName="Cameron Kashani" />
           </div>
 
           <MotionReveal className="lg:col-span-7">
@@ -63,6 +66,44 @@ export default function HireTalentPage() {
               <HireForm />
             </MotionCard>
           </MotionReveal>
+        </div>
+      </MotionSection>
+
+      <MotionSection className="border-b border-neutral-200 py-2xl">
+        <div className="site-container">
+          <MotionStagger className="mb-xl max-w-3xl">
+            <MotionStaggerItem>
+              <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
+                Hire by technology
+              </h2>
+            </MotionStaggerItem>
+            <MotionStaggerItem>
+              <p className="mt-sm text-sm leading-relaxed text-neutral-600">
+                What our engineers build in each stack, the projects behind it and answers to common
+                questions.
+              </p>
+            </MotionStaggerItem>
+          </MotionStagger>
+          <MotionStagger className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
+            {HIRE_TECH_PAGES.map((page) => (
+              <MotionStaggerItem key={page.slug}>
+                <Link
+                  href={`/work-with-us/hire/${page.slug}`}
+                  className="group flex h-full items-center justify-between gap-md rounded-lg border border-neutral-200 bg-neutral-50 p-lg transition-colors hover:border-primary/30"
+                >
+                  <span className="flex items-center gap-sm text-sm font-bold text-neutral-900 group-hover:text-primary">
+                    <BrandIcon slug={page.iconSlug} size={20} variant="tech" />
+                    {page.linkLabel}
+                  </span>
+                  <ArrowRight
+                    size={16}
+                    aria-hidden
+                    className="shrink-0 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                  />
+                </Link>
+              </MotionStaggerItem>
+            ))}
+          </MotionStagger>
         </div>
       </MotionSection>
 

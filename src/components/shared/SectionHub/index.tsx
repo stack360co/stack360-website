@@ -16,6 +16,12 @@ export interface SectionHubChapter {
   status?: 'live' | 'soon';
 }
 
+export interface SectionHubFacts {
+  title: string;
+  summary: string;
+  items: readonly { label: string; value: string }[];
+}
+
 export interface SectionHubProps {
   crumb: string;
   title: string;
@@ -23,6 +29,8 @@ export interface SectionHubProps {
   description: string;
   exploreBlurb?: string;
   chapters: SectionHubChapter[];
+  /** Defining facts about the company, shown under the hero. */
+  facts?: SectionHubFacts;
   cta: {
     title: string;
     description: string;
@@ -38,6 +46,7 @@ export default function SectionHub({
   description,
   exploreBlurb = 'Pick a lane to go deeper.',
   chapters,
+  facts,
   cta,
 }: SectionHubProps) {
   return (
@@ -64,6 +73,33 @@ export default function SectionHub({
           </MotionReveal>
         </div>
       </section>
+
+      {facts ? (
+        <MotionSection className="border-b border-neutral-200 py-2xl">
+          <div className="site-container grid grid-cols-1 gap-xl lg:grid-cols-12">
+            <MotionReveal className="lg:col-span-5">
+              <h2 className="text-2xl font-black tracking-tight text-neutral-900">{facts.title}</h2>
+              <p className="mt-sm max-w-prose text-pretty text-sm leading-relaxed text-neutral-600">
+                {facts.summary}
+              </p>
+            </MotionReveal>
+            <MotionStagger className="grid grid-cols-2 gap-md sm:grid-cols-3 lg:col-span-7">
+              {facts.items.map((item) => (
+                <MotionStaggerItem key={item.label}>
+                  <div className="h-full rounded-lg border border-neutral-200 bg-neutral-50 p-lg">
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                      {item.label}
+                    </p>
+                    <p className="mt-xs text-lg font-black tracking-tight text-neutral-900">
+                      {item.value}
+                    </p>
+                  </div>
+                </MotionStaggerItem>
+              ))}
+            </MotionStagger>
+          </div>
+        </MotionSection>
+      ) : null}
 
       <MotionSection className="py-2xl">
         <div className="site-container">
