@@ -1,6 +1,5 @@
 import type { HireSkillId } from '@/constants/component/hire-talent-data';
 import type { CapabilitySlug } from '@/constants/component/what-we-build-data';
-import { SITE_PRICING } from '@/constants/site';
 
 /**
  * Technology-specific hire pages under /work-with-us/hire/<slug>.
@@ -938,7 +937,8 @@ export function hireSharedFaqs(name: string): HireTechFaq[] {
     {
       id: 'cost',
       question: `What does a ${name} developer cost?`,
-      answer: `Our rates are ${SITE_PRICING.hourly}, and engagements start at ${SITE_PRICING.minimumProject}.`,
+      answer:
+        'It depends on the engineer’s seniority and how long you need them. Tell us about the role, and we will talk through the options when we send your shortlist.',
     },
     {
       id: 'ownership',

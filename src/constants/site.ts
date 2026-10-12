@@ -43,15 +43,6 @@ export const SITE_PROFILES = {
   fiverr: 'https://www.fiverr.com/agencies/stack360',
 } as const;
 
-/**
- * Published pricing, kept identical to the Clutch profile (confirmed by the team
- * 2026-10-12). Change it here and on Clutch together.
- */
-export const SITE_PRICING = {
-  hourly: '$25–49 an hour',
-  minimumProject: '$5,000',
-} as const;
-
 export const SITE_OFFICES = [
   // {
   //   country: 'Pakistan',

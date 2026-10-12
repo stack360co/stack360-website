@@ -2,7 +2,6 @@
 
 import { PORTFOLIO_PROJECTS_BY_SLUG } from '@/constants/component/our-work-portfolio-data';
 import { CULTURE_FOUNDER } from '@/constants/component/who-we-are-culture-data';
-import { SITE_PRICING } from '@/constants/site';
 
 export type CapabilitySlug =
   | 'erp'
@@ -63,7 +62,8 @@ const FOUNDER_REVIEWER: CapabilityReviewer = {
 const PRICING_FAQ = (subject: string): CapabilityFaq => ({
   id: 'cost',
   question: `How much does ${subject} cost?`,
-  answer: `Our rates are ${SITE_PRICING.hourly}, and projects start at ${SITE_PRICING.minimumProject}. The final cost depends on scope, so you get a timeline and delivery plan after the discovery call, before the build starts.`,
+  answer:
+    'It depends on the scope. After the discovery call you get a timeline and a delivery plan with clear milestones, before any build work starts.',
 });
 
 const OWNERSHIP_FAQ: CapabilityFaq = {
