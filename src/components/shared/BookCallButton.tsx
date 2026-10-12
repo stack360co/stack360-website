@@ -63,12 +63,19 @@ export default function BookCallButton() {
   }
 
   const openBooking = async () => {
-    // UTM tags show up on each booking in Calendly, so the team can see which page it came from.
-    const url = new URL(CALENDLY_URL);
-    url.searchParams.set('utm_source', 'stack360.co');
-    url.searchParams.set('utm_medium', 'website');
-    url.searchParams.set('utm_content', window.location.pathname);
-    const bookingUrl = url.toString();
+    // UTM tags show up on each booking in Calendly. The same link is used in outbound email, so
+    // website bookings say "Website web form" and carry the page they came from.
+    // Built by hand with encodeURIComponent: URLSearchParams turns spaces into "+", which
+    // Calendly's widget re-encodes, so the booking would read "Website+web+form".
+    const tags = {
+      utm_source: 'Website web form',
+      utm_medium: 'stack360.co',
+      utm_content: window.location.pathname,
+    };
+    const query = Object.entries(tags)
+      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+      .join('&');
+    const bookingUrl = `${CALENDLY_URL}${CALENDLY_URL.includes('?') ? '&' : '?'}${query}`;
     pushEvent('book_call_click', { link_url: CALENDLY_URL });
     try {
       await loadWidget();
