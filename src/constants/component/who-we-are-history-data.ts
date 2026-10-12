@@ -44,7 +44,7 @@ export const HISTORY_VISION = {
   title: 'Our vision',
   paragraphs: [
     'We see a future where our team grows beyond 1,000 dedicated professionals, each bringing unique talent to the forefront of technology and innovation.',
-    'This is not just about headcount, it is about enriching collective skills and perspectives to better serve our clients and community.',
+    'Growing the team is how we add the skills and perspectives our clients and community need.',
     'Our journey forward is marked by a commitment to understanding market needs, driving positive change, and redefining excellence through growth, innovation, and a united team.',
   ],
   image: {
