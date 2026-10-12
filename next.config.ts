@@ -123,7 +123,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/vue-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/vue-developers',
         permanent: true,
       },
       {
@@ -138,17 +138,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/python-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/python-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/dotnet-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/dotnet-developers',
         permanent: true,
       },
       {
         source: '/hire-talent/django-developer',
-        destination: '/work-with-us/hire',
+        destination: '/work-with-us/hire/python-developers',
         permanent: true,
       },
       {

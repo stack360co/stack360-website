@@ -41,6 +41,7 @@ export const HIRE_SKILLS = [
   { id: 'swift', label: 'Swift / iOS', iconSlug: 'swift' },
   { id: 'flutter', label: 'Flutter', iconSlug: 'flutter' },
   { id: 'angular', label: 'Angular', iconSlug: 'angular' },
+  { id: 'vue', label: 'Vue.js', iconSlug: 'vuedotjs' },
   { id: 'nodejs', label: 'Node.js', iconSlug: 'nodedotjs' },
   { id: 'ruby-on-rails', label: 'Ruby on Rails', iconSlug: 'rubyonrails' },
   { id: 'dotnet', label: '.NET', iconSlug: 'dotnet' },
