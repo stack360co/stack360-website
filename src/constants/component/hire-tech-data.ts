@@ -285,7 +285,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'slow-app',
         question: 'Our React app is slow. Is React the problem?',
         answer:
-          'Usually not. On Cercle, a React and Next.js store, the slow pages were fixed behind the front end, with better product data handling, image caching and background jobs. Our engineers check the API and database before rewriting components.',
+          'Usually not. On Cercle, a React and Next.js store, most of the speed fixes were behind the front end: better product data handling, image caching and background jobs. Our engineers check the API and database before rewriting components.',
       },
       {
         id: 'time-zone',

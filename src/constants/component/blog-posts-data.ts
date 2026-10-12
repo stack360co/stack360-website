@@ -567,6 +567,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'slow-react-app',
     title: 'Your React App Is Slow. It’s Probably Not React.',
     seoTitle: 'Slow React App? Check the Backend First',
+    author: { name: 'Ali Haider', role: 'Co-Founder & CTO' },
     reviewedBy: 'Azmat Rana',
     excerpt:
       'Why a slow React app is usually slow behind the front end, how we sped up Cercle’s pages without rewriting components, and what to check first.',
@@ -574,11 +575,11 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     category: 'Engineering',
     readTime: '4 min',
     intro:
-      'When a React app is slow, the cause is usually behind it: slow API calls, heavy data, large images or work that should run in the background. Cercle, a UK fashion rental marketplace on React and Next.js, had slow pages that hurt engagement and sales. Every fix we made was behind the front end.',
+      'When a React app is slow, the cause is usually behind it: slow API calls, heavy data, large images or work that should run in the background. Cercle, a UK fashion rental marketplace on React and Next.js, had slow pages that hurt engagement and sales. Most of our fixes were behind the front end, alongside some React changes.',
     sections: [
       {
         heading: 'What we fixed on Cercle',
-        body: 'Cercle lets people rent clothes, shoes and accessories from lenders. Slow loads frustrated users, raised bounce rates and cut engagement and sales.\n\n1. Product data. We optimized how product data was handled, so pages got what they needed faster.\n\n2. Image caching. Photos are the heaviest part of a fashion site, so we improved how they were cached.\n\n3. Background jobs. We moved heavy work to Sidekiq, a background job system for Ruby, so the interface stays responsive while it runs.\n\nFaster pages cut bounce rates and supported higher sales.',
+        body: 'Cercle lets people rent clothes, shoes and accessories from lenders. Slow loads frustrated users, raised bounce rates and cut engagement and sales.\n\n1. Product data. We optimized how product data was handled, so pages got what they needed faster.\n\n2. Image caching. Photos are the heaviest part of a fashion site, so we served them through a CDN that caches them close to each shopper.\n\n3. Background jobs. We moved heavy work to Sidekiq, a background job system for Ruby, so the interface stays responsive while it runs.\n\nFaster pages cut bounce rates and supported higher sales.',
       },
       {
         heading: 'Why rewriting components rarely helps',
@@ -597,7 +598,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       heading: 'Common questions',
       paragraphs: [
         'Is React slow? Not for most apps. A slow React app is usually waiting on data, images or work that should run in the background.',
-        'Should we switch frameworks to make the app faster? Measure first. On Cercle, every fix was behind the front end.',
+        'Should we switch frameworks to make the app faster? Measure first. On Cercle, most of the fixes were behind the front end, and the app stayed on React and Next.js.',
         'Does Next.js make an app faster? It can, through server rendering and caching, but it won’t fix a slow API.',
       ],
     },
