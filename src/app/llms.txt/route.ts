@@ -84,7 +84,7 @@ export function GET() {
     '## Articles',
     '',
     // Reviewed posts written from our own project records.
-    ...BLOG_POSTS.filter((post) => post.reviewedBy).map((post) =>
+    ...BLOG_POSTS.filter((post) => post.reviewedBy || post.author).map((post) =>
       link(post.title, `/blog/${post.slug}`, post.excerpt)
     ),
     '',

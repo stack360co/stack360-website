@@ -278,12 +278,16 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'angular-8-to-13-upgrade',
     title: 'Upgrading a Live Store From Angular 8 to 13 in 20 Days',
     seoTitle: 'Upgrading Angular 8 to 13 in 20 Days',
-    reviewedBy: 'Azmat Rana',
+    author: {
+      name: 'Azmat Rana',
+      role: 'CEO & Founder',
+      url: '/who-we-are/culture#azmat-rana',
+    },
     excerpt:
       'How we moved AutoBuffy, a US auto parts store, from Angular 8 to 13 in 20 days, one version at a time, and added server-side rendering for search.',
     date: '2026-10-12',
     category: 'Engineering',
-    readTime: '3 min',
+    readTime: '4 min',
     intro:
       'We upgraded AutoBuffy’s storefront from Angular 8 to Angular 13 in 20 days, and added server-side rendering on top. AutoBuffy is a US online store for auto parts. Its outdated Angular 8 frontend was holding back its technical SEO. Here is how an upgrade like this runs.',
     sections: [
@@ -301,7 +305,11 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Adding server-side rendering',
-        body: 'Once on 13, the server sends each page as finished HTML, and Angular takes over in the browser. Search engines and link previews see the parts and descriptions straight away.\n\nCode that touches window, document or localStorage has to be guarded, because those don’t exist on the server. That is where most rendering bugs hide.',
+        body: 'Once on 13, the server sends each page as finished HTML, and Angular takes over in the browser. Search engines and link previews see the parts and descriptions straight away.\n\nCode that touches window, document or localStorage has to be guarded, because those don’t exist on the server. That is where most rendering bugs hide.\n\nAfter server-side rendering went live, AutoBuffy’s search visibility and clicks improved.',
+      },
+      {
+        heading: 'What took the most effort',
+        body: '1. Third-party libraries. Some had no release for the newer Angular versions, so they had to be upgraded, replaced or removed.\n\n2. RxJS and TypeScript. Each Angular version needs newer releases of both, and the version bumps broke existing code.\n\n3. Server-side rendering. Browser-only code across the store had to be found and guarded.\n\n4. Keeping the store live. We did the work alongside the live store, then switched over in a short maintenance window.',
       },
       {
         heading: 'What else changed on AutoBuffy',

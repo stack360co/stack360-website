@@ -163,7 +163,12 @@ export function blogPostingJsonLd(post: {
           '@type': 'Person',
           name: post.author.name,
           jobTitle: post.author.role,
-          ...(post.author.url ? { url: post.author.url } : {}),
+          // An on-site profile anchor doubles as the Person @id (e.g. the founder node).
+          ...(post.author.url?.startsWith('/')
+            ? { '@id': `${SITE_URL}${post.author.url}`, url: `${SITE_URL}${post.author.url}` }
+            : post.author.url
+              ? { url: post.author.url }
+              : {}),
           worksFor: { '@id': ORGANIZATION_ID },
         }
       : { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
