@@ -13,6 +13,7 @@ import {
 } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import { getHireTechPage, HIRE_TECH_FOR_CAPABILITY } from '@/constants/component/hire-tech-data';
 import type { CapabilityPageData, CapabilitySlug } from '@/constants/component/what-we-build-data';
 import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
 import { capitalize } from '@/utils/string';
@@ -99,6 +100,9 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
   const iconSlug = SERVICE_ICON[data.slug];
   const [lead, ...rest] = data.capabilities;
   const pagePath = `/what-we-build/${data.slug}`;
+  const hirePages = (HIRE_TECH_FOR_CAPABILITY[data.slug] ?? [])
+    .map((slug) => getHireTechPage(slug))
+    .filter((page) => page !== undefined);
   const capabilityTitle =
     data.hero.eyebrow.split('·').pop()?.trim() ??
     data.slug
@@ -344,6 +348,38 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
       </MotionSection>
 
       {data.showTestimonials ? <TestimonialsSection /> : null}
+
+      {hirePages.length > 0 ? (
+        <MotionSection className="border-b border-neutral-200 py-2xl">
+          <div className="site-container">
+            <MotionStagger className="mb-lg max-w-3xl">
+              <MotionStaggerItem>
+                <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
+                  Prefer to add engineers to your own team?
+                </h2>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <p className="mt-sm text-sm leading-relaxed text-neutral-600">
+                  Hire full-time developers in the stacks we use for this work.
+                </p>
+              </MotionStaggerItem>
+            </MotionStagger>
+            <ul className="flex flex-wrap gap-sm">
+              {hirePages.map((page) => (
+                <li key={page.slug}>
+                  <Link
+                    href={`/work-with-us/hire/${page.slug}`}
+                    className="inline-flex items-center gap-sm rounded-md border border-neutral-200 bg-neutral-50 px-md py-sm text-sm font-semibold text-neutral-800 transition-colors hover:border-primary/30 hover:text-primary"
+                  >
+                    <BrandIcon slug={page.iconSlug} size={16} variant="tech" />
+                    Hire {page.linkLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </MotionSection>
+      ) : null}
 
       <MotionSection className="py-2xl">
         <div className="site-container max-w-3xl">

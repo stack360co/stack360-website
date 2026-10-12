@@ -1,4 +1,5 @@
 import type { HireSkillId } from '@/constants/component/hire-talent-data';
+import type { CapabilitySlug } from '@/constants/component/what-we-build-data';
 
 /**
  * Technology-specific hire pages under /work-with-us/hire/<slug>.
@@ -888,3 +889,44 @@ export const LEGACY_HIRE_TALENT_REDIRECTS: Readonly<Record<string, string>> = {
   'ror-developer': 'ruby-on-rails-developers',
   'angular-developer': 'angular-developers',
 };
+
+/** Hire pages offered from each What We Build page, by the stacks used for that work. */
+export const HIRE_TECH_FOR_CAPABILITY: Readonly<
+  Partial<Record<CapabilitySlug, readonly string[]>>
+> = {
+  'mobile-apps': ['swift-developers', 'react-native-developers', 'flutter-developers'],
+  'web-apps': [
+    'react-developers',
+    'angular-developers',
+    'nodejs-developers',
+    'ruby-on-rails-developers',
+  ],
+  saas: ['ruby-on-rails-developers', 'react-developers', 'nodejs-developers'],
+  'custom-software': [
+    'ruby-on-rails-developers',
+    'react-developers',
+    'nodejs-developers',
+    'angular-developers',
+  ],
+  erp: ['ruby-on-rails-developers', 'react-developers', 'angular-developers'],
+  crm: ['ruby-on-rails-developers', 'react-developers', 'nodejs-developers'],
+};
+
+const CAPABILITY_LINK_LABELS: Readonly<Partial<Record<CapabilitySlug, string>>> = {
+  'mobile-apps': 'Mobile app development',
+  'web-apps': 'Web app development',
+  saas: 'SaaS development',
+  'custom-software': 'Custom software development',
+  erp: 'ERP development',
+  crm: 'CRM development',
+};
+
+/** What We Build pages that list this hire page, for links back the other way. */
+export function getRelatedCapabilities(techSlug: string) {
+  return (Object.entries(HIRE_TECH_FOR_CAPABILITY) as [CapabilitySlug, readonly string[]][])
+    .filter(([, slugs]) => slugs.includes(techSlug))
+    .map(([slug]) => ({
+      href: `/what-we-build/${slug}`,
+      label: CAPABILITY_LINK_LABELS[slug] ?? slug,
+    }));
+}

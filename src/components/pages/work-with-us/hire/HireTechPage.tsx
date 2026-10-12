@@ -14,7 +14,11 @@ import {
 } from '@/components/shared/motion/MotionStagger';
 import PageHero from '@/components/shared/PageHero';
 import { HIRE_NEED_OPTIONS, HIRE_PROMISE } from '@/constants/component/hire-talent-data';
-import { HIRE_TECH_PAGES, type HireTechPage } from '@/constants/component/hire-tech-data';
+import {
+  getRelatedCapabilities,
+  HIRE_TECH_PAGES,
+  type HireTechPage,
+} from '@/constants/component/hire-tech-data';
 import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
 
 const TECH_LABELS: Record<string, string> = {
@@ -73,6 +77,7 @@ function hiringSteps(name: string) {
 export default function HireTechPageView({ page }: { page: HireTechPage }) {
   const pagePath = `/work-with-us/hire/${page.slug}`;
   const others = HIRE_TECH_PAGES.filter((other) => other.slug !== page.slug);
+  const services = getRelatedCapabilities(page.slug);
 
   return (
     <div className="flex w-full flex-col">
@@ -313,6 +318,26 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
 
       <MotionSection className="py-2xl">
         <div className="site-container">
+          {services.length > 0 ? (
+            <div className="mb-xl">
+              <h2 className="text-lg font-bold tracking-tight text-neutral-900">
+                Want us to build the whole product?
+              </h2>
+              <ul className="mt-md flex flex-wrap gap-sm">
+                {services.map((service) => (
+                  <li key={service.href}>
+                    <Link
+                      href={service.href}
+                      className="inline-flex items-center gap-xs rounded-md border border-neutral-200 bg-neutral-50 px-md py-sm text-sm font-semibold text-neutral-800 transition-colors hover:border-primary/30 hover:text-primary"
+                    >
+                      {service.label}
+                      <ArrowRight size={14} aria-hidden />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <h2 className="text-lg font-bold tracking-tight text-neutral-900">
             Other developers we place
           </h2>
