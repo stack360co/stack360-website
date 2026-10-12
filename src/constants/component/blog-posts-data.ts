@@ -389,12 +389,13 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'stop-ai-chatbot-hallucinations',
     title: 'How to Stop an AI Chatbot From Making Things Up',
     seoTitle: 'How to Stop AI Chatbot Hallucinations',
+    author: { name: 'Tayyab Zia', role: 'Head Software Engineer' },
     reviewedBy: 'Azmat Rana',
     excerpt:
       'Why chatbots invent facts, and how retrieval-augmented generation fixed it on Money Ball, our NFL stats chatbot that checks live data before it answers.',
     date: '2026-10-12',
     category: 'AI',
-    readTime: '3 min',
+    readTime: '4 min',
     intro:
       'A chatbot makes things up when it answers from memory. The fix is to make it look the facts up first, then answer only from what it found. This is called retrieval-augmented generation, or RAG. We built Money Ball, an NFL stats chatbot, this way in three months.',
     sections: [
@@ -404,15 +405,19 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'How Money Ball answers a question',
-        body: 'Money Ball lets fans and analysts ask about NFL players and teams in a chat. Before the model writes anything, the system queries a live sports database. The model then turns those results into an answer.\n\nSo the numbers come from the database, not from the model’s memory. The model’s job is to understand the question and explain the result.',
+        body: 'Money Ball lets fans and analysts ask about NFL players and teams in a chat. Before the model writes anything, the system queries a live sports database. The model then turns those results into an answer.\n\nSo the numbers come from the database, not from the model’s memory. The model’s job is to understand the question and explain the result.\n\nWhen the stats don’t cover a question, Money Ball asks a follow-up, such as which season or which player, instead of guessing.',
       },
       {
         heading: 'What it runs on',
-        body: 'Money Ball runs as Docker microservices, so new stats are ingested and analyzed quickly. The backend uses Django and Node.js, with PostgreSQL and Redis. It is live at app.moneyball-ai.com.',
+        body: 'Money Ball uses an open-source language model. It doesn’t need the largest model available, because the facts come from the database. It runs as Docker microservices, so new stats are ingested and analyzed quickly. The backend uses Django and Node.js, with PostgreSQL and Redis. It is live at app.moneyball-ai.com.',
       },
       {
         heading: 'Rules that keep answers honest',
-        body: '1. Retrieve first, every time. If the system skips the lookup, the model falls back on memory.\n\n2. Give the model only what it needs. A short, relevant set of results works better than a long dump of data.\n\n3. Tell the model to say when the data doesn’t cover the question. “I don’t have that” beats a confident guess.\n\n4. Keep the maths out of the model. Totals and averages should come from the database query.\n\n5. Test with real questions, including awkward ones, and check every number against the source.',
+        body: '1. Retrieve first, every time. If the system skips the lookup, the model falls back on memory.\n\n2. Give the model only what it needs. A short, relevant set of results works better than a long dump of data.\n\n3. Decide what happens when the data doesn’t cover the question. A follow-up question or “I don’t have that” beats a confident guess.\n\n4. Keep the math out of the model. Totals and averages should come from the database query.\n\n5. Test with real questions, including awkward ones, and check every number against the source.',
+      },
+      {
+        heading: 'How we tested it',
+        body: 'Before launch, we checked Money Ball three ways. We compared its answers with the stats database, and ran a fixed set of real and awkward questions. The client also tested it and reported anything that came back wrong.',
       },
       {
         heading: 'Where else this works',
@@ -425,7 +430,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
         'What is RAG? Retrieval-augmented generation. The system looks up facts in your own data and gives them to the model, which answers from them.',
         'Does RAG stop every hallucination? No, but it removes the most common cause, which is answering from memory. Clear instructions and testing handle most of the rest.',
         'How long does a chatbot like this take to build? Money Ball took three months.',
-        'Which model does it need? RAG works with most large language models, because the facts come from your data rather than the model.',
+        'Which model does it need? RAG works with most large language models, because the facts come from your data. Money Ball uses an open-source model.',
       ],
     },
     related: [
