@@ -128,7 +128,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'What made the long ones long',
-        body: 'The longest projects were products we kept building, not single builds. AutoBuffy, ATC and Coach Catalyst each had a first version live within three to six months. Everything after that was new work.\n\nAutoBuffy’s 20 months covered an Angular upgrade, Elasticsearch search, a real-time inventory service and buy now, pay later at checkout. BuffyHub’s 19 months included syncing with Amazon, eBay and Walmart.\n\nThe pattern is integrations. Every outside system, from a marketplace to a shipping carrier, brings its own rules, test accounts and failure cases. Compliance adds time in the same way: Fisar, a GDPR compliance tool, took 12 months.',
+        body: 'The longest projects were products we kept building, not single builds. AutoBuffy, ATC and Coach Catalyst each had a first version live within three to six months. So at least 70% of the time on each of them came after launch.\n\nAutoBuffy’s 20 months covered an Angular upgrade, Elasticsearch search, a real-time inventory service and buy now, pay later at checkout. BuffyHub’s 19 months included syncing with Amazon, eBay and Walmart.\n\nThe pattern is integrations. Every outside system, from a marketplace to a shipping carrier, brings its own rules, test accounts and failure cases. Compliance adds time in the same way: Fisar, a GDPR compliance tool, took 12 months.',
       },
       {
         heading: 'Why projects run late',
@@ -141,6 +141,10 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       {
         heading: 'How to plan yours',
         body: '1. Count the systems it connects to, not the screens. Payments, marketplaces, shipping and compliance rules add more time than pages do.\n\n2. Ship the smallest version people will use, then plan the rest as a series of releases. Cinekit’s one-month build shows what a tight first scope looks like.\n\n3. Plan for work after launch. Frameworks, app stores and payment rules keep changing, so live software needs regular attention.\n\n4. Agree who signs off each milestone, and how quickly. Late feedback moves the end date as much as late code.\n\n5. Keep the same team if you can. The engineers who built version one already know where everything is.',
+      },
+      {
+        heading: 'How we measured',
+        body: 'Durations come from our portfolio records of 28 projects delivered since 2019. Each one is how long we worked on the project, including improvements after launch. Team sizes and hours come from our eight published case studies.\n\nThis is our own delivery data, not a survey of the industry. You are welcome to use these numbers with a link to this page as the source.',
       },
     ],
     conclusion: {
