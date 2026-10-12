@@ -36,6 +36,7 @@ const ROUTES = [
   '/our-work/case-studies',
   ...getCaseStudySlugs().map((slug) => `/our-work/case-studies/${slug}`),
   '/our-work/featured-projects',
+  '/our-work/project-timelines',
   '/our-work/client-success-stories',
   '/blog',
   ...getBlogSlugs().map((slug) => `/blog/${slug}`),

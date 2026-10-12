@@ -487,6 +487,13 @@ export const seo = {
     path: '/our-work/featured-projects',
   }),
 
+  ourWorkProjectTimelines: pageMeta({
+    title: 'Software Project Timeline Estimator',
+    description:
+      'See how long software projects like yours took, from 28 projects we delivered since 2019: ranges by project type, the projects behind them and team sizes.',
+    path: '/our-work/project-timelines',
+  }),
+
   ourWorkClientSuccessStories: pageMeta({
     title: 'Client Success Stories and Reviews',
     description:

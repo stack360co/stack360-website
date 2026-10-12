@@ -101,6 +101,11 @@ export function GET() {
     '',
     link('Blog', '/blog'),
     link('Featured projects', '/our-work/featured-projects'),
+    link(
+      'Project timeline estimator',
+      '/our-work/project-timelines',
+      'How long projects like yours took, from 28 projects we delivered'
+    ),
     '',
   ];
 

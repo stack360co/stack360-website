@@ -21,6 +21,13 @@ export const OUR_WORK_CHAPTERS = [
     tone: 'light' as const,
   },
   {
+    title: 'Project Timelines',
+    blurb: 'How long projects like yours took, from 28 of our builds.',
+    href: '/our-work/project-timelines',
+    cta: 'Estimate yours',
+    tone: 'light' as const,
+  },
+  {
     title: 'Client Success',
     blurb: 'Partners describing the outcomes they saw after launch.',
     href: '/our-work/client-success-stories',

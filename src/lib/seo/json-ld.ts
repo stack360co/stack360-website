@@ -200,6 +200,7 @@ const PAGE_LABELS: Readonly<Record<string, string>> = {
   '/our-work': 'Our Work',
   '/our-work/case-studies': 'Case Studies',
   '/our-work/featured-projects': 'Featured Projects',
+  '/our-work/project-timelines': 'Project Timelines',
   '/our-work/client-success-stories': 'Client Success Stories',
   '/our-work/faqs': 'FAQs',
   '/who-we-are': 'Who We Are',

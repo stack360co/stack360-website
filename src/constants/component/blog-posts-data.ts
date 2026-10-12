@@ -115,7 +115,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     category: 'Data',
     readTime: '6 min',
     intro:
-      'Most [custom software](/what-we-build/custom-software) projects we take on need three to six months to build. Simple ones, such as a GoHighLevel sales setup or a Xamarin to .NET MAUI migration, take one to three. We checked that against the 28 projects in our portfolio. The portfolio records how long we worked on each one, including work after launch.',
+      'Most [custom software](/what-we-build/custom-software) projects we take on need three to six months to build. Simple ones, such as a GoHighLevel sales setup or a Xamarin to .NET MAUI migration, take one to three. We checked that against the 28 projects in our portfolio, and you can [estimate yours](/our-work/project-timelines) from the same data. The portfolio records how long we worked on each one, including work after launch.',
     sections: [
       {
         heading: 'The numbers',
