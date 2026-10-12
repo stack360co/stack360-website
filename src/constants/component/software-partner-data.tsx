@@ -5,7 +5,7 @@ export const SOFTWARE_PARTNER_HERO = {
   title: 'Looking for a software partner',
   highlight: 'you can trust under pressure.',
   description:
-    "Poor development leads to missed deadlines and frustration. Stack360's expert team delivers scalable, high-performance solutions — on time, every time.",
+    'A founder and a senior engineer join your discovery call, and you get a plan with milestones within two business days. Then you see working software every week.',
 } as const;
 
 export const SOFTWARE_PARTNER_STATS = [
@@ -16,8 +16,8 @@ export const SOFTWARE_PARTNER_STATS = [
 
 export const SOFTWARE_PARTNER_BENEFITS = [
   {
-    title: '24/7 Support',
-    description: 'Follow-the-sun coverage keeps delivery moving across time zones.',
+    title: '4+ Hours of US Overlap',
+    description: 'Our engineers in Lahore overlap at least 4 hours with a US working day.',
     icon: <Headphones className="h-5 w-5" />,
   },
   {

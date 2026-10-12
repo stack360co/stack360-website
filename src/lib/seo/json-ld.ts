@@ -144,6 +144,7 @@ export function blogPostingJsonLd(post: {
   title: string;
   excerpt: string;
   date: string;
+  updated?: string;
   category: string;
   author?: { name: string; role: string; url?: string };
 }): JsonLd {
@@ -154,6 +155,7 @@ export function blogPostingJsonLd(post: {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    dateModified: post.updated ?? post.date,
     articleSection: post.category,
     url,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
@@ -198,6 +200,7 @@ const PAGE_LABELS: Readonly<Record<string, string>> = {
   '/our-work': 'Our Work',
   '/our-work/case-studies': 'Case Studies',
   '/our-work/featured-projects': 'Featured Projects',
+  '/our-work/project-timelines': 'Project Timelines',
   '/our-work/client-success-stories': 'Client Success Stories',
   '/our-work/faqs': 'FAQs',
   '/who-we-are': 'Who We Are',
@@ -207,6 +210,7 @@ const PAGE_LABELS: Readonly<Record<string, string>> = {
   '/work-with-us': 'Work With Us',
   '/work-with-us/software-partner': 'Software Partner',
   '/work-with-us/hire': 'Hire Talent',
+  '/work-with-us/hire/dedicated-team': 'Dedicated Teams',
   '/work-with-us/careers': 'Careers',
 };
 

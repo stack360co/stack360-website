@@ -19,11 +19,11 @@ export interface FooterOffice {
 
 export const OFFICES: FooterOffice[] = [
   {
-    label: 'USA Office',
+    label: 'US · Stack360 Ai Solutions LLC (registered address)',
     lines: ['12828 Willow Centre Dr, Houston,', 'TX 77066, USA'],
   },
   {
-    label: 'UK Office',
+    label: 'UK mailing address',
     lines: ['58 St. Johns Road, Barking,', 'Essex, IG11 7XL United Kingdom'],
   },
 ];

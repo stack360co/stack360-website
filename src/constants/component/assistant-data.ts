@@ -80,7 +80,7 @@ export const ASSISTANT_CONTACT: AssistantContactField[] = [
   //   copyValue: '82-G, First Floor, DHA Phase 1, Lahore, Punjab, Pakistan',
   // },
   {
-    label: 'United Kingdom · Regional Office',
+    label: 'United Kingdom · Mailing address',
     value: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
     copyValue: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
   },

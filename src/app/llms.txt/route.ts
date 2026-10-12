@@ -71,6 +71,11 @@ export function GET() {
     '## Hire developers',
     '',
     link('Hire developers', '/work-with-us/hire', 'Full-time remote engineers placed in your team'),
+    link(
+      'Hire a dedicated development team',
+      '/work-with-us/hire/dedicated-team',
+      'Single engineers or a managed team with a project manager, QA, UI/UX and DevOps'
+    ),
     ...HIRE_TECH_PAGES.map((page) =>
       link(`Hire ${page.linkLabel}`, `/work-with-us/hire/${page.slug}`, page.meta.description)
     ),
@@ -96,6 +101,11 @@ export function GET() {
     '',
     link('Blog', '/blog'),
     link('Featured projects', '/our-work/featured-projects'),
+    link(
+      'Project timeline estimator',
+      '/our-work/project-timelines',
+      'How long projects like yours took, from 28 projects we delivered'
+    ),
     '',
   ];
 

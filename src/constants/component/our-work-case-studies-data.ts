@@ -26,6 +26,8 @@ export interface CaseStudyDetail {
   slug: string;
   name: string;
   tagline: string;
+  /** Search title, saying what the project was; the H1 stays "{name} Case Study". */
+  seoTitle?: string;
   /** Search snippet, when the tagline runs past the ~160 characters Google shows. */
   metaDescription?: string;
   industry: string;
@@ -56,6 +58,7 @@ export const CASE_STUDIES_DETAILS_HERO = {
 export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   {
     slug: 'autobuffy',
+    seoTitle: 'AutoBuffy: Auto Parts Ecommerce Case Study',
     name: 'AutoBuffy',
     tagline:
       'A user-friendly platform that simplifies finding and purchasing auto parts online, with a diverse selection so customers find exactly what they need.',
@@ -208,6 +211,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: 'coach-catalyst',
+    seoTitle: 'Coach Catalyst: Coaching Platform Case Study',
     name: 'Coach Catalyst',
     tagline:
       'An online platform that streamlines coaching — a centralized hub for scheduling, communication, and progress tracking with a clean, intuitive interface.',
@@ -328,6 +332,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: 'atc',
+    seoTitle: 'ATC: Internal Operations System Case Study',
     name: 'ATC — Air Traffic Controller',
     tagline:
       'An internal management tool for project handling and HR — a centralized hub for invoicing, email, messaging, and real-time updates via SignalR.',
@@ -451,6 +456,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: 'buffyhub',
+    seoTitle: 'BuffyHub: Multi-Channel Ecommerce Case Study',
     name: 'BuffyHub',
     tagline:
       'A unified eCommerce platform that centralizes inventory, orders, brands, and vendors in one place to streamline operations for businesses and consumers.',
@@ -574,6 +580,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: 'cercle',
+    seoTitle: 'Cercle: Fashion Rental Marketplace Case Study',
     name: 'Cercle',
     tagline:
       'A fashion rental platform that lets users rent clothing, shoes, and accessories from lenders — promoting borrow-over-buy sustainability at a fraction of retail cost.',
@@ -706,6 +713,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: 'klingit',
+    seoTitle: 'Klingit: DesignOps Platform Case Study',
     name: 'Klingit',
     tagline:
       'A tech-powered creative services platform that helps brands scale marketing with a global pool of creatives — DesignOps, deliverables, and transparent collaboration in one place.',
@@ -834,6 +842,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: 'nextflag',
+    seoTitle: 'Nextflag: React Native Travel App Case Study',
     name: 'Nextflag',
     tagline:
       'A social mobile app for creating and sharing personalized location flags — discover places, follow people, and plan trips from real recommendations.',
@@ -944,6 +953,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: 'truck-4',
+    seoTitle: 'Truck-4: Fleet Rental Marketplace Case Study',
     name: 'Truck-4',
     tagline:
       'A commercial vehicle rental marketplace — find, lease, or purchase trucks, tractors, and trailers with secure auth, uploads, and microservices scale.',

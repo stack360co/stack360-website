@@ -17,7 +17,9 @@ import { HIRE_NEED_OPTIONS, HIRE_PROMISE } from '@/constants/component/hire-tale
 import {
   getRelatedCapabilities,
   HIRE_OWNERSHIP_FAQ,
+  HIRE_REPLACEMENT_FAQ,
   HIRE_TECH_PAGES,
+  HIRE_VETTING_FAQ,
   type HireTechPage,
 } from '@/constants/component/hire-tech-data';
 import { pageJsonLd, serviceJsonLd } from '@/lib/seo/json-ld';
@@ -65,7 +67,7 @@ function hiringSteps(name: string) {
     },
     {
       title: 'Meet your shortlist',
-      description: `Within 2 days we send profiles of vetted ${name} engineers who fit the brief. You talk to them and choose who joins.`,
+      description: `Within 2 days we send profiles of ${name} engineers who fit the brief and have passed our technical interview, coding test, work review and English check. You talk to them and choose who joins.`,
     },
     {
       title: 'Start working together',
@@ -79,7 +81,7 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
   const pagePath = `/work-with-us/hire/${page.slug}`;
   const others = HIRE_TECH_PAGES.filter((other) => other.slug !== page.slug);
   const services = getRelatedCapabilities(page.slug);
-  const faqs = [...page.faqs, HIRE_OWNERSHIP_FAQ];
+  const faqs = [...page.faqs, HIRE_VETTING_FAQ, HIRE_REPLACEMENT_FAQ, HIRE_OWNERSHIP_FAQ];
   const service = serviceJsonLd({
     path: pagePath,
     name: `Hire ${page.name} developers`,
@@ -292,6 +294,17 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
             </MotionStaggerItem>
           </MotionStagger>
           <FaqAccordion items={faqs} />
+          {page.reading ? (
+            <p className="mt-lg text-sm text-neutral-600">
+              Further reading:{' '}
+              <Link
+                href={page.reading.href}
+                className="font-semibold text-primary transition-colors hover:text-primary-dark"
+              >
+                {page.reading.label}
+              </Link>
+            </p>
+          ) : null}
         </div>
       </MotionSection>
 

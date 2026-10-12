@@ -46,6 +46,8 @@ export interface HireTechPage {
   projects: readonly HireTechProject[];
   tech: readonly string[];
   faqs: readonly HireTechFaq[];
+  /** A blog post that goes deeper on this stack, shown under the FAQs. */
+  reading?: { href: string; label: string };
 }
 
 export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
@@ -125,6 +127,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['swift', 'apple', 'xcode', 'firebase', 'graphql', 'reactnative'],
+    reading: {
+      href: '/blog/react-native-or-flutter',
+      label: 'React Native or Flutter? How we choose for client apps',
+    },
     faqs: [
       {
         id: 'native-or-cross-platform',
@@ -154,7 +160,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -256,6 +262,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       'nodedotjs',
       'vercel',
     ],
+    reading: {
+      href: '/blog/slow-react-app',
+      label: 'Your React app is slow. It’s probably not React.',
+    },
     faqs: [
       {
         id: 'next-or-vite',
@@ -291,7 +301,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -370,6 +380,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['react', 'expo', 'typescript', 'firebase', 'graphql', 'swift', 'kotlin', 'android'],
+    reading: {
+      href: '/blog/react-native-or-flutter',
+      label: 'React Native or Flutter? How we choose for client apps',
+    },
     faqs: [
       {
         id: 'rn-or-flutter',
@@ -405,7 +419,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -506,6 +520,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       'redis',
       'rabbitmq',
     ],
+    reading: {
+      href: '/blog/how-to-vet-remote-developers',
+      label: 'How to vet a remote developer before they join your team',
+    },
     faqs: [
       {
         id: 'nest-or-express',
@@ -535,7 +553,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -605,6 +623,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['flutter', 'dart', 'firebase', 'laravel', 'nodedotjs', 'android', 'apple'],
+    reading: {
+      href: '/blog/react-native-or-flutter',
+      label: 'React Native or Flutter? How we choose for client apps',
+    },
     faqs: [
       {
         id: 'flutter-or-rn',
@@ -640,7 +662,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -752,6 +774,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       'graphql',
       'amazonaws',
     ],
+    reading: {
+      href: '/blog/marketplace-payments-stripe',
+      label: 'Marketplace payments with Stripe: deposits, payouts and refunds',
+    },
     faqs: [
       {
         id: 'still-worth-it',
@@ -781,7 +807,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -863,6 +889,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['angular', 'typescript', 'rubyonrails', 'dotnet', 'postgresql'],
+    reading: {
+      href: '/blog/angular-8-to-13-upgrade',
+      label: 'Upgrading a live store from Angular 8 to 13 in 20 days',
+    },
     faqs: [
       {
         id: 'angularjs',
@@ -891,7 +921,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -984,6 +1014,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['python', 'django', 'celery', 'postgresql', 'redis', 'elasticsearch', 'docker'],
+    reading: {
+      href: '/blog/stop-ai-chatbot-hallucinations',
+      label: 'How to stop an AI chatbot from making things up',
+    },
     faqs: [
       {
         id: 'django-or-fastapi',
@@ -1013,7 +1047,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1026,7 +1060,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     meta: {
       title: 'Hire Vue.js Developers for Web Apps and SaaS',
       description:
-        'Hire full-time remote Vue.js developers for SaaS products, dashboards and Vue 2 to Vue 3 upgrades, proven on Coach Catalyst, ATC and Klingit. Shortlist in 2 days.',
+        'Hire full-time remote Vue.js developers for SaaS products, dashboards and Vue 2 to 3 upgrades, proven on Coach Catalyst, ATC and Klingit. Shortlist in 2 days.',
       keywords: [
         'hire vue developers',
         'hire vue.js developers',
@@ -1105,6 +1139,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['vuedotjs', 'typescript', 'tailwindcss', 'graphql', 'rubyonrails', 'dotnet', 'django'],
+    reading: {
+      href: '/blog/vue-2-to-vue-3-migration',
+      label: 'Moving a live SaaS from Vue 2 to Vue 3',
+    },
     faqs: [
       {
         id: 'vue-or-react',
@@ -1134,7 +1172,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1147,7 +1185,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     meta: {
       title: 'Hire .NET Developers for ASP.NET Core Apps',
       description:
-        'Hire full-time remote .NET developers for ASP.NET Core systems, real-time features with SignalR and scheduled jobs, proven on ATC and Nuvana. Shortlist in 2 days.',
+        'Hire full-time remote .NET developers for ASP.NET Core systems, real-time SignalR features and scheduled jobs, proven on ATC and Nuvana. Shortlist in 2 days.',
       keywords: [
         'hire .net developers',
         'hire asp.net core developers',
@@ -1211,6 +1249,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['dotnet', 'postgresql', 'redis', 'docker', 'vuedotjs', 'angular'],
+    reading: {
+      href: '/blog/xamarin-to-dotnet-maui-migration',
+      label: 'Moving a Xamarin app to .NET MAUI, step by step',
+    },
     faqs: [
       {
         id: 'framework',
@@ -1244,7 +1286,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1327,6 +1369,68 @@ export function getRelatedCapabilities(techSlug: string) {
       label: CAPABILITY_SERVICE_NAMES[slug],
     }));
 }
+
+/** How engineers are vetted, shown on every hire page. */
+export const HIRE_VETTING_FAQ: HireTechFaq = {
+  id: 'vetting',
+  question: 'How do you vet your engineers?',
+  answer:
+    'Every engineer passes four checks before they reach your shortlist. A senior engineer interviews them on their stack, they take a coding test, and we review code and projects they built before. We also check their spoken and written English. Then you interview them yourself.',
+};
+
+/** What happens when a placement doesn't work out, shown on every hire page. */
+export const HIRE_REPLACEMENT_FAQ: HireTechFaq = {
+  id: 'replacement',
+  question: 'What if the engineer isn’t the right fit?',
+  answer: 'We replace them and handle the handover, so the work keeps moving.',
+};
+
+/** Questions on the hire hub. */
+export const HIRE_HUB_FAQS: readonly HireTechFaq[] = [
+  {
+    id: 'speed',
+    question: 'How fast can we hire a developer?',
+    answer: 'We send a shortlist within 2 days, and hiring can take as little as a week.',
+  },
+  {
+    id: 'location',
+    question: 'Where do your engineers work?',
+    answer:
+      'From our team in Lahore, Pakistan, for clients in the US and UK. They overlap at least 4 hours with a US working day.',
+  },
+  {
+    id: 'team',
+    question: 'Can we hire a whole team?',
+    answer:
+      'Yes. A dedicated team can include engineers, a project manager, a QA engineer, a UI/UX designer and a DevOps engineer.',
+  },
+];
+
+/** Questions on the dedicated team page. */
+export const DEDICATED_TEAM_FAQS: readonly HireTechFaq[] = [
+  {
+    id: 'vs-staff-aug',
+    question: 'What is the difference between a dedicated team and staff augmentation?',
+    answer:
+      'With staff augmentation, engineers join your team and you manage them. A managed dedicated team adds a project manager who runs the sprints and reporting, with QA, design and DevOps as needed.',
+  },
+  {
+    id: 'grow',
+    question: 'Can we start with one engineer and grow?',
+    answer: 'Yes. Some clients start with one or two engineers and add roles as the work grows.',
+  },
+  {
+    id: 'location',
+    question: 'Where does the team work?',
+    answer:
+      'From our team in Lahore, Pakistan. The team overlaps at least 4 hours with a US working day.',
+  },
+  {
+    id: 'contract',
+    question: 'Is there a long-term contract?',
+    answer: 'No. Engagements start without one, and the notice period is agreed in each contract.',
+  },
+];
 
 /** Ownership answer shown on every hire page, worded the same everywhere. */
 export const HIRE_OWNERSHIP_FAQ: HireTechFaq = {

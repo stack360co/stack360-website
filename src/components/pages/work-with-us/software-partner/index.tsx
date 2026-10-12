@@ -58,8 +58,9 @@ export default function SoftwarePartnerPage() {
             </MotionStaggerItem>
             <MotionStaggerItem>
               <p className="mt-md max-w-3xl text-sm leading-relaxed text-neutral-600">
-                Stack360 provides world-class software development and staff augmentation. Build
-                faster, scale smarter, and deliver exceptional results with expert tech talent.
+                Stack360 is a software development company with its team in Lahore. We build
+                software and place dedicated developers for companies in the US and UK, and a
+                founder joins every discovery call.
               </p>
             </MotionStaggerItem>
             <MotionStagger className="mt-lg space-y-sm">

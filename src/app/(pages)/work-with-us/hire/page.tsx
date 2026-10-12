@@ -1,5 +1,6 @@
 import HireTalentPage from '@/components/pages/work-with-us/hire';
 import JsonLd from '@/components/seo/JsonLd';
+import { HIRE_HUB_FAQ_LIST } from '@/constants/component/hire-hub-faqs';
 import { seo } from '@/constants/seo';
 import { pageJsonLdFromMeta, serviceJsonLd } from '@/lib/seo/json-ld';
 
@@ -16,7 +17,13 @@ export default function Page() {
   return (
     <>
       <JsonLd
-        data={[...pageJsonLdFromMeta(metadata, { about: String(service['@id']) }), service]}
+        data={[
+          ...pageJsonLdFromMeta(metadata, {
+            about: String(service['@id']),
+            faqs: HIRE_HUB_FAQ_LIST,
+          }),
+          service,
+        ]}
       />
       <HireTalentPage />
     </>
