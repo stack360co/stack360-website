@@ -1,5 +1,6 @@
 import { Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
+import BookCallButton from '@/components/shared/BookCallButton';
 import { MotionCard, MotionStagger, MotionStaggerItem } from '@/components/shared/motion';
 import { CONTACT_CHANNELS, CONTACT_OFFICES } from '@/constants/component/contact-data';
 
@@ -19,6 +20,8 @@ export default function ContactChannel() {
       </MotionStagger>
 
       <MotionStagger className="space-y-md">
+        {/* Renders nothing until NEXT_PUBLIC_CALENDLY_URL is set */}
+        <BookCallButton />
         {CONTACT_CHANNELS.map((channel) => (
           <MotionStaggerItem key={channel.label}>
             <MotionCard className="rounded-lg border border-neutral-200 bg-neutral-50 transition-colors hover:border-primary/30 hover:bg-primary/5">
