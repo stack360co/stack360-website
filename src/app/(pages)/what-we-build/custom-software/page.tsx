@@ -7,5 +7,5 @@ const data = getCapabilityPage('custom-software');
 export const metadata = seo.whatWeBuildCustomSoftware;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

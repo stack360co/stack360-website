@@ -20,7 +20,7 @@ import {
   HIRE_TECH_PAGES,
   type HireTechPage,
 } from '@/constants/component/hire-tech-data';
-import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
+import { pageJsonLd, serviceJsonLd } from '@/lib/seo/json-ld';
 
 const TECH_LABELS: Record<string, string> = {
   amazonaws: 'AWS',
@@ -80,18 +80,26 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
   const others = HIRE_TECH_PAGES.filter((other) => other.slug !== page.slug);
   const services = getRelatedCapabilities(page.slug);
   const faqs = [...page.faqs, HIRE_OWNERSHIP_FAQ];
+  const service = serviceJsonLd({
+    path: pagePath,
+    name: `Hire ${page.name} developers`,
+    serviceType: 'Staff augmentation',
+    description: page.meta.description,
+  });
 
   return (
     <div className="flex w-full flex-col">
       <JsonLd
         data={[
-          faqPageJsonLd(faqs, pagePath),
-          breadcrumbJsonLd([
-            { name: 'Home', path: '/' },
-            { name: 'Work With Us', path: '/work-with-us' },
-            { name: 'Hire Talent', path: '/work-with-us/hire' },
-            { name: page.linkLabel, path: pagePath },
-          ]),
+          ...pageJsonLd({
+            path: pagePath,
+            name: page.meta.title,
+            description: page.meta.description,
+            crumb: page.linkLabel,
+            faqs,
+            about: String(service['@id']),
+          }),
+          service,
         ]}
       />
       <PageHero

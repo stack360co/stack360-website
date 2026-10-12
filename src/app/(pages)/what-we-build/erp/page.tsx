@@ -7,5 +7,5 @@ const data = getCapabilityPage('erp');
 export const metadata = seo.whatWeBuildErp;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

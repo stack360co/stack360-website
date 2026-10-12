@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { CULTURE_FOUNDER } from '@/constants/component/who-we-are-culture-data';
 import {
   SITE_DESCRIPTION,
@@ -14,6 +15,18 @@ type JsonLd = Record<string, unknown>;
 
 /** One stable identifier, so every page's schema points at the same company record. */
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+/** Azmat Rana's one record: the company's founder and the reviewer on the service pages. */
+export const FOUNDER_ID = `${SITE_URL}/who-we-are/culture#azmat-rana`;
+
+const LANGUAGE = 'en-US';
+
+function absoluteUrl(path: string): string {
+  if (path.startsWith('http')) {
+    return path;
+  }
+  return path === '/' ? SITE_URL : `${SITE_URL}${path}`;
+}
 
 export function organizationJsonLd(): JsonLd {
   return {
@@ -27,7 +40,7 @@ export function organizationJsonLd(): JsonLd {
     description: SITE_DESCRIPTION,
     email: SITE_EMAIL,
     telephone: SITE_PHONE_E164,
-    founder: { '@type': 'Person', name: CULTURE_FOUNDER.name, jobTitle: 'CEO' },
+    founder: { '@id': FOUNDER_ID },
     foundingDate: '2021',
     numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 10, maxValue: 49 },
     knowsAbout: [
@@ -43,7 +56,6 @@ export function organizationJsonLd(): JsonLd {
     sameAs: [
       SITE_SOCIAL.linkedin,
       SITE_SOCIAL.github,
-      SITE_SOCIAL.x,
       SITE_SOCIAL.instagram,
       SITE_SOCIAL.facebook,
       ...Object.values(SITE_PROFILES),
@@ -72,10 +84,25 @@ export function websiteJsonLd(): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': WEBSITE_ID,
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
+    inLanguage: LANGUAGE,
     publisher: { '@id': ORGANIZATION_ID },
+  };
+}
+
+export function founderJsonLd(): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': FOUNDER_ID,
+    name: CULTURE_FOUNDER.name,
+    jobTitle: CULTURE_FOUNDER.role,
+    image: absoluteUrl(CULTURE_FOUNDER.image.src),
+    url: absoluteUrl('/who-we-are/culture'),
+    worksFor: { '@id': ORGANIZATION_ID },
   };
 }
 
@@ -136,5 +163,142 @@ export function blogPostingJsonLd(post: {
       url: SITE_URL,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/stack360-icon.png` },
     },
+  };
+}
+
+/** Labels for the section pages that sit between Home and a page in the breadcrumb trail. */
+const SECTION_LABELS: Readonly<Record<string, string>> = {
+  '/what-we-build': 'What We Build',
+  '/who-we-help': 'Who We Help',
+  '/our-work': 'Our Work',
+  '/our-work/case-studies': 'Case Studies',
+  '/who-we-are': 'Who We Are',
+  '/work-with-us': 'Work With Us',
+  '/work-with-us/hire': 'Hire Talent',
+};
+
+function breadcrumbTrail(path: string, label: string) {
+  const parts = path.split('/').filter(Boolean);
+  const trail = [{ name: 'Home', path: '/' }];
+  parts.forEach((_, index) => {
+    const prefix = `/${parts.slice(0, index + 1).join('/')}`;
+    const name = index === parts.length - 1 ? label : SECTION_LABELS[prefix];
+    if (name) {
+      trail.push({ name, path: prefix });
+    }
+  });
+  return trail;
+}
+
+export interface PageSchemaInput {
+  path: string;
+  name: string;
+  description?: string;
+  type?: 'WebPage' | 'AboutPage' | 'CollectionPage' | 'ContactPage';
+  /** This page's label in the breadcrumb trail. Defaults to the section label, then the name. */
+  crumb?: string;
+  /** Questions shown on the page. Their presence makes the page an FAQPage. */
+  faqs?: readonly { question: string; answer: string }[];
+  /** The `@id` of what the page is about: a Service, the Organization. */
+  about?: string;
+  /** True on pages that show the "Reviewed by Azmat Rana" byline. */
+  reviewedByFounder?: boolean;
+}
+
+/**
+ * The page itself and its breadcrumb trail, linked to the site-wide WebSite, Organization
+ * and founder records by `@id`.
+ */
+export function pageJsonLd(input: PageSchemaInput): JsonLd[] {
+  const url = absoluteUrl(input.path);
+  const crumbs =
+    input.path === '/'
+      ? []
+      : breadcrumbTrail(input.path, input.crumb ?? SECTION_LABELS[input.path] ?? input.name);
+
+  const page: JsonLd = {
+    '@context': 'https://schema.org',
+    '@type': input.faqs ? 'FAQPage' : (input.type ?? 'WebPage'),
+    '@id': `${url}#webpage`,
+    url,
+    name: input.name,
+    ...(input.description ? { description: input.description } : {}),
+    inLanguage: LANGUAGE,
+    isPartOf: { '@id': WEBSITE_ID },
+    ...(crumbs.length > 0 ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
+    ...(input.about ? { about: { '@id': input.about } } : {}),
+    ...(input.reviewedByFounder ? { reviewedBy: { '@id': FOUNDER_ID } } : {}),
+    ...(input.faqs
+      ? {
+          mainEntity: input.faqs.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: { '@type': 'Answer', text: item.answer },
+          })),
+        }
+      : {}),
+  };
+
+  if (crumbs.length === 0) {
+    return [page];
+  }
+  return [page, { ...breadcrumbJsonLd(crumbs), '@id': `${url}#breadcrumb` }];
+}
+
+/** `pageJsonLd` for a page whose name, description and path already live in `seo`. */
+export function pageJsonLdFromMeta(
+  meta: Metadata,
+  options: Omit<PageSchemaInput, 'path' | 'name' | 'description'> = {}
+): JsonLd[] {
+  const { title, description, alternates } = meta;
+  const name =
+    typeof title === 'string' ? title : title && 'absolute' in title ? title.absolute : SITE_NAME;
+  const canonical = alternates?.canonical;
+  return pageJsonLd({
+    ...options,
+    path: typeof canonical === 'string' ? canonical : '/',
+    name,
+    ...(description ? { description } : {}),
+  });
+}
+
+export function serviceJsonLd(service: {
+  path: string;
+  name: string;
+  serviceType: string;
+  description: string;
+}): JsonLd {
+  const url = absoluteUrl(service.path);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: service.name,
+    serviceType: service.serviceType,
+    description: service.description,
+    url,
+    provider: { '@id': ORGANIZATION_ID },
+  };
+}
+
+export function caseStudyJsonLd(study: {
+  path: string;
+  headline: string;
+  description: string;
+  image: string;
+}): JsonLd {
+  const url = absoluteUrl(study.path);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: study.headline,
+    description: study.description,
+    image: absoluteUrl(study.image),
+    articleSection: 'Case studies',
+    inLanguage: LANGUAGE,
+    mainEntityOfPage: { '@id': `${url}#webpage` },
+    author: { '@id': ORGANIZATION_ID },
+    publisher: { '@id': ORGANIZATION_ID },
   };
 }

@@ -1,14 +1,17 @@
 import Link from 'next/link';
+import JsonLd from '@/components/seo/JsonLd';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
 import { seo } from '@/constants/seo';
 import { SITE_EMAIL, SITE_EMAIL_HREF } from '@/constants/site';
+import { pageJsonLdFromMeta } from '@/lib/seo/json-ld';
 
 export const metadata = seo.privacy;
 
 export default function PrivacyPage() {
   return (
     <div className="flex w-full flex-col">
+      <JsonLd data={pageJsonLdFromMeta(metadata)} />
       <PageHero
         eyebrow="Legal"
         title="Privacy"

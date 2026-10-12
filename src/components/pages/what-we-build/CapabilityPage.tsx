@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
+import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,8 +17,7 @@ import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
 import { getHireTechPage, HIRE_TECH_FOR_CAPABILITY } from '@/constants/component/hire-tech-data';
 import type { CapabilityPageData, CapabilitySlug } from '@/constants/component/what-we-build-data';
-import { SITE_URL } from '@/constants/site';
-import { breadcrumbJsonLd, faqPageJsonLd, ORGANIZATION_ID } from '@/lib/seo/json-ld';
+import { pageJsonLdFromMeta, serviceJsonLd } from '@/lib/seo/json-ld';
 import { capitalize } from '@/utils/string';
 
 const TestimonialsSection = dynamic(() => import('@/components/pages/landing/TestimonialsSection'));
@@ -94,17 +94,39 @@ function processPhaseLabel(step: { phase?: string }, index: number, total: numbe
   return 'Next';
 }
 
+/** What each page sells, named the way its title names it. */
+const SERVICE_NAME: Record<CapabilitySlug, string> = {
+  erp: 'ERP development',
+  crm: 'CRM development',
+  'ai-solutions': 'AI development',
+  saas: 'SaaS development',
+  'custom-software': 'Custom software development',
+  'mobile-apps': 'Mobile app development',
+  'web-apps': 'Web app development',
+  cloud: 'Cloud migration and cloud services',
+  devops: 'DevOps consulting',
+  automation: 'Business process automation',
+};
+
 interface CapabilityPageProps {
   data: CapabilityPageData;
+  /** The page's `seo` entry, so the schema names the page the way its title does. */
+  meta: Metadata;
 }
 
-export default function CapabilityPage({ data }: CapabilityPageProps) {
+export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
   const iconSlug = SERVICE_ICON[data.slug];
   const [lead, ...rest] = data.capabilities;
   const pagePath = `/what-we-build/${data.slug}`;
   const hirePages = (HIRE_TECH_FOR_CAPABILITY[data.slug] ?? [])
     .map((slug) => getHireTechPage(slug))
     .filter((page) => page !== undefined);
+  const service = serviceJsonLd({
+    path: pagePath,
+    name: SERVICE_NAME[data.slug],
+    serviceType: SERVICE_NAME[data.slug],
+    description: typeof meta.description === 'string' ? meta.description : data.hero.description,
+  });
   const capabilityTitle =
     data.hero.eyebrow.split('·').pop()?.trim() ??
     data.slug
@@ -116,30 +138,13 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
     <div className="flex w-full flex-col">
       <JsonLd
         data={[
-          faqPageJsonLd(data.faqs, pagePath),
-          breadcrumbJsonLd([
-            { name: 'Home', path: '/' },
-            { name: 'What We Build', path: '/what-we-build' },
-            { name: capabilityTitle, path: pagePath },
-          ]),
-          ...(data.reviewer
-            ? [
-                {
-                  '@context': 'https://schema.org',
-                  '@type': 'WebPage',
-                  url: `${SITE_URL}${pagePath}`,
-                  name: capabilityTitle,
-                  publisher: { '@id': ORGANIZATION_ID },
-                  reviewedBy: {
-                    '@type': 'Person',
-                    name: data.reviewer.name,
-                    jobTitle: data.reviewer.role,
-                    url: `${SITE_URL}${data.reviewer.href}`,
-                    worksFor: { '@id': ORGANIZATION_ID },
-                  },
-                },
-              ]
-            : []),
+          ...pageJsonLdFromMeta(meta, {
+            crumb: capabilityTitle,
+            faqs: data.faqs,
+            about: String(service['@id']),
+            reviewedByFounder: Boolean(data.reviewer),
+          }),
+          service,
         ]}
       />
       <PageHero

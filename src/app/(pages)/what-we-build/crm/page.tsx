@@ -7,5 +7,5 @@ const data = getCapabilityPage('crm');
 export const metadata = seo.whatWeBuildCrm;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

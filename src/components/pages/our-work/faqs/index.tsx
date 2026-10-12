@@ -5,21 +5,13 @@ import { MotionStagger, MotionStaggerItem } from '@/components/shared/motion/Mot
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
 import { FAQS, FAQS_CTA, FAQS_HERO } from '@/constants/component/our-work-faqs-data';
-import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
+import { seo } from '@/constants/seo';
+import { pageJsonLdFromMeta } from '@/lib/seo/json-ld';
 
 export default function FaqsPage() {
   return (
     <div className="flex w-full flex-col">
-      <JsonLd
-        data={[
-          faqPageJsonLd(FAQS, '/our-work/faqs'),
-          breadcrumbJsonLd([
-            { name: 'Home', path: '/' },
-            { name: 'Our Work', path: '/our-work' },
-            { name: 'FAQs', path: '/our-work/faqs' },
-          ]),
-        ]}
-      />
+      <JsonLd data={pageJsonLdFromMeta(seo.ourWorkFaqs, { faqs: FAQS })} />
       <PageHero {...FAQS_HERO} />
       <MotionSection className="py-2xl">
         <div className="site-container grid grid-cols-1 gap-2xl lg:grid-cols-12">

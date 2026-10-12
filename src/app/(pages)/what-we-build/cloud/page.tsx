@@ -7,5 +7,5 @@ const data = getCapabilityPage('cloud');
 export const metadata = seo.whatWeBuildCloud;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

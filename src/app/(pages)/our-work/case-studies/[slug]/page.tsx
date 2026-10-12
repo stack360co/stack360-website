@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import CaseStudyDetailView from '@/components/pages/our-work/case-studies/CaseStudyDetail';
+import JsonLd from '@/components/seo/JsonLd';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import { getCaseStudy, getCaseStudySlugs } from '@/constants/component/our-work-case-studies-data';
 import { OUR_WORK_CTA } from '@/constants/component/our-work-data';
 import { pageMeta } from '@/constants/seo';
+import { caseStudyJsonLd, pageJsonLd } from '@/lib/seo/json-ld';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -39,8 +41,17 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const path = `/our-work/case-studies/${study.slug}`;
+  const headline = `${study.name} Case Study`;
+
   return (
     <div className="flex w-full flex-col">
+      <JsonLd
+        data={[
+          ...pageJsonLd({ path, name: headline, description: study.tagline, crumb: study.name }),
+          caseStudyJsonLd({ path, headline, description: study.tagline, image: study.image }),
+        ]}
+      />
       <CaseStudyDetailView study={study} />
       <PageClosingCta {...OUR_WORK_CTA} />
     </div>

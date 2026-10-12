@@ -7,5 +7,5 @@ const data = getCapabilityPage('mobile-apps');
 export const metadata = seo.whatWeBuildMobileApps;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }

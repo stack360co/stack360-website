@@ -7,5 +7,5 @@ const data = getCapabilityPage('devops');
 export const metadata = seo.whatWeBuildDevops;
 
 export default function Page() {
-  return <CapabilityPage data={data} />;
+  return <CapabilityPage data={data} meta={metadata} />;
 }
