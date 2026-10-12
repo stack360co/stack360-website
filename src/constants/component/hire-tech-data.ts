@@ -46,6 +46,8 @@ export interface HireTechPage {
   projects: readonly HireTechProject[];
   tech: readonly string[];
   faqs: readonly HireTechFaq[];
+  /** A blog post that goes deeper on this stack, shown under the FAQs. */
+  reading?: { href: string; label: string };
 }
 
 export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
@@ -125,6 +127,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['swift', 'apple', 'xcode', 'firebase', 'graphql', 'reactnative'],
+    reading: {
+      href: '/blog/react-native-or-flutter',
+      label: 'React Native or Flutter? How we choose for client apps',
+    },
     faqs: [
       {
         id: 'native-or-cross-platform',
@@ -256,6 +262,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       'nodedotjs',
       'vercel',
     ],
+    reading: {
+      href: '/blog/slow-react-app',
+      label: 'Your React app is slow. It’s probably not React.',
+    },
     faqs: [
       {
         id: 'next-or-vite',
@@ -370,6 +380,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['react', 'expo', 'typescript', 'firebase', 'graphql', 'swift', 'kotlin', 'android'],
+    reading: {
+      href: '/blog/react-native-or-flutter',
+      label: 'React Native or Flutter? How we choose for client apps',
+    },
     faqs: [
       {
         id: 'rn-or-flutter',
@@ -506,6 +520,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       'redis',
       'rabbitmq',
     ],
+    reading: {
+      href: '/blog/how-to-vet-remote-developers',
+      label: 'How to vet a remote developer before they join your team',
+    },
     faqs: [
       {
         id: 'nest-or-express',
@@ -605,6 +623,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['flutter', 'dart', 'firebase', 'laravel', 'nodedotjs', 'android', 'apple'],
+    reading: {
+      href: '/blog/react-native-or-flutter',
+      label: 'React Native or Flutter? How we choose for client apps',
+    },
     faqs: [
       {
         id: 'flutter-or-rn',
@@ -752,6 +774,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       'graphql',
       'amazonaws',
     ],
+    reading: {
+      href: '/blog/marketplace-payments-stripe',
+      label: 'Marketplace payments with Stripe: deposits, payouts and refunds',
+    },
     faqs: [
       {
         id: 'still-worth-it',
@@ -863,6 +889,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['angular', 'typescript', 'rubyonrails', 'dotnet', 'postgresql'],
+    reading: {
+      href: '/blog/angular-8-to-13-upgrade',
+      label: 'Upgrading a live store from Angular 8 to 13 in 20 days',
+    },
     faqs: [
       {
         id: 'angularjs',
@@ -984,6 +1014,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['python', 'django', 'celery', 'postgresql', 'redis', 'elasticsearch', 'docker'],
+    reading: {
+      href: '/blog/stop-ai-chatbot-hallucinations',
+      label: 'How to stop an AI chatbot from making things up',
+    },
     faqs: [
       {
         id: 'django-or-fastapi',
@@ -1105,6 +1139,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['vuedotjs', 'typescript', 'tailwindcss', 'graphql', 'rubyonrails', 'dotnet', 'django'],
+    reading: {
+      href: '/blog/vue-2-to-vue-3-migration',
+      label: 'Moving a live SaaS from Vue 2 to Vue 3',
+    },
     faqs: [
       {
         id: 'vue-or-react',
@@ -1211,6 +1249,10 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
     ],
     tech: ['dotnet', 'postgresql', 'redis', 'docker', 'vuedotjs', 'angular'],
+    reading: {
+      href: '/blog/xamarin-to-dotnet-maui-migration',
+      label: 'Moving a Xamarin app to .NET MAUI, step by step',
+    },
     faqs: [
       {
         id: 'framework',
@@ -1327,6 +1369,21 @@ export function getRelatedCapabilities(techSlug: string) {
       label: CAPABILITY_SERVICE_NAMES[slug],
     }));
 }
+
+/** How engineers are vetted, shown on every hire page. */
+export const HIRE_VETTING_FAQ: HireTechFaq = {
+  id: 'vetting',
+  question: 'How do you vet your engineers?',
+  answer:
+    'Every engineer passes four checks before they reach your shortlist. A senior engineer interviews them on their stack, they take a coding test, and we review code and projects they built before. We also check their spoken and written English. Then you interview them yourself.',
+};
+
+/** What happens when a placement doesn't work out, shown on every hire page. */
+export const HIRE_REPLACEMENT_FAQ: HireTechFaq = {
+  id: 'replacement',
+  question: 'What if the engineer isn’t the right fit?',
+  answer: 'We replace them and handle the handover, so the work keeps moving.',
+};
 
 /** Ownership answer shown on every hire page, worded the same everywhere. */
 export const HIRE_OWNERSHIP_FAQ: HireTechFaq = {
