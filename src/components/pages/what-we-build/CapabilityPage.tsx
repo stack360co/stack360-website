@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Link from 'next/link';
 import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
 import JsonLd from '@/components/seo/JsonLd';
@@ -15,7 +16,8 @@ import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
 import { getHireTechPage, HIRE_TECH_FOR_CAPABILITY } from '@/constants/component/hire-tech-data';
 import type { CapabilityPageData, CapabilitySlug } from '@/constants/component/what-we-build-data';
-import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
+import { SITE_URL } from '@/constants/site';
+import { breadcrumbJsonLd, faqPageJsonLd, ORGANIZATION_ID } from '@/lib/seo/json-ld';
 import { capitalize } from '@/utils/string';
 
 const TestimonialsSection = dynamic(() => import('@/components/pages/landing/TestimonialsSection'));
@@ -120,6 +122,24 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
             { name: 'What We Build', path: '/what-we-build' },
             { name: capabilityTitle, path: pagePath },
           ]),
+          ...(data.reviewer
+            ? [
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'WebPage',
+                  url: `${SITE_URL}${pagePath}`,
+                  name: capabilityTitle,
+                  publisher: { '@id': ORGANIZATION_ID },
+                  reviewedBy: {
+                    '@type': 'Person',
+                    name: data.reviewer.name,
+                    jobTitle: data.reviewer.role,
+                    url: `${SITE_URL}${data.reviewer.href}`,
+                    worksFor: { '@id': ORGANIZATION_ID },
+                  },
+                },
+              ]
+            : []),
         ]}
       />
       <PageHero
@@ -129,6 +149,30 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
         description={data.hero.description}
         cta={data.hero.cta}
       />
+
+      {data.reviewer ? (
+        <div className="border-b border-neutral-200 bg-neutral-50">
+          <div className="site-container flex items-center gap-sm py-md">
+            <Image
+              src={data.reviewer.image}
+              alt=""
+              width={32}
+              height={32}
+              className="h-8 w-8 shrink-0 rounded-full border border-neutral-200 object-cover"
+            />
+            <p className="text-xs text-neutral-600">
+              Reviewed by{' '}
+              <Link
+                href={data.reviewer.href}
+                className="font-bold text-neutral-900 transition-colors hover:text-primary"
+              >
+                {data.reviewer.name}
+              </Link>
+              , {data.reviewer.role}
+            </p>
+          </div>
+        </div>
+      ) : null}
 
       {/* Capabilities — asymmetric: sticky intro + lead feature + grid */}
       <MotionSection className="border-b border-neutral-200 py-2xl">

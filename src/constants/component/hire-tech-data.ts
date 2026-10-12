@@ -1,5 +1,6 @@
 import type { HireSkillId } from '@/constants/component/hire-talent-data';
 import type { CapabilitySlug } from '@/constants/component/what-we-build-data';
+import { SITE_PRICING } from '@/constants/site';
 
 /**
  * Technology-specific hire pages under /work-with-us/hire/<slug>.
@@ -929,4 +930,21 @@ export function getRelatedCapabilities(techSlug: string) {
       href: `/what-we-build/${slug}`,
       label: CAPABILITY_LINK_LABELS[slug] ?? slug,
     }));
+}
+
+/** Cost and ownership answers shown on every hire page, worded the same everywhere. */
+export function hireSharedFaqs(name: string): HireTechFaq[] {
+  return [
+    {
+      id: 'cost',
+      question: `What does a ${name} developer cost?`,
+      answer: `Our rates are ${SITE_PRICING.hourly}, and engagements start at ${SITE_PRICING.minimumProject}.`,
+    },
+    {
+      id: 'ownership',
+      question: 'Who owns the code our developer writes?',
+      answer:
+        'You do. Everything our engineers write for you, including the source code and the intellectual property in it, belongs to you.',
+    },
+  ];
 }

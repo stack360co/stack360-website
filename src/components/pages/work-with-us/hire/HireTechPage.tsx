@@ -18,6 +18,7 @@ import {
   getRelatedCapabilities,
   HIRE_TECH_PAGES,
   type HireTechPage,
+  hireSharedFaqs,
 } from '@/constants/component/hire-tech-data';
 import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
 
@@ -78,12 +79,13 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
   const pagePath = `/work-with-us/hire/${page.slug}`;
   const others = HIRE_TECH_PAGES.filter((other) => other.slug !== page.slug);
   const services = getRelatedCapabilities(page.slug);
+  const faqs = [...page.faqs, ...hireSharedFaqs(page.name)];
 
   return (
     <div className="flex w-full flex-col">
       <JsonLd
         data={[
-          faqPageJsonLd(page.faqs, pagePath),
+          faqPageJsonLd(faqs, pagePath),
           breadcrumbJsonLd([
             { name: 'Home', path: '/' },
             { name: 'Work With Us', path: '/work-with-us' },
@@ -281,7 +283,7 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
               </h2>
             </MotionStaggerItem>
           </MotionStagger>
-          <FaqAccordion items={page.faqs} />
+          <FaqAccordion items={faqs} />
         </div>
       </MotionSection>
 

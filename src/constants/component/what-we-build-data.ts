@@ -1,6 +1,8 @@
 /** Capability pages under /what-we-build — sourced from stack360.co/services where available. */
 
 import { PORTFOLIO_PROJECTS_BY_SLUG } from '@/constants/component/our-work-portfolio-data';
+import { CULTURE_FOUNDER } from '@/constants/component/who-we-are-culture-data';
+import { SITE_PRICING } from '@/constants/site';
 
 export type CapabilitySlug =
   | 'erp'
@@ -42,6 +44,35 @@ export interface CapabilityStory {
   linkLabel: string;
 }
 
+export interface CapabilityReviewer {
+  name: string;
+  role: string;
+  image: string;
+  href: string;
+}
+
+/** Azmat Rana reviews these pages (confirmed by the team 2026-10-12). */
+const FOUNDER_REVIEWER: CapabilityReviewer = {
+  name: CULTURE_FOUNDER.name,
+  role: CULTURE_FOUNDER.role,
+  image: CULTURE_FOUNDER.image.src,
+  href: '/who-we-are/culture',
+};
+
+/** Cost and ownership answers shared by every reviewed capability page. */
+const PRICING_FAQ = (subject: string): CapabilityFaq => ({
+  id: 'cost',
+  question: `How much does ${subject} cost?`,
+  answer: `Our rates are ${SITE_PRICING.hourly}, and projects start at ${SITE_PRICING.minimumProject}. The final cost depends on scope, so you get a timeline and delivery plan after the discovery call, before the build starts.`,
+});
+
+const OWNERSHIP_FAQ: CapabilityFaq = {
+  id: 'ownership',
+  question: 'Who owns the code and intellectual property?',
+  answer:
+    'You do. Everything we build for you, including the source code and the intellectual property in it, belongs to you.',
+};
+
 export interface CapabilityPageData {
   slug: CapabilitySlug;
   hero: {
@@ -56,6 +87,8 @@ export interface CapabilityPageData {
   capabilities: { title: string; description: string }[];
   /** Optional project story rendered after the capabilities section. */
   story?: CapabilityStory;
+  /** Who reviewed the page; shown under the hero and in the page schema. */
+  reviewer?: CapabilityReviewer;
   processTitle: string;
   processIntro: string;
   process: { title: string; description: string; phase?: string }[];
@@ -275,6 +308,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   'mobile-apps': {
     slug: 'mobile-apps',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · Mobile Apps',
       title: 'Build Custom Mobile Apps That',
@@ -313,6 +347,32 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'We design flexible architectures that support growing users, transactions, features, integrations, and evolving product requirements.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Nextflag',
+      title: 'Making a social travel app dependable again',
+      intro:
+        'Nextflag lets people drop flags on places they love, follow friends and plan trips from real recommendations. It is a React Native app on iOS and Android with a Rails GraphQL backend. When it reached us, it was slow, crashed during uploads and lost new users halfway through sign-up.',
+      problem:
+        'React Native and its native packages had fallen behind, so the app lagged. The post-upload screen crashed often. People could not reliably find flagged places, which is the whole point of the app, and searching a region was weak. Onboarding bugs dropped sessions and lost progress mid-flow.',
+      changes: [
+        'Upgraded React Native, its packages and the iOS pods, then tuned the app for smoother performance.',
+        'Rewrote the post-upload flow and removed the code that made it crash.',
+        'Added a map screen with geolocated markers and filters by flag type, so flagged places are easy to find again.',
+        'Built a search screen that uses location data to surface flags and wishlist items by city.',
+        'Saved onboarding progress at every step and added session resume, so new users no longer lose their place.',
+        'Swapped the static splash screen for an animated one that loads faster and takes up less storage.',
+      ],
+      outcome:
+        'The app is stable on both platforms, flagged places are easy to find again and more new users finish onboarding. It is a common pattern in mobile work: the biggest gains came from fixing an app people already used, before adding anything new.',
+      facts: [
+        { label: 'Team', value: '2 engineers' },
+        { label: 'Effort', value: '1,602 hours' },
+        { label: 'Platforms', value: 'iOS and Android' },
+        { label: 'Stack', value: 'React Native, Redux, Rails GraphQL, PostgreSQL' },
+      ],
+      href: '/our-work/case-studies/nextflag',
+      linkLabel: 'Read the full Nextflag case study',
+    },
     processTitle: 'From Concept To Scale',
     processIntro:
       'Our mobile app development process combines product strategy, user experience, engineering, testing, and deployment to create reliable applications.',
@@ -353,39 +413,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'microsoftazure',
       'graphql',
     ],
-    benefitsTitle: 'Mobile Apps Built For Growth',
+    benefitsTitle: 'Native, Cross-Platform Or A Web App?',
     benefitsIntro:
-      'Custom mobile applications give businesses greater control over user experiences, functionality, integrations, performance, and long-term product growth.',
+      'The right build depends on what the app has to do and who will maintain it. This is how we usually decide.',
     benefits: [
       {
-        title: 'Better User Experiences',
+        title: 'Native Swift or Kotlin',
         description:
-          'Create intuitive mobile experiences tailored to your audience, business model, workflows, and customer expectations.',
+          'When the app leans on the device, such as health data, background location, widgets or heavy animation, or when you only need one platform.',
       },
       {
-        title: 'Higher Engagement',
+        title: 'React Native',
         description:
-          'Deliver convenient mobile interactions that help customers access products, services, content, and support wherever they are.',
+          'When a React web team will share knowledge and some code, and the app is mostly screens, feeds, forms and API calls. Nextflag is built this way.',
       },
       {
-        title: 'Seamless Integrations',
+        title: 'Flutter',
         description:
-          'Connect mobile apps with APIs, payment systems, CRMs, ERPs, databases, and cloud platforms for connected experiences.',
+          'When a custom design has to look identical on every phone. Houzi’s real estate app, with 360° property views, is built in Flutter.',
       },
       {
-        title: 'Scalable Performance',
+        title: 'A fast web app instead',
         description:
-          'Build mobile applications that support increasing users, transactions, features, and business requirements without compromising performance.',
+          'When people visit occasionally and need neither offline use nor push notifications, a mobile-friendly web app can do the job without store reviews.',
       },
       {
-        title: 'Platform Flexibility',
+        title: 'Plan the store releases',
         description:
-          'Choose native or cross-platform development based on your product requirements, budget, performance needs, and long-term roadmap.',
+          'App Store and Google Play review, signing and staged rollouts take real time, so they belong in the delivery plan from day one.',
       },
       {
-        title: 'Faster Innovation',
+        title: 'Budget for after launch',
         description:
-          'Launch new features and capabilities faster with a flexible application architecture designed around your evolving product strategy.',
+          'Operating-system updates and package upgrades keep coming. Nextflag’s slowdown came from falling behind on them, so keep time for upkeep every year.',
       },
     ],
     projectsTitle: 'Mobile Apps In Action',
@@ -401,31 +461,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'mobile-native-vs-cross',
         question: 'Should I choose native or cross-platform mobile app development?',
         answer:
-          'The right approach depends on performance requirements, target platforms, features, budget, and long-term product plans. We recommend the approach that best fits your goals.',
-      },
-      {
-        id: 'mobile-android-ios',
-        question: 'Can you develop both Android and iOS applications?',
-        answer:
-          'Yes. We develop Android and iOS applications using native technologies such as Kotlin and Swift, as well as cross-platform frameworks when appropriate.',
+          'Go native when the app depends on device features such as health data, background location or widgets, or when you only need one platform. Choose cross-platform when you need iOS and Android from one team and the app is mostly screens, feeds and API calls, which describes most business apps.',
       },
       {
         id: 'mobile-flutter-rn',
         question: 'What is the difference between Flutter and React Native?',
         answer:
-          "Both support cross-platform development, but they use different technologies and approaches. We select the framework based on your application's requirements, integrations, performance, and development roadmap.",
+          'React Native uses native components and suits teams that already write React. Flutter draws every pixel itself, which keeps a custom design identical across devices. Both ship to iOS and Android from one codebase, and we build in both.',
       },
+      {
+        id: 'mobile-android-ios',
+        question: 'Can you develop both Android and iOS applications?',
+        answer:
+          'Yes, natively in Swift and Kotlin or with React Native and Flutter. Nextflag, Orchyd and Trusted Tastes are mobile apps we have built.',
+      },
+      {
+        id: 'mobile-takeover',
+        question: 'Can you take over an app another team built?',
+        answer:
+          'Yes. Most of our Nextflag work was exactly that: upgrading an outdated React Native setup, fixing the crashes users hit and rescuing a broken onboarding flow before adding features.',
+      },
+      {
+        id: 'mobile-stores',
+        question: 'Will you publish the app to the App Store and Google Play?',
+        answer:
+          'Yes. We handle signing, test builds, store listings and replies to review feedback, or work inside the release process you already have.',
+      },
+      PRICING_FAQ('mobile app development'),
+      OWNERSHIP_FAQ,
       {
         id: 'mobile-integrate',
         question: 'Can you integrate mobile apps with existing business systems?',
         answer:
-          'Yes. We integrate mobile applications with APIs, CRMs, ERPs, payment gateways, databases, cloud services, and other business platforms.',
-      },
-      {
-        id: 'mobile-scale-secure',
-        question: 'How do you make mobile applications scalable and secure?',
-        answer:
-          'We use scalable architecture, secure APIs, authentication, encryption, testing, monitoring, performance optimisation, and appropriate cloud infrastructure.',
+          'Yes. Apps usually talk to your backend through an API, as Nextflag does with its Rails GraphQL server, and from there to CRMs, payment providers and other business systems.',
       },
     ],
     cta: {
@@ -603,6 +671,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   'ai-solutions': {
     slug: 'ai-solutions',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · AI Solutions',
       title: 'Build Intelligent AI Solutions',
@@ -641,6 +710,30 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Our AI application development services integrate intelligent capabilities into scalable software, workflows, platforms, and existing business systems.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Money Ball',
+      title: 'Stopping an AI chatbot from making up sports stats',
+      intro:
+        'Money Ball lets NFL fans and analysts ask for player and team numbers in plain English. The hard part of a product like this is trust: the answer has to be right, and football stats change every week.',
+      problem:
+        'General language models answer confidently even when they are wrong. They are wrong most often on specialised figures that change quickly, such as this season’s player and team stats. A chatbot that invents numbers is worse than no chatbot at all.',
+      changes: [
+        'Built a retrieval-augmented generation (RAG) setup that makes the model query the live sports database before it answers, so replies rest on current figures.',
+        'Added a real-time team performance engine that keeps the underlying numbers up to date.',
+        'Split data ingestion into Dockerized microservices so new stats are taken in quickly.',
+        'Wrapped it in a chat interface where fans ask questions the way they would ask a friend.',
+      ],
+      outcome:
+        'Fans and analysts get football figures pulled from live data, in a chat. The same approach carries over to most business AI work: connect the model to your own data and make it look things up instead of guessing.',
+      facts: [
+        { label: 'Build time', value: '3 months' },
+        { label: 'Approach', value: 'RAG over live stats' },
+        { label: 'Stack', value: 'Node.js, Django, PostgreSQL, Redis, Docker' },
+        { label: 'Live at', value: 'app.moneyball-ai.com' },
+      ],
+      href: '/our-work/featured-projects#moneyball',
+      linkLabel: 'See Money Ball in our portfolio',
+    },
     processTitle: 'From Strategy To Scale',
     processIntro:
       'Our AI consulting and development process connects business objectives, data, technology, models, and deployment to create practical AI solutions.',
@@ -684,39 +777,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'google',
       'graphql',
     ],
-    benefitsTitle: 'AI Built For Business Impact',
+    benefitsTitle: 'Where AI Earns Its Place',
     benefitsIntro:
-      'Custom AI solutions help businesses automate work, improve decisions, strengthen customer experiences, and create scalable competitive advantages.',
+      'AI is worth building when it saves real time on work you already do and its output can be checked. These are the places we see it pay off, and two where it does not.',
     benefits: [
       {
-        title: 'Faster Operations',
+        title: 'Reading documents at volume',
         description:
-          'AI automation reduces repetitive work and helps teams complete complex tasks faster with intelligent systems working alongside employees.',
+          'Invoices, forms, handwritten notes and contracts. Natif extracts fields from low-quality scans and handwriting so staff stop keying them in.',
       },
       {
-        title: 'Smarter Decisions',
+        title: 'Answering from your own data',
         description:
-          'AI-powered analysis transforms business data into actionable insights, recommendations, forecasts, and intelligent reporting for better decisions.',
+          'Chat and search over your products, policies or records, grounded with retrieval so answers come from your sources. Money Ball works this way.',
       },
       {
-        title: 'Better Experiences',
+        title: 'Drafting work people already do',
         description:
-          'AI applications, chatbots, and personalised systems help businesses deliver faster, more relevant customer and employee experiences.',
+          'Email replies, meeting notes and first drafts that a person approves before they go out. Fyxer drafts replies in the user’s own tone.',
       },
       {
-        title: 'Scalable Intelligence',
+        title: 'Scoring against clear criteria',
         description:
-          'Build AI capabilities that integrate with existing technology and expand alongside your data, users, workflows, and business requirements.',
+          'Assessing candidates, leads or content against agreed rules, with a person making the final call. Evalufy uses AI to assess video interview answers.',
       },
       {
-        title: 'Secure AI Adoption',
+        title: 'Not where mistakes go unchecked',
         description:
-          'Our AI security solutions protect applications, models, data, integrations, and access through security-focused architecture and development practices.',
+          'If a wrong answer can cost money or harm someone and nobody reviews it, keep a person in the loop or wait before automating it.',
       },
       {
-        title: 'Responsible Implementation',
+        title: 'Not before the data exists',
         description:
-          'AI compliance solutions help businesses establish appropriate controls, governance, monitoring, and safeguards around AI systems and sensitive data.',
+          'AI needs records, documents or history to work from. If they are scattered or missing, organising them is the first project.',
       },
     ],
     projectsTitle: 'AI Solutions In Action',
@@ -732,32 +825,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'ai-types',
         question: 'What types of custom AI solutions can Stack360 develop?',
         answer:
-          'We develop AI applications, generative AI systems, AI agents, chatbots, automation platforms, recommendation engines, and machine learning solutions.',
+          'Document processing (Natif), chat over live data (Money Ball), email and meeting assistants (Fyxer), assessment tools (Evalufy), plus AI agents and recommendation features inside existing products.',
+      },
+      {
+        id: 'ai-accuracy',
+        question: 'How do you stop AI from making things up?',
+        answer:
+          'By grounding it in your data. We use retrieval so the model looks answers up in your databases or documents before replying, as in Money Ball. Where a mistake would be costly, we add checks and human review.',
+      },
+      {
+        id: 'ai-models',
+        question: 'Which AI models do you use?',
+        answer:
+          'OpenAI and Anthropic models, open models from Hugging Face, and custom models in PyTorch or TensorFlow. We choose per task, weighing accuracy, cost and where your data is allowed to go.',
+      },
+      {
+        id: 'ai-data',
+        question: 'How do you handle our business data?',
+        answer:
+          'We agree up front where your data may go, then design around it. That covers which model providers can see it, whether it stays in your own cloud account, and which parts of the system can access what.',
       },
       {
         id: 'ai-integrate',
         question: 'Can you integrate AI into existing software?',
         answer:
-          'Yes. Our AI development services integrate intelligent capabilities into SaaS platforms, CRMs, enterprise software, APIs, workflows, and existing applications.',
-      },
-      {
-        id: 'ai-generative',
-        question: 'What does generative AI development involve?',
-        answer:
-          'Generative AI development involves building applications that use language, vision, or multimodal models to generate content, retrieve knowledge, automate tasks, and support users.',
-      },
-      {
-        id: 'ai-security',
-        question: 'How do you secure AI applications and business data?',
-        answer:
-          'We apply secure architecture, access controls, data protection, API security, monitoring, and appropriate safeguards throughout AI software development.',
+          'Yes. Most of our AI work adds a capability to a product that already exists, such as document extraction, search or drafting, connected through your current APIs and databases.',
       },
       {
         id: 'ai-agents',
         question: 'Can you develop AI agents for business automation?',
         answer:
-          'Yes. Our AI agent development services create systems that understand context, access information, use tools, interact with APIs, and execute defined workflows.',
+          'Yes. We build agents that read context, call your tools and APIs and carry out defined workflows. Each one has limits on what it can change, and a person approves the steps that matter.',
       },
+      PRICING_FAQ('AI development'),
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Put AI To Work?',
@@ -1259,6 +1360,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   'custom-software': {
     slug: 'custom-software',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · Custom Software',
       title: 'Build Custom Software',
@@ -1419,12 +1521,14 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         answer:
           'With a discovery call to map your goals, constraints and the systems involved. You then get a team recommendation, a timeline and a delivery plan with milestones before the build begins.',
       },
+      PRICING_FAQ('custom software'),
       {
         id: 'custom-contract',
         question: 'Do we need to sign a long-term contract?',
         answer:
           'No. Work starts with a defined scope, and you add more only once the fit is proven.',
       },
+      OWNERSHIP_FAQ,
       {
         id: 'custom-progress',
         question: 'How will we see progress?',
