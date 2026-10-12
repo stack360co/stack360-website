@@ -184,6 +184,90 @@ export default function CapabilityPage({ data }: CapabilityPageProps) {
         </div>
       </MotionSection>
 
+      {/* Project story — one real job told end to end: problem, changes, outcome */}
+      {data.story ? (
+        <MotionSection className="border-b border-neutral-200 py-2xl">
+          <div className="site-container grid grid-cols-1 gap-2xl lg:grid-cols-12">
+            <MotionStagger className="lg:col-span-5 lg:sticky lg:top-24 lg:self-start">
+              <MotionStaggerItem>
+                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary">
+                  {data.story.eyebrow}
+                </p>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <h2 className="mt-sm text-balance text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
+                  {data.story.title}
+                </h2>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <p className="mt-md max-w-prose text-pretty text-sm leading-relaxed text-neutral-600">
+                  {data.story.intro}
+                </p>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <dl className="mt-lg grid grid-cols-2 gap-md">
+                  {data.story.facts.map((fact) => (
+                    <div
+                      key={fact.label}
+                      className="rounded-lg border border-neutral-200 bg-neutral-50 p-md"
+                    >
+                      <dt className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                        {fact.label}
+                      </dt>
+                      <dd className="mt-xs text-sm font-bold text-neutral-900">{fact.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </MotionStaggerItem>
+            </MotionStagger>
+
+            <div className="space-y-lg lg:col-span-7">
+              <MotionReveal>
+                <MotionCard className="rounded-xl border border-neutral-200 bg-neutral-100 p-xl">
+                  <h3 className="text-base font-bold text-neutral-900">The problem</h3>
+                  <p className="mt-sm text-pretty text-sm leading-relaxed text-neutral-600">
+                    {data.story.problem}
+                  </p>
+                </MotionCard>
+              </MotionReveal>
+              <MotionReveal>
+                <MotionCard className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl">
+                  <h3 className="text-base font-bold text-neutral-900">What we changed</h3>
+                  <ol className="mt-md space-y-md">
+                    {data.story.changes.map((change, index) => (
+                      <li
+                        key={change}
+                        className="flex gap-md text-sm leading-relaxed text-neutral-600"
+                      >
+                        <span className="font-mono text-xs font-black text-primary">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span>{change}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </MotionCard>
+              </MotionReveal>
+              <MotionReveal>
+                <MotionCard className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl">
+                  <h3 className="text-base font-bold text-neutral-900">Where it stands</h3>
+                  <p className="mt-sm text-pretty text-sm leading-relaxed text-neutral-600">
+                    {data.story.outcome}
+                  </p>
+                  <Link
+                    href={data.story.href}
+                    className="mt-md inline-flex items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
+                  >
+                    {data.story.linkLabel}
+                    <ArrowUpRight size={14} aria-hidden />
+                  </Link>
+                </MotionCard>
+              </MotionReveal>
+            </div>
+          </div>
+        </MotionSection>
+      ) : null}
+
       {/* Process — numbered sequence (order carries meaning) */}
       <MotionSection className="border-b border-neutral-200 bg-neutral-100 py-2xl">
         <div className="site-container">

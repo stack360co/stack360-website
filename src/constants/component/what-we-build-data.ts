@@ -29,6 +29,19 @@ export interface CapabilityProjectRef {
   href: string;
 }
 
+/** A real project told as a short story: the problem, what we changed, what it took. */
+export interface CapabilityStory {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  problem: string;
+  changes: readonly string[];
+  outcome: string;
+  facts: readonly { label: string; value: string }[];
+  href: string;
+  linkLabel: string;
+}
+
 export interface CapabilityPageData {
   slug: CapabilitySlug;
   hero: {
@@ -41,6 +54,8 @@ export interface CapabilityPageData {
   capabilitiesTitle: string;
   capabilitiesIntro: string;
   capabilities: { title: string; description: string }[];
+  /** Optional project story rendered after the capabilities section. */
+  story?: CapabilityStory;
   processTitle: string;
   processIntro: string;
   process: { title: string; description: string; phase?: string }[];
@@ -1282,6 +1297,31 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Create software tailored to your business without depending on rigid features, unnecessary subscriptions, or limitations from generic platforms.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · ATC',
+      title: 'Rebuilding the system a services firm runs on',
+      intro:
+        'ATC is the internal tool one of our clients runs its projects, staff hours, leave, invoicing and client email on. Hundreds of employees work in it, with updates synced live. When it came to us, it had outgrown the way it was first built.',
+      problem:
+        'Client modules were set up in a way that was hard to manage, and the database held the same information in several places. Analytics queries joined many tables, so dashboards loaded slowly. Keeping each person’s billing-rate history accurate for invoicing was a constant chore.',
+      changes: [
+        'Rebuilt the client modules as a simpler V2 structure and removed the duplicated tables underneath it.',
+        'Moved rate changes into scheduled Hangfire jobs that update each person’s rate and log every change, so admins can see the history behind any invoice.',
+        'Rewrote the slow LINQ analytics as tuned SQL with caching, which took load off the database and sped up the dashboards.',
+        'Replaced the CoreUI interface with DevExtreme one component at a time, testing as we went, so nothing broke for the people using it every day.',
+        'Connected Zoho Books for billable hours and invoices, Zoho Writer for documents and e-signatures, and Mailgun so client email arrives inside the dashboard.',
+      ],
+      outcome:
+        'The firm now runs HR, resourcing, invoicing and client email from one system that is simpler to maintain and quicker to use. Most custom software work looks like this: a system the business depends on, improved piece by piece while people keep using it.',
+      facts: [
+        { label: 'Team', value: '3 engineers' },
+        { label: 'Effort', value: '2,800 hours' },
+        { label: 'Used by', value: 'Hundreds of employees' },
+        { label: 'Stack', value: 'ASP.NET Core, Vue.js, PostgreSQL, Redis' },
+      ],
+      href: '/our-work/case-studies/atc',
+      linkLabel: 'Read the full ATC case study',
+    },
     processTitle: 'From Idea To Impact',
     processIntro:
       'Our custom software development process combines business discovery, technical planning, iterative development, and continuous improvement to deliver reliable products.',
@@ -1323,39 +1363,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'docker',
       'kubernetes',
     ],
-    benefitsTitle: 'Built For Better Business Outcomes',
+    benefitsTitle: 'When Custom Software Is The Right Call',
     benefitsIntro:
-      'Custom software gives your business greater control over processes, technology, integrations, user experiences, and future product development.',
+      'Building your own software costs more up front than a subscription. It pays off in a few specific situations, and it is the wrong choice in others. We will tell you which one you are in.',
     benefits: [
       {
-        title: 'Better Business Fit',
+        title: 'Your process is the advantage',
         description:
-          'Build software around your unique workflows, requirements, users, and business processes instead of adapting operations to generic tools.',
+          'If the way you quote, schedule or deliver is what sets you apart, squeezing it into a generic tool gives that edge away.',
       },
       {
-        title: 'Higher Productivity',
+        title: 'Your systems need to talk',
         description:
-          'Automate repetitive work and simplify complex processes so your teams can focus on higher-value activities and business growth.',
+          'When staff copy data between two tools every day, a proper integration often pays for itself faster than another subscription.',
       },
       {
-        title: 'Seamless Integrations',
+        title: 'You have outgrown the tool',
         description:
-          'Connect your existing systems, databases, APIs, and third-party applications to create a unified digital environment.',
+          'Workarounds, spreadsheets running beside the system and per-seat costs that climb with headcount are the usual signs.',
       },
       {
-        title: 'Greater Scalability',
+        title: 'Your rules are unusual',
         description:
-          'Design software architecture that supports growing users, data, transactions, features, and operational requirements without unnecessary limitations.',
+          'Industry billing rules, compliance steps or approval chains that off-the-shelf products only half support. Nuvana’s HIPAA chronic-care billing is one example.',
       },
       {
-        title: 'Enhanced Security',
+        title: 'Skip it when a tool already fits',
         description:
-          "Build security into your application's architecture, access controls, data handling, integrations, and development processes from the start.",
+          'If an existing product covers most of what you need, use it and build only the integration or the missing piece.',
       },
       {
-        title: 'Long-Term Flexibility',
+        title: 'Wait until the process is clear',
         description:
-          'Extend and customise your software as your business evolves without waiting for generic platforms to introduce the features you need.',
+          'If nobody can yet describe the workflow being automated, start with a short discovery phase before committing to a full build.',
       },
     ],
     projectsTitle: 'Custom Software In Action',
@@ -1371,31 +1411,55 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'custom-when',
         question: 'When should a business choose custom software development?',
         answer:
-          'Custom software makes sense when existing platforms cannot support your workflows, integrations, scalability requirements, security needs, or specific business processes.',
+          'When your own way of working is part of what you sell, when staff re-key data between systems, or when you have outgrown a tool you rent. If an existing product already covers most of your needs, adding an integration is usually the cheaper route.',
+      },
+      {
+        id: 'custom-start',
+        question: 'How does a custom software project start?',
+        answer:
+          'With a discovery call to map your goals, constraints and the systems involved. You then get a team recommendation, a timeline and a delivery plan with milestones before the build begins.',
+      },
+      {
+        id: 'custom-contract',
+        question: 'Do we need to sign a long-term contract?',
+        answer:
+          'No. Work starts with a defined scope, and you add more only once the fit is proven.',
+      },
+      {
+        id: 'custom-progress',
+        question: 'How will we see progress?',
+        answer:
+          'Through weekly demos of working software, checked against the milestones agreed at the start.',
+      },
+      {
+        id: 'custom-takeover',
+        question: 'Can you improve a system another team built?',
+        answer:
+          'Yes, and it is a large part of our work. On ATC we restructured an existing system’s modules and database. We then moved its interface to a new UI library one component at a time, while staff kept using it.',
+      },
+      {
+        id: 'custom-scalable',
+        question: 'How do you keep custom software fast as it grows?',
+        answer:
+          'We measure first and fix the real bottleneck. On ATC the slow part was analytics queries joining many tables, so we rewrote them as tuned SQL and added caching instead of adding servers.',
       },
       {
         id: 'custom-integrate',
         question: 'Can you integrate custom software with existing systems?',
         answer:
-          'Yes. We integrate custom applications with CRMs, ERPs, databases, APIs, payment systems, cloud services, third-party platforms, and internal business tools.',
-      },
-      {
-        id: 'custom-scalable',
-        question: 'How do you make custom software scalable?',
-        answer:
-          'We use modular architecture, scalable databases, cloud infrastructure, API-driven development, performance optimisation, monitoring, and flexible system design.',
+          'Yes. We integrate custom applications with CRMs, ERPs, accounting and payment systems, email providers and internal tools. ATC, for example, syncs with Zoho Books and Zoho Writer and receives client email through Mailgun.',
       },
       {
         id: 'custom-tech',
         question: 'What technologies do you use for custom software development?',
         answer:
-          'We work with technologies including React, Next.js, Node.js, Python, .NET, PostgreSQL, MongoDB, AWS, Azure, Docker, and APIs based on project requirements.',
+          'React, Next.js, Vue.js, Node.js, Ruby on Rails, Python, .NET, PostgreSQL, MongoDB, AWS and Azure, chosen to fit the project and the team that will maintain it afterwards.',
       },
       {
         id: 'custom-healthcare',
         question: 'Can you develop custom healthcare software?',
         answer:
-          'Yes. We can develop healthcare software around specific operational, workflow, integration, security, and user requirements while considering applicable compliance needs.',
+          'Yes. Nuvana, a chronic-care billing platform, was built around HIPAA requirements, and MicroHealth runs a suite of healthcare apps including chat, mapping and CRM tools.',
       },
     ],
     cta: {
