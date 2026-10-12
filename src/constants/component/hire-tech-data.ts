@@ -396,6 +396,12 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
           'Yes. Much of our Nextflag work was exactly that: fixing the crashes and onboarding drop-offs users hit before adding new features.',
       },
       {
+        id: 'xamarin',
+        question: 'Can you move our Xamarin app to React Native?',
+        answer:
+          'Yes. With Xamarin out of support since May 2024, React Native is a common next step, especially if your team already builds for the web in React. We move the app in stages and reuse the backend it already talks to.',
+      },
+      {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
@@ -623,6 +629,12 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         question: 'Can you take over an existing Flutter app?',
         answer:
           'Yes. We start by getting it building on the current Flutter version, updating packages that have gone stale and fixing what the crash reports show.',
+      },
+      {
+        id: 'xamarin',
+        question: 'Can you move our Xamarin app to Flutter?',
+        answer:
+          'Yes. Microsoft ended support for Xamarin in May 2024, so most teams now move to .NET MAUI, Flutter or React Native. In Flutter we rebuild the app screen by screen and keep the existing backend and APIs where they still work.',
       },
       {
         id: 'time-zone',
