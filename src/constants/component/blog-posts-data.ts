@@ -2,7 +2,7 @@
 
 export type BlogSection = {
   heading: string;
-  /** Paragraphs split by a blank line. Inline links use [text](/path). */
+  /** Paragraphs split by a blank line. Links use [text](/path), or [text](https://…) to cite a source. */
   body: string;
 };
 
@@ -135,7 +135,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Why projects run late',
-        body: 'When one of our projects runs longer than planned, it is usually for one of four reasons.\n\n1. Scope changes. New features get requested halfway through, and each one moves the end date.\n\n2. Integrations. A third-party API, marketplace or payment provider behaves differently than expected.\n\n3. Waiting on the client. Feedback, content, designs or access arrive later than planned, and the work waits with them.\n\n4. Unclear requirements. The real requirements only become clear once people start using the first screens.\n\nThe first and last are linked. A short discovery phase and a written change process catch most of both.',
+        body: 'When one of our projects runs longer than planned, it is usually for one of four reasons.\n\n1. Scope changes. New features get requested halfway through, and each one moves the end date.\n\n2. Integrations. A third-party API, marketplace or payment provider behaves differently than expected.\n\n3. Waiting on the client. Feedback, content, designs or access arrive later than planned, and the work waits with them.\n\n4. Unclear requirements. The real requirements only become clear once people start using the first screens.\n\nThe first and last are linked. A short discovery phase and a written change process catch most of both.\n\nWe are not unusual. In the surveys reviewed by researchers at Simula Research Laboratory, 65 to 80% of software projects overran their delivery date ([Moløkken-Østvold and Jørgensen, 2005](https://cms.simula.no/sites/default/files/publications/Molokken-ostvold.2005.5.pdf)).',
       },
       {
         heading: 'Team size and hours',
@@ -435,7 +435,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       heading: 'Common questions',
       paragraphs: [
         'What is RAG? Retrieval-augmented generation. The system looks up facts in your own data and gives them to the model, which answers from them.',
-        'Does RAG stop every hallucination? No, but it removes the most common cause, which is answering from memory. Clear instructions and testing handle most of the rest.',
+        'Does RAG stop every hallucination? No. Stanford researchers found that legal research tools built on retrieval still hallucinated between 17% and 33% of the time ([Magesh et al., 2024](https://arxiv.org/abs/2405.20362)). That is why the instructions and the testing matter as much as the retrieval.',
         'How long does a chatbot like this take to build? Money Ball took three months.',
         'Which model does it need? RAG works with most large language models, because the facts come from your data. Money Ball uses an open-source model.',
       ],
@@ -482,7 +482,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'What caused the most trouble',
-        body: 'Across these builds, four things took the most work, and none of them was the checkout itself.\n\n1. Seller onboarding. Stripe verifies each seller’s identity before paying out, and an unfinished check holds their money. Show sellers their onboarding status clearly.\n\n2. Refunds and disputes. A refund or chargeback has to be split correctly between buyer, seller and platform, including partial refunds.\n\n3. Webhooks. Stripe reports payments, payouts and disputes as events. Your records must update from them, and cope with the same event arriving twice.\n\n4. Currencies and regions. Selling across countries, as Cinekit does in the UK, Europe and the US, brings several currencies and tax rules.',
+        body: 'Across these builds, four things took the most work, and none of them was the checkout itself.\n\n1. Seller onboarding. Stripe verifies each seller’s identity before paying out, and an unfinished check holds their money. Show sellers their onboarding status clearly.\n\n2. Refunds and disputes. A refund or chargeback has to be split correctly between buyer, seller and platform, including partial refunds.\n\n3. Webhooks. Stripe reports payments, payouts and disputes as events. Your records must update from them, and cope with the same event arriving twice.\n\n4. Currencies and regions. Selling across countries, as Cinekit does in the UK, Europe and the US, brings several currencies and tax rules. Card fraud also rises across borders. The ECB and EBA found card fraud rates were ten times higher when the other party was outside the EEA ([joint report, 2024](https://www.ecb.europa.eu/press/pr/date/2024/html/ecb.pr240801~f21cc4a009.en.html)).',
       },
       {
         heading: 'What to decide before you build',
@@ -598,7 +598,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'When React is the problem',
-        body: 'Sometimes it is. Huge lists rendered at once, state that redraws the whole page on every keystroke, and very large JavaScript bundles all slow the front end. The usual fixes are list virtualization, keeping state close to where it’s used and splitting code by route.\n\nMeasure first anyway. Finding the slow layer takes far less time than rewriting the wrong one.',
+        body: 'Sometimes it is. Huge lists rendered at once, state that redraws the whole page on every keystroke, and very large JavaScript bundles all slow the front end. The usual fixes are list virtualization, keeping state close to where it’s used and splitting code by route.\n\nFront ends have grown heavier, though. In 2024 the median mobile page shipped 558 KB of JavaScript, and about 44% of the bytes downloaded went unused during page load ([HTTP Archive Web Almanac 2024](https://almanac.httparchive.org/en/2024/javascript)).\n\nMeasure first anyway. Finding the slow layer takes far less time than rewriting the wrong one.',
       },
     ],
     conclusion: {
@@ -864,7 +864,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Cut scope on purpose',
-        body: 'For each feature, ask whether the core flow works without it. Admin tools, extra user roles and integrations can often wait, or be done by hand for the first users. Every outside system you add brings its own rules and failure cases, which is one of the main reasons projects run long.',
+        body: 'For each feature, ask whether the core flow works without it. Admin tools, extra user roles and integrations can often wait, or be done by hand for the first users. Every outside system you add brings its own rules and failure cases, which is one of the main reasons projects run long.\n\nBuilding in increments helps too. In an in-depth survey of software projects, those using incremental or evolutionary models had smaller effort overruns than sequential ones ([Moløkken-Østvold and Jørgensen, 2005](https://cms.simula.no/sites/default/files/publications/Molokken-ostvold.2005.5.pdf)).',
       },
       {
         heading: 'Choose proven technology',

@@ -25,9 +25,9 @@ function formatDate(iso: string): string {
   });
 }
 
-const INLINE_LINK = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+const INLINE_LINK = /\[([^\]]+)\]\(((?:\/|https:\/\/)[^)\s]*)\)/g;
 
-/** Renders [text](/path) as an internal link; everything else stays plain text. */
+/** Renders [text](/path) as an internal link and [text](https://…) as a source link; the rest stays plain text. */
 function RichText({ text }: { text: string }) {
   const parts: ReactNode[] = [];
   let last = 0;
@@ -36,14 +36,25 @@ function RichText({ text }: { text: string }) {
     if (index > last) {
       parts.push(text.slice(last, index));
     }
+    const className =
+      'font-semibold text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary';
     parts.push(
-      <Link
-        key={`${match[2]}-${index}`}
-        href={match[2]}
-        className="font-semibold text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
-      >
-        {match[1]}
-      </Link>
+      match[2].startsWith('/') ? (
+        <Link key={`${match[2]}-${index}`} href={match[2]} className={className}>
+          {match[1]}
+        </Link>
+      ) : (
+        <a
+          key={`${match[2]}-${index}`}
+          href={match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+        >
+          {match[1]}
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
+      )
     );
     last = index + match[0].length;
   }
