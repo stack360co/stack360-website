@@ -3,6 +3,7 @@ import MotionSection from '@/components/shared/motion/MotionSection';
 import { MotionStagger, MotionStaggerItem } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import {
   SMES_CTA,
   SMES_ENGAGEMENT,
@@ -127,6 +128,12 @@ export default function SmesPage() {
           </MotionStagger>
         </div>
       </MotionSection>
+
+      <RelatedServices
+        title="Services SMEs ask us for"
+        intro="Usually it starts with the spreadsheets and manual steps a growing team has outgrown."
+        services={['automation', 'custom-software', 'crm', 'erp']}
+      />
 
       <PageClosingCta {...SMES_CTA} />
     </div>

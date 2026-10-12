@@ -2087,3 +2087,52 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 export function getCapabilityPage(slug: CapabilitySlug): CapabilityPageData {
   return CAPABILITY_PAGES[slug];
 }
+
+/** How each service is named in links, schema and related-service lists. */
+export const CAPABILITY_SERVICE_NAMES: Record<CapabilitySlug, string> = {
+  erp: 'ERP development',
+  crm: 'CRM development',
+  'ai-solutions': 'AI development',
+  saas: 'SaaS development',
+  'custom-software': 'Custom software development',
+  'mobile-apps': 'Mobile app development',
+  'web-apps': 'Web app development',
+  cloud: 'Cloud migration and cloud services',
+  devops: 'DevOps consulting',
+  automation: 'Business process automation',
+};
+
+/** BrandIcon service slugs (short keys in SERVICE_ICONS). */
+export const CAPABILITY_ICONS: Record<CapabilitySlug, string> = {
+  erp: 'erp',
+  crm: 'crm',
+  'ai-solutions': 'ai',
+  saas: 'saas',
+  'custom-software': 'custom',
+  'mobile-apps': 'mobile',
+  'web-apps': 'web',
+  cloud: 'cloud',
+  devops: 'devops',
+  automation: 'automation',
+};
+
+/** The services each service page links to: the ones its projects usually involve as well. */
+export const RELATED_CAPABILITIES: Record<CapabilitySlug, readonly CapabilitySlug[]> = {
+  'custom-software': ['web-apps', 'erp', 'automation'],
+  'web-apps': ['saas', 'custom-software', 'cloud'],
+  'mobile-apps': ['web-apps', 'saas', 'ai-solutions'],
+  'ai-solutions': ['automation', 'saas', 'custom-software'],
+  erp: ['crm', 'automation', 'custom-software'],
+  crm: ['erp', 'automation', 'saas'],
+  saas: ['web-apps', 'mobile-apps', 'cloud'],
+  cloud: ['devops', 'saas', 'web-apps'],
+  devops: ['cloud', 'saas', 'custom-software'],
+  automation: ['ai-solutions', 'crm', 'erp'],
+};
+
+/** The service page whose project story is this case study, if any. */
+export function getCapabilityForStory(caseStudyPath: string): CapabilitySlug | undefined {
+  return (Object.keys(CAPABILITY_PAGES) as CapabilitySlug[]).find(
+    (slug) => CAPABILITY_PAGES[slug].story?.href === caseStudyPath
+  );
+}

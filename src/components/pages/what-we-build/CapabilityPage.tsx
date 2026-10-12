@@ -15,26 +15,18 @@ import {
 } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import { getHireTechPage, HIRE_TECH_FOR_CAPABILITY } from '@/constants/component/hire-tech-data';
-import type { CapabilityPageData, CapabilitySlug } from '@/constants/component/what-we-build-data';
+import {
+  CAPABILITY_ICONS,
+  CAPABILITY_SERVICE_NAMES,
+  type CapabilityPageData,
+  RELATED_CAPABILITIES,
+} from '@/constants/component/what-we-build-data';
 import { pageJsonLdFromMeta, serviceJsonLd } from '@/lib/seo/json-ld';
 import { capitalize } from '@/utils/string';
 
 const TestimonialsSection = dynamic(() => import('@/components/pages/landing/TestimonialsSection'));
-
-/** BrandIcon service slugs (short keys in SERVICE_ICONS). */
-const SERVICE_ICON: Record<CapabilitySlug, string> = {
-  erp: 'erp',
-  crm: 'crm',
-  'ai-solutions': 'ai',
-  saas: 'saas',
-  'custom-software': 'custom',
-  'mobile-apps': 'mobile',
-  'web-apps': 'web',
-  cloud: 'cloud',
-  devops: 'devops',
-  automation: 'automation',
-};
 
 const TECH_LABELS: Record<string, string> = {
   react: 'React',
@@ -94,20 +86,6 @@ function processPhaseLabel(step: { phase?: string }, index: number, total: numbe
   return 'Next';
 }
 
-/** What each page sells, named the way its title names it. */
-const SERVICE_NAME: Record<CapabilitySlug, string> = {
-  erp: 'ERP development',
-  crm: 'CRM development',
-  'ai-solutions': 'AI development',
-  saas: 'SaaS development',
-  'custom-software': 'Custom software development',
-  'mobile-apps': 'Mobile app development',
-  'web-apps': 'Web app development',
-  cloud: 'Cloud migration and cloud services',
-  devops: 'DevOps consulting',
-  automation: 'Business process automation',
-};
-
 interface CapabilityPageProps {
   data: CapabilityPageData;
   /** The page's `seo` entry, so the schema names the page the way its title does. */
@@ -115,7 +93,7 @@ interface CapabilityPageProps {
 }
 
 export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
-  const iconSlug = SERVICE_ICON[data.slug];
+  const iconSlug = CAPABILITY_ICONS[data.slug];
   const [lead, ...rest] = data.capabilities;
   const pagePath = `/what-we-build/${data.slug}`;
   const hirePages = (HIRE_TECH_FOR_CAPABILITY[data.slug] ?? [])
@@ -123,8 +101,8 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
     .filter((page) => page !== undefined);
   const service = serviceJsonLd({
     path: pagePath,
-    name: SERVICE_NAME[data.slug],
-    serviceType: SERVICE_NAME[data.slug],
+    name: CAPABILITY_SERVICE_NAMES[data.slug],
+    serviceType: CAPABILITY_SERVICE_NAMES[data.slug],
     description: typeof meta.description === 'string' ? meta.description : data.hero.description,
   });
   const capabilityTitle =
@@ -377,7 +355,7 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
                       slug={slug}
                       size={18}
                       variant="tech"
-                      fallbackSlug={SERVICE_ICON[data.slug]}
+                      fallbackSlug={CAPABILITY_ICONS[data.slug]}
                     />
                     <span className="text-xs font-semibold text-neutral-800">
                       {formatTechLabel(slug)}
@@ -481,6 +459,12 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
       </MotionSection>
 
       {data.showTestimonials ? <TestimonialsSection /> : null}
+
+      <RelatedServices
+        title="Related services"
+        intro="Projects like this one usually involve these as well."
+        services={RELATED_CAPABILITIES[data.slug]}
+      />
 
       {hirePages.length > 0 ? (
         <MotionSection className="border-b border-neutral-200 py-2xl">

@@ -3,6 +3,7 @@ import MotionSection from '@/components/shared/motion/MotionSection';
 import { MotionStagger, MotionStaggerItem } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import {
   ENTERPRISES_CTA,
   ENTERPRISES_DIFFERENTIATORS,
@@ -117,6 +118,12 @@ export default function EnterprisesPage() {
           </MotionStaggerItem>
         </div>
       </MotionSection>
+
+      <RelatedServices
+        title="Services enterprises ask us for"
+        intro="Legacy systems, cloud moves and release pipelines are where most enterprise work begins."
+        services={['erp', 'cloud', 'devops', 'custom-software']}
+      />
 
       <PageClosingCta {...ENTERPRISES_CTA} />
     </div>

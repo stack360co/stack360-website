@@ -10,6 +10,7 @@ import {
 } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
+import RelatedServices from '@/components/shared/RelatedServices';
 import {
   SOFTWARE_PARTNER_BENEFITS,
   SOFTWARE_PARTNER_CTA,
@@ -153,6 +154,16 @@ export default function SoftwarePartnerPage() {
           </MotionReveal>
         </div>
       </MotionSection>
+
+      <RelatedServices
+        title="What partners hire us to build"
+        intro="A dedicated team can take on any of these, from first release to long-term upkeep."
+        services={['custom-software', 'saas', 'web-apps', 'mobile-apps']}
+        reading={{
+          href: '/blog/how-to-choose-a-software-development-partner',
+          label: 'How to Choose a Software Development Partner',
+        }}
+      />
 
       <PageClosingCta {...SOFTWARE_PARTNER_CTA} />
     </div>
