@@ -80,7 +80,7 @@ export default function CulturePage() {
       </MotionSection>
 
       <MotionSection className="py-2xl">
-        <div className="site-container">
+        <div id="azmat-rana" className="site-container scroll-mt-24">
           <MotionCard
             interactive={false}
             className="grid grid-cols-1 items-center gap-2xl rounded-xl border border-neutral-200 bg-neutral-50 p-xl lg:grid-cols-12"

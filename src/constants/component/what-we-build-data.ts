@@ -61,7 +61,7 @@ const FOUNDER_REVIEWER: CapabilityReviewer = {
   name: CULTURE_FOUNDER.name,
   role: CULTURE_FOUNDER.role,
   image: CULTURE_FOUNDER.image.src,
-  href: '/who-we-are/culture',
+  href: '/who-we-are/culture#azmat-rana',
 };
 
 /** Ownership answer shared by every reviewed capability page. */

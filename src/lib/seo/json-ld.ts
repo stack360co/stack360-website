@@ -100,6 +100,7 @@ export function founderJsonLd(): JsonLd {
     '@id': FOUNDER_ID,
     name: CULTURE_FOUNDER.name,
     jobTitle: CULTURE_FOUNDER.role,
+    description: `${CULTURE_FOUNDER.role} of ${SITE_NAME}, the software development agency he founded in 2019.`,
     image: absoluteUrl(CULTURE_FOUNDER.image.src),
     url: absoluteUrl('/who-we-are/culture'),
     worksFor: { '@id': ORGANIZATION_ID },

@@ -49,7 +49,7 @@ export const HISTORY_VISION = {
   ],
   image: {
     src: '/assets/who-we-are/leaders/azmat-rana.webp',
-    alt: 'Azmat Rana, CEO of Stack360',
+    alt: 'Azmat Rana, CEO and Founder of Stack360',
   },
 } as const;
 
