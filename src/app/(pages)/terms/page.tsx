@@ -38,6 +38,14 @@ export default function TermsPage() {
             </p>
           </div>
           <div className="space-y-sm">
+            <h2 className="text-lg font-bold text-neutral-900">How we write this site</h2>
+            <p className="text-pretty">
+              We draft some pages with AI tools, working from our own project records. A senior
+              engineer reviews every page before it is published, and project details come from our
+              case studies and portfolio.
+            </p>
+          </div>
+          <div className="space-y-sm">
             <h2 className="text-lg font-bold text-neutral-900">Intellectual property</h2>
             <p className="text-pretty">
               Site content, branding, and materials are owned by {SITE_NAME} or its licensors. You
