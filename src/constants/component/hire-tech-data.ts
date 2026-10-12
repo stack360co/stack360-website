@@ -232,6 +232,13 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         caseStudy: '/our-work/case-studies/truck-4',
       },
       {
+        name: 'Cercle',
+        summary:
+          'UK fashion rental marketplace on React and Next.js, with store credit for refunds and catalog sync with Facebook.',
+        stack: ['React', 'Next.js', 'Ruby on Rails', 'Stripe'],
+        caseStudy: '/our-work/case-studies/cercle',
+      },
+      {
         name: 'Luxe Excursions',
         summary:
           'Booking platform for a Tenerife tour company with Stripe payments, a staff CMS and automated booking alerts. We also run its SEO, Google Ads and Business Profile.',
@@ -273,6 +280,12 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         question: 'Can they join a codebase that is already in production?',
         answer:
           'Yes. Expect the first days to go on reading the code, running it locally and shipping small fixes, so they learn your conventions before taking on larger features.',
+      },
+      {
+        id: 'slow-app',
+        question: 'Our React app is slow. Is React the problem?',
+        answer:
+          'Usually not. On Cercle, a React and Next.js store, the slow pages were fixed behind the front end, with better product data handling, image caching and background jobs. Our engineers check the API and database before rewriting components.',
       },
       {
         id: 'time-zone',
