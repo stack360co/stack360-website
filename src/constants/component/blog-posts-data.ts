@@ -5,9 +5,24 @@ export type BlogSection = {
   body: string;
 };
 
+export type BlogAuthor = {
+  name: string;
+  role: string;
+  /** Profile page or LinkedIn, when there is one. */
+  url?: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
+  /** Shorter title for search results when the headline runs past ~50 characters. */
+  seoTitle?: string;
+  /** The person who wrote it: the developer who worked on the project. */
+  author?: BlogAuthor;
+  /** Who checked it before it went live. */
+  reviewedBy?: string;
+  /** Pages to read next, shown after the conclusion. */
+  related?: readonly { label: string; href: string }[];
   excerpt: string;
   date: string;
   category: string;
@@ -21,6 +36,68 @@ export type BlogPost = {
 };
 
 export const BLOG_POSTS: readonly BlogPost[] = [
+  {
+    slug: 'luxe-excursions-booking-planner',
+    title: 'Our Booking Planner Refused 75% of Trips. The Fix Was the Data.',
+    seoTitle: 'Tour Booking System Case Study: Luxe Excursions',
+    author: { name: 'Waris Mustafa', role: 'SEO and Web Developer' },
+    reviewedBy: 'Azmat Rana',
+    excerpt:
+      'How we stopped a Tenerife tour company’s booking planner refusing 75% of trips, then automated its sale alerts, review requests and Google setup.',
+    date: '2026-10-12',
+    category: 'Case Study',
+    readTime: '6 min',
+    intro:
+      'Luxe Excursions sells luxury tours, packages and rentals from a shop in Costa Adeje, Tenerife. We built its website, booking platform and staff CMS, and we run its SEO, Google Ads and Business Profile. The biggest gain didn’t come from new code. It came from checking the data the old booking planner trusted.',
+    sections: [
+      {
+        heading: 'The planner that said no',
+        body: 'The first version tried to schedule every activity at booking time, using the timetables in the CMS and the size of the van fleet. The client called it too complex, so we measured it. Across every 3-activity combination on a 3-day stay, the planner refused 75% of itineraries.\n\nAll 164 refusals came from weekday data in the CMS. None came from van capacity. When we checked the partner venues against their own websites, 3 of 4 timetables were wrong. One show was blocked on two of its three real nights.',
+      },
+      {
+        heading: 'Pay first, schedule after',
+        body: 'We changed how bookings work. Guests now choose their activities and pay, and staff assign every date and time afterwards. Only one thing can refuse a booking: an activity that never runs during the guest’s stay. Capacity clashes become notes for staff, never an error for the guest. Tickets hide times until a member of staff has approved the schedule. After the data was corrected, the refusal rate went to 0%.',
+      },
+      {
+        heading: 'Staff hear about every sale',
+        body: 'At launch, only the guest got an email when they booked. Now the team gets one for every paid booking and every trip request, with the guest set as reply-to so staff can answer straight away. Each alert goes out once per booking, so a payment retry never sends a duplicate.',
+      },
+      {
+        heading: 'Reviews without cherry-picking',
+        body: 'Reviews decide how a local business shows up on the map, so we automated the ask. Every guest gets one email at 10:00 local time the day after their last activity, within a week of the trip. Nobody gets it twice, and test or agency bookings are left out.\n\nWe ask every guest, whatever we think of how the trip went, because Google forbids asking only happy customers. Guests who book in the shop or by WhatsApp get the same message by hand, and a QR card on the counter.',
+      },
+      {
+        heading: 'Fully booked without disappearing',
+        body: 'Sometimes an item has to stop selling for a while, like the e-bike rental while its paperwork was pending. Deleting the page would throw away its search ranking. Instead, staff tick “Fully booked” in the admin. The page stays live, it can’t be bought, and Google is told it’s sold out.',
+      },
+      {
+        heading: 'A giveaway that is fair, and works on a phone',
+        body: 'The “Win a Tenerife getaway” page takes one entry per email, through the website or Instagram. The draw picks a winner and two reserves from a recorded random seed, so the draw can be re-run later and checked. We left out “share to enter”, because Meta’s rules don’t allow it.\n\nIn its first six days, 269 people entered on the website. Then the data showed that half of all attempts were failing, mostly because the Instagram username was left blank and phones gave no clear sign why. The form now jumps to the field that needs fixing. In the first two hours after the change, 14 entries went through and none failed. Instagram followers grew from 25 to 190 that week.',
+      },
+      {
+        heading: 'Getting Google right',
+        body: 'A guest followed the map to the wrong street: the Business Profile pin was about 460 m from the shop. We corrected the address and pin on Google, the website and Facebook.\n\nGoogle Analytics now tracks bookings, trip requests and WhatsApp clicks, and Google Ads learns from bookings and WhatsApp clicks. Every activity has a Book Now button on its first screen, and the payment form loads only when someone pays, so pages are faster on phones. Google’s own SEO check scores the site 100, and the main image shows in 1.3 seconds on a phone.',
+      },
+      {
+        heading: 'What it runs on',
+        body: 'The backend runs on Django and Django REST Framework, and the website on Next.js. Data lives in PostgreSQL, hosting is on AWS (ECS Fargate and Amplify), Stripe takes payments and Brevo sends email.',
+      },
+    ],
+    conclusion: {
+      heading: 'What we’d tell another tour operator',
+      paragraphs: [
+        '1. Check your timetable data before blaming the software. Ours was wrong at 3 of 4 venues.',
+        '2. Let staff own the schedule. Take the payment first, and plan the day after.',
+        '3. Automate the follow-ups people forget: sale alerts and review requests.',
+        '4. Measure the forms. A field nobody notices can lose half your sign-ups.',
+      ],
+    },
+    related: [
+      { label: 'Business process automation', href: '/what-we-build/automation' },
+      { label: 'SEO and Google Ads', href: '/what-we-build/digital-marketing' },
+      { label: 'Visit Luxe Excursions', href: 'https://luxeexcursionstenerife.com' },
+    ],
+  },
   {
     slug: 'staff-augmentation-vs-outsourcing',
     title: 'Staff Augmentation vs. Outsourcing',

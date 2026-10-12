@@ -54,6 +54,23 @@ export default function BlogArticle({ post }: BlogArticleProps) {
               <h1 className="text-balance text-4xl font-black leading-tight tracking-tight text-neutral-900 md:text-5xl">
                 {post.title}
               </h1>
+              {post.author ? (
+                <p className="text-sm text-neutral-600">
+                  By{' '}
+                  {post.author.url ? (
+                    <a
+                      href={post.author.url}
+                      className="font-bold text-neutral-900 transition-colors hover:text-primary"
+                    >
+                      {post.author.name}
+                    </a>
+                  ) : (
+                    <span className="font-bold text-neutral-900">{post.author.name}</span>
+                  )}
+                  , {post.author.role}
+                  {post.reviewedBy ? ` · Reviewed by ${post.reviewedBy}` : null}
+                </p>
+              ) : null}
               <ul className="flex flex-wrap items-center gap-x-lg gap-y-sm font-mono text-xs text-neutral-500">
                 <li>{formatDate(post.date)}</li>
                 <li className="inline-flex items-center gap-1">
@@ -89,9 +106,14 @@ export default function BlogArticle({ post }: BlogArticleProps) {
                     </span>
                     {section.heading}
                   </h2>
-                  <p className="max-w-[70ch] text-pretty text-base leading-relaxed text-neutral-600">
-                    {section.body}
-                  </p>
+                  {section.body.split('\n\n').map((paragraph) => (
+                    <p
+                      key={paragraph.slice(0, 48)}
+                      className="max-w-[70ch] text-pretty text-base leading-relaxed text-neutral-600"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
                 </li>
               ))}
             </ol>
@@ -108,6 +130,25 @@ export default function BlogArticle({ post }: BlogArticleProps) {
                   {paragraph}
                 </p>
               ))}
+              {post.related && post.related.length > 0 ? (
+                <nav aria-label="Related pages" className="pt-sm">
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                    Related
+                  </p>
+                  <ul className="mt-sm flex flex-wrap gap-sm">
+                    {post.related.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="inline-flex rounded-md border border-neutral-200 bg-neutral-50 px-md py-sm text-sm font-semibold text-neutral-800 transition-colors hover:border-primary/30 hover:text-primary"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ) : null}
             </footer>
           </motion.div>
         </div>

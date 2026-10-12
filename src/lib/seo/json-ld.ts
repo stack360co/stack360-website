@@ -145,6 +145,7 @@ export function blogPostingJsonLd(post: {
   excerpt: string;
   date: string;
   category: string;
+  author?: { name: string; role: string; url?: string };
 }): JsonLd {
   const url = `${SITE_URL}/blog/${post.slug}`;
   return {
@@ -157,7 +158,15 @@ export function blogPostingJsonLd(post: {
     url,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     image: `${SITE_URL}/opengraph-image`,
-    author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    author: post.author
+      ? {
+          '@type': 'Person',
+          name: post.author.name,
+          jobTitle: post.author.role,
+          ...(post.author.url ? { url: post.author.url } : {}),
+          worksFor: { '@id': ORGANIZATION_ID },
+        }
+      : { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,

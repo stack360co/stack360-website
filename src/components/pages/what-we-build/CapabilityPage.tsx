@@ -493,6 +493,7 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
         title="Related services"
         intro="Projects like this one usually involve these as well."
         services={RELATED_CAPABILITIES[data.slug]}
+        reading={data.reading}
       />
 
       {hirePages.length > 0 ? (

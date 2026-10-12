@@ -93,6 +93,8 @@ export interface CapabilityPageData {
   processTitle: string;
   processIntro: string;
   process: { title: string; description: string; phase?: string }[];
+  /** One blog post that goes deeper on this service, shown with the related services. */
+  reading?: { href: string; label: string };
   /** Optional facts row under the process: what working together looks like day to day. */
   engagement?: { title: string; items: readonly { label: string; value: string }[] };
   /** Optional outcomes section rendered after tech. */
@@ -1914,6 +1916,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'automation',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/luxe-excursions-booking-planner',
+      label: 'Our booking planner refused 75% of trips. The fix was the data.',
+    },
     hero: {
       eyebrow: 'What We Build · Automation',
       title: 'Business Process Automation',
@@ -2774,6 +2780,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'digital-marketing',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/luxe-excursions-booking-planner',
+      label: 'Our booking planner refused 75% of trips. The fix was the data.',
+    },
     hero: {
       eyebrow: 'What We Build · SEO & Google Ads',
       title: 'SEO And Google Ads',
