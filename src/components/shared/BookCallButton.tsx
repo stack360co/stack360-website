@@ -63,12 +63,18 @@ export default function BookCallButton() {
   }
 
   const openBooking = async () => {
+    // UTM tags show up on each booking in Calendly, so the team can see which page it came from.
+    const url = new URL(CALENDLY_URL);
+    url.searchParams.set('utm_source', 'stack360.co');
+    url.searchParams.set('utm_medium', 'website');
+    url.searchParams.set('utm_content', window.location.pathname);
+    const bookingUrl = url.toString();
     pushEvent('book_call_click', { link_url: CALENDLY_URL });
     try {
       await loadWidget();
-      (window as CalendlyWindow).Calendly?.initPopupWidget({ url: CALENDLY_URL });
+      (window as CalendlyWindow).Calendly?.initPopupWidget({ url: bookingUrl });
     } catch {
-      window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
+      window.open(bookingUrl, '_blank', 'noopener,noreferrer');
     }
   };
 
