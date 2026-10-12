@@ -54,13 +54,13 @@ export const CONTACT_OFFICES = [
   // },
   {
     country: 'United States',
-    role: 'Headquarter',
+    role: 'Registered address · Stack360 Ai Solutions LLC',
     flagSrc: 'https://flagcdn.com/us.svg',
     address: '12828 Willow Centre Dr, Houston, TX 77066, USA',
   },
   {
     country: 'United Kingdom',
-    role: 'Regional Office',
+    role: 'Mailing address',
     flagSrc: 'https://flagcdn.com/gb.svg',
     address: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
   },

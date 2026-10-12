@@ -1060,7 +1060,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     meta: {
       title: 'Hire Vue.js Developers for Web Apps and SaaS',
       description:
-        'Hire full-time remote Vue.js developers for SaaS products, dashboards and Vue 2 to Vue 3 upgrades, proven on Coach Catalyst, ATC and Klingit. Shortlist in 2 days.',
+        'Hire full-time remote Vue.js developers for SaaS products, dashboards and Vue 2 to 3 upgrades, proven on Coach Catalyst, ATC and Klingit. Shortlist in 2 days.',
       keywords: [
         'hire vue developers',
         'hire vue.js developers',
@@ -1185,7 +1185,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     meta: {
       title: 'Hire .NET Developers for ASP.NET Core Apps',
       description:
-        'Hire full-time remote .NET developers for ASP.NET Core systems, real-time features with SignalR and scheduled jobs, proven on ATC and Nuvana. Shortlist in 2 days.',
+        'Hire full-time remote .NET developers for ASP.NET Core systems, real-time SignalR features and scheduled jobs, proven on ATC and Nuvana. Shortlist in 2 days.',
       keywords: [
         'hire .net developers',
         'hire asp.net core developers',

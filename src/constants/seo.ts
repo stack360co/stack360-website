@@ -131,7 +131,7 @@ export const seo = {
   contact: pageMeta({
     absoluteTitle: 'Contact Stack360 | We Reply Within One Business Day',
     description:
-      'Talk to Stack360 about your next build — partnerships desk for project inquiries and talent requests.',
+      'Talk to Stack360 about a project or developers you need. Book a 20-minute call or send a message, and we reply within one business day.',
     path: '/contact',
   }),
 
@@ -152,7 +152,7 @@ export const seo = {
   whatWeBuild: pageMeta({
     title: 'Software Development Services: Web, Mobile, AI',
     description:
-      'ERP, CRM, AI, SaaS, mobile, web, cloud, DevOps, and automation — systems Stack360 architects end to end.',
+      'Custom software, web and mobile apps, AI, SaaS, ERP, CRM, cloud, DevOps and automation, built by our Lahore team for US and UK companies.',
     path: '/what-we-build',
   }),
 
@@ -426,7 +426,7 @@ export const seo = {
   whoWeHelp: pageMeta({
     title: 'Who We Help: Startups, SMEs and Enterprises',
     description:
-      'Stack360 partners with startups, SMEs, and enterprises across Healthcare, FinTech, and Logistics.',
+      'How we work with startups, SMEs and enterprises, from MVPs built in one to three months to systems we have supported for 30 months.',
     path: '/who-we-help',
   }),
 
@@ -469,40 +469,42 @@ export const seo = {
   ourWork: pageMeta({
     title: 'Our Work: Case Studies and Client Projects',
     description:
-      'Case studies, featured projects, client success stories, and studio insights from Stack360.',
+      'Case studies with team sizes and hours, 28 featured projects with durations, and client stories from 200+ projects delivered since 2019.',
     path: '/our-work',
   }),
 
   ourWorkCaseStudies: pageMeta({
-    title: 'Case Studies',
+    title: 'Software Case Studies: Teams, Hours, Results',
     description:
-      'See how Stack360 helped clients succeed — Autobuffy, Coach Catalyst, ATC, BuffyHub, Cercle, and more.',
+      'Eight in-depth case studies, including AutoBuffy, Coach Catalyst, ATC, BuffyHub and Cercle, with team size, hours and what we built.',
     path: '/our-work/case-studies',
   }),
 
   ourWorkFeaturedProjects: pageMeta({
     title: 'Featured Projects: Apps and Platforms We Built',
     description:
-      'Highest-impact systems Stack360 has shipped — engineering depth with measurable outcomes.',
+      '28 projects we have delivered, grouped by domain, with how long each took, the stack and the result, from AI chatbots to marketplaces.',
     path: '/our-work/featured-projects',
   }),
 
   ourWorkClientSuccessStories: pageMeta({
-    title: 'Client Success Stories',
-    description: 'Partners describing the outcomes they saw after launching with Stack360.',
+    title: 'Client Success Stories and Reviews',
+    description:
+      'Client stories about working with Stack360 on marketplaces, SaaS products and internal systems, told in their own words, with the outcomes they saw.',
     path: '/our-work/client-success-stories',
   }),
 
   ourWorkBlog: pageMeta({
-    title: 'Blog',
+    title: 'Software Development Blog',
     description:
-      'Engineering notes from Stack360 — language features, craft, and how we think about building systems that last.',
+      'First-hand articles from our engineers on hiring developers, project timelines, migrations, AI features and payments, from real projects.',
     path: '/blog',
   }),
 
   ourWorkFaqs: pageMeta({
-    title: 'FAQs',
-    description: 'Answers on Stack360 services, quality, performance, and how engagements work.',
+    title: 'FAQs: Working With Stack360',
+    description:
+      'Answers to common questions about our web and mobile development, interface design, marketing, site performance and how we ensure quality.',
     path: '/our-work/faqs',
   }),
 
@@ -514,29 +516,30 @@ export const seo = {
   }),
 
   whoWeAreHistory: pageMeta({
-    title: 'Our History',
+    title: 'Our History: Stack360 Since 2019',
     description:
-      'From a technical garage to a custom software architecture studio — the Stack360 story.',
+      'How Stack360 grew from its founding in 2019 into a Lahore team that has delivered 200+ projects for companies in the US and UK.',
     path: '/who-we-are/history',
   }),
 
   whoWeAreCulture: pageMeta({
-    title: 'Our Culture',
+    title: 'Our Culture and Leadership',
     description:
-      'A zero-fluff engineering culture — clean execution, architectural honesty, and delivery discipline.',
+      'How our engineers work, what we value, and the people who lead Stack360, including our CEO and founder, Azmat Rana.',
     path: '/who-we-are/culture',
   }),
 
   whoWeAreHowWeWork: pageMeta({
-    title: 'How We Work',
+    title: 'How We Work: Discovery to Delivery',
     description:
-      'Daily iterations, architectural planning, and staging discipline — how Stack360 ships systems.',
+      'How a project runs with us: a discovery call with a founder, a plan within two business days, weekly demos and support after launch.',
     path: '/who-we-are/how-we-work',
   }),
 
   workWithUs: pageMeta({
-    title: 'Work With Us',
-    description: 'Engage Stack360 as a software partner or explore careers at the studio.',
+    title: 'Work With Us: Partner, Hire or Join',
+    description:
+      'Three ways to work with Stack360: build a product with us, hire developers or a dedicated team, or join our team in Lahore.',
     path: '/work-with-us',
   }),
 
@@ -562,9 +565,9 @@ export const seo = {
   }),
 
   workWithUsCareers: pageMeta({
-    title: 'Careers',
+    title: 'Careers at Stack360 in Lahore',
     description:
-      'Open roles, internships, and the Stack360 hiring process — join a studio that ships complex systems with discipline.',
+      'Open roles and internships at Stack360 in Lahore, and how our hiring process works. Join a team building software for US and UK clients.',
     path: '/work-with-us/careers',
   }),
 } satisfies Record<string, Metadata>;

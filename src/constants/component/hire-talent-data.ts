@@ -12,12 +12,12 @@ export const HIRE_PROMISE = 'Get shortlists within 2 days. Hire in as fast as 1 
 
 export const HIRE_CONTACT = [
   {
-    label: 'USA office',
+    label: 'US registered address (Stack360 Ai Solutions LLC)',
     value: '12828 Willow Centre Dr, Houston, TX 77066, USA',
     icon: 'building' as const,
   },
   {
-    label: 'UK office',
+    label: 'UK mailing address',
     value: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
     icon: 'building' as const,
   },

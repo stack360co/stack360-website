@@ -18,7 +18,7 @@ export const CAREERS_BENEFITS = [
   {
     title: 'Global delivery culture',
     description:
-      'Collaborate across Lahore and UK offices with modern tooling and async discipline.',
+      'Work from our Lahore office with clients in the US and UK, using modern tooling and async discipline.',
     icon: <Globe2 className="h-5 w-5" />,
   },
   {

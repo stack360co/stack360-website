@@ -62,7 +62,7 @@ export const SITE_OFFICES = [
   },
   {
     country: 'United Kingdom',
-    role: 'Regional Office',
+    role: 'Mailing address',
     streetAddress: '58 St. Johns Road',
     addressLocality: 'Barking',
     addressRegion: 'Essex',
