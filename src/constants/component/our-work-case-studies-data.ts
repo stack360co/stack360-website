@@ -768,8 +768,9 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
           'Social graphics, presentations, video, websites, and apps under one delivery model.',
       },
       {
-        title: 'Cost-effective solutions',
-        description: 'Transparent, value-driven proposals without hidden pricing surprises.',
+        title: 'Clear proposals',
+        description:
+          'Proposals that set out scope, deliverables and milestones before work starts.',
       },
       {
         title: 'Scalable services',

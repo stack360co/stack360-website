@@ -30,7 +30,7 @@ export const SMES_OFFERS = [
   {
     title: 'Custom software',
     description:
-      'Bespoke portals, internal tools, and customer-facing apps sized for SME budgets and timelines.',
+      'Bespoke portals, internal tools, and customer-facing apps sized for SME teams and timelines.',
     icon: <Cog className="h-5 w-5" />,
   },
 ] as const;
@@ -49,15 +49,18 @@ export const SMES_ROI = {
 export const SMES_ENGAGEMENT = [
   {
     model: 'Fixed scope',
-    detail: 'Defined deliverables, milestone billing, and a delivery plan you can budget against.',
+    detail:
+      'Defined deliverables, clear milestones, and a delivery plan agreed before work starts.',
   },
   {
-    model: 'Hourly pod',
-    detail: 'Dedicated engineers on retainer for evolving roadmaps and continuous improvement.',
+    model: 'Dedicated team',
+    detail:
+      'Engineers who join your team full time for evolving roadmaps and continuous improvement.',
   },
   {
     model: 'Hybrid',
-    detail: 'Fixed MVP plus hourly scale-up — common path for SMEs testing a new digital channel.',
+    detail:
+      'A fixed-scope MVP, then a dedicated team to grow it. A common path for SMEs testing a new digital channel.',
   },
 ] as const;
 

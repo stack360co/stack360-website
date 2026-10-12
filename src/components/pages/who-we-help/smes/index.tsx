@@ -33,7 +33,7 @@ export default function SmesPage() {
             <MotionStaggerItem>
               <p className="mt-sm text-sm leading-relaxed text-neutral-600">
                 Digital transformation, legacy modernization, automation, and custom software —
-                scoped to your team size, budget, and risk tolerance.
+                scoped to your team size, timeline, and risk tolerance.
               </p>
             </MotionStaggerItem>
           </MotionStagger>

@@ -377,7 +377,7 @@ export const seo = {
   whoWeHelpStartups: pageMeta({
     title: 'Startup MVP Development',
     description:
-      'From zero to funded — build investor-ready MVPs in weeks. Scalable architecture, transparent pricing, and agile delivery for startups that need to move fast.',
+      'From zero to funded — build investor-ready MVPs in weeks. Scalable architecture, clear scope, and agile delivery for startups that need to move fast.',
     path: '/who-we-help/startups',
     keywords:
       'startup MVP development, investor-ready software, startup software partner, agile MVP, scalable startup architecture, funded startup development',

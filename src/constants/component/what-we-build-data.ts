@@ -463,7 +463,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'App Store and Google Play review, signing and staged rollouts take real time, so they belong in the delivery plan from day one.',
       },
       {
-        title: 'Budget for after launch',
+        title: 'Plan for after launch',
         description:
           'Operating-system updates and package upgrades keep coming. Nextflag’s slowdown came from falling behind on them, so keep time for upkeep every year.',
       },
@@ -1745,7 +1745,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       eyebrow: 'Project story · Autobuffy',
       title: 'Keeping a 100,000-part store fast under heavy traffic',
       intro:
-        'Autobuffy is an online auto parts store selling more than 100,000 parts on a dropshipping model. Customers search by make, model and year while vendors send constant inventory updates. Six of our engineers have put around 28,000 hours into it.',
+        'Autobuffy is a US auto parts store selling more than 100,000 parts on a dropshipping model. Customers search by make, model and year while vendors send constant inventory updates. Six of our engineers have put around 28,000 hours into it.',
       problem:
         'The server setup struggled with the volume of API calls and file activity, so the site slowed down under traffic. Admin uploads competed with shoppers for the same servers. Large files went to the server first and then on to S3, which was slow and expensive, and inventory still arrived by FTP, CSV and Excel.',
       changes: [

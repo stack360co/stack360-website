@@ -55,8 +55,9 @@ export const STARTUPS_PARTNERSHIPS = {
 
 export const STARTUPS_TRUST = [
   {
-    title: 'Transparent pricing',
-    description: 'Fixed-scope sprints and clear rate cards — no opaque change-order games.',
+    title: 'Clear scope',
+    description:
+      'Fixed-scope sprints with agreed deliverables, and any change to the plan is agreed in writing first.',
   },
   {
     title: 'Agile delivery',
