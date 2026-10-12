@@ -169,7 +169,10 @@ export default function NavItemDesktop({
           inert={!isDropdownOpen}
           style={{ marginLeft: panelShift }}
           className={cn(
-            'absolute left-1/2 top-full z-40 w-[min(48rem,calc(100vw-2rem))] -translate-x-1/2 pt-xs transition-[visibility]',
+            'absolute left-1/2 top-full z-40 -translate-x-1/2 pt-xs transition-[visibility]',
+            item.columns.length > 2
+              ? 'w-[min(60rem,calc(100vw-2rem))]'
+              : 'w-[min(48rem,calc(100vw-2rem))]',
             isDropdownOpen ? 'visible delay-0' : 'pointer-events-none invisible delay-200'
           )}
           onMouseEnter={() => onMouseEnter(item.label)}
@@ -180,7 +183,7 @@ export default function NavItemDesktop({
               variants={motionVariants(reduced, staggerContainer)}
               initial={false}
               animate={isDropdownOpen ? 'show' : 'hidden'}
-              className="grid grid-cols-2 gap-lg"
+              className={cn('grid gap-lg', item.columns.length > 2 ? 'grid-cols-3' : 'grid-cols-2')}
             >
               {item.columns.map((col) => (
                 <div key={col.title ?? col.items[0]?.title} className="space-y-sm">

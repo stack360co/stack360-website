@@ -44,6 +44,7 @@ export const SERVICE_LINKS: FooterLink[] = [
   { label: 'ERP Development', href: '/what-we-build/erp' },
   { label: 'CRM Development', href: '/what-we-build/crm' },
   { label: 'Automation', href: '/what-we-build/automation' },
+  { label: 'All services', href: '/what-we-build' },
 ];
 
 export const COMPANY_LINKS: FooterLink[] = [
