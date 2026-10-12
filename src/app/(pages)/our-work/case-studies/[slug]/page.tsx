@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return pageMeta({
     title: `${study.name} Case Study`,
-    description: study.tagline,
+    description: study.metaDescription ?? study.tagline,
     path: `/our-work/case-studies/${study.slug}`,
     keywords: [study.name, study.industry, 'Stack360 case study'],
   });

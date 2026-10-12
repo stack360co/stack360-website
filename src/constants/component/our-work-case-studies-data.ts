@@ -26,6 +26,8 @@ export interface CaseStudyDetail {
   slug: string;
   name: string;
   tagline: string;
+  /** Search snippet, when the tagline runs past the ~160 characters Google shows. */
+  metaDescription?: string;
   industry: string;
   platform: string;
   durationHours: string;
@@ -575,6 +577,8 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
     name: 'Cercle',
     tagline:
       'A fashion rental platform that lets users rent clothing, shoes, and accessories from lenders — promoting borrow-over-buy sustainability at a fraction of retail cost.',
+    metaDescription:
+      'How Stack360 built Cercle, a UK fashion rental marketplace: faster pages, store credit for refunds and catalogue sync with Facebook.',
     industry: 'Fashion · eCommerce',
     platform: 'Web',
     durationHours: '2,112 hrs',
@@ -705,6 +709,8 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
     name: 'Klingit',
     tagline:
       'A tech-powered creative services platform that helps brands scale marketing with a global pool of creatives — DesignOps, deliverables, and transparent collaboration in one place.',
+    metaDescription:
+      'How Stack360 built Klingit, the DesignOps platform where brands, designers and managers run creative projects in one place.',
     industry: 'Creative · DesignOps',
     platform: 'Web',
     durationHours: '1,400 hrs',
