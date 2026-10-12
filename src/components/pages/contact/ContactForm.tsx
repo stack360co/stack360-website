@@ -14,7 +14,6 @@ export default function ContactForm() {
   const [formValues, setFormValues] = useState<Record<string, string>>({
     name: '',
     email: '',
-    company: '',
     message: '',
   });
   const router = useRouter();
@@ -103,7 +102,7 @@ export default function ContactForm() {
       return;
     }
 
-    const { name, email, company, message } = validation.data;
+    const { name, email, message } = validation.data;
 
     try {
       const response = await fetch('/api/contact/m-webhook', {
@@ -115,7 +114,6 @@ export default function ContactForm() {
           formType: 'contact',
           name,
           email,
-          company,
           message,
         }),
       });
@@ -128,7 +126,7 @@ export default function ContactForm() {
 
       setStatus('sent');
       pushEvent('generate_lead', { form_name: 'contact' });
-      setFormValues({ name: '', email: '', company: '', message: '' });
+      setFormValues({ name: '', email: '', message: '' });
       setFieldErrors({});
     } catch (error) {
       console.error(error);
@@ -169,18 +167,16 @@ export default function ContactForm() {
           const error = fieldErrors[field.id as keyof ContactFormData];
 
           return (
-            <div key={field.id} className={field.id === 'company' ? 'sm:col-span-2' : undefined}>
+            <div key={field.id}>
               <label
                 htmlFor={field.id}
                 className="mb-xs block font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-600"
               >
                 {field.label}
-                {field.id !== 'company' ? (
-                  <span className="text-primary" aria-hidden>
-                    {' '}
-                    *
-                  </span>
-                ) : null}
+                <span className="text-primary" aria-hidden>
+                  {' '}
+                  *
+                </span>
               </label>
               <input
                 id={field.id}
@@ -192,9 +188,7 @@ export default function ContactForm() {
                 onBlur={handleBlur}
                 aria-invalid={!!error}
                 aria-describedby={error ? `${field.id}-error` : undefined}
-                autoComplete={
-                  field.id === 'name' ? 'name' : field.id === 'email' ? 'email' : 'organization'
-                }
+                autoComplete={field.id === 'name' ? 'name' : 'email'}
                 placeholder={field.placeholder}
                 className={`min-h-11 w-full rounded-md border bg-neutral-50 px-md py-md text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-500 focus-visible:ring-2 disabled:opacity-60 ${
                   error

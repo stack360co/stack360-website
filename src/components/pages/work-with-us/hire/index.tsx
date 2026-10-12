@@ -55,7 +55,7 @@ export default function HireTalentPage() {
               </MotionStaggerItem>
             </MotionStagger>
 
-            <ContactChannel />
+            <ContactChannel testimonialName="Cameron Kashani" />
           </div>
 
           <MotionReveal className="lg:col-span-7">

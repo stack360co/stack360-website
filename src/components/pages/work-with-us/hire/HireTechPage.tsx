@@ -302,7 +302,7 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
                 </p>
               </MotionStaggerItem>
             </MotionStagger>
-            <ContactChannel />
+            <ContactChannel testimonialName="Cameron Kashani" />
           </div>
 
           <MotionReveal className="lg:col-span-7">

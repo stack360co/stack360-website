@@ -69,5 +69,4 @@ export const CONTACT_OFFICES = [
 export const CONTACT_FORM_FIELDS = [
   { id: 'name', label: 'Full name', type: 'text', placeholder: 'Jane Smith' },
   { id: 'email', label: 'Work email', type: 'email', placeholder: 'jane@company.com' },
-  { id: 'company', label: 'Company', type: 'text', placeholder: 'Acme Inc.' },
 ] as const;

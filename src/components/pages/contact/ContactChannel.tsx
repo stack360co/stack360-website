@@ -1,10 +1,18 @@
 import { Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
 import BookCallButton from '@/components/shared/BookCallButton';
+import FormTestimonial from '@/components/shared/FormTestimonial';
 import { MotionCard, MotionStagger, MotionStaggerItem } from '@/components/shared/motion';
 import { CONTACT_CHANNELS, CONTACT_OFFICES } from '@/constants/component/contact-data';
 
-export default function ContactChannel() {
+interface ContactChannelProps {
+  /** Client whose testimonial sits beside the form (a name from LANDING_TESTIMONIALS). */
+  testimonialName?: string;
+}
+
+export default function ContactChannel({
+  testimonialName = 'Daniel Spence',
+}: ContactChannelProps = {}) {
   return (
     <div className="space-y-xl lg:col-span-5">
       <MotionStagger className="space-y-md">
@@ -48,6 +56,8 @@ export default function ContactChannel() {
           </MotionStaggerItem>
         ))}
       </MotionStagger>
+
+      <FormTestimonial name={testimonialName} />
 
       <MotionStagger className="grid grid-cols-1 gap-md sm:grid-cols-2">
         {CONTACT_OFFICES.map((office) => (

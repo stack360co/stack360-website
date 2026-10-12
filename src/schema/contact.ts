@@ -15,8 +15,6 @@ export const contactSchema = z.object({
     .min(1, 'Please enter your email address.')
     .max(254, 'Your email address is too long.'),
 
-  company: z.string().trim().max(60, 'Company name is too long.').optional(),
-
   message: z
     .string()
     .trim()
