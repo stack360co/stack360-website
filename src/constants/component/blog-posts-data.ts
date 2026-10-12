@@ -37,6 +37,52 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: 'custom-crm-or-gohighlevel',
+    title: 'Custom CRM or GoHighLevel? When to Build and When to Configure',
+    seoTitle: 'Custom CRM or GoHighLevel? When to Build One',
+    author: { name: 'Waris Mustafa', role: 'SEO and Web Developer' },
+    reviewedBy: 'Azmat Rana',
+    excerpt:
+      'When to configure GoHighLevel and when to build a custom CRM, from the sales automation we set up for a US bookkeeping firm.',
+    date: '2026-10-12',
+    category: 'CRM',
+    readTime: '5 min',
+    intro:
+      'If your sales run on ads, forms, calls and fast follow-ups, configure GoHighLevel instead of building a CRM. We have built sales automation in GoHighLevel that takes leads from Meta, LinkedIn and Google and answers them straight away. It also tells the ad platforms which leads turned into customers. We have also built custom CRMs, for businesses whose clients work inside the system. Here is how we decide between the two.',
+    sections: [
+      {
+        heading: 'What GoHighLevel does well',
+        body: 'Leads arrive straight from the ad platforms. Facebook and Instagram lead forms and LinkedIn Lead Gen forms land in GoHighLevel as contacts, and each submission can start a workflow the moment it arrives.\n\nWorkflows handle the follow-up. A workflow can assign the lead to a rep, open an opportunity in the pipeline and send a text or email straight away. It can stop the nurture sequence as soon as the lead replies.\n\nResults go back to the ads. The Meta Conversions API action sends events from the server, so browser restrictions and ad blockers don’t hide them. It can report pipeline stage changes, and a purchase stage can carry its value. The Add to Google Ads action sends offline conversions, matched to the original ad click. When the platforms see which leads became clients, they find more people like them.',
+      },
+      {
+        heading: 'What we set up for a US bookkeeping firm',
+        body: 'Our client is a US bookkeeping firm. HubSpot was the first option on the table, but at the tiers the firm needed, it cost too much for a business its size. GoHighLevel’s starter plan already had native connections to Meta, LinkedIn and Google, so we built on that.\n\nLeads come in from five places: Facebook and Instagram lead forms, LinkedIn Lead Gen forms, Google Ads, the website’s forms and phone calls. Every new lead starts the same workflow.\n\n1. A text and an email go out straight away, so nobody waits for a rep to notice.\n\n2. The lead is assigned to a member of the team and opens an opportunity in the pipeline.\n\n3. The nurture sequence stops as soon as the lead replies.\n\n4. The lead moves from new to qualified to booked to client. Each stage goes back to Meta through the Conversions API, and to Google Ads as an offline conversion.',
+      },
+      {
+        heading: 'Where GoHighLevel stops fitting',
+        body: 'Your clients work inside the system. On Klingit, clients, designers, managers and admins share one platform, and clients check their own project status. That needed a custom build.\n\nSupport is the product. Contakti brings email, chat, SMS and voice into one hub and routes each ticket to the right department with AI, using its own rules.\n\nYour process isn’t a sales funnel. NPTAAS schedules auditors, logs compliance points and generates final reports. Pipeline stages can’t model that.',
+      },
+      {
+        heading: 'The middle path',
+        body: 'Many businesses keep GoHighLevel for marketing and sales and build only the part it can’t do. GoHighLevel can send any contact’s data to another system with a webhook, and receive it back the same way. That keeps a custom portal or support hub in sync.',
+      },
+    ],
+    conclusion: {
+      heading: 'Common questions',
+      paragraphs: [
+        'Can a custom CRM sync with GoHighLevel? Yes. GoHighLevel can send a contact’s data to another system with a webhook and receive data back the same way.',
+        'Who owns the data and the code? With a custom build, the client owns both.',
+        'How do you move contacts and history across? We map every field, clean out duplicates and move a test batch for you to check, then move the rest.',
+        'Can different roles see different things? In a custom build, yes. Klingit gives clients, designers, managers and admins their own views.',
+      ],
+    },
+    related: [
+      { label: 'CRM development', href: '/what-we-build/crm' },
+      { label: 'Business process automation', href: '/what-we-build/automation' },
+      { label: 'SEO and Google Ads', href: '/what-we-build/digital-marketing' },
+    ],
+  },
+  {
     slug: 'luxe-excursions-booking-planner',
     title: 'Our Booking Planner Refused 75% of Trips. The Fix Was the Data.',
     seoTitle: 'Tour Booking System Case Study: Luxe Excursions',

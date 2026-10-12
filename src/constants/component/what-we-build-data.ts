@@ -1112,6 +1112,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     slug: 'crm',
     reviewer: FOUNDER_REVIEWER,
     updated: '2026-10-12',
+    reading: {
+      href: '/blog/custom-crm-or-gohighlevel',
+      label: 'Custom CRM or GoHighLevel? When to build and when to configure',
+    },
     hero: {
       eyebrow: 'What We Build · CRM',
       title: 'Custom CRM Development',
