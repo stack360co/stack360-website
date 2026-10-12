@@ -550,8 +550,15 @@ export const seo = {
   workWithUsHire: pageMeta({
     title: 'Hire Developers: Shortlists Within 2 Days',
     description:
-      'Hire vetted full-time remote software engineers: React, React Native, Swift, Flutter, Node.js, Ruby on Rails, Angular, Python and .NET. Shortlists in 2 days.',
+      'Hire vetted full-time developers or a dedicated team: React, React Native, Swift, Flutter, Node.js, Rails, Angular, Python, Vue and .NET. Shortlists in 2 days.',
     path: '/work-with-us/hire',
+  }),
+
+  workWithUsDedicatedTeam: pageMeta({
+    title: 'Hire a Dedicated Development Team',
+    description:
+      'Single engineers or a managed dedicated team with a project manager, QA, UI/UX and DevOps. Vetted with four checks and shortlisted within 2 days.',
+    path: '/work-with-us/hire/dedicated-team',
   }),
 
   workWithUsCareers: pageMeta({

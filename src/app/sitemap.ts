@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getBlogSlugs } from '@/constants/component/blog-posts-data';
+import { getBlogPost, getBlogSlugs } from '@/constants/component/blog-posts-data';
 import { getHireTechSlugs } from '@/constants/component/hire-tech-data';
 import { getCaseStudySlugs } from '@/constants/component/our-work-case-studies-data';
 import { CAPABILITY_PAGES, type CapabilitySlug } from '@/constants/component/what-we-build-data';
@@ -48,13 +48,20 @@ const ROUTES = [
   '/work-with-us/software-partner',
   '/work-with-us/hire',
   ...getHireTechSlugs().map((slug) => `/work-with-us/hire/${slug}`),
+  '/work-with-us/hire/dedicated-team',
   '/work-with-us/careers',
   '/privacy',
   '/terms',
 ] as readonly string[];
 
-/** Service pages carry the date their content last changed; everything else uses the site date. */
+/** Service pages and posts carry the date their content last changed; everything else uses the site date. */
 function pageLastModified(path: string): Date {
+  if (path.startsWith('/blog/')) {
+    const post = getBlogPost(path.replace('/blog/', ''));
+    if (post) {
+      return new Date(post.updated ?? post.date);
+    }
+  }
   const slug = path.replace('/what-we-build/', '') as CapabilitySlug;
   const updated = path.startsWith('/what-we-build/') ? CAPABILITY_PAGES[slug]?.updated : undefined;
   return updated ? new Date(updated) : LAST_MODIFIED;

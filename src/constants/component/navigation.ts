@@ -251,8 +251,13 @@ export const NAVIGATION_DATA: NavSection[] = [
           },
           {
             title: 'Hire Talent',
-            desc: 'Select skills and engagement length — get shortlists of vetted full-time engineers.',
+            desc: 'Select skills and engagement length, and get shortlists of vetted full-time engineers.',
             href: '/work-with-us/hire',
+          },
+          {
+            title: 'Dedicated Teams',
+            desc: 'Engineers plus a project manager, QA, design and DevOps when you need them.',
+            href: '/work-with-us/hire/dedicated-team',
           },
         ],
       },

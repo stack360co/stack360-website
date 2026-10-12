@@ -1,6 +1,8 @@
 import { ArrowRight, Building2, Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
+import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
 import HireForm from '@/components/pages/work-with-us/hire/HireForm';
+import HireInfoSection from '@/components/pages/work-with-us/hire/HireInfoSection';
 import BrandIcon from '@/components/shared/BrandIcon';
 import MotionCard from '@/components/shared/motion/MotionCard';
 import MotionSection from '@/components/shared/motion/MotionSection';
@@ -11,7 +13,16 @@ import {
 } from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
-import { HIRE_CTA, HIRE_HERO, HIRE_PROMISE } from '@/constants/component/hire-talent-data';
+import { HIRE_HUB_FAQ_LIST } from '@/constants/component/hire-hub-faqs';
+import {
+  HIRE_CTA,
+  HIRE_HERO,
+  HIRE_HUB_STEPS,
+  HIRE_PROMISE,
+  HIRE_TEAM_OPTIONS,
+  HIRE_TERMS,
+  HIRE_VETTING_CHECKS,
+} from '@/constants/component/hire-talent-data';
 import { HIRE_TECH_PAGES } from '@/constants/component/hire-tech-data';
 import ContactChannel from '../../contact/ContactChannel';
 
@@ -38,14 +49,14 @@ export default function HireTalentPage() {
             <MotionStagger>
               <MotionStaggerItem>
                 <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
-                  Recruit the top 1% of elite software engineers
+                  Vetted engineers, shortlisted in 2 days
                 </h2>
               </MotionStaggerItem>
               <MotionStaggerItem>
                 <p className="mt-md max-w-prose text-pretty text-sm leading-relaxed text-neutral-600">
-                  English-speaking, full-time remote engineers for partners and client teams — from
-                  designer to senior developer, architect, tech lead, or director. Overlap with U.S.
-                  time zones when your cadence needs it.
+                  English-speaking, full-time remote engineers for client teams, from designers and
+                  developers to architects and tech leads. Each one passes four checks before you
+                  meet them, and they overlap at least 4 hours with a US working day.
                 </p>
               </MotionStaggerItem>
               <MotionStaggerItem>
@@ -68,6 +79,31 @@ export default function HireTalentPage() {
           </MotionReveal>
         </div>
       </MotionSection>
+
+      <HireInfoSection
+        title="How hiring a developer works"
+        intro="Full-time remote engineers, for a few months or for years."
+        items={HIRE_HUB_STEPS}
+        steps
+        tinted
+      />
+
+      <HireInfoSection
+        title="How we vet every engineer"
+        intro="Four checks happen before an engineer reaches your shortlist, so your interview can focus on fit."
+        items={HIRE_VETTING_CHECKS}
+        columns={4}
+      />
+
+      <HireInfoSection
+        title="One engineer or a whole team"
+        intro="Add engineers to the team you already run, or take a managed team that runs its own sprints."
+        items={HIRE_TEAM_OPTIONS}
+        columns={2}
+        tinted
+      />
+
+      <HireInfoSection title="Hours, location and contracts" items={HIRE_TERMS} columns={4} />
 
       <MotionSection className="border-b border-neutral-200 py-2xl">
         <div className="site-container">
@@ -104,6 +140,28 @@ export default function HireTalentPage() {
               </MotionStaggerItem>
             ))}
           </MotionStagger>
+        </div>
+      </MotionSection>
+
+      <MotionSection className="border-b border-neutral-200 py-2xl">
+        <div className="site-container max-w-3xl">
+          <MotionStagger className="mb-xl">
+            <MotionStaggerItem>
+              <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
+                Questions about hiring developers
+              </h2>
+            </MotionStaggerItem>
+          </MotionStagger>
+          <FaqAccordion items={HIRE_HUB_FAQ_LIST} />
+          <p className="mt-lg text-sm text-neutral-600">
+            Further reading:{' '}
+            <Link
+              href="/blog/how-to-vet-remote-developers"
+              className="font-semibold text-primary transition-colors hover:text-primary-dark"
+            >
+              How to vet a remote developer before they join your team
+            </Link>
+          </p>
         </div>
       </MotionSection>
 

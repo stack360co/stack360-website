@@ -5,9 +5,9 @@ export const SITE_NAME = 'Stack360';
 /** Page title / brand line from https://www.stack360.co/ */
 export const SITE_TAGLINE = 'Your Reliable Software Development Agency';
 
-/** Meta description aligned with the live Stack360 homepage positioning. */
+/** Company description for the homepage meta and Organization schema; the same line as the footer. */
 export const SITE_DESCRIPTION =
-  'Stack360 provides world-class software development and staff augmentation services. Build faster, scale smarter, and deliver exceptional results with our expert tech talent.';
+  'Stack360 is a software development company with its team in Lahore, building software and placing dedicated developers for US and UK companies since 2019.';
 
 /** Sales inbox — display value and mailto target. */
 export const SITE_EMAIL = 'sales@stack360.co';

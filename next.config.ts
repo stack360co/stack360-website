@@ -178,7 +178,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/hire-talent/xamarin-developer',
-        destination: '/work-with-us/hire/react-native-developers',
+        destination: '/work-with-us/hire/dotnet-developers',
         permanent: true,
       },
       {

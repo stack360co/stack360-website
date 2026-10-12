@@ -160,7 +160,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -301,7 +301,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -419,7 +419,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -553,7 +553,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -662,7 +662,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -807,7 +807,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -921,7 +921,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1047,7 +1047,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1172,7 +1172,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1286,7 +1286,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
         answer:
-          'Yes. Our engineers work full time on your project and overlap with US time zones when your schedule needs it.',
+          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1384,6 +1384,53 @@ export const HIRE_REPLACEMENT_FAQ: HireTechFaq = {
   question: 'What if the engineer isn’t the right fit?',
   answer: 'We replace them and handle the handover, so the work keeps moving.',
 };
+
+/** Questions on the hire hub. */
+export const HIRE_HUB_FAQS: readonly HireTechFaq[] = [
+  {
+    id: 'speed',
+    question: 'How fast can we hire a developer?',
+    answer: 'We send a shortlist within 2 days, and hiring can take as little as a week.',
+  },
+  {
+    id: 'location',
+    question: 'Where do your engineers work?',
+    answer:
+      'From our team in Lahore, Pakistan, for clients in the US and UK. They overlap at least 4 hours with a US working day.',
+  },
+  {
+    id: 'team',
+    question: 'Can we hire a whole team?',
+    answer:
+      'Yes. A dedicated team can include engineers, a project manager, a QA engineer, a UI/UX designer and a DevOps engineer.',
+  },
+];
+
+/** Questions on the dedicated team page. */
+export const DEDICATED_TEAM_FAQS: readonly HireTechFaq[] = [
+  {
+    id: 'vs-staff-aug',
+    question: 'What is the difference between a dedicated team and staff augmentation?',
+    answer:
+      'With staff augmentation, engineers join your team and you manage them. A managed dedicated team adds a project manager who runs the sprints and reporting, with QA, design and DevOps as needed.',
+  },
+  {
+    id: 'grow',
+    question: 'Can we start with one engineer and grow?',
+    answer: 'Yes. Some clients start with one or two engineers and add roles as the work grows.',
+  },
+  {
+    id: 'location',
+    question: 'Where does the team work?',
+    answer:
+      'From our team in Lahore, Pakistan. The team overlaps at least 4 hours with a US working day.',
+  },
+  {
+    id: 'contract',
+    question: 'Is there a long-term contract?',
+    answer: 'No. Engagements start without one, and the notice period is agreed in each contract.',
+  },
+];
 
 /** Ownership answer shown on every hire page, worded the same everywhere. */
 export const HIRE_OWNERSHIP_FAQ: HireTechFaq = {

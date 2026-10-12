@@ -2,6 +2,7 @@
 
 export type BlogSection = {
   heading: string;
+  /** Paragraphs split by a blank line. Inline links use [text](/path). */
   body: string;
 };
 
@@ -25,6 +26,8 @@ export type BlogPost = {
   related?: readonly { label: string; href: string }[];
   excerpt: string;
   date: string;
+  /** Set when the post was substantially rewritten; shown on the page and used as dateModified. */
+  updated?: string;
   category: string;
   readTime: string;
   intro: string;
@@ -56,7 +59,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'MAUI, Flutter or React Native?',
-        body: 'Microsoft’s guidance is that Xamarin.Forms projects should move to .NET MAUI. The projects don’t need to be rewritten, and a multi-project solution doesn’t need to become a single project. Your C# models, view models, services and most of your XAML carry over.\n\nFlutter or React Native means rebuilding every screen in another language. That can still be the right call if a redesign was planned anyway, or if your web team already works in React. We build in all three, so we read the code before recommending one.',
+        body: 'Microsoft’s guidance is that Xamarin.Forms projects should move to .NET MAUI. The projects don’t need to be rewritten, and a multi-project solution doesn’t need to become a single project. Your C# models, view models, services and most of your XAML carry over.\n\nFlutter or React Native means rebuilding every screen in another language. That can still be the right call if a redesign was planned anyway, or if your web team already works in React. We build in all three, and can add [.NET developers](/work-with-us/hire/dotnet-developers) to your team for the move.',
       },
       {
         heading: 'Step 1: Get the Xamarin app ready first',
@@ -112,7 +115,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     category: 'Data',
     readTime: '6 min',
     intro:
-      'Most software projects we take on need three to six months to build. Simple ones, such as a GoHighLevel sales setup or a Xamarin to .NET MAUI migration, take one to three. We checked that against the 28 projects in our portfolio. The portfolio records how long we worked on each one, including work after launch.',
+      'Most [custom software](/what-we-build/custom-software) projects we take on need three to six months to build. Simple ones, such as a GoHighLevel sales setup or a Xamarin to .NET MAUI migration, take one to three. We checked that against the 28 projects in our portfolio. The portfolio records how long we worked on each one, including work after launch.',
     sections: [
       {
         heading: 'The numbers',
@@ -182,7 +185,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Interview the person, not the agency',
-        body: 'Ask to interview the developer who will actually do the work. Talk through something they built: what they chose, what went wrong and what they would change. Someone who did the work can answer follow-up questions without notes.\n\nWith us, you get a shortlist within 2 days, and you interview the engineers yourself before anyone starts.',
+        body: 'Ask to interview the developer who will actually do the work. Talk through something they built: what they chose, what went wrong and what they would change. Someone who did the work can answer follow-up questions without notes.\n\nWhen you [hire developers](/work-with-us/hire) through us, you get a shortlist within 2 days, and you interview the engineers yourself before anyone starts.',
       },
       {
         heading: 'Check which part they built',
@@ -194,7 +197,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Agree the working hours',
-        body: 'Write down which hours overlap with your team, and who answers if something breaks outside them. A few shared hours a day cover standups, reviews and quick questions.\n\nOur engineers work full time on your project and overlap with US hours when your schedule needs it.',
+        body: 'Write down which hours overlap with your team, and who answers if something breaks outside them. A few shared hours a day cover standups, reviews and quick questions.\n\nOur engineers work full time on your project, from our team in Lahore, and overlap at least 4 hours with a US working day.',
       },
       {
         heading: 'Settle access and ownership before day one',
@@ -202,7 +205,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Decide how long you need them',
-        body: 'Be clear whether you need someone for a few months or for years, because it changes who fits. We place engineers for short engagements under six months, for six to twelve months, and in long-term roles. There is no long-term contract to start. If someone turns out not to be the right fit, we replace them and handle the handover.',
+        body: 'Be clear whether you need someone for a few months or for years, because it changes who fits. We place single engineers or a [dedicated development team](/work-with-us/hire/dedicated-team), for under six months, six to twelve months or long-term roles. There is no long-term contract to start. If someone turns out not to be the right fit, we replace them and handle the handover.',
       },
     ],
     conclusion: {
@@ -240,11 +243,11 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     sections: [
       {
         heading: 'When we pick React Native',
-        body: 'React Native apps are written in JavaScript or TypeScript and render real native components. Developers who know React can work on them, and some code can be shared with a React website.\n\nWe recommended React Native for Nextflag, a social travel app with a map of location flags, following and wishlists. Orchyd, a private cycle and fertility tracker with an AI assistant, is React Native too. Trusted Tastes, a restaurant app built on recommendations from people you follow, uses React on the web and React Native on mobile.',
+        body: 'React Native apps are written in JavaScript or TypeScript and render real native components. Developers who know React can work on them, and some code can be shared with a React website.\n\nWe recommended [React Native](/work-with-us/hire/react-native-developers) for Nextflag, a social travel app with a map of location flags, following and wishlists. Orchyd, a private cycle and fertility tracker with an AI assistant, is React Native too. Trusted Tastes, a restaurant app built on recommendations from people you follow, uses React on the web and React Native on mobile.',
       },
       {
         heading: 'When we pick Flutter',
-        body: 'Flutter draws every pixel itself with its own rendering engine. A custom design looks identical on iOS and Android, with no native view in between. Apps are written in Dart.\n\nWe built Houzi, a real estate app in Flutter, with 360° views of each property. StoreBevy is a white-label app in Flutter: one codebase, configured for each small retailer that wants its own branded store app.',
+        body: 'Flutter draws every pixel itself with its own rendering engine. A custom design looks identical on iOS and Android, with no native view in between. Apps are written in Dart.\n\nOur [Flutter developers](/work-with-us/hire/flutter-developers) built Houzi, a real estate app with 360° views of each property. StoreBevy is a white-label app in Flutter: one codebase, configured for each small retailer that wants its own branded store app.',
       },
       {
         heading: 'When we go native',
@@ -326,7 +329,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
         '1. Upgrade one major version at a time, and keep the app running after each step.',
         '2. Check your third-party libraries before you start. They decide how long it takes.',
         '3. Add server-side rendering if search matters to the business, and guard any code that expects a browser.',
-        '4. Don’t stop there. Angular ships a major version about every six months, so plan the next upgrade.',
+        '4. Don’t stop there. Angular ships a major version about every six months, so plan the next upgrade. Our [Angular developers](/work-with-us/hire/angular-developers) can take it on.',
       ],
     },
     related: [
@@ -371,7 +374,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'How to plan a Vue 3 move',
-        body: '1. List every plugin and check it has a Vue 3 version. Replace the ones that don’t before you start.\n\n2. Use the migration build, @vue/compat, and fix its warnings one area at a time.\n\n3. Don’t change your store unless you need to. Vuex works with Vue 3, and you can move to Pinia later.\n\n4. Keep the app releasable throughout, and move one section at a time.',
+        body: '1. List every plugin and check it has a Vue 3 version. Replace the ones that don’t before you start.\n\n2. Use the migration build, @vue/compat, and fix its warnings one area at a time.\n\n3. Don’t change your store unless you need to. Vuex works with Vue 3, and you can move to Pinia later.\n\n4. Keep the app releasable throughout, and move one section at a time. Our [Vue.js developers](/work-with-us/hire/vue-developers) have made this move before.',
       },
     ],
     conclusion: {
@@ -425,7 +428,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Where else this works',
-        body: 'The same pattern fits any business with its own facts: product catalogs, policies, contracts or support history. The model handles the language, and your data supplies the facts.\n\nIt doesn’t remove the need for checks. If the source data is wrong, the answer will be wrong too, so someone has to own the data.',
+        body: 'The same pattern fits any [AI feature](/what-we-build/ai-solutions) built on a business’s own facts: product catalogs, policies, contracts or support history. The model handles the language, and your data supplies the facts.\n\nIt doesn’t remove the need for checks. If the source data is wrong, the answer will be wrong too, so someone has to own the data.',
       },
     ],
     conclusion: {
@@ -455,7 +458,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     category: 'Marketplaces',
     readTime: '5 min',
     intro:
-      'Marketplace payments are harder than a normal checkout, because money moves between three parties: the buyer, the seller and you. Stripe handles most of the hard parts, but each marketplace needs its own setup. Here is what we built on six platforms, from security deposits to payouts.',
+      'Marketplace payments are harder than a normal checkout, because money moves between three parties: the buyer, the seller and you. Stripe handles most of the hard parts, but every [marketplace](/what-we-build/marketplace-development) needs its own setup. Here is what we built on six platforms, from security deposits to payouts.',
     sections: [
       {
         heading: 'Paying sellers with Stripe Connect',
@@ -520,7 +523,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     sections: [
       {
         heading: 'How to book one',
-        body: 'You can book a 20-minute call from our contact page, or send us a message. We reply within one business day.\n\nA few lines beforehand help: what the software should do, who will use it and any deadline. You don’t need a written specification.\n\nFrom our side, a founder and a senior engineer join the call, so business and technical questions get answered on the spot.',
+        body: 'You can book a 20-minute call from our [contact page](/contact), or send us a message. We reply within one business day.\n\nA few lines beforehand help: what the software should do, who will use it and any deadline. You don’t need a written specification.\n\nFrom our side, a founder and a senior engineer join the call, so business and technical questions get answered on the spot.',
       },
       {
         heading: 'What helps to have ready',
@@ -536,7 +539,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'What you get after the call',
-        body: 'Within two business days, you get three things: a recommended team, a timeline and a delivery plan with clear milestones. If you want engineers to join your own team instead, you get a shortlist within 2 days and interview them yourself.\n\nMost of our projects take three to six months to build, and simpler ones take one to three. The plan says where yours sits, and why.',
+        body: 'Within two business days, you get three things: a recommended team, a timeline and a delivery plan with clear milestones. If you want engineers to join your own team instead, you get a shortlist within 2 days and interview them yourself.\n\nMost of our [custom software](/what-we-build/custom-software) projects take three to six months to build, and simpler ones take one to three. The plan says where yours sits, and why.',
       },
       {
         heading: 'Once work starts',
@@ -587,7 +590,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Why rewriting components rarely helps',
-        body: 'A component rewrite changes how a page draws. If the page is waiting on a slow API, it will wait just as long after the rewrite. That is why our engineers check the API and the database before touching React code.\n\nThe same applies to any framework. On AutoBuffy, an Angular store, part search was slow because of very large database tables. Caching alone didn’t help, so we added Elasticsearch, refined the database structure and added indexes.',
+        body: 'A component rewrite changes how a page draws. If the page is waiting on a slow API, it will wait just as long after the rewrite. That is why our [React developers](/work-with-us/hire/react-developers) check the API and the database before touching React code.\n\nThe same applies to any framework. On AutoBuffy, an Angular store, part search was slow because of very large database tables. Caching alone didn’t help, so we added Elasticsearch, refined the database structure and added indexes.',
       },
       {
         heading: 'What to check first',
@@ -624,7 +627,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     category: 'CRM',
     readTime: '5 min',
     intro:
-      'If your sales run on ads, forms, calls and fast follow-ups, configure GoHighLevel instead of building a CRM. We have built sales automation in GoHighLevel that takes leads from Meta, LinkedIn and Google and answers them straight away. It also tells the ad platforms which leads turned into customers. We have also built custom CRMs, for businesses whose clients work inside the system. Here is how we decide between the two.',
+      'If your sales run on ads, forms, calls and fast follow-ups, configure GoHighLevel instead of building a CRM. We have built sales automation in GoHighLevel that takes leads from Meta, LinkedIn and Google and answers them straight away. It also tells the ad platforms which leads turned into customers. We have also built [custom CRMs](/what-we-build/crm), for businesses whose clients work inside the system. Here is how we decide between the two.',
     sections: [
       {
         heading: 'What GoHighLevel does well',
@@ -670,7 +673,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     category: 'Case Study',
     readTime: '6 min',
     intro:
-      'Luxe Excursions sells luxury tours, packages and rentals from a shop in Costa Adeje, Tenerife. We built its website, booking platform and staff CMS, and we run its SEO, Google Ads and Business Profile. The biggest gain didn’t come from new code. It came from checking the data the old booking planner trusted.',
+      'Luxe Excursions sells luxury tours, packages and rentals from a shop in Costa Adeje, Tenerife. We built its website, booking platform and staff CMS, and we run its [SEO, Google Ads](/what-we-build/digital-marketing) and Business Profile. The biggest gain didn’t come from new code. It came from checking the data the old booking planner trusted.',
     sections: [
       {
         heading: 'The planner that said no',
@@ -723,282 +726,326 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: 'staff-augmentation-vs-outsourcing',
     title: 'Staff Augmentation vs. Outsourcing',
+    reviewedBy: 'Azmat Rana',
     excerpt:
-      'Staff augmentation adds engineers to your team; outsourcing hands a partner the outcome. Here is how to tell which model fits your project, budget, and risk.',
+      'Staff augmentation adds engineers to your team; outsourcing hands a partner the outcome. How to choose, and how each works when you work with us.',
     date: '2026-10-06',
+    updated: '2026-10-12',
     category: 'Delivery',
-    readTime: '7 min',
+    readTime: '4 min',
     intro:
-      'When a roadmap outgrows the team, most companies in the US and UK reach for one of two models: augment the team with external engineers, or outsource the project to a partner who owns delivery. Both work. Both fail when they are chosen for the wrong reasons. The difference comes down to who owns the outcome, who manages the work day to day, and how much of your product knowledge needs to stay inside the building.',
+      'With staff augmentation, engineers join your team and you direct the work. With outsourcing, a partner owns delivery and you review results against milestones. The deciding question is who will manage the work every day. We offer both, plus a managed team in between, so here is how we help clients choose.',
     sections: [
       {
-        heading: 'What staff augmentation actually means',
-        body: 'With staff augmentation, external engineers join your team and work inside your process: your backlog, your standups, your code review, your definition of done. You keep product and technical leadership, and you decide what gets built and how. The partner is responsible for finding, vetting, and supporting the right people; you are responsible for directing them. It is the closest thing to hiring without the hiring cycle, and it works best when you already have strong engineering leadership and simply need more capacity or a specific skill.',
+        heading: 'Staff augmentation: you lead, we supply the engineers',
+        body: 'Our engineers join your standups, repo and tools full time. You keep product and technical leadership, and you decide what gets built and how.\n\nWe send a shortlist within 2 days. Every engineer has passed a technical interview, a coding test, a review of past work and an English check, and you interview them yourself. They overlap at least 4 hours with a US working day. If someone isn’t the right fit, we replace them and handle the handover. Our [hire developers](/work-with-us/hire) page shows how it works.',
       },
       {
-        heading: 'What outsourcing actually means',
-        body: 'With project outsourcing, you agree a scope, a timeline, and an outcome, and the partner owns delivery. They bring their own project management, architecture decisions, and QA, and you review progress against milestones. The partner carries more of the delivery risk, which is why scope and acceptance criteria matter so much more. Outsourcing suits well-defined builds, such as a new product, a platform migration, or an internal tool, where you want a finished result more than extra hands.',
+        heading: 'Outsourcing: we own delivery',
+        body: 'You describe the result, and we plan and build it. A founder and a senior engineer join the discovery call. Within two business days you get a recommended team, a timeline and a delivery plan with clear milestones.\n\nAfter that, you see working software in a weekly demo, checked against the plan. This suits a new product, a migration or an internal system that can be built and handed over. Our [custom software development](/what-we-build/custom-software) page shows the projects behind it.',
       },
       {
-        heading: 'When staff augmentation is the better fit',
-        body: 'Choose augmentation when the work is ongoing rather than a single project, when it touches systems only your team understands, or when you need to move fast on a skill you do not have in-house, such as cloud infrastructure, mobile, or AI integration. It also suits teams that want knowledge to stay with them: augmented engineers work in your repositories and your documentation, so nothing is locked inside a vendor. The trade-off is management time. Someone on your side needs to plan sprints, review work, and make technical calls.',
+        heading: 'The middle option: a managed dedicated team',
+        body: 'Some clients want a team that stays with their product, without managing each engineer. A [dedicated development team](/work-with-us/hire/dedicated-team) gives you engineers plus, when needed, a project manager, QA engineer, UI/UX designer and DevOps engineer. You set the priorities, and the project manager runs the sprints and the reporting.',
       },
       {
-        heading: 'When outsourcing is the better fit',
-        body: 'Choose outsourcing when you can describe the result clearly, when you do not have the leadership bandwidth to direct more engineers, or when the work is separate enough from your core systems to be built and handed over. It is also a good option when you need a full cross-functional team at once, with design, frontend, backend, QA, and DevOps, and do not want to assemble it piece by piece. The trade-off is control: changes to scope cost more, and you need clear handover and documentation at the end.',
+        heading: 'How to choose',
+        body: '1. Augment if you have engineering leadership and need capacity, such as a CTO adding a React or Swift engineer.\n\n2. Outsource if you need a result and nobody has time to direct engineers, which is common for non-technical founders and operations leaders.\n\n3. Take a managed dedicated team if the work is ongoing but you can’t manage the team yourself.\n\n4. If you can’t tell yet, book a discovery call. Choosing the model is part of what it covers.',
       },
       {
-        heading: 'Cost: compare total cost, not day rates',
-        body: 'Day rates are the easiest number to compare and the least useful. With augmentation, the real cost includes the management time your team spends directing the work and the speed at which new engineers become productive. With outsourcing, it includes the partner’s project management overhead, the cost of scope changes, and the handover at the end. A fair comparison asks what it costs to ship the outcome you need, including your own team’s time, rather than what an engineer costs per day.',
-      },
-      {
-        heading: 'Risk, IP, and security',
-        body: 'Whichever model you choose, settle the basics before work starts. Your contract should assign intellectual property in the code to you, define confidentiality, and set out how access to systems and data is granted and removed. For augmentation, make sure engineers work in your accounts and repositories rather than the partner’s. For outsourcing, agree how code, credentials, and documentation are handed over, and do not wait until the end of the project to receive them. UK and EU teams should also confirm how personal data is handled under GDPR.',
-      },
-      {
-        heading: 'Hybrid models are common',
-        body: 'Many teams end up in between: an outsourced pod builds a new product while augmented engineers strengthen the core team, or a dedicated team works inside your process but owns a defined area of the product. A dedicated pod, a small team that stays together and works as an extension of your organization, is often the most practical middle ground. You keep product direction, and the partner keeps the team stable and productive.',
+        heading: 'What stays the same either way',
+        body: 'You own all the code and the intellectual property in it. There is no long-term contract to start, and the notice period is agreed in each contract. With staff augmentation, engineers work in your accounts and repositories. On a project we deliver, ask for the repository to sit in your account from day one.\n\nWhichever model you choose, expect named engineers, working software every week and access you can remove in minutes. Our checklist for [vetting a remote developer](/blog/how-to-vet-remote-developers) covers the details.',
       },
     ],
     conclusion: {
-      heading: 'How to decide',
+      heading: 'Common questions',
       paragraphs: [
-        'Ask three questions. Who will own the outcome? Who has the time to manage the work every day? How much of this knowledge must stay in your team? If you have the leadership and need capacity, augment. If you need a result and do not have the bandwidth to direct it, outsource. If the honest answer is somewhere in between, a dedicated pod is usually the right starting point.',
-        'Stack360 works in all three ways: augmenting teams with vetted engineers, delivering projects end to end, and running dedicated pods for longer-term work, with no long-term contract required to start.',
+        'Is staff augmentation cheaper than outsourcing? It depends on how much management time you have. Compare what it costs to ship the result, including your own team’s time, not the rate per engineer.',
+        'How fast can we start? We send a shortlist within 2 days, and you can hire in as fast as a week.',
+        'Can we change models later? Yes. Engagements start without a long-term contract, so the setup can change as the work does.',
+        'Who owns the code? You do, including the intellectual property in it.',
       ],
     },
+    related: [
+      { label: 'Hire developers', href: '/work-with-us/hire' },
+      { label: 'Dedicated development team', href: '/work-with-us/hire/dedicated-team' },
+      { label: 'Custom software development', href: '/what-we-build/custom-software' },
+      { label: 'How to vet a remote developer', href: '/blog/how-to-vet-remote-developers' },
+    ],
   },
   {
     slug: 'how-to-choose-a-software-development-partner',
     title: 'How to Choose a Software Development Partner',
+    reviewedBy: 'Azmat Rana',
     excerpt:
-      'Ten questions that separate a dependable software development partner from an expensive mistake, from who writes your code to what happens at handover.',
+      'Ten questions to ask a software development partner before you sign, what a good answer sounds like, and how we answer each one ourselves.',
     date: '2026-10-06',
+    updated: '2026-10-12',
     category: 'Delivery',
-    readTime: '8 min',
+    readTime: '4 min',
     intro:
-      'Choosing a software development partner is one of the highest-stakes decisions a startup founder, operations leader, or CTO makes. Portfolios look similar, every proposal promises quality, and the real differences only appear months into the project. These ten questions are designed to surface those differences before you sign, whether you are hiring a partner in your own country or working with a distributed team across time zones.',
+      'The right partner is the one still shipping working software and telling you the truth in month six. These ten questions surface that before you sign. For each one, we say what a good answer sounds like and how we answer it ourselves, so you can hold us to it.',
     sections: [
       {
         heading: '1. Who will actually work on our project?',
-        body: 'Ask to meet the engineers and the lead who will be assigned, not only the sales team. Ask how long they have been with the company and whether the same people will stay on the project throughout. A strong partner can tell you who will do the work and what happens if someone leaves. A vague answer here is the most common early warning sign.',
+        body: 'A good partner names the engineers and lets you meet them. A vague answer here is the most common early warning sign.\n\nOurs: you interview every engineer before they start. Each one has already passed a technical interview with a senior engineer, a coding test, a review of past work and an English check.',
       },
       {
         heading: '2. Have you built something like this before?',
-        body: 'Look for relevant experience rather than a long client list: the same kind of system, scale, or industry. Ask for a case study you can discuss in detail, including what went wrong and how it was handled. Partners who can talk honestly about difficult moments are usually the ones who handle them well.',
+        body: 'Look for the same kind of system or scale, and a case study you can question in detail.\n\nOurs: our [case studies](/our-work/case-studies) list the team size and hours behind each build, from 1,232 hours on Truck-4 to 28,000 on AutoBuffy.',
       },
       {
         heading: '3. How do you turn our idea into a plan?',
-        body: 'A good partner starts with discovery: understanding your goals, users, constraints, and existing systems before quoting. Be cautious of fixed quotes produced after a single call for anything complex. You should come away with a clear scope, a delivery plan with milestones, and a list of assumptions and risks.',
+        body: 'Be wary of a fixed plan after one short call on anything complex. You should get a scope, milestones and the assumptions behind them.\n\nOurs: a founder and a senior engineer join the [discovery call](/blog/software-discovery-call). Within two business days you get a recommended team, a timeline and a delivery plan with clear milestones.',
       },
       {
         heading: '4. How will we see progress?',
-        body: 'Ask how often you will see working software, not status reports. Weekly or fortnightly demos of real, deployed features are the clearest signal that a project is on track. Agree up front where the code lives, who has access, and how decisions are recorded.',
+        body: 'Working software beats status reports.\n\nOurs: a weekly demo of working software, checked against the milestones in the plan.',
       },
       {
         heading: '5. How do you handle changes in scope?',
-        body: 'Every real project changes. Ask how changes are estimated, approved, and reflected in timelines and cost. A healthy process makes the trade-offs visible, such as adding this feature moving that one, rather than absorbing changes silently until the budget runs out.',
+        body: 'Every real project changes. A healthy process shows the trade-off before anyone builds the change.\n\nOurs: on Klingit, mid-project requests were pushing out the timeline. We added a change process that records each request and agrees its effect on scope before work starts.',
       },
       {
         heading: '6. How do you make sure the software works?',
-        body: 'Ask about testing, code review, and release practices. Who writes automated tests? Is every change reviewed by another engineer? How are releases deployed and rolled back? Quality should be part of the process from the first sprint, not a phase at the end.',
+        body: 'Ask who writes the tests, whether every change gets reviewed, and how a bad release is rolled back.\n\nOurs: BuffyHub had unit, integration and acceptance tests, and Truck-4 ran SonarQube in its Azure DevOps pipeline. Our [QA and testing](/what-we-build/qa-testing) page has the detail.',
       },
       {
         heading: '7. Who owns the code and the intellectual property?',
-        body: 'Your contract should assign ownership of the code and other work product to you. Make sure the code is stored in repositories you control, and that you can take over or move to another team without asking permission. This protects you whatever happens to the relationship.',
+        body: 'Your contract should assign both to you, and the code should live somewhere you control.\n\nOurs: you own everything our engineers write for you, including the intellectual property in it.',
       },
       {
         heading: '8. How do you handle security and data?',
-        body: 'Ask how access to your systems is managed, how secrets are stored, and how personal data is protected. If you handle health, financial, or EU and UK personal data, ask specifically about the relevant regulations, such as HIPAA or GDPR, and what the partner has done before in that area.',
+        body: 'Ask how access is granted and removed, how secrets are stored, and what they have built under rules like GDPR.\n\nOurs: Truck-4 scans every upload with ClamAV before accepting it. Fisar, a GDPR tool we built, handles subject access requests for school data protection officers.',
       },
       {
         heading: '9. How does communication work across time zones?',
-        body: 'Distributed teams can be a strength, with work continuing while you sleep, but only with a clear rhythm. Ask about overlap hours, response times, who your main point of contact is, and how urgent issues are escalated. Agree the tools you will use from day one.',
+        body: 'Ask for the overlap hours in writing, and who answers when something breaks.\n\nOurs: our team works from Lahore, and engineers overlap at least 4 hours with a US working day. Full Blown Media ran its project with us through Slack and Trello.',
       },
       {
         heading: '10. What happens at the end?',
-        body: 'Ask about handover before you start: documentation, knowledge transfer, and support after launch. A partner confident in their work will make it easy for you to continue without them, whether that means your own team taking over or an ongoing support arrangement.',
+        body: 'A confident partner makes it easy for you to continue without them.\n\nOurs: handover and ongoing support are part of how we work. If you want us to stay on, [maintenance and support](/what-we-build/software-maintenance) keeps the software current.',
       },
     ],
     conclusion: {
-      heading: 'Choose for the hard months, not the first meeting',
+      heading: 'Choose for month six, not the first meeting',
       paragraphs: [
-        'Most partners look good in a pitch. The right one is still communicating clearly, shipping working software, and telling you the truth in month six. Use these questions to judge how a partner will behave when the project gets difficult, because at some point it will.',
-        'If you are evaluating Stack360, we are happy to answer every one of these questions on a discovery call.',
+        'Most partners look good in a pitch. Use these questions to judge how one will behave when the project gets difficult, because at some point it will.',
+        'If you are talking to us, ask every one of them on the discovery call.',
       ],
     },
+    related: [
+      { label: 'How a discovery call works', href: '/blog/software-discovery-call' },
+      { label: 'Custom software development', href: '/what-we-build/custom-software' },
+      { label: 'How we work', href: '/who-we-are/how-we-work' },
+      { label: 'Contact us', href: '/contact' },
+    ],
   },
   {
     slug: 'mvp-development-guide',
     title: 'MVP Development: Scope, Build, and Launch',
+    reviewedBy: 'Azmat Rana',
     excerpt:
-      'A practical MVP development guide for founders: scope the smallest useful product, choose what to build first, and launch in a way that teaches you something.',
+      'How to scope and launch an MVP, with what we learned from Cinekit’s one-month build and from measuring real users after launch.',
     date: '2026-10-06',
+    updated: '2026-10-12',
     category: 'Engineering',
-    readTime: '7 min',
+    readTime: '3 min',
     intro:
-      'A minimum viable product is the smallest version of your product that real users can use and learn from. Its job is not to impress investors or match competitors feature for feature. Its job is to test your riskiest assumption with real people as quickly and cheaply as possible. Most MVPs that fail do so because they were too big, not too small.',
+      'A minimum viable product is the smallest version of your product that real people can use and learn from. Its job is to test your riskiest assumption quickly. Cinekit, a camera gear rental marketplace we built, shipped in one month and has since grown past 100,000 users. Here is what made that possible, and what we tell founders now.',
     sections: [
       {
         heading: 'Start with the riskiest assumption',
-        body: 'Before writing any code, write down what must be true for your business to work: that a specific group of people has a specific problem, that they will use your solution, and that someone will pay. Pick the assumption you are least sure about. Your MVP should be designed to test that one, and everything that does not help test it can wait.',
+        body: 'Write down what must be true for the business to work: that a group of people has a problem, will use your product and will pay for it. Pick the assumption you are least sure about. The MVP exists to test that one.',
       },
       {
-        heading: 'Define one core journey',
-        body: 'Describe the single journey that delivers your product’s value, from the moment a user arrives to the moment they get what they came for. A marketplace might be listing an item and completing a purchase; a SaaS tool might be connecting data and seeing a first useful report. Build that journey end to end before adding anything around it.',
+        heading: 'Build one flow end to end',
+        body: 'Cinekit’s first version did one thing: list gear, book it, hold a security deposit through Stripe and return it. Money Ball, an NFL stats chatbot, took three months because it did one job, answering questions from a live database. Build the one flow that delivers value before anything around it.',
       },
       {
-        heading: 'Cut scope deliberately',
-        body: 'Go through your feature list and ask of each item whether the core journey works without it. Admin panels, advanced settings, multiple user roles, integrations, and edge-case handling can often be manual or postponed. A feature that is done by hand behind the scenes for your first users is often the fastest way to learn whether it is worth building properly.',
+        heading: 'Cut scope on purpose',
+        body: 'For each feature, ask whether the core flow works without it. Admin tools, extra user roles and integrations can often wait, or be done by hand for the first users. Every outside system you add brings its own rules and failure cases, which is one of the main reasons projects run long.',
       },
       {
-        heading: 'Choose boring, proven technology',
-        body: 'An MVP is not the place to experiment with a new framework. Choose a well-supported stack your team knows, use managed cloud services, and lean on existing tools for payments, authentication, and email. The goal is to spend engineering time on what makes your product different, and to keep the code clean enough that it can grow when the MVP succeeds.',
-      },
-      {
-        heading: 'Build quality where it matters',
-        body: 'Minimum does not mean careless. The core journey should be reliable, secure, and pleasant to use, because users judge your product on it. Put automated tests around the critical paths, protect user data properly from day one, and keep the architecture simple enough to change. Polish the parts users see; keep everything else minimal.',
+        heading: 'Choose proven technology',
+        body: 'An MVP is not the place to try a new framework. We built Cinekit on Ruby on Rails, which suits fast backend delivery, and used Stripe instead of building payments. Spend the engineering time on what makes your product different.',
       },
       {
         heading: 'Measure from the first user',
-        body: 'Decide before launch what success looks like: activation, repeat use, conversion, or willingness to pay. Add analytics to the core journey and talk to your first users directly. Numbers show you what people do; conversations tell you why. Both are needed to decide what to build next.',
+        body: 'Decide before launch what success looks like, and track it from day one. On [a booking site we run](/blog/luxe-excursions-booking-planner), the data showed half of all giveaway entry attempts were failing, mostly because phones gave no clear sign of a missing field. After one fix to the form, the next 14 entries all went through.\n\nNumbers show you what people do. Conversations with your first users tell you why.',
       },
       {
-        heading: 'Plan for what comes after',
-        body: 'A successful MVP creates a new problem: more users, more requests, and pressure to scale. Plan a short stabilization phase after launch to fix what users hit first, and keep a running list of the shortcuts you took so they can be revisited deliberately rather than discovered in production.',
+        heading: 'Plan for what comes after launch',
+        body: 'Launch is the start, not the finish. Our three longest projects each had a first version live within three to six months, and at least 70% of the time on each came after launch. Most of our builds take three to six months, and simpler ones take one to three. The full data is in [how long software projects take](/blog/how-long-software-projects-take).',
       },
     ],
     conclusion: {
-      heading: 'Small, real, and measurable',
+      heading: 'Small, real and measurable',
       paragraphs: [
-        'The best MVPs are small enough to build quickly, real enough that people genuinely use them, and measurable enough that you learn something either way. Start from the riskiest assumption, build one journey well, and let real usage decide what comes next.',
-        'Stack360 helps founders scope and build MVPs, starting with a discovery call to agree the core journey, a delivery plan with clear milestones, and weekly demos of working software.',
+        'Build the smallest thing people will genuinely use, measure it, and let real usage decide what comes next.',
+        'If you have an MVP in mind, a [discovery call](/blog/software-discovery-call) is the quickest way to scope the first release.',
       ],
     },
+    related: [
+      { label: 'Custom software development', href: '/what-we-build/custom-software' },
+      { label: 'SaaS development', href: '/what-we-build/saas' },
+      { label: 'How long software projects take', href: '/blog/how-long-software-projects-take' },
+    ],
   },
   {
     slug: 'mastering-python-important-features',
-    title: 'Mastering Python: Important Features and How to Use Them',
+    title: 'Mastering Python: The Features Our Django Team Relies On',
+    seoTitle: 'Python Features Our Django Team Relies On',
+    reviewedBy: 'Azmat Rana',
     excerpt:
-      'Python’s feature set and simple syntax make it one of the most widely used languages — here are the crucial capabilities and how to use them well.',
+      'The Python and Django features behind our production work, from Celery workers to retrieval pipelines, with examples from Money Ball, Natif.ai and Mi Taller.',
     date: '2026-07-13',
+    updated: '2026-10-12',
     category: 'Engineering',
-    readTime: '8 min',
+    readTime: '3 min',
     intro:
-      'Python is one of the most widely used programming languages in the world because of its extensive feature set and simple syntax. Its many features help both novice and expert programmers alike, adding to the smooth experience it offers. I will be discussing some of Python’s most crucial features and discussing how to utilize them efficiently.',
+      'Python’s simple syntax gets the attention, but in production its value is the ecosystem around it. Most of our Python work runs on Django, behind products that process something: documents, records, sports stats or compliance checks. These are the features we rely on, and where each one earned its place.',
     sections: [
       {
-        heading: 'Simple Syntax',
-        body: 'Python’s simple syntax is arguably its most appealing feature. Its readability enables beginners to pick up the language swiftly, facilitating comprehension. In Python, the use of English keywords instead of punctuations makes it feel natural and less like a traditional programming language.',
+        heading: 'Django’s admin, authentication and ORM',
+        body: 'Django ships with an admin panel, user authentication and an ORM, which saves weeks on every new product. That is why the Python projects we have delivered so far run on Django. FastAPI suits a small, fast API service on its own.\n\nThe Luxe Excursions booking platform runs on Django and Django REST Framework. Its staff pause sales on an item with one tick in the admin.',
       },
       {
-        heading: 'Dynamic Typing',
-        body: 'Python uses dynamic typing which means you don’t need to state the data type of a variable when declaring it. The interpreter infers the data type, providing flexibility when coding. However, keep an eye out for unexpected behaviours if data types change unexpectedly.',
+        heading: 'Celery for work that shouldn’t keep people waiting',
+        body: 'Celery runs background jobs and schedules. Mi Taller, a garage management platform, uses Celery queues with WebSockets to push live repair updates to car owners. SiteRanker uses Celery with Elasticsearch to collect thousands of search metrics at once. Alertia warns security firms before a guard’s license expires.',
       },
       {
-        heading: 'Indentation for Code Blocks',
-        body: 'Instead of using brackets or specific keywords to define a block of code, Python uses indentation. Consistent use of indentation improves code readability, reducing confusion.',
+        heading: 'Retrieval pipelines for AI features',
+        body: 'Python’s AI libraries make it the natural home for retrieval pipelines. Money Ball looks up a live NFL database before its model writes an answer, so the numbers come from data, not memory. We wrote up [how that stops a chatbot making things up](/blog/stop-ai-chatbot-hallucinations).',
       },
       {
-        heading: 'Python Libraries and Frameworks',
-        body: 'Python is popular for its robust libraries and frameworks which enable speedy application development. Whether you’re working on machine learning projects, web development, or data analysis, Python has a library or framework to simplify the task. Remember to explore Python’s diverse selection of libraries to expedite your project.',
+        heading: 'Isolated workers for document processing',
+        body: 'Natif.ai runs incoming files through isolated Django workers for OCR and handwriting recognition, and documents its API with Swagger. Isolating jobs this way stops one bad file from holding up the whole queue.',
       },
       {
-        heading: 'Interactive Shell',
-        body: 'Python provides an interactive shell for experimenting and debugging, proving advantageous for beginners to understand code behaviours. You can access Python’s interactive shell directly from your terminal by typing ‘python’.',
+        heading: 'Readable code a new engineer can pick up',
+        body: 'Python’s plain syntax and indentation rules make code easy to read, which matters when an engineer joins a codebase mid-project. Dynamic typing is flexible, but it lets type mistakes slip through. On larger codebases, type hints and tests do that checking.',
       },
       {
-        heading: 'Cross-Platform Compatibility',
-        body: 'Python is compatible with a variety of operating systems like Windows, Linux, macOS, and Unix. That’s why there is no need to modify the programming syntax when transferring between operating systems. It improves portability and makes cross-platform debugging easier.',
-      },
-      {
-        heading: 'File Handling',
-        body: 'Python comes with simple file handling methods. You can create, read, write, or append a file using in-built functions like open(), read(), write(), and close() respectively. Remember to close files after performing the operations to prevent memory leaks.',
-      },
-      {
-        heading: 'Object-Oriented Programming',
-        body: 'Python supports object-oriented programming (OOP) principles. It provides another layer of simplicity and effectiveness in programming structure. Class and Object, the two pillars of OOP in Python, streamline coding through reusability.',
+        heading: 'Access control and audit trails',
+        body: 'For sensitive records, we use role-based access, masked fields and audit logs. Fisar, a GDPR tool for school data protection officers, handles subject access requests this way.',
       },
     ],
     conclusion: {
-      heading: 'Conclusion',
+      heading: 'Common questions',
       paragraphs: [
-        'Using these Python features, programming tasks become relatively more comfortable. They enable a beginner-friendly approach to programming while still providing powerful tools for more advanced tasks.',
-        'Experiment with these features as you become more proficient with Python and use its capabilities to deliver impressive, efficient coding projects.',
+        'Django or FastAPI? Django for most products, because its admin, authentication and ORM save weeks. FastAPI suits a small API service on its own.',
+        'Can Python developers build AI features? Yes. Money Ball and Natif.ai both run AI features on Django backends our engineers built.',
+        'Can we add a Python developer to our own team? Yes. See [hire Python and Django developers](/work-with-us/hire/python-developers).',
       ],
     },
+    related: [
+      { label: 'Hire Python and Django developers', href: '/work-with-us/hire/python-developers' },
+      { label: 'AI solutions', href: '/what-we-build/ai-solutions' },
+      {
+        label: 'How to stop an AI chatbot from making things up',
+        href: '/blog/stop-ai-chatbot-hallucinations',
+      },
+    ],
   },
   {
     slug: 'designing-systems-that-survive-growth',
     title: 'Designing Systems That Survive Growth',
+    reviewedBy: 'Azmat Rana',
     excerpt:
-      'Early architecture choices either absorb traffic and team growth — or force a rewrite. Here is how we decide what to harden now versus what to leave flexible.',
+      'Which architecture choices absorb growth and which force a rewrite, with examples from AutoBuffy, Truck-4, BuffyHub, ATC and Cad Cam Masters.',
     date: '2026-06-28',
+    updated: '2026-10-12',
     category: 'Architecture',
-    readTime: '6 min',
+    readTime: '3 min',
     intro:
-      'Most systems do not fail because the first version was wrong. They fail because the first version assumed growth would never change the shape of the problem. At Stack360 we treat early architecture as a set of deliberate bets: what must stay stable, what can flex, and what we refuse to invent until the product proves it needs it.',
+      'Most systems don’t fail because the first version was wrong. They fail because growth changed the shape of the problem, and nothing in the design could bend. Here is what we harden early and what we leave flexible, with the projects that taught us.',
     sections: [
       {
-        heading: 'Start from the load that matters',
-        body: 'Before drawing boxes, name the load that would actually hurt: concurrent writes, report queries at month-end, file uploads, webhook bursts. Design for that load first. Everything else can be simpler until evidence says otherwise.',
+        heading: 'Start from the load that would hurt',
+        body: 'Name the load that would actually break things: search across a huge catalog, large uploads, month-end reports or webhook bursts. Design for that first.\n\nOn [AutoBuffy](/our-work/case-studies/autobuffy), search by make, year and model slowed down as the parts tables grew. Caching alone didn’t help, so we added Elasticsearch, refined the database structure and added indexes. On Cad Cam Masters, large 3D design files were stalling checkout, so uploads moved to a separate background pipeline on AWS.',
       },
       {
-        heading: 'Separate durable contracts from replaceable insides',
-        body: 'APIs, event schemas, and data ownership boundaries should be boring and versioned. Internal modules, queues, and caches should stay replaceable. When those two layers blur, every refactor becomes a migration.',
+        heading: 'Keep heavy work away from the people using the app',
+        body: 'AutoBuffy’s admin uploads used to slow the store down for shoppers. We split the storefront and admin onto separate servers, and added load balancers and auto-scaling. Files now go straight from the browser to S3 instead of passing through the server. Cercle moved heavy work to Sidekiq background jobs for the same reason.',
+      },
+      {
+        heading: 'Separate stable contracts from replaceable insides',
+        body: 'APIs, event formats and data ownership should be boring and versioned. Internal modules, queues and caches should stay easy to replace. BuffyHub connects payment gateways, shipping providers and inventory systems through APIs and webhooks, so each connection can change without rewriting the rest.',
       },
       {
         heading: 'Make failure visible early',
-        body: 'Retries, timeouts, and dead-letter paths are not polish — they are how you learn where the system breaks. Ship observability with the first production path so growth shows up as a signal, not a surprise outage.',
+        body: 'Retries, timeouts and monitoring show you where a system breaks before customers do. On Truck-4, sign-in has fallbacks and monitoring, so it stays available when an upstream service fails. SonarQube and the CI pipeline catch problems across its services before release.',
       },
       {
-        heading: 'Leave escape hatches, not speculative platforms',
-        body: 'A thin adapter, a feature flag, or a clear seam for a future service is cheaper than a premature microservices mesh. Prefer seams you can cut later over platforms you must staff forever.',
+        heading: 'Split into services only when you must',
+        body: 'A clear seam you can cut later is cheaper than a microservices platform you have to staff forever. Truck-4 did need microservices, because its services depended on each other and had to scale separately. They talk through REST and RabbitMQ, run on Kubernetes and deploy with Helm. Most products don’t need that on day one.',
+      },
+      {
+        heading: 'Fix the slow query before buying a bigger server',
+        body: 'On ATC, analytics built with LINQ across many tables slowed every dashboard. We rewrote them as optimized SQL with caching, which cut the database load and sped up the pages.',
       },
     ],
     conclusion: {
-      heading: 'Conclusion',
+      heading: 'What to take from this',
       paragraphs: [
-        'Systems that survive growth are rarely the most elaborate on day one. They are the ones with clear contracts, honest load assumptions, and room to evolve without rewriting the business.',
-        'If you are planning a rebuild or a first architecture pass, start with the load and the contracts — the rest follows.',
+        'Systems that survive growth have honest assumptions about load, clear contracts between their parts, and room to change without rewriting the business.',
+        'If you are planning a rebuild, our [cloud](/what-we-build/cloud) and [DevOps](/what-we-build/devops) work starts with the same questions.',
       ],
     },
+    related: [
+      { label: 'Cloud services', href: '/what-we-build/cloud' },
+      { label: 'DevOps consulting', href: '/what-we-build/devops' },
+      { label: 'Custom software development', href: '/what-we-build/custom-software' },
+      { label: 'The AutoBuffy case study', href: '/our-work/case-studies/autobuffy' },
+    ],
   },
   {
     slug: 'quality-as-a-release-gate',
     title: 'Quality as a Release Gate, Not a Phase',
+    reviewedBy: 'Azmat Rana',
     excerpt:
-      'QA that starts after “dev is done” always loses. Treat checks as gates in the delivery path — and ship with fewer late surprises.',
+      'Why testing at the end of a project always loses, and how we gate releases instead, with examples from BuffyHub, Truck-4, ATC and Luxe Excursions.',
     date: '2026-05-20',
+    updated: '2026-10-12',
     category: 'Delivery',
-    readTime: '5 min',
+    readTime: '3 min',
     intro:
-      'Teams still talk about “QA phase” as if quality is a station the build visits once. In practice, defects that reach that station are already expensive. We treat quality as a sequence of gates: each one must pass before the work can move closer to production.',
+      'Teams still talk about a QA phase, as if quality were a stop the build makes once. By then, defects are already expensive. We treat quality as a series of gates, and each one must pass before the work moves closer to production.',
     sections: [
       {
         heading: 'Define done before work starts',
-        body: 'Acceptance criteria, edge cases, and non-functional expectations belong in the ticket — not in a Slack thread after merge. When “done” is fuzzy, every gate becomes a negotiation.',
+        body: 'Acceptance criteria, edge cases and performance expectations belong in the ticket, not in a chat thread after the merge. When “done” is fuzzy, every gate becomes a negotiation.',
       },
       {
-        heading: 'Automate the boring checks',
-        body: 'Lint, typecheck, unit coverage on critical paths, and smoke tests on the happy path should run on every pull request. Humans should spend attention on judgment calls, not on catching typos the pipeline already knows how to find.',
+        heading: 'Automate the checks a machine can do',
+        body: 'Unit, integration and acceptance tests should run on every change. BuffyHub was covered at all three levels. On Truck-4, SonarQube runs in the Azure DevOps pipeline and flags risky code before review, and every uploaded file is scanned with ClamAV before it is accepted.\n\nATC’s .NET code is tested with xUnit, run in Docker so the tests behave the same on every machine.',
       },
       {
-        heading: 'Keep a human gate for risk',
-        body: 'Exploratory testing, permission matrices, and migration rehearsals still need people. Gate them by risk: money movement, auth, data deletion, and irreversible ops get explicit review before release.',
+        heading: 'Keep people on the risky parts',
+        body: 'Scripts check what you already know. People find what nobody thought of. Money movement, sign-in, permissions and anything that deletes data get a human check on real devices before release.',
       },
       {
-        heading: 'Close the loop after ship',
-        body: 'A release gate without post-deploy checks is incomplete. Smoke the critical flows in production, watch error budgets, and feed what broke back into the next ticket’s definition of done.',
+        heading: 'Test the failure paths, not just the happy path',
+        body: 'Payments retry, networks drop and users double-click. On the Luxe Excursions booking platform, each staff alert goes out once per booking, so a payment retry never sends a duplicate.',
+      },
+      {
+        heading: 'Close the loop after release',
+        body: 'A release isn’t finished when it deploys. Check the key flows in production and watch the numbers. On Luxe Excursions, the data showed half of all giveaway entry attempts were failing, mostly on phones. After the fix, the next 14 entries all went through.',
       },
     ],
     conclusion: {
-      heading: 'Conclusion',
+      heading: 'What a release gate means',
       paragraphs: [
-        'Quality as a gate means the build cannot advance until the right checks pass — automated where possible, human where the risk demands it.',
-        'That discipline is what lets delivery stay fast without treating production as the first real test environment.',
+        'The build can’t move forward until the right checks pass: automated where possible, human where the risk demands it.',
+        'Our [QA and testing](/what-we-build/qa-testing) work starts with the flows that earn money or break most often, then widens.',
       ],
     },
+    related: [
+      { label: 'QA and testing', href: '/what-we-build/qa-testing' },
+      { label: 'DevOps consulting', href: '/what-we-build/devops' },
+      { label: 'Maintenance and support', href: '/what-we-build/software-maintenance' },
+    ],
   },
 ] as const;
 

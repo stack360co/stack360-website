@@ -3,6 +3,7 @@
 import { ArrowLeft, Clock, ListOrdered } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import {
   EASE_OUT_EXPO,
   fadeUp,
@@ -22,6 +23,34 @@ function formatDate(iso: string): string {
     month: 'long',
     day: 'numeric',
   });
+}
+
+const INLINE_LINK = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+
+/** Renders [text](/path) as an internal link; everything else stays plain text. */
+function RichText({ text }: { text: string }) {
+  const parts: ReactNode[] = [];
+  let last = 0;
+  for (const match of text.matchAll(INLINE_LINK)) {
+    const index = match.index ?? 0;
+    if (index > last) {
+      parts.push(text.slice(last, index));
+    }
+    parts.push(
+      <Link
+        key={`${match[2]}-${index}`}
+        href={match[2]}
+        className="font-semibold text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:decoration-primary"
+      >
+        {match[1]}
+      </Link>
+    );
+    last = index + match[0].length;
+  }
+  if (last < text.length) {
+    parts.push(text.slice(last));
+  }
+  return <>{parts}</>;
 }
 
 export default function BlogArticle({ post }: BlogArticleProps) {
@@ -73,6 +102,7 @@ export default function BlogArticle({ post }: BlogArticleProps) {
               ) : null}
               <ul className="flex flex-wrap items-center gap-x-lg gap-y-sm font-mono text-xs text-neutral-500">
                 <li>{formatDate(post.date)}</li>
+                {post.updated ? <li>Updated {formatDate(post.updated)}</li> : null}
                 <li className="inline-flex items-center gap-1">
                   <Clock size={12} aria-hidden />
                   {post.readTime} read
@@ -95,7 +125,9 @@ export default function BlogArticle({ post }: BlogArticleProps) {
             transition={{ duration: 0.55, ease: EASE_OUT_EXPO }}
             className="space-y-2xl"
           >
-            <p className="text-pretty text-lg leading-relaxed text-neutral-700">{post.intro}</p>
+            <p className="text-pretty text-lg leading-relaxed text-neutral-700">
+              <RichText text={post.intro} />
+            </p>
 
             <ol className="space-y-xl">
               {post.sections.map((section, index) => (
@@ -111,7 +143,7 @@ export default function BlogArticle({ post }: BlogArticleProps) {
                       key={paragraph.slice(0, 48)}
                       className="max-w-[70ch] text-pretty text-base leading-relaxed text-neutral-600"
                     >
-                      {paragraph}
+                      <RichText text={paragraph} />
                     </p>
                   ))}
                 </li>
@@ -127,7 +159,7 @@ export default function BlogArticle({ post }: BlogArticleProps) {
                   key={paragraph.slice(0, 48)}
                   className="max-w-[70ch] text-pretty text-base leading-relaxed text-neutral-600"
                 >
-                  {paragraph}
+                  <RichText text={paragraph} />
                 </p>
               ))}
               {post.related && post.related.length > 0 ? (

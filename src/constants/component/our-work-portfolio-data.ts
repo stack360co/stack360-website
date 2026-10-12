@@ -74,7 +74,7 @@ export const PORTFOLIO_GROUPS: PortfolioGroup[] = [
           'Created an immersive sports-data tool providing immediate, verified football analytics in a friendly chat frame.',
         stack: ['nodedotjs', 'django', 'postgresql', 'redis', 'docker'],
         metric: 'RAG',
-        metricLabel: 'Zero-hallucination stats',
+        metricLabel: 'Answers from live data',
       },
     ],
   },
@@ -107,7 +107,7 @@ export const PORTFOLIO_GROUPS: PortfolioGroup[] = [
           'Secure student-records extraction portal.',
         ],
         result:
-          'Guaranteed accountability for sensitive data handling, keeping educational clients aligned with active European GDPR rules.',
+          'Clear accountability for sensitive data handling, keeping educational clients aligned with European GDPR rules.',
         stack: ['nodedotjs', 'django', 'postgresql', 'redis', 'docker', 'amazonaws'],
         metric: 'SAR',
         metricLabel: 'Audited data pipelines',
@@ -476,7 +476,7 @@ export const PORTFOLIO_GROUPS: PortfolioGroup[] = [
             challenge:
               'Establishing trust and transaction safety between unknown sellers and agents.',
             solution:
-              'Implemented a strict agent verification framework and a secure system guaranteeing transparent, quick, and effortless transactions.',
+              'Implemented a strict agent verification framework and a secure system for transparent, quick transactions.',
           },
         ],
         features: [
@@ -713,7 +713,7 @@ export const PORTFOLIO_GROUPS: PortfolioGroup[] = [
           'Stripe multi-tier subscription billing.',
         ],
         result:
-          'Empowered brands to scale marketing campaigns quickly with flawless collaboration, minimizing back-and-forth email loops.',
+          'Helped brands scale marketing campaigns quickly with smoother collaboration and fewer back-and-forth emails.',
         stack: ['vuedotjs', 'rubyonrails', 'postgresql', 'redis', 'nginx', 'stripe'],
         metric: '40+',
         metricLabel: 'Global creatives synced',
