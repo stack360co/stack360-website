@@ -158,7 +158,7 @@ export default function SoftwarePartnerPage() {
       <RelatedServices
         title="What partners hire us to build"
         intro="A dedicated team can take on any of these, from first release to long-term upkeep."
-        services={['custom-software', 'saas', 'web-apps', 'mobile-apps']}
+        services={['custom-software', 'saas', 'web-apps', 'mobile-apps', 'software-maintenance']}
         reading={{
           href: '/blog/how-to-choose-a-software-development-partner',
           label: 'How to Choose a Software Development Partner',

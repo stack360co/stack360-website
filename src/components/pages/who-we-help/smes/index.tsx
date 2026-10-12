@@ -132,7 +132,7 @@ export default function SmesPage() {
       <RelatedServices
         title="Services SMEs ask us for"
         intro="Usually it starts with the spreadsheets and manual steps a growing team has outgrown."
-        services={['automation', 'custom-software', 'crm', 'erp']}
+        services={['automation', 'custom-software', 'crm', 'erp', 'digital-marketing']}
       />
 
       <PageClosingCta {...SMES_CTA} />

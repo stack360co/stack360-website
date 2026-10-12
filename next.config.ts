@@ -96,12 +96,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/services/quality-assurance',
-        destination: '/what-we-build/automation',
+        destination: '/what-we-build/qa-testing',
         permanent: true,
       },
       {
         source: '/services/digital-marketing',
-        destination: '/what-we-build',
+        destination: '/what-we-build/digital-marketing',
         permanent: true,
       },
       {

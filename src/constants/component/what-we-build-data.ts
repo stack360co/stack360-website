@@ -17,7 +17,9 @@ export type CapabilitySlug =
   | 'automation'
   | 'legacy-modernization'
   | 'software-maintenance'
-  | 'marketplace-development';
+  | 'marketplace-development'
+  | 'qa-testing'
+  | 'digital-marketing';
 
 export interface CapabilityFaq {
   id: string;
@@ -2620,6 +2622,336 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       secondary: { label: 'View case studies', href: '/our-work/case-studies' },
     },
   },
+  'qa-testing': {
+    slug: 'qa-testing',
+    reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
+    hero: {
+      eyebrow: 'What We Build · QA & Testing',
+      title: 'QA And Test Automation',
+      highlight: 'Built Into Every Release',
+      description:
+        'QA and test automation catch problems before your customers do, with automated tests on every change and manual testing where judgement matters. We used unit, integration and acceptance tests on BuffyHub and SonarQube checks on Truck-4.',
+      cta: { label: 'Improve Your Testing', href: '/contact' },
+    },
+    capabilitiesTitle: 'What Our QA Covers',
+    capabilitiesIntro:
+      'Bugs are cheapest to fix the hour they are written and most expensive once a customer finds them.',
+    capabilities: [
+      {
+        title: 'Automated test suites',
+        description:
+          'Unit, integration and acceptance tests that run on every change. BuffyHub was covered at all three levels.',
+      },
+      {
+        title: 'Browser testing',
+        description:
+          'End-to-end tests in Selenium that click through sign-up, checkout and other key journeys the way a real user would.',
+      },
+      {
+        title: 'Code quality checks',
+        description:
+          'Static analysis with SonarQube in the CI pipeline, as on Truck-4, so risky code is flagged before review.',
+      },
+      {
+        title: 'Manual and exploratory testing',
+        description:
+          'A person working through new features on real devices, looking for what scripts miss.',
+      },
+      {
+        title: 'Checks on uploads and inputs',
+        description:
+          'Scanning uploaded files and validating inputs. Truck-4 scans every upload with ClamAV before accepting it.',
+      },
+    ],
+    processTitle: 'How We Add QA To Your Releases',
+    processIntro: 'Testing starts where a failure would hurt most, then widens.',
+    process: [
+      {
+        phase: 'Review',
+        title: 'Map The Risk',
+        description:
+          'We list the journeys that earn money, the parts that break most often and how releases happen today.',
+      },
+      {
+        phase: 'Plan',
+        title: 'Write The Test Plan',
+        description:
+          'We decide what to automate, what to test by hand and what each release has to pass.',
+      },
+      {
+        phase: 'Automate',
+        title: 'Automate The Repeats',
+        description:
+          'Unit, integration and browser tests for the riskiest journeys go into the CI pipeline first.',
+      },
+      {
+        phase: 'Run',
+        title: 'Test Every Release',
+        description:
+          'Every change runs the suite, new features get manual testing, and failures block the release.',
+      },
+    ],
+    techTitle: 'Tools We Test With',
+    techIntro: 'The testing and pipeline tools used across our projects.',
+    tech: ['selenium', 'docker', 'github'],
+    benefitsTitle: 'When To Invest In Test Automation',
+    benefitsIntro: 'Not every product needs a large test suite. These are the signs yours does.',
+    benefits: [
+      {
+        title: 'The same bugs keep coming back',
+        description:
+          'Regressions mean nothing checks old behaviour after a change. Automated tests do that on every release.',
+      },
+      {
+        title: 'Releases feel risky',
+        description:
+          'If the team holds its breath at every deploy, tests and a staging check give that confidence back.',
+      },
+      {
+        title: 'Checkout or sign-up must not break',
+        description: 'Cover the journeys that earn money with browser tests first.',
+      },
+      {
+        title: 'Several teams touch the code',
+        description: 'Code checks like SonarQube keep standards the same whoever wrote the change.',
+      },
+      {
+        title: 'Keep people on new features',
+        description: 'Scripts check what you already know. People find what nobody thought of.',
+      },
+      {
+        title: 'Skip coverage targets',
+        description:
+          'Test the risky and valuable parts well. Coverage for its own sake slows teams down without making releases safer.',
+      },
+    ],
+    projectsTitle: 'Testing In Our Projects',
+    projectsIntro: 'Products where testing was part of the build.',
+    projectsCtaLabel: 'View All Case Studies',
+    projects: [projectRef('buffyhub'), projectRef('truck-4'), projectRef('atc')],
+    faqsTitle: 'QA And Testing FAQs',
+    faqsIntro: 'What teams ask before they add QA to their releases.',
+    faqs: [
+      {
+        id: 'qa-what',
+        question: 'What do your QA services include?',
+        answer:
+          'Automated unit, integration and browser tests, code quality checks in your pipeline, and manual testing of new features before they go live.',
+      },
+      {
+        id: 'qa-existing',
+        question: 'Can you add tests to an app that has none?',
+        answer:
+          'Yes. We start with the journeys that earn money or break most often, add tests around them, and widen coverage as other parts change.',
+      },
+      {
+        id: 'qa-tools',
+        question: 'Which testing tools do you use?',
+        answer:
+          'Selenium for browser tests, xUnit on .NET projects and each language’s standard test framework, with SonarQube for code quality, all run in CI.',
+      },
+      {
+        id: 'qa-ci',
+        question: 'Do the tests run automatically?',
+        answer:
+          'Yes. We wire them into your CI pipeline so every change runs the suite, as on Truck-4 with Azure DevOps.',
+      },
+      {
+        id: 'qa-team',
+        question: 'Can you test software another team builds?',
+        answer:
+          'Yes. We can work as a separate QA team beside your developers, writing tests and checking each release before it goes live.',
+      },
+      OWNERSHIP_FAQ,
+    ],
+    cta: {
+      title: 'Ready To Release With Confidence?',
+      description:
+        'Tell us how you test today and what keeps breaking, and we will suggest where automation pays off first.',
+      primary: { label: 'Talk to us', href: '/contact' },
+      secondary: { label: 'View case studies', href: '/our-work/case-studies' },
+    },
+  },
+  'digital-marketing': {
+    slug: 'digital-marketing',
+    reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
+    hero: {
+      eyebrow: 'What We Build · SEO & Google Ads',
+      title: 'SEO And Google Ads',
+      highlight: 'Wired Into Your Website',
+      description:
+        'We run SEO and Google Ads for service businesses from inside the website: analytics, schema, Search Console, the Business Profile and conversion tracking. For Luxe Excursions in Tenerife we built the site and now run all of it.',
+      cta: { label: 'Get More From Google', href: '/contact' },
+    },
+    capabilitiesTitle: 'What We Do',
+    capabilitiesIntro:
+      'Most marketing problems start on the website: pages Google cannot read, tracking that counts the wrong things, and a Business Profile nobody updates.',
+    capabilities: [
+      {
+        title: 'Technical SEO',
+        description:
+          'Crawlable pages, schema, sitemaps, redirects and page speed, fixed in the code rather than with plugins.',
+      },
+      {
+        title: 'Analytics and conversion tracking',
+        description:
+          'GA4 with a consent banner, internal traffic filtered out, and the actions that matter tracked as key events. For Luxe, that means bookings and WhatsApp clicks.',
+      },
+      {
+        title: 'Google Ads',
+        description:
+          'Search campaigns aimed at the buyers you want, with negative keywords, sitelinks and conversions imported from GA4.',
+      },
+      {
+        title: 'Google Business Profile',
+        description:
+          'Services, tracked booking links, the right location and a steady flow of reviews from real customers.',
+      },
+      {
+        title: 'Content that answers buyers',
+        description:
+          'Pages that answer what customers ask before they buy, written from your real work rather than generic copy.',
+      },
+    ],
+    story: {
+      eyebrow: 'Project story · Luxe Excursions',
+      title: 'Wiring Google into a Tenerife tour company',
+      intro:
+        'Luxe Excursions sells luxury tours, packages and rentals in Tenerife. We built its website and booking platform, and we also run its SEO, Google Ads and Business Profile.',
+      problem:
+        'The new site had to show which searches, ads and profile visits turn into paying guests, without counting the team’s own visits. The Business Profile also needed its services, booking link and location put right.',
+      changes: [
+        'Set up GA4 with a consent banner, and filtered out staff and test traffic.',
+        'Tracked bookings and WhatsApp clicks as key events, and imported them into Google Ads as conversions.',
+        'Linked Search Console to both GA4 and Google Ads.',
+        'Launched a search campaign for UK travellers planning a trip, with negative keywords, sitelinks and callouts.',
+        'Added the services and a tracked booking link to the Business Profile, and corrected the shop location on Google.',
+      ],
+      outcome:
+        'The team can see which searches, ads and profile visits lead to bookings, and every guest is asked for a review after their trip. Marketing works best when it is wired into the website, not added afterwards.',
+      facts: [
+        { label: 'Client', value: 'Luxe Excursions, Tenerife' },
+        { label: 'Channels', value: 'SEO, Google Ads, Business Profile' },
+        { label: 'Tracking', value: 'GA4, Search Console' },
+        { label: 'Site', value: 'Django, Next.js' },
+      ],
+      href: 'https://luxeexcursionstenerife.com',
+      linkLabel: 'Visit Luxe Excursions',
+    },
+    processTitle: 'How We Start',
+    processIntro: 'We fix the foundations before spending anything on traffic.',
+    process: [
+      {
+        phase: 'Audit',
+        title: 'Check The Foundations',
+        description:
+          'We look at indexing, tracking, the Business Profile and what you already rank for.',
+      },
+      {
+        phase: 'Fix',
+        title: 'Fix The Site',
+        description:
+          'Crawl problems, schema, redirects, speed and tracking get fixed in the code first.',
+      },
+      {
+        phase: 'Launch',
+        title: 'Start Campaigns',
+        description: 'Ads, profile updates and new pages go live once the results can be measured.',
+      },
+      {
+        phase: 'Measure',
+        title: 'Review And Adjust',
+        description:
+          'Each month we look at which searches and pages turn into enquiries and change course where they do not.',
+      },
+    ],
+    techTitle: 'Tools We Work With',
+    techIntro: 'The Google tools and site stacks behind our SEO work.',
+    tech: ['google', 'googlemaps', 'nextdotjs', 'django'],
+    benefitsTitle: 'Where To Start With SEO And Ads',
+    benefitsIntro:
+      'The order matters. Spending on traffic before the basics work wastes most of it.',
+    benefits: [
+      {
+        title: 'Tracking before traffic',
+        description:
+          'Set up analytics and conversion tracking before paying for ads, or nobody can tell what worked.',
+      },
+      {
+        title: 'Fix the site before the content',
+        description:
+          'Pages Google cannot crawl or index will not rank, however good the writing is.',
+      },
+      {
+        title: 'Local businesses start with the profile',
+        description:
+          'For anyone serving a place, the Business Profile can bring more calls and bookings than the website does.',
+      },
+      {
+        title: 'Ads work on existing demand',
+        description:
+          'Search ads pay off when people already search for what you sell. They rarely create demand on their own.',
+      },
+      {
+        title: 'Reviews build on each other',
+        description:
+          'A steady, honest flow of reviews helps the profile and the click-through rate. Asking every customer at the right moment keeps it steady.',
+      },
+      {
+        title: 'Write from real work',
+        description:
+          'Pages built on your own projects, numbers and customers earn trust that generic copy cannot.',
+      },
+    ],
+    projectsTitle: 'SEO Work In Our Portfolio',
+    projectsIntro: 'SEO tools we have built, and a store whose search visibility we improved.',
+    projectsCtaLabel: 'View All Case Studies',
+    projects: [projectRef('siterank'), projectRef('clicks'), projectRef('autobuffy')],
+    faqsTitle: 'SEO And Google Ads FAQs',
+    faqsIntro: 'What business owners ask before handing over their marketing.',
+    faqs: [
+      {
+        id: 'seo-what',
+        question: 'What do your SEO and Google Ads services include?',
+        answer:
+          'Technical SEO, analytics and conversion tracking, Google Ads search campaigns, Business Profile management and content that answers what buyers ask.',
+      },
+      {
+        id: 'seo-new-site',
+        question: 'Do we need a new website first?',
+        answer:
+          'Not always. We start with your current site, fix what blocks crawling and tracking, and only suggest a rebuild if the platform cannot be fixed.',
+      },
+      {
+        id: 'seo-ads',
+        question: 'Do you manage Google Ads accounts?',
+        answer:
+          'Yes. We set up campaigns, negative keywords and ad assets, import conversions from GA4 and review the search terms regularly. The ad account and its billing stay in your name.',
+      },
+      {
+        id: 'seo-gbp',
+        question: 'Can you manage our Google Business Profile?',
+        answer:
+          'Yes. We keep services, hours and booking links up to date, fix location problems and set up review requests so new reviews keep arriving.',
+      },
+      {
+        id: 'seo-ai',
+        question: 'Does this help with AI search as well?',
+        answer:
+          'Yes. Clear answers, accurate schema and the same facts across your profiles help Google’s AI Overviews and assistants like ChatGPT describe you correctly.',
+      },
+      OWNERSHIP_FAQ,
+    ],
+    cta: {
+      title: 'Want More Customers From Google?',
+      description:
+        'Tell us what you sell and who buys it, and we will check what is holding your site back first.',
+      primary: { label: 'Talk to us', href: '/contact' },
+      secondary: { label: 'View case studies', href: '/our-work/case-studies' },
+    },
+  },
 };
 
 export function getCapabilityPage(slug: CapabilitySlug): CapabilityPageData {
@@ -2641,6 +2973,8 @@ export const CAPABILITY_SERVICE_NAMES: Record<CapabilitySlug, string> = {
   'legacy-modernization': 'Legacy software modernization',
   'software-maintenance': 'Software maintenance and support',
   'marketplace-development': 'Marketplace development',
+  'qa-testing': 'QA and test automation',
+  'digital-marketing': 'SEO and Google Ads',
 };
 
 /** BrandIcon service slugs (short keys in SERVICE_ICONS). */
@@ -2658,6 +2992,8 @@ export const CAPABILITY_ICONS: Record<CapabilitySlug, string> = {
   'legacy-modernization': 'integration',
   'software-maintenance': 'staff',
   'marketplace-development': 'web',
+  'qa-testing': 'automation',
+  'digital-marketing': 'integration',
 };
 
 /** The services each service page links to: the ones its projects usually involve as well. */
@@ -2670,11 +3006,13 @@ export const RELATED_CAPABILITIES: Record<CapabilitySlug, readonly CapabilitySlu
   crm: ['erp', 'automation', 'saas'],
   saas: ['marketplace-development', 'web-apps', 'cloud', 'software-maintenance'],
   cloud: ['devops', 'legacy-modernization', 'saas'],
-  devops: ['cloud', 'software-maintenance', 'saas'],
-  automation: ['ai-solutions', 'crm', 'erp'],
+  devops: ['cloud', 'qa-testing', 'software-maintenance', 'saas'],
+  automation: ['ai-solutions', 'digital-marketing', 'crm', 'erp'],
   'legacy-modernization': ['software-maintenance', 'cloud', 'custom-software'],
-  'software-maintenance': ['legacy-modernization', 'devops', 'cloud'],
+  'software-maintenance': ['legacy-modernization', 'qa-testing', 'devops', 'cloud'],
   'marketplace-development': ['web-apps', 'saas', 'mobile-apps'],
+  'qa-testing': ['devops', 'software-maintenance', 'automation'],
+  'digital-marketing': ['web-apps', 'automation', 'ai-solutions'],
 };
 
 /** The service page whose project story is this case study, if any. */

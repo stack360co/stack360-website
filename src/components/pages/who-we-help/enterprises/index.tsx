@@ -122,7 +122,7 @@ export default function EnterprisesPage() {
       <RelatedServices
         title="Services enterprises ask us for"
         intro="Legacy systems, cloud moves and release pipelines are where most enterprise work begins."
-        services={['erp', 'cloud', 'devops', 'custom-software']}
+        services={['erp', 'cloud', 'devops', 'legacy-modernization', 'qa-testing']}
       />
 
       <PageClosingCta {...ENTERPRISES_CTA} />

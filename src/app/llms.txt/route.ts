@@ -24,6 +24,8 @@ const SERVICE_ORDER: readonly CapabilitySlug[] = [
   'marketplace-development',
   'legacy-modernization',
   'software-maintenance',
+  'qa-testing',
+  'digital-marketing',
 ];
 
 const COMPANY_PAGES = [

@@ -397,6 +397,32 @@ export const seo = {
     ],
   }),
 
+  whatWeBuildQaTesting: pageMeta({
+    absoluteTitle: 'QA and Test Automation Services | Stack360',
+    description:
+      'QA and test automation that catches problems before customers do: unit, integration and Selenium browser tests, code checks in CI and manual testing.',
+    path: '/what-we-build/qa-testing',
+    keywords: [
+      'qa testing services',
+      'test automation services',
+      'software testing company',
+      'selenium testing services',
+    ],
+  }),
+
+  whatWeBuildDigitalMarketing: pageMeta({
+    absoluteTitle: 'SEO and Google Ads Services | Stack360',
+    description:
+      'SEO and Google Ads run from inside your website: technical SEO, GA4 tracking, Business Profile and search campaigns, as we do for Luxe Excursions.',
+    path: '/what-we-build/digital-marketing',
+    keywords: [
+      'seo services',
+      'google ads management',
+      'technical seo services',
+      'google business profile management',
+    ],
+  }),
+
   whoWeHelp: pageMeta({
     title: 'Who We Help: Startups, SMEs and Enterprises',
     description:

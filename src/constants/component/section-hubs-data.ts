@@ -69,6 +69,18 @@ export const WHAT_WE_BUILD_HUB: SectionHubProps = {
       cta: 'Explore support',
     },
     {
+      title: 'QA & Testing',
+      blurb: 'Automated and manual testing that keeps every release safe.',
+      href: '/what-we-build/qa-testing',
+      cta: 'Explore QA',
+    },
+    {
+      title: 'SEO & Google Ads',
+      blurb: 'Technical SEO, tracking, ads and Business Profile, run from the site itself.',
+      href: '/what-we-build/digital-marketing',
+      cta: 'Explore SEO',
+    },
+    {
       title: 'Cloud',
       blurb: 'Resilient cloud architecture, migration, and cost-aware operations.',
       href: '/what-we-build/cloud',

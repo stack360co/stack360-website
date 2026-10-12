@@ -130,7 +130,7 @@ export default function StartupsPage() {
       <RelatedServices
         title="Services startups ask us for"
         intro="Most first builds are a web or mobile product with sign-up and billing, sometimes with AI at the core."
-        services={['saas', 'web-apps', 'mobile-apps', 'ai-solutions']}
+        services={['saas', 'web-apps', 'mobile-apps', 'ai-solutions', 'digital-marketing']}
         reading={{
           href: '/blog/mvp-development-guide',
           label: 'MVP Development: Scope, Build, and Launch',

@@ -25,6 +25,8 @@ const ROUTES = [
   '/what-we-build/legacy-modernization',
   '/what-we-build/software-maintenance',
   '/what-we-build/marketplace-development',
+  '/what-we-build/qa-testing',
+  '/what-we-build/digital-marketing',
   '/who-we-help',
   '/who-we-help/industries',
   '/who-we-help/startups',
