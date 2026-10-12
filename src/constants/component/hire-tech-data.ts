@@ -71,7 +71,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       title: 'Hire Swift developers',
       highlight: 'for native iOS apps.',
       description:
-        'Full-time remote iOS engineers who write Swift and SwiftUI, ship through TestFlight and App Store review, and work inside your team’s repo and sprint with overlap on US hours.',
+        'Full-time remote iOS engineers who write Swift and SwiftUI and ship through TestFlight and App Store review. They work inside your team’s repo and sprint, with overlap on US hours.',
     },
     workTitle: 'What our Swift developers work on',
     workIntro:
@@ -260,7 +260,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'backend',
         question: 'Can your React developers work on the backend too?',
         answer:
-          'Most of our React projects pair it with a Rails, Django, Node or Laravel backend, so we can place an engineer who is comfortable on both sides or put together a small team that covers each.',
+          'Most of our React projects pair it with a Rails, Django, Node or Laravel backend. We can place an engineer comfortable on both sides, or a small team that covers each.',
       },
       {
         id: 'typescript',
@@ -738,7 +738,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         id: 'upgrades',
         question: 'Can you upgrade an old Rails app?',
         answer:
-          'Yes. We go one version at a time, run the test suite at every step and write tests first where there are none, so production keeps working through the upgrade.',
+          'Yes. We go one version at a time and run the test suite at every step. Where there are no tests, we write them first, so production keeps working through the upgrade.',
       },
       {
         id: 'frontend',
@@ -782,7 +782,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       title: 'Hire Angular developers',
       highlight: 'for large business web apps.',
       description:
-        'Engineers who have built Angular front ends for an auto parts store with over 100,000 SKUs, legal filing software and a customer messaging platform, on Rails and .NET backends. Full time on your team, with overlap on US hours.',
+        'Engineers who have built Angular front ends on Rails and .NET backends. Their work includes an auto parts store with over 100,000 SKUs, legal filing software and a customer messaging platform. Full time on your team, with overlap on US hours.',
     },
     workTitle: 'What our Angular developers work on',
     workIntro:
@@ -814,7 +814,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         name: 'Autobuffy',
         summary:
-          'Auto parts store with more than 100,000 SKUs, faceted search and dropship fulfilment.',
+          'Auto parts store with more than 100,000 SKUs, faceted search and dropship fulfillment.',
         stack: ['Angular 13 to 16', 'Ruby on Rails', 'Elasticsearch'],
         url: 'https://autobuffy.com',
         caseStudy: '/our-work/case-studies/autobuffy',
@@ -911,7 +911,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         title: 'Background jobs and alerts',
         description:
-          'Celery workers for scheduled checks, renewals and notifications. Alertia warns security firms before a guard’s licence expires.',
+          'Celery workers for scheduled checks, renewals and notifications. Alertia warns security firms before a guard’s license expires.',
       },
       {
         title: 'Compliance and audit trails',
@@ -938,7 +938,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         name: 'Alertia',
         summary:
-          'Shift scheduling and live patrol tracking for security firms, with licence-expiry alerts.',
+          'Shift scheduling and live patrol tracking for security firms, with license-expiry alerts.',
         stack: ['Django', 'Next.js', 'Celery', 'AWS'],
       },
       {
@@ -1054,7 +1054,8 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       },
       {
         name: 'ATC',
-        summary: 'Internal system for HR, billing and messaging, used by hundreds of employees.',
+        summary:
+          'Vue.js front end for an internal HR, billing and messaging system that hundreds of employees use daily.',
         stack: ['Vue.js', 'ASP.NET Core', 'PostgreSQL', 'Redis'],
         caseStudy: '/our-work/case-studies/atc',
       },
@@ -1069,7 +1070,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         name: 'Nuvana',
         summary:
-          'Chronic-care portal that tracks patient interactions and generates Medicare billing.',
+          'Vue.js portal where clinic staff track chronic-care patients and their interactions.',
         stack: ['Vue.js', '.NET', 'PostgreSQL', 'Docker'],
       },
       {
@@ -1166,14 +1167,15 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     projects: [
       {
         name: 'ATC',
-        summary: 'Internal system for HR, billing and messaging, used by hundreds of employees.',
+        summary:
+          'ASP.NET Core backend with SignalR live updates for an internal HR, billing and messaging system.',
         stack: ['ASP.NET Core', 'Vue.js', 'PostgreSQL', 'Redis'],
         caseStudy: '/our-work/case-studies/atc',
       },
       {
         name: 'Nuvana',
         summary:
-          'Chronic-care portal that tracks patient interactions and generates Medicare billing.',
+          '.NET backend that generates Medicare billing from tracked patient care, with JWT authentication and encrypted storage.',
         stack: ['.NET', 'Vue.js', 'PostgreSQL', 'Docker'],
       },
       {

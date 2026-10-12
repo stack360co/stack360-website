@@ -66,7 +66,7 @@ export default function TrustBadges() {
             id="recognition-heading"
             className="text-balance text-lg font-bold leading-snug tracking-tight text-neutral-800 md:text-xl md:leading-snug"
           >
-            Recognised for delivering reliable software and product development solutions to
+            Recognized for delivering reliable software and product development solutions to
             businesses worldwide
           </h2>
         </motion.div>

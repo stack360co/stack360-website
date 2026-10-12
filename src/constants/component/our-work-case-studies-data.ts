@@ -578,7 +578,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
     tagline:
       'A fashion rental platform that lets users rent clothing, shoes, and accessories from lenders — promoting borrow-over-buy sustainability at a fraction of retail cost.',
     metaDescription:
-      'How Stack360 built Cercle, a UK fashion rental marketplace: faster pages, store credit for refunds and catalogue sync with Facebook.',
+      'How Stack360 built Cercle, a UK fashion rental marketplace: faster pages, store credit for refunds and catalog sync with Facebook.',
     industry: 'Fashion · eCommerce',
     platform: 'Web',
     durationHours: '2,112 hrs',
@@ -607,7 +607,7 @@ export const CASE_STUDIES_DETAILS: CaseStudyDetail[] = [
         challenge:
           'Expanding reach meant users expected seamless shopping on social channels as well as the site.',
         solution:
-          'We integrated Facebook e-commerce APIs so catalogues, inventory, and orders stay in sync between the site and Facebook.',
+          'We integrated Facebook e-commerce APIs so catalogs, inventory, and orders stay in sync between the site and Facebook.',
       },
       {
         challenge:

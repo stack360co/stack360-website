@@ -148,40 +148,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Web Apps',
-      title: 'Build Powerful Web Apps For',
-      highlight: 'Growing Businesses',
+      title: 'Web App Development',
+      highlight: 'For Products People Log In To',
       description:
         'A web app is software your customers or staff log in to and use in a browser, such as a marketplace, a portal or an ordering system. We build them in React, Next.js and Rails, from Cercle’s fashion rentals to Autobuffy’s 100,000-part store.',
       cta: { label: 'Build Your Web App', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What Our Web Apps Do',
     capabilitiesIntro:
-      'Slow websites, poor experiences, limited functionality, and disconnected systems can prevent businesses from converting visitors and scaling online.',
+      'Most web apps exist so customers or staff can get something done without calling you: book, buy, file, track or approve.',
     capabilities: [
       {
-        title: 'Custom Websites Built',
+        title: 'Marketplaces and stores',
         description:
-          'Our custom website development creates flexible digital experiences tailored to your brand, users, workflows, and business objectives.',
+          'Listings, carts, checkout and payouts. Cinekit rents camera gear across the UK, Europe and the US, with Stripe holding security deposits.',
       },
       {
-        title: 'Business Websites',
+        title: 'Portals and dashboards',
         description:
-          'We build professional websites that communicate your value clearly, support your goals, and create seamless experiences across devices.',
+          'Logged-in views for customers or staff. NPTAAS cut a client review process from weeks to days with automated audit scoring and reports.',
       },
       {
-        title: 'Ecommerce Experiences',
+        title: 'Guided forms and workflows',
         description:
-          'Our ecommerce website development services create secure, scalable online stores with product management, payments, integrations, and customer-focused experiences.',
+          'Step-by-step questions that turn plain answers into the exact format a process needs. LegalAtoms prepares court-ready filings this way.',
       },
       {
-        title: 'Web Applications',
+        title: 'Integrations behind the screen',
         description:
-          'As a web app development company, we build interactive applications that simplify workflows, connect systems, and support complex business requirements.',
+          'Payments, shipping, email and inventory feeds. Autobuffy connects Stripe, PayPal, UPS, USPS, FedEx and AfterShip.',
       },
       {
-        title: 'Connected Platforms',
+        title: 'Speed on large catalogs',
         description:
-          'Integrate websites with CRMs, ERPs, APIs, payment systems, databases, analytics platforms, and third-party business applications.',
+          'Caching, background jobs and Elasticsearch where search has to stay fast across thousands of products or records.',
       },
     ],
     story: {
@@ -194,7 +194,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       changes: [
         'Sped up product data handling and image caching, and moved heavy work into Sidekiq background jobs so pages stay responsive.',
         'Built a wallet and store-credit flow for refunds and cancellations, with encryption and secure tokenisation.',
-        'Integrated the Facebook commerce APIs, so the catalogue, inventory and orders stay in sync between the site and Facebook.',
+        'Integrated the Facebook commerce APIs, so the catalog, inventory and orders stay in sync between the site and Facebook.',
         'Connected Advanced Clothing Solutions, so used items ship from the renter, get cleaned and repaired, and return to stock.',
         'Fixed the Solidus admin configuration so delivery and payment statuses stay accurate.',
       ],
@@ -211,30 +211,30 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     },
     processTitle: 'From Concept To Launch',
     processIntro:
-      'Our website design and development process connects strategy, UX, engineering, testing, optimisation, and deployment to deliver reliable digital experiences.',
+      'A web app is built in small, working pieces, so you can use it and change course before it is finished.',
     process: [
       {
         phase: 'Discover',
-        title: 'Define Requirements',
+        title: 'Map The Journeys',
         description:
-          'We understand your audience, business goals, functionality, integrations, content, and technical requirements before development begins.',
+          'We list who uses the app, what each person needs to get done and which systems it must connect to.',
       },
       {
         phase: 'Develop',
-        title: 'Build Experience',
+        title: 'Build In Weekly Steps',
         description:
-          'Our developers create responsive websites and web applications with scalable architecture, clean code, secure integrations, and performance optimisation.',
+          'You see working screens in a weekly demo, checked against the milestones agreed at the start.',
       },
       {
         phase: 'Launch',
-        title: 'Optimise Performance',
+        title: 'Launch And Measure',
         description:
-          'We test functionality, responsiveness, security, and performance before launch, then continue improving your website as requirements evolve.',
+          'We test on staging, launch, then watch speed, errors and drop-off and fix what they show.',
       },
     ],
     techTitle: 'Technology Behind Our Websites',
     techIntro:
-      'We use modern frontend, backend, CMS, ecommerce, database, cloud, and API technologies to build scalable websites.',
+      'The frameworks behind the web apps in our portfolio. We choose per project, based on the team that will maintain it.',
     tech: [
       'react',
       'nextdotjs',
@@ -282,17 +282,15 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Plan the integrations',
         description:
-          'Most of the hard work sits behind the screen: inventory feeds, shipping, social catalogues and accounting.',
+          'Most of the hard work sits behind the screen: inventory feeds, shipping, social catalogs and accounting.',
       },
     ],
     projectsTitle: 'Web Projects In Action',
-    projectsIntro:
-      'Explore how Stack360 builds websites, web applications, and ecommerce platforms that solve business challenges and support measurable digital growth.',
+    projectsIntro: 'Web apps from our portfolio and what each one was built to do.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('autobuffy'), projectRef('buffyhub'), projectRef('cinekit')],
     faqsTitle: 'Website Development FAQs',
-    faqsIntro:
-      'Find answers to technical questions about custom websites, web applications, ecommerce platforms, integrations, performance, and scalability.',
+    faqsIntro: 'What buyers ask before they commission a web app.',
     faqs: [
       {
         id: 'web-includes',
@@ -316,7 +314,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'web-integrate',
         question: 'Can you integrate a web app with existing business systems?',
         answer:
-          'Yes. Cercle syncs its catalogue and orders with Facebook and works with a clothing-renewal partner, and Autobuffy pulls vendor inventory through its own microservice.',
+          'Yes. Cercle syncs its catalog and orders with Facebook and works with a clothing-renewal partner, and Autobuffy pulls vendor inventory through its own microservice.',
       },
       {
         id: 'web-faster',
@@ -327,9 +325,9 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       OWNERSHIP_FAQ,
     ],
     cta: {
-      title: 'Ready To Build A Better Website?',
+      title: 'Have A Web App In Mind?',
       description:
-        'Partner with Stack360 for website development that combines modern technology, scalable architecture, intuitive experiences, and business-focused functionality.',
+        'Tell us who will use it and what they need to get done. We reply within one business day to set up a discovery call.',
       primary: { label: 'Build Your Web App', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -341,40 +339,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Mobile Apps',
-      title: 'Build Custom Mobile Apps That',
-      highlight: 'Drive Growth',
+      title: 'Mobile App Development',
+      highlight: 'For iOS And Android',
       description:
         'We build iOS and Android apps in React Native, Flutter and Swift, and take them through App Store and Google Play release. Nextflag, a map-based social app, is one we made faster and more stable for both platforms.',
       cta: { label: 'Build Your Mobile App', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What We Build For Mobile',
     capabilitiesIntro:
-      'Businesses need mobile experiences that perform reliably, engage users, integrate systems, and adapt quickly as customer expectations continue to evolve.',
+      'People judge an app in its first few minutes, on speed, stability and whether it does the thing they downloaded it for.',
     capabilities: [
       {
-        title: 'Custom Apps Built',
+        title: 'Native iOS apps',
         description:
-          'We develop custom mobile apps around your users, workflows, features, integrations, and specific business requirements.',
+          'Swift apps for features that lean on the device. Slumber & Sprout gives parents sleep tracking and routines for their children in a native iOS app.',
       },
       {
-        title: 'Native App Experiences',
+        title: 'Cross-platform apps',
         description:
-          'We build high-performance mobile applications with platform-specific experiences for Android and iOS users.',
+          'One React Native or Flutter codebase for iOS and Android. Houzi’s Flutter app shows properties with 360-degree views.',
       },
       {
-        title: 'Cross-Platform Development',
+        title: 'White-label apps',
         description:
-          'Our cross-platform mobile app development services help businesses launch consistent experiences across multiple platforms from one efficient codebase.',
+          'One codebase configured per customer. StoreBevy lets small retailers launch their own branded store app.',
       },
       {
-        title: 'Connected Mobile Experiences',
+        title: 'Backends and notifications',
         description:
-          'Integrate mobile applications with APIs, CRMs, ERPs, cloud services, databases, and existing business systems.',
+          'APIs, background jobs and push notifications. Slumber & Sprout’s Rails backend recalculates sleep schedules with Sidekiq when a routine changes.',
       },
       {
-        title: 'Scalable App Architecture',
+        title: 'Store releases',
         description:
-          'We design flexible architectures that support growing users, transactions, features, integrations, and evolving product requirements.',
+          'Signing, TestFlight and Play Console tracks, and store listings for both platforms, planned from the first sprint.',
       },
     ],
     story: {
@@ -405,30 +403,29 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     },
     processTitle: 'From Concept To Scale',
     processIntro:
-      'Our mobile app development process combines product strategy, user experience, engineering, testing, and deployment to create reliable applications.',
+      'Mobile work is planned around the app stores as much as the code, so releases never become the bottleneck.',
     process: [
       {
         phase: 'Discover',
-        title: 'Define Requirements',
+        title: 'Pick The Platforms',
         description:
-          'We analyse your users, goals, features, workflows, and technical requirements to establish a focused mobile development roadmap.',
+          'We choose native, React Native or Flutter based on the features you need and who will maintain the app.',
       },
       {
         phase: 'Develop',
-        title: 'Build Experiences',
+        title: 'Test On Real Phones',
         description:
-          'Our mobile app developers build intuitive applications with scalable architecture, secure integrations, testing, and performance optimisation.',
+          'Builds go out through TestFlight and Play Console testing tracks, so you try the app on your own phone every week.',
       },
       {
-        phase: 'Scale',
-        title: 'Optimise Performance',
+        phase: 'Release',
+        title: 'Ship To Both Stores',
         description:
-          'We monitor, improve, and expand your application as users, features, integrations, and business requirements continue growing.',
+          'We handle signing, listings and store review, then keep the app current with each iOS and Android release.',
       },
     ],
     techTitle: 'Technology Behind Mobile Apps',
-    techIntro:
-      'We use modern mobile frameworks, cloud platforms, APIs, and development technologies to create secure, scalable applications.',
+    techIntro: 'The mobile frameworks and backends behind the apps we have shipped.',
     tech: [
       'swift',
       'kotlin',
@@ -479,13 +476,11 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       },
     ],
     projectsTitle: 'Mobile Apps In Action',
-    projectsIntro:
-      'Explore how Stack360 builds intuitive mobile experiences that solve business challenges, connect systems, and support scalable digital products.',
+    projectsIntro: 'Apps from our portfolio across iOS and Android.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('slumber-sprout'), projectRef('nuvana'), projectRef('cashkart')],
     faqsTitle: 'Mobile App Development FAQs',
-    faqsIntro:
-      'Find answers to technical questions about mobile platforms, development approaches, architecture, integrations, security, and scalability.',
+    faqsIntro: 'What teams ask before they build or take over an app.',
     faqs: [
       {
         id: 'mobile-native-vs-cross',
@@ -526,9 +521,9 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       },
     ],
     cta: {
-      title: 'Ready To Build Your Mobile App?',
+      title: 'Planning An App?',
       description:
-        'Partner with Stack360 to create a scalable mobile application that delivers better experiences, connects your systems, and supports business growth.',
+        'Tell us what it should do and who it is for. We reply within one business day to set up a discovery call.',
       primary: { label: 'Build Your Mobile App', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -540,40 +535,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · DevOps',
-      title: 'Build Faster With Smarter',
-      highlight: 'DevOps Engineering',
+      title: 'DevOps Consulting',
+      highlight: 'That Makes Releases Routine',
       description:
         'DevOps makes releasing software routine: automated builds, tests and deploys, monitoring that reaches a person, and infrastructure defined in code. For Truck-4 we set up pipelines that deploy every service to Kubernetes the same way.',
       cta: { label: 'Improve Your DevOps', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What We Set Up',
     capabilitiesIntro:
-      'Manual deployments, inconsistent environments, infrastructure bottlenecks, and limited monitoring can slow releases and increase operational risks.',
+      'If releasing needs a particular person and a checklist, every deploy is a risk and every fix waits for them.',
     capabilities: [
       {
-        title: 'Smarter Delivery Pipelines',
+        title: 'CI/CD pipelines',
         description:
-          'Our DevOps development services streamline development, testing, deployment, and infrastructure management through reliable automated workflows.',
+          'Pipelines that build, test and deploy every change the same way, from Azure DevOps on Truck-4 to Capistrano deploys on BuffyHub.',
       },
       {
-        title: 'Automated Infrastructure',
+        title: 'Containers and Kubernetes',
         description:
-          'Implement DevOps automation to provision, configure, monitor, and manage infrastructure with greater consistency and fewer manual processes.',
+          'Docker for environments that behave the same everywhere, and Kubernetes when a product has many services to scale separately.',
       },
       {
-        title: 'Faster Deployments',
+        title: 'Checks before release',
         description:
-          'Build reliable CI/CD pipelines that help teams release software faster while maintaining quality, security, and deployment consistency.',
+          'Unit and integration tests plus SonarQube analysis that stop risky changes before they reach production.',
       },
       {
-        title: 'Reliable Infrastructure',
+        title: 'Monitoring and alerts',
         description:
-          'Design resilient cloud and infrastructure environments that support application availability, performance, scalability, and operational continuity.',
+          'Error tracking with tools like Sentry, uptime checks and alerts that reach an engineer before customers notice a problem.',
       },
       {
-        title: 'Continuous Monitoring',
+        title: 'Environments defined in code',
         description:
-          'Monitor infrastructure, applications, deployments, and system performance to identify issues early and improve operational visibility.',
+          'Helm charts and configuration files that describe each environment, so it can be reviewed, repeated and rebuilt.',
       },
     ],
     story: {
@@ -604,30 +599,29 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     },
     processTitle: 'From Code To Production',
     processIntro:
-      'Our DevOps consulting approach connects development, infrastructure, automation, security, and monitoring to create efficient software delivery pipelines.',
+      'We start from how you ship today and automate the slowest, riskiest steps first.',
     process: [
       {
         phase: 'Assess',
-        title: 'Analyse Infrastructure',
+        title: 'Review How You Ship',
         description:
-          'We review your architecture, workflows, deployment processes, infrastructure, and operational challenges to identify practical improvement opportunities.',
+          'We follow one change from commit to production and note every manual step, wait and failure point.',
       },
       {
         phase: 'Automate',
-        title: 'Build Pipelines',
+        title: 'Script The Release',
         description:
-          'We implement CI/CD, infrastructure automation, containerisation, testing, and deployment workflows that improve delivery efficiency.',
+          'Builds, tests and deploys go into a pipeline, with a staging environment in front of production.',
       },
       {
-        phase: 'Optimise',
-        title: 'Improve Reliability',
+        phase: 'Monitor',
+        title: 'Watch And Improve',
         description:
-          'We monitor systems, identify bottlenecks, optimise infrastructure, and continuously improve performance, security, and deployment reliability.',
+          'Alerts and dashboards show errors and slow responses, and we fix the causes in order of impact.',
       },
     ],
     techTitle: 'Technology Behind Our DevOps',
-    techIntro:
-      'We use modern cloud, containerisation, infrastructure, automation, monitoring, and CI/CD technologies to improve software delivery.',
+    techIntro: 'The pipeline, container and monitoring tools used across our projects.',
     tech: [
       'amazonaws',
       'microsoftazure',
@@ -672,17 +666,15 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       },
       {
         title: 'Rollbacks that work',
-        description: 'Every deploy should be easy to undo. Practise it before you need it.',
+        description: 'Every deploy should be easy to undo. Practice it before you need it.',
       },
     ],
     projectsTitle: 'DevOps In Action',
-    projectsIntro:
-      'Explore how Stack360 improves infrastructure, automation, deployment workflows, and operational reliability for growing software products and businesses.',
+    projectsIntro: 'Projects where we set up the pipelines, hosting and monitoring.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('truck-4'), projectRef('buffyhub'), projectRef('atc')],
     faqsTitle: 'DevOps Consulting FAQs',
-    faqsIntro:
-      'Find answers to technical questions about DevOps consulting, automation, CI/CD, cloud infrastructure, containers, monitoring, and deployment.',
+    faqsIntro: 'What engineering leads ask before changing how they release.',
     faqs: [
       {
         id: 'devops-includes',
@@ -717,9 +709,9 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       OWNERSHIP_FAQ,
     ],
     cta: {
-      title: 'Ready To Modernize Your DevOps Environment?',
+      title: 'Want Releases Your Team Stops Worrying About?',
       description:
-        'Partner with Stack360 for DevOps consulting that automates delivery, improves infrastructure reliability, and helps your engineering teams release faster.',
+        'Tell us how you deploy today and what goes wrong. We reply within one business day to set up a discovery call.',
       primary: { label: 'Improve Your DevOps', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -731,40 +723,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · AI Solutions',
-      title: 'Build Intelligent AI Solutions',
-      highlight: 'For Business Growth',
+      title: 'AI Development',
+      highlight: 'That Works From Your Own Data',
       description:
         'We build AI features that work from your own data: assistants that answer from your documents, document reading, and automated decisions with a person in the loop. Money Ball, our sports-stats assistant, checks a live database before it answers.',
       cta: { label: 'Build Your AI Solution', href: '/contact' },
     },
-    capabilitiesTitle: 'AI Challenges & Solutions',
+    capabilitiesTitle: 'Where We Use AI',
     capabilitiesIntro:
-      'Businesses struggle to identify valuable AI opportunities, integrate intelligent systems, and turn emerging technology into measurable business outcomes. We build practical AI solutions that improve operations, integrate securely, and deliver measurable value without unnecessary complexity.',
+      'AI is worth building when the input is messy, such as documents, free text or open questions, and a wrong answer can be caught.',
     capabilities: [
       {
-        title: 'Custom AI Solutions',
+        title: 'Answers from your records',
         description:
-          'We develop custom AI solutions around your workflows, data, customers, and specific business requirements.',
+          'Chat and search over your own databases and documents, using retrieval so each answer comes from a real record.',
       },
       {
-        title: 'Generative AI Development',
+        title: 'Document reading',
         description:
-          'Our generative AI development services create intelligent applications for content, research, knowledge retrieval, and business productivity.',
+          'OCR and handwriting recognition that pull fields out of scans and forms. Natif.ai processes incoming documents this way.',
       },
       {
-        title: 'AI Agent Development',
+        title: 'Routing and triage',
         description:
-          'Our AI agent development services create autonomous systems that understand context, use tools, and execute complex business workflows.',
+          'Models that read free-text messages and send each one to the right team. Contakti routes support tickets across email, chat, SMS and voice.',
       },
       {
-        title: 'AI Chatbot Development',
+        title: 'Writing assistance',
         description:
-          'Our AI chatbot development services deliver intelligent conversations that support customers, employees, and business operations across digital channels.',
+          'Drafting tools that work inside an existing workflow. We worked on Fyxer, an assistant that drafts email replies in the user’s own tone.',
       },
       {
-        title: 'AI Application Development',
+        title: 'AI at the core of a product',
         description:
-          'Our AI application development services integrate intelligent capabilities into scalable software, workflows, platforms, and existing business systems.',
+          'Generative features a product is built around, such as Aiode’s virtual musicians that help producers compose.',
       },
     ],
     story: {
@@ -773,7 +765,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       intro:
         'Money Ball lets NFL fans and analysts ask for player and team numbers in plain English. The hard part of a product like this is trust: the answer has to be right, and football stats change every week.',
       problem:
-        'General language models answer confidently even when they are wrong. They are wrong most often on specialised figures that change quickly, such as this season’s player and team stats. A chatbot that invents numbers is worse than no chatbot at all.',
+        'General language models answer confidently even when they are wrong. They are wrong most often on specialized figures that change quickly, such as this season’s player and team stats. A chatbot that invents numbers is worse than no chatbot at all.',
       changes: [
         'Built a retrieval-augmented generation (RAG) setup that makes the model query the live sports database before it answers, so replies rest on current figures.',
         'Added a real-time team performance engine that keeps the underlying numbers up to date.',
@@ -793,30 +785,29 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     },
     processTitle: 'From Strategy To Scale',
     processIntro:
-      'Our AI consulting and development process connects business objectives, data, technology, models, and deployment to create practical AI solutions.',
+      'We start with one task, prove it on real examples and widen it only once the answers hold up.',
     process: [
       {
         phase: 'Discover',
-        title: 'Define Opportunities',
+        title: 'Choose The Task',
         description:
-          'Our AI consulting services identify valuable use cases, assess your data, and establish a practical AI development roadmap.',
+          'We pick a task where the input is messy and mistakes can be caught, and agree how success is measured.',
       },
       {
-        phase: 'Develop',
-        title: 'Build Intelligence',
+        phase: 'Build',
+        title: 'Ground It In Your Data',
         description:
-          'Our AI software development services integrate models, applications, agents, automation, and secure workflows around your requirements.',
+          'We connect the model to your documents or databases and test it on real examples before anyone relies on it.',
       },
       {
         phase: 'Scale',
-        title: 'Optimise Performance',
+        title: 'Monitor The Answers',
         description:
-          'We monitor AI systems, evaluate models, improve performance, and scale solutions as your business and technology requirements evolve.',
+          'In production we track accuracy and failures and keep a person in the loop where mistakes are costly.',
       },
     ],
     techTitle: 'Technology Behind Our AI Solutions',
-    techIntro:
-      'We use modern AI, machine learning, cloud, language models, APIs, and data technologies to build intelligent applications.',
+    techIntro: 'The models, frameworks and data tools we build AI features with.',
     tech: [
       'openai',
       'anthropic',
@@ -866,17 +857,15 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Not before the data exists',
         description:
-          'AI needs records, documents or history to work from. If they are scattered or missing, organising them is the first project.',
+          'AI needs records, documents or history to work from. If they are scattered or missing, organizing them is the first project.',
       },
     ],
     projectsTitle: 'AI Solutions In Action',
-    projectsIntro:
-      'Explore how Stack360 applies AI, automation, software engineering, and intelligent systems to solve real business challenges.',
+    projectsIntro: 'AI products from our portfolio.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('moneyball'), projectRef('natif'), projectRef('siterank')],
     faqsTitle: 'AI Solutions FAQs',
-    faqsIntro:
-      'Find answers to technical questions about AI development, generative AI, agents, chatbots, security, compliance, and deployment.',
+    faqsIntro: 'What teams ask before putting AI in front of customers.',
     faqs: [
       {
         id: 'ai-types',
@@ -917,9 +906,9 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       OWNERSHIP_FAQ,
     ],
     cta: {
-      title: 'Ready To Put AI To Work?',
+      title: 'Have A Task AI Could Take On?',
       description:
-        'Turn practical AI opportunities into secure, scalable solutions that automate workflows, improve experiences, and create measurable business value.',
+        'Tell us what the input looks like and what a good answer is. We reply within one business day to set up a discovery call.',
       primary: { label: 'Build Your AI Solution', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -931,35 +920,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · ERP',
-      title: 'Build Enterprise Software That',
-      highlight: 'Drives Business Growth',
+      title: 'Custom ERP Development',
+      highlight: 'For Stock, Orders And Suppliers',
       description:
         'An ERP is the one system that holds your stock, orders, suppliers and finances. We build custom ERPs and connect them to your storefronts, marketplaces and accounting, as we did for BuffyHub, which runs Amazon, eBay and Walmart from one place.',
-      cta: { label: 'Start Your Enterprise Project', href: '/contact' },
+      cta: { label: 'Plan Your ERP', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What An ERP Covers',
     capabilitiesIntro:
-      'Complex operations, disconnected systems, and outdated software can create inefficiencies, data silos, security risks, and costly delays.',
+      'An ERP earns its keep when stock, orders, suppliers and money stop living in separate tools that nobody fully trusts.',
     capabilities: [
       {
-        title: 'Centralised Data',
+        title: 'Inventory and orders',
         description:
-          'Bring business data together through a unified ERP platform that gives teams consistent, accessible information.',
+          'One record of stock and orders that every channel reads from. Westar pulls orders from several storefronts and batches them for picking and packing.',
       },
       {
-        title: 'Automate Operations',
+        title: 'Finance and invoicing',
         description:
-          'Automate repetitive workflows and business processes to reduce manual work, minimise errors, and improve operational efficiency.',
+          'Billable hours, invoices and accounting sync. ATC sends billable hours to Zoho Books and generates invoices from them.',
       },
       {
-        title: 'Connect Departments',
+        title: 'People and HR',
         description:
-          'Connect finance, sales, inventory, HR, procurement, and operations through integrated ERP workflows and shared business data.',
+          'Staff records, roles and approvals in the same system as the work. ATC holds HR information for hundreds of employees.',
       },
       {
-        title: 'Improve Visibility',
+        title: 'Suppliers and vendors',
         description:
-          'Give decision-makers real-time access to business information, performance insights, and operational data across departments.',
+          'Vendor records and stock feeds that update themselves. Autobuffy pulls vendor inventory automatically instead of importing spreadsheets.',
+      },
+      {
+        title: 'Service operations',
+        description:
+          'Bookings, parts stock and billing for service businesses. Mi Taller runs automotive workshops this way.',
       },
     ],
     story: {
@@ -973,11 +967,11 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         'Moved the data onto Amazon RDS and S3, sized for large volumes of inventory, order, brand and vendor records.',
         'Put the application behind an Elastic Load Balancer on EC2, so traffic spreads out and capacity grows without downtime.',
         'Connected payment gateways, shipping providers and inventory systems through APIs and webhooks, so data moves between them without manual exports.',
-        'Added encryption, authentication and authorisation around the stored data.',
+        'Added encryption, authentication and authorization around the stored data.',
         'Cut load times with caching, minification and lazy loading, and covered the platform with unit, integration and acceptance tests.',
       ],
       outcome:
-        'Sellers run their whole catalogue and order flow from one platform that handles more traffic and keeps their data protected. Most ERP work comes down to this: one reliable record of stock, orders and suppliers that every channel reads from.',
+        'Sellers run their whole catalog and order flow from one platform that handles more traffic and keeps their data protected. Most ERP work comes down to this: one reliable record of stock, orders and suppliers that every channel reads from.',
       facts: [
         { label: 'Team', value: '2 engineers' },
         { label: 'Effort', value: '3,344 hours' },
@@ -987,32 +981,31 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       href: '/our-work/case-studies/buffyhub',
       linkLabel: 'Read the full BuffyHub case study',
     },
-    processTitle: 'From Vision To Enterprise',
+    processTitle: 'From Spreadsheets To One System',
     processIntro:
-      'Our enterprise software development process aligns business goals, technical architecture, user needs, and scalability from planning through deployment.',
+      'An ERP replaces tools people depend on every day, so it is built and moved across in stages.',
     process: [
       {
         phase: 'Discover',
-        title: 'Define Requirements',
+        title: 'Map The Flows',
         description:
-          'We analyse your business processes, users, systems, and goals to establish clear requirements and a practical development roadmap.',
+          'We trace how stock, orders and money move today, across every tool and spreadsheet involved.',
       },
       {
-        phase: 'Develop',
-        title: 'Build Software',
+        phase: 'Build',
+        title: 'Build The Core First',
         description:
-          'Our engineers develop secure enterprise applications using scalable architecture, modern technologies, integrations, automation, and continuous testing.',
+          'The shared records come first, then each team’s screens, shown in weekly demos against agreed milestones.',
       },
       {
-        phase: 'Scale',
-        title: 'Support Growth',
+        phase: 'Migrate',
+        title: 'Move In Stages',
         description:
-          'We deploy, monitor, optimise, and enhance your enterprise software as your business expands and requirements evolve.',
+          'Each area moves across with its data checked against the old system before the next one starts.',
       },
     ],
     techTitle: 'Technology For Enterprise Software',
-    techIntro:
-      'We use modern frameworks, cloud platforms, APIs, databases, and secure architectures to build scalable enterprise applications.',
+    techIntro: 'The backend, database and integration stack behind our ERP and order systems.',
     tech: [
       'react',
       'nextdotjs',
@@ -1062,15 +1055,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Move one area at a time, such as inventory first and invoicing next, so the business never runs on a half-finished system.',
       },
     ],
-    projectsTitle: 'Related Case Studies',
-    projectsIntro:
-      'Explore how Stack360 builds scalable software, integrates complex systems, and solves challenging business requirements across industries.',
+    projectsTitle: 'ERP Work In Action',
+    projectsIntro: 'Back-office and order systems from our portfolio.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('buffyhub'), projectRef('westar'), projectRef('atc')],
     showTestimonials: true,
-    faqsTitle: 'Frequently Asked Questions',
-    faqsIntro:
-      'Find answers to common questions about enterprise software development, architecture, integrations, security, scalability, and implementation.',
+    faqsTitle: 'ERP Development FAQs',
+    faqsIntro: 'What operations and finance leads ask before replacing their back office.',
     faqs: [
       {
         id: 'erp-what',
@@ -1105,10 +1096,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       OWNERSHIP_FAQ,
     ],
     cta: {
-      title: 'Ready To Build Enterprise Software That Scales?',
+      title: 'Ready To Plan Your ERP?',
       description:
-        'Partner with Stack360 to develop secure, scalable enterprise software that connects your business and supports long-term growth.',
-      primary: { label: 'Start Your Enterprise Project', href: '/contact' },
+        'Tell us which tools and spreadsheets run your operations today. We reply within one business day to set up a discovery call.',
+      primary: { label: 'Plan Your ERP', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
   },
@@ -1119,40 +1110,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · CRM',
-      title: 'Build CRM Software That',
-      highlight: 'Accelerates Business Growth',
+      title: 'Custom CRM Development',
+      highlight: 'Around How You Work With Clients',
       description:
         'A CRM keeps every client, conversation and commitment where your whole team can see it. We build custom CRMs and client portals when standard tools don’t fit, like Klingit, where clients, designers and managers have run more than 5,000 projects.',
       cta: { label: 'Build Your CRM', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What We Build Into A CRM',
     capabilitiesIntro:
-      'Disconnected data, manual workflows, and limited visibility can slow sales, reduce productivity, and weaken customer relationships.',
+      'Most teams outgrow a spreadsheet of clients long before they need a full sales CRM. What they need is one place that shows where every client stands.',
     capabilities: [
       {
-        title: 'Centralise Customer Data',
+        title: 'One record per client',
         description:
-          'Centralise customer data across sales, marketing, and support teams for complete visibility and consistent management.',
+          'Contacts, history, files and conversations in one place. Coach Catalyst keeps each client’s details, progress and messages on a single screen.',
       },
       {
-        title: 'Automate Sales Workflows',
+        title: 'Every channel in one inbox',
         description:
-          'Automate lead assignments, follow-ups, notifications, and repetitive tasks to improve team productivity.',
+          'Email, chat, SMS and voice brought together. Contakti gives support teams one hub for all four.',
       },
       {
-        title: 'Strengthen Customer Relationships',
+        title: 'Pipelines that match your process',
         description:
-          'Connect customer interactions, preferences, communications, and history to deliver personalised experiences across every touchpoint.',
+          'Stages for projects, renewals or reviews as well as sales deals. NPTAAS tracks each client review from scheduling to the final report.',
       },
       {
-        title: 'Improve Sales Visibility',
+        title: 'Client portals',
         description:
-          'Give sales teams clearer pipelines, actionable insights, and reporting to identify opportunities and close deals.',
+          'Self-serve logins where clients check progress, approve work and download files.',
       },
       {
-        title: 'Scale Business Operations',
+        title: 'Automated follow-ups',
         description:
-          'Build flexible CRM software that adapts to growing teams, customer data, workflows, and evolving requirements.',
+          'Onboarding steps, reminders and handovers that run on their own, so nothing depends on someone remembering.',
       },
     ],
     story: {
@@ -1183,30 +1174,29 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     },
     processTitle: 'From Strategy To Success',
     processIntro:
-      'Our CRM development process aligns business goals, customer journeys, technical architecture, and scalability throughout every development stage.',
+      'A CRM only works if the team uses it, so it is built around the roles that will live in it every day.',
     process: [
       {
         phase: 'Discover',
-        title: 'Define Requirements',
+        title: 'Map The Relationship',
         description:
-          'We analyse workflows, users, integrations, and goals to create a focused CRM development roadmap.',
+          'We follow a client from first contact to repeat work and list every place their information lives today.',
       },
       {
         phase: 'Develop',
-        title: 'Build CRM',
+        title: 'Build Around Real Roles',
         description:
-          'Our engineers develop secure CRM software with intuitive interfaces, automation, integrations, analytics, and scalable architecture.',
+          'Sales, delivery and support each get the views and permissions they need, shown in weekly demos.',
       },
       {
-        phase: 'Scale',
-        title: 'Optimise Performance',
+        phase: 'Migrate',
+        title: 'Bring The History Across',
         description:
-          'We monitor, improve, and expand your CRM as teams, customer data, workflows, and requirements grow.',
+          'Contacts and history are cleaned, moved in a test batch for you to check, then migrated in full.',
       },
     ],
     techTitle: 'Technology Behind CRM',
-    techIntro:
-      'We use modern frameworks, APIs, databases, cloud infrastructure, and automation technologies to build powerful CRM platforms.',
+    techIntro: 'The stack behind the client systems and portals we have built.',
     tech: [
       'react',
       'nextdotjs',
@@ -1221,7 +1211,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'docker',
       'kubernetes',
     ],
-    benefitsTitle: 'Build A CRM Or Customise One?',
+    benefitsTitle: 'Build A CRM Or Customize One?',
     benefitsIntro:
       'Most teams should start with an established CRM. A custom one earns its cost when your client relationships do not fit a standard sales pipeline.',
     benefits: [
@@ -1246,7 +1236,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Billing, scheduling and email need to read from and write back to the CRM, or the team stops trusting it.',
       },
       {
-        title: 'Customise when a standard CRM fits',
+        title: 'Customize when a standard CRM fits',
         description:
           'If HubSpot or Salesforce covers your process, configure and integrate it instead of building from scratch.',
       },
@@ -1257,13 +1247,11 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       },
     ],
     projectsTitle: 'CRM Solutions In Action',
-    projectsIntro:
-      'Explore how our software development expertise helps businesses connect data, automate workflows, and create better customer experiences.',
+    projectsIntro: 'Client and support systems from our portfolio.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('atc'), projectRef('contakti'), projectRef('klingit')],
     faqsTitle: 'CRM Development FAQs',
-    faqsIntro:
-      'Find answers to technical questions about custom CRM development, integrations, architecture, security, scalability, and implementation.',
+    faqsIntro: 'What teams ask before replacing their CRM or building their own.',
     faqs: [
       {
         id: 'crm-integrate',
@@ -1298,9 +1286,9 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       OWNERSHIP_FAQ,
     ],
     cta: {
-      title: 'Ready To Build A Smarter CRM For Growth?',
+      title: 'Ready To See Every Client In One Place?',
       description:
-        'Partner with Stack360 to develop custom CRM software that connects teams, automates workflows, and strengthens customer relationships.',
+        'Tell us where your client information lives today. We reply within one business day to set up a discovery call.',
       primary: { label: 'Start Your CRM Project', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -1312,51 +1300,51 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · SaaS',
-      title: 'Build Scalable SaaS Products That',
-      highlight: 'Drive Growth',
+      title: 'SaaS Development',
+      highlight: 'From First MVP To Live Platform',
       description:
         'We build and grow subscription software, covering sign-up, billing, roles and the product itself, from the first MVP to a live platform. For Coach Catalyst we added a Stripe Connect marketplace and moved the front end to Vue 3 while customers kept using it.',
       cta: { label: 'Build Your SaaS Product', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What A SaaS Product Needs',
     capabilitiesIntro:
-      'Launching SaaS products requires scalable architecture, reliable infrastructure, intuitive experiences, and technology that supports growing customers and recurring revenue.',
+      'A SaaS product is two things at once: the feature customers pay for, and the accounts, billing and admin that keep a subscription business running.',
     capabilities: [
       {
-        title: 'Custom SaaS Development',
+        title: 'Accounts, roles and teams',
         description:
-          'Our custom SaaS development services create flexible products around your business model, users, workflows, integrations, and growth strategy.',
+          'Sign-up, invitations and permissions for admins, team members and end customers.',
       },
       {
-        title: 'Scalable SaaS Architecture',
+        title: 'Subscription billing',
         description:
-          'We build SaaS applications with flexible architecture that supports growing users, data, features, integrations, and subscription requirements.',
+          'Plans, trials and upgrades through Stripe. Klingit bills its customers on multi-tier subscriptions.',
       },
       {
-        title: 'Multi-Tenant Experiences',
+        title: 'Real-time features',
         description:
-          'Develop secure multi-tenant SaaS platforms that separate customer data while efficiently sharing infrastructure, features, and application resources.',
+          'Messaging, video and live updates. Whistle It runs secure video meetings on top of the open-source BigBlueButton engine.',
       },
       {
-        title: 'SaaS Product Development',
+        title: 'Scheduled and bulk jobs',
         description:
-          'Our SaaS product development services turn validated ideas into scalable products with clear roadmaps, intuitive experiences, and reliable technology.',
+          'Work that runs in the background at scale. One40Connect sends scheduled and recurring text campaigns for its customers.',
       },
       {
-        title: 'AI-Powered SaaS Products',
+        title: 'Data-heavy products',
         description:
-          'As an AI SaaS development company, we integrate intelligent features, automation, recommendations, and AI-powered workflows into modern SaaS products.',
+          'Products that crawl, track or process data all day. Clicks.so tracks thousands of keyword rankings without its server costs climbing.',
       },
     ],
     story: {
       eyebrow: 'Project story · Coach Catalyst',
       title: 'Turning a coaching tool into a marketplace that pays coaches directly',
       intro:
-        'Coach Catalyst is a platform where fitness coaches run their client programmes: scheduling, messaging and progress tracking. The product worked, but it was slow, hard to use and built on code that made new features risky.',
+        'Coach Catalyst is a platform where fitness coaches run their client programs: scheduling, messaging and progress tracking. The product worked, but it was slow, hard to use and built on code that made new features risky.',
       problem:
         'Pages loaded slowly and people struggled to finish tasks. Coaches had no built-in way to get paid by their clients. The chat module was written in CoffeeScript and struggled under load. The codebase had never been planned for a community feature, and the front end was still on Vue 2.',
       changes: [
-        'Redesigned the interface for clarity and cut load times by optimising code, requests and media.',
+        'Redesigned the interface for clarity and cut load times by optimizing code, requests and media.',
         'Built a Stripe Connect marketplace with OAuth onboarding, so coaches get paid by their clients directly and payouts are handled securely.',
         'Rewrote the CoffeeScript chat in Vue.js with real-time updates that hold up under load.',
         'Added a community module in phases, isolating its components so the rest of the product kept working.',
@@ -1375,30 +1363,29 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     },
     processTitle: 'From Idea To Scale',
     processIntro:
-      'Our SaaS development process combines product strategy, architecture, design, development, testing, deployment, and continuous optimisation.',
+      'We ship the smallest version paying customers will use, then let usage decide what comes next.',
     process: [
       {
         phase: 'Discover',
-        title: 'Define Product',
+        title: 'Shape The First Version',
         description:
-          'Our SaaS development agency analyses your market, users, business model, requirements, and goals to create a focused product roadmap.',
+          'We agree the one workflow customers will pay for, plus sign-up and billing, and leave the rest for later.',
       },
       {
         phase: 'Develop',
-        title: 'Build Platform',
+        title: 'Build For Many Customers',
         description:
-          'Our SaaS software development services turn requirements into secure, scalable applications with integrations, automation, analytics, and subscription functionality.',
+          'Tenant separation, roles and billing go in from the first sprint, with weekly demos of the product.',
       },
       {
         phase: 'Scale',
-        title: 'Optimise Growth',
+        title: 'Grow With Usage',
         description:
-          'We monitor performance, improve infrastructure, release new capabilities, and scale your SaaS platform as customers and requirements grow.',
+          'Product analytics show which features people use, and the roadmap follows them.',
       },
     ],
     techTitle: 'Technology Behind SaaS Products',
-    techIntro:
-      'We use modern cloud, backend, frontend, database, API, and infrastructure technologies to build reliable SaaS applications.',
+    techIntro: 'The stack behind the subscription products in our portfolio.',
     tech: [
       'react',
       'nextdotjs',
@@ -1450,13 +1437,11 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       },
     ],
     projectsTitle: 'SaaS Products In Action',
-    projectsIntro:
-      'Explore how Stack360 builds SaaS applications, platforms, and products that solve complex business challenges and support scalable digital growth.',
+    projectsIntro: 'SaaS products from our portfolio.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('whistle'), projectRef('one40connect'), projectRef('legal-atoms')],
     faqsTitle: 'SaaS Development FAQs',
-    faqsIntro:
-      'Find answers to technical questions about SaaS architecture, multi-tenancy, MVP development, scalability, integrations, and product deployment.',
+    faqsIntro: 'What founders and product leads ask before building a SaaS product.',
     faqs: [
       {
         id: 'saas-what',
@@ -1493,7 +1478,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     cta: {
       title: 'Ready To Build Your SaaS Product?',
       description:
-        'Partner with a SaaS development company that builds scalable products, reliable platforms, and flexible software designed around your long-term growth.',
+        'Tell us who will pay for it and the one job it has to do. We reply within one business day to set up a discovery call.',
       primary: { label: 'Start Your SaaS Project', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -1505,40 +1490,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Custom Software',
-      title: 'Build Custom Software',
-      highlight: 'Around Your Business',
+      title: 'Custom Software Development',
+      highlight: 'Built Around Your Business',
       description:
         'Custom software is built around how your business already works, not how an off-the-shelf product expects you to. We have built it for services firms, clinics and marketplaces, including ATC, a system hundreds of employees use every day.',
       cta: { label: 'Build Custom Software', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What Custom Software Fixes',
     capabilitiesIntro:
-      'Off-the-shelf software can force teams into rigid workflows, disconnected systems, unnecessary features, and costly workarounds that limit growth. We build custom software around your processes, users, and goals, giving you technology that works the way your business works.',
+      'Off-the-shelf tools make you work their way. Custom software is worth it when your process is what sets you apart, or when no product handles it properly.',
     capabilities: [
       {
-        title: 'Fit Your Workflows',
+        title: 'A process no product fits',
         description:
-          'Design software around your actual processes instead of changing operations to accommodate limitations within off-the-shelf platforms.',
+          'Software built around a way of working nobody sells. Alertia schedules guard shifts and checks each guard’s licenses before they start.',
       },
       {
-        title: 'Connect Your Systems',
+        title: 'Compliance and audit trails',
         description:
-          'Integrate applications, databases, APIs, third-party platforms, and internal tools to create connected digital operations.',
+          'Rule checks, audit logs and reports you can show an auditor. Falcore flags outdated records and keeps a dated history of every check.',
       },
       {
-        title: 'Automate Complex Processes',
+        title: 'Sensitive records',
         description:
-          'Replace repetitive manual tasks with intelligent workflows that improve productivity, reduce errors, and help teams work efficiently.',
+          'Systems that handle health, legal or student data safely. Fisar manages GDPR subject access requests for schools.',
       },
       {
-        title: 'Scale With Confidence',
+        title: 'Replacing spreadsheets',
         description:
-          'Build flexible software architecture that supports increasing users, data, transactions, integrations, and changing business requirements.',
+          'Processes that run on shared spreadsheets and email turned into proper tools with permissions and history.',
       },
       {
-        title: 'Own Your Technology',
+        title: 'Software you own',
         description:
-          'Create software tailored to your business without depending on rigid features, unnecessary subscriptions, or limitations from generic platforms.',
+          'You own the source code and the intellectual property, so you are never locked into one vendor.',
       },
     ],
     story: {
@@ -1568,30 +1553,29 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     },
     processTitle: 'From Idea To Impact',
     processIntro:
-      'Our custom software development process combines business discovery, technical planning, iterative development, and continuous improvement to deliver reliable products.',
+      'Every project starts with a discovery call and a delivery plan, and you see working software every week after that.',
     process: [
       {
         phase: 'Discover',
-        title: 'Define Requirements',
+        title: 'Understand The Process',
         description:
-          'We analyse your workflows, users, challenges, and goals to create clear requirements and a practical development roadmap.',
+          'We map your workflow, users and the systems involved, then you get a delivery plan with milestones.',
       },
       {
         phase: 'Develop',
-        title: 'Build Software',
+        title: 'Build And Demo Weekly',
         description:
-          'Our engineers develop secure, scalable applications with modern architecture, intuitive experiences, integrations, automation, and continuous testing.',
+          'Working software every week, checked against those milestones, so nothing surprises you at the end.',
       },
       {
-        phase: 'Scale',
-        title: 'Improve Performance',
+        phase: 'Support',
+        title: 'Run And Improve',
         description:
-          'We launch, monitor, optimise, and enhance your software as your business grows and new requirements emerge.',
+          'After launch we monitor it, fix what comes up and add features as the business changes.',
       },
     ],
     techTitle: 'Technology Behind Our Software',
-    techIntro:
-      'We use modern frameworks, cloud platforms, APIs, databases, and development tools to build secure, scalable software applications.',
+    techIntro: 'The stacks we build custom software on, picked to suit the team that will run it.',
     tech: [
       'react',
       'nextdotjs',
@@ -1643,13 +1627,11 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       },
     ],
     projectsTitle: 'Custom Software In Action',
-    projectsIntro:
-      'Explore how Stack360 builds tailored software that solves complex business challenges and creates scalable digital experiences across industries.',
+    projectsIntro: 'Custom systems from our portfolio.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('atc'), projectRef('nuvana'), projectRef('cadcam-masters')],
     faqsTitle: 'Custom Software FAQs',
-    faqsIntro:
-      'Find answers to technical questions about custom software development, architecture, integrations, security, scalability, and implementation.',
+    faqsIntro: 'What buyers ask before commissioning custom software.',
     faqs: [
       {
         id: 'custom-when',
@@ -1710,7 +1692,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     cta: {
       title: 'Ready To Build Software Around Your Business?',
       description:
-        'Partner with Stack360 to develop secure, scalable custom software that fits your workflows, connects your systems, and supports long-term growth.',
+        'Tell us about the process you want to fix. We reply within one business day to set up a discovery call.',
       primary: { label: 'Build Custom Software', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -1722,40 +1704,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Cloud',
-      title: 'Move To Cloud With',
-      highlight: 'Confidence And Scale',
+      title: 'Cloud Migration And Services',
+      highlight: 'On AWS, Azure And Google Cloud',
       description:
         'We move applications to AWS and Azure and shape the infrastructure around how they are really used, so they stay fast under load and cost less to run. Autobuffy’s 100,000-part store now scales automatically with its traffic.',
       cta: { label: 'Modernize Your Cloud', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What We Do In The Cloud',
     capabilitiesIntro:
-      'Legacy infrastructure, rising costs, security concerns, and complex environments can limit performance, scalability, and business growth.',
+      'Cloud bills grow and sites slow down when infrastructure is shaped around guesses instead of how the application is really used.',
     capabilities: [
       {
-        title: 'Modern Cloud Infrastructure',
+        title: 'Migration',
         description:
-          'We design flexible cloud environments that improve performance, scalability, security, and operational efficiency across your technology ecosystem.',
+          'Moving applications and databases one service at a time, with traffic switched over once each part checks out.',
       },
       {
-        title: 'Seamless Cloud Migration',
+        title: 'Scaling for traffic',
         description:
-          'Our cloud migration services move applications, data, and infrastructure securely while minimising disruption to ongoing business operations.',
+          'Load balancers and auto-scaling so capacity follows demand. BuffyHub runs behind an Elastic Load Balancer on EC2.',
       },
       {
-        title: 'Managed Cloud Operations',
+        title: 'Serverless and managed services',
         description:
-          'Our managed cloud services help monitor, optimise, and maintain cloud environments for better reliability, performance, and cost control.',
+          'Managed databases, storage and serverless setups that remove routine server work. Whistle It runs its meeting rooms serverless on Google Cloud.',
       },
       {
-        title: 'Secure Cloud Environments',
+        title: 'Storage and heavy files',
         description:
-          'Our cloud security services protect applications, infrastructure, identities, and business data through security-focused architecture and continuous monitoring.',
+          'Direct uploads to object storage and separate pipelines for large files, so uploads never slow the site down.',
       },
       {
-        title: 'Scalable Cloud Applications',
+        title: 'Security and access',
         description:
-          'Our cloud application development services create modern applications designed for flexible infrastructure, high availability, performance, and future growth.',
+          'Least-privilege access, encryption and secrets kept out of the code, set up before anything moves.',
       },
     ],
     story: {
@@ -1777,38 +1759,36 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       facts: [
         { label: 'Team', value: '6 engineers' },
         { label: 'Effort', value: '28,000 hours' },
-        { label: 'Catalogue', value: '100,000+ parts' },
+        { label: 'Catalog', value: '100,000+ parts' },
         { label: 'Stack', value: 'Ruby on Rails, Angular, Elasticsearch, AWS' },
       ],
       href: '/our-work/case-studies/autobuffy',
       linkLabel: 'Read the full Autobuffy case study',
     },
     processTitle: 'From Infrastructure To Cloud',
-    processIntro:
-      'Our cloud migration consulting services align business requirements, infrastructure, applications, data, security, and deployment strategies before migration begins.',
+    processIntro: 'We measure how the application is used before deciding what it should run on.',
     process: [
       {
         phase: 'Assess',
-        title: 'Analyse Environment',
+        title: 'Map What You Run',
         description:
-          'We evaluate your infrastructure, applications, dependencies, workloads, data, and business requirements to create a practical migration roadmap.',
+          'We list every service, database and dependency, and how much traffic and data each one handles.',
       },
       {
         phase: 'Migrate',
-        title: 'Move Systems',
+        title: 'Move One Piece At A Time',
         description:
-          'We migrate applications, workloads, databases, and infrastructure using controlled processes designed to minimise downtime and operational disruption.',
+          'Each service moves with monitoring in place, and traffic switches only once it checks out.',
       },
       {
-        phase: 'Optimise',
-        title: 'Improve Performance',
+        phase: 'Optimize',
+        title: 'Right-Size And Secure',
         description:
-          'We optimise cloud resources, security, workloads, and infrastructure to improve reliability, efficiency, scalability, and ongoing cloud performance.',
+          'We tune server sizes, storage and access rules to the real load and set usage alerts.',
       },
     ],
     techTitle: 'Technology Behind Cloud Services',
-    techIntro:
-      'We use modern cloud platforms, containers, infrastructure automation, databases, monitoring, and security technologies for scalable environments.',
+    techIntro: 'The cloud platforms and infrastructure tools behind our projects.',
     tech: [
       'amazonaws',
       'microsoftazure',
@@ -1860,13 +1840,11 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       },
     ],
     projectsTitle: 'Cloud Solutions In Action',
-    projectsIntro:
-      'Explore how Stack360 modernises infrastructure, migrates workloads, and builds scalable cloud environments that support growing digital products.',
+    projectsIntro: 'Products whose hosting we designed or moved.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('truck-4'), projectRef('autobuffy'), projectRef('whistle')],
     faqsTitle: 'Cloud Services FAQs',
-    faqsIntro:
-      'Find answers to technical questions about cloud migration, infrastructure, security, application development, managed services, and optimisation.',
+    faqsIntro: 'What teams ask before moving to the cloud or changing providers.',
     faqs: [
       {
         id: 'cloud-migration',
@@ -1901,9 +1879,9 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       OWNERSHIP_FAQ,
     ],
     cta: {
-      title: 'Ready To Modernize Your Cloud Infrastructure?',
+      title: 'Ready To Move Or Fix Your Cloud Setup?',
       description:
-        'Partner with Stack360 for cloud migration and managed services that improve scalability, security, reliability, and long-term technology performance.',
+        'Tell us what you run today and where it hurts. We reply within one business day to set up a discovery call.',
       primary: { label: 'Modernize Your Cloud', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -1915,40 +1893,40 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     updated: '2026-10-12',
     hero: {
       eyebrow: 'What We Build · Automation',
-      title: 'Automate Business Processes And',
-      highlight: 'Work Smarter',
+      title: 'Business Process Automation',
+      highlight: 'For The Jobs People Forget',
       description:
         'Business process automation takes repetitive, rule-based jobs off your team, such as alerts, follow-ups, data syncs and checks. For Luxe Excursions, staff hear about every booking instantly and every guest gets one review request after their trip.',
       cta: { label: 'Automate Your Processes', href: '/contact' },
     },
-    capabilitiesTitle: 'Challenges & Solutions',
+    capabilitiesTitle: 'What We Automate',
     capabilitiesIntro:
-      'Manual processes, repetitive tasks, disconnected systems, and inconsistent workflows can consume valuable time and limit operational efficiency.',
+      'Every business has jobs that depend on someone remembering. Those are the first ones worth automating.',
     capabilities: [
       {
-        title: 'Smarter Business Workflows',
+        title: 'Alerts and notifications',
         description:
-          'We automate repetitive business processes around your existing systems, workflows, teams, and operational requirements.',
+          'Emails and messages that go out when something happens, such as a booking being paid or a document about to expire.',
       },
       {
-        title: 'Automate Repetitive Tasks',
+        title: 'Report generation',
         description:
-          'Replace manual data entry, notifications, approvals, reporting, and administrative work with reliable automated workflows.',
+          'Reports built automatically from the data. NPTAAS generates its audit reports with no manual calculation.',
       },
       {
-        title: 'Connect Business Systems',
+        title: 'Document workflows',
         description:
-          'Integrate CRMs, ERPs, APIs, databases, SaaS platforms, and internal applications to create connected business processes.',
+          'Paperwork prepared and sent without anyone retyping it. LegalAtoms generates court documents in the background and emails case updates.',
       },
       {
-        title: 'Improve Process Efficiency',
+        title: 'Data syncs between systems',
         description:
-          'Identify operational bottlenecks and automate inefficient workflows to reduce delays, errors, and unnecessary manual intervention.',
+          'Orders, stock, hours and invoices kept in step between tools through APIs and scheduled jobs.',
       },
       {
-        title: 'Scale Automated Operations',
+        title: 'Test automation',
         description:
-          'Build automation workflows that support growing transaction volumes, teams, customers, and increasingly complex business processes.',
+          'Automated tests, including Selenium browser tests, that check every release before it goes live.',
       },
     ],
     story: {
@@ -1977,31 +1955,29 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       linkLabel: 'Visit Luxe Excursions',
     },
     processTitle: 'From Manual To Automated',
-    processIntro:
-      'Our automation process identifies repetitive work, maps workflows, integrates systems, and implements reliable automation around your business operations.',
+    processIntro: 'We automate one job at a time, so each one is proven before the next goes live.',
     process: [
       {
         phase: 'Discover',
-        title: 'Map Processes',
+        title: 'Find The Repeats',
         description:
-          'We analyse workflows, repetitive tasks, systems, and bottlenecks to identify the best opportunities for business process automation.',
+          'We list the jobs people do by hand every day or week, and what each one costs in time and mistakes.',
       },
       {
         phase: 'Automate',
-        title: 'Build Workflows',
+        title: 'One Job At A Time',
         description:
-          'We develop automated workflows, system integrations, triggers, notifications, approvals, and intelligent processes around your requirements.',
+          'Each automation is built, tested on real cases and switched on separately, with a person able to override it.',
       },
       {
-        phase: 'Optimise',
-        title: 'Improve Efficiency',
+        phase: 'Monitor',
+        title: 'Check It Keeps Working',
         description:
-          'We monitor automated processes, identify bottlenecks, refine workflows, and expand automation as your operational needs evolve.',
+          'Every automation logs what it did, and failures alert someone instead of failing silently.',
       },
     ],
     techTitle: 'Technology Behind Automation',
-    techIntro:
-      'We combine APIs, workflow engines, cloud platforms, AI, databases, and integration tools to build reliable automated processes.',
+    techIntro: 'The integration and workflow tools behind our automations.',
     tech: [
       'graphql',
       'nodedotjs',
@@ -2038,7 +2014,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Checks against a rulebook',
         description:
-          'Compliance and certification checks that flag problems early. Alertia cross-checks guard shifts against licence expiry dates.',
+          'Compliance and certification checks that flag problems early. Alertia cross-checks guard shifts against license expiry dates.',
       },
       {
         title: 'Routing incoming work',
@@ -2046,19 +2022,17 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Sending each ticket or request to the right person. Contakti routes support messages with AI.',
       },
       {
-        title: 'Leave judgement calls to people',
+        title: 'Leave judgment calls to people',
         description:
           'Automate the steps around a decision, then let a person make it. Refunds, hiring and pricing exceptions are good examples.',
       },
     ],
     projectsTitle: 'Automation In Action',
-    projectsIntro:
-      'Explore how Stack360 connects systems, automates workflows, and builds intelligent solutions that improve efficiency across business operations.',
+    projectsIntro: 'Automations from our portfolio.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('cercle'), projectRef('falcore'), projectRef('alertia')],
     faqsTitle: 'Automation Services FAQs',
-    faqsIntro:
-      'Find answers to technical questions about business process automation, integrations, workflows, AI automation, and automated software testing.',
+    faqsIntro: 'What teams ask before handing work to software.',
     faqs: [
       {
         id: 'automation-what',
@@ -2076,7 +2050,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'automation-systems',
         question: 'Can you automate workflows across different business systems?',
         answer:
-          'Yes. Most automation is integration work: Cercle syncs its catalogue and orders with Facebook, and ATC sends billable hours to Zoho Books.',
+          'Yes. Most automation is integration work: Cercle syncs its catalog and orders with Facebook, and ATC sends billable hours to Zoho Books.',
       },
       {
         id: 'automation-qa',
@@ -2093,9 +2067,9 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       OWNERSHIP_FAQ,
     ],
     cta: {
-      title: 'Ready To Automate Your Business Processes?',
+      title: 'Ready To Hand Off The Repetitive Work?',
       description:
-        'Partner with Stack360 to automate repetitive workflows, connect business systems, reduce operational friction, and create more efficient digital operations.',
+        'Tell us which jobs your team repeats every week. We reply within one business day to set up a discovery call.',
       primary: { label: 'Start Your Automation Project', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
@@ -2139,7 +2113,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Moving to modern hosting',
         description:
-          'Taking apps off ageing servers onto managed cloud infrastructure, with automated deploys and monitoring in place first.',
+          'Taking apps off aging servers onto managed cloud infrastructure, with automated deploys and monitoring in place first.',
       },
     ],
     story: {
@@ -2191,7 +2165,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         phase: 'Verify',
         title: 'Check And Hand Over',
         description:
-          'Each release is checked against the old behaviour, monitored in production and documented for your team.',
+          'Each release is checked against the old behavior, monitored in production and documented for your team.',
       },
     ],
     techTitle: 'Technology We Modernize',
@@ -2258,7 +2232,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'modern-downtime',
         question: 'Will our system go offline during the upgrade?',
         answer:
-          'It should not. We release each stage separately and test it against the old behaviour first. Coach Catalyst moved from Vue 2 to Vue 3 while coaches kept using it.',
+          'It should not. We release each stage separately and test it against the old behavior first. Coach Catalyst moved from Vue 2 to Vue 3 while coaches kept using it.',
       },
       {
         id: 'modern-angular',
@@ -2631,7 +2605,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       title: 'QA And Test Automation',
       highlight: 'Built Into Every Release',
       description:
-        'QA and test automation catch problems before your customers do, with automated tests on every change and manual testing where judgement matters. We used unit, integration and acceptance tests on BuffyHub and SonarQube checks on Truck-4.',
+        'QA and test automation catch problems before your customers do, with automated tests on every change and manual testing where judgment matters. We used unit, integration and acceptance tests on BuffyHub and SonarQube checks on Truck-4.',
       cta: { label: 'Improve Your Testing', href: '/contact' },
     },
     capabilitiesTitle: 'What Our QA Covers',
@@ -2646,7 +2620,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Browser testing',
         description:
-          'End-to-end tests in Selenium that click through sign-up, checkout and other key journeys the way a real user would.',
+          'End-to-end tests in Selenium that click through sign-up, checkout and other key flows the way a real user would.',
       },
       {
         title: 'Code quality checks',
@@ -2683,7 +2657,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         phase: 'Automate',
         title: 'Automate The Repeats',
         description:
-          'Unit, integration and browser tests for the riskiest journeys go into the CI pipeline first.',
+          'Unit, integration and browser tests for the riskiest flows go into the CI pipeline first.',
       },
       {
         phase: 'Run',
@@ -2701,7 +2675,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'The same bugs keep coming back',
         description:
-          'Regressions mean nothing checks old behaviour after a change. Automated tests do that on every release.',
+          'Regressions mean nothing checks old behavior after a change. Automated tests do that on every release.',
       },
       {
         title: 'Releases feel risky',
@@ -2743,7 +2717,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'qa-existing',
         question: 'Can you add tests to an app that has none?',
         answer:
-          'Yes. We start with the journeys that earn money or break most often, add tests around them, and widen coverage as other parts change.',
+          'Yes. We start with the flows that earn money or break most often, add tests around them, and widen coverage as other parts change.',
       },
       {
         id: 'qa-tools',
@@ -2826,7 +2800,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         'Set up GA4 with a consent banner, and filtered out staff and test traffic.',
         'Tracked bookings and WhatsApp clicks as key events, and imported them into Google Ads as conversions.',
         'Linked Search Console to both GA4 and Google Ads.',
-        'Launched a search campaign for UK travellers planning a trip, with negative keywords, sitelinks and callouts.',
+        'Launched a search campaign for UK travelers planning a trip, with negative keywords, sitelinks and callouts.',
         'Added the services and a tracked booking link to the Business Profile, and corrected the shop location on Google.',
       ],
       outcome:

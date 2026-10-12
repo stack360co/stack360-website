@@ -43,7 +43,7 @@ export const LANDING_SERVICES = [
       {
         title: 'Model Training & Tuning',
         description:
-          'Train and fine-tune AI models using specialised data, algorithms, and performance optimisation techniques.',
+          'Train and fine-tune AI models using specialized data, algorithms, and performance optimization techniques.',
         icon: 'training',
         href: '/what-we-build/ai-solutions',
         skills: [
@@ -73,7 +73,7 @@ export const LANDING_SERVICES = [
       {
         title: 'MLOps & Pipelines',
         description:
-          'Build scalable MLOps pipelines for machine learning deployment, monitoring, automation, management, and optimisation.',
+          'Build scalable MLOps pipelines for machine learning deployment, monitoring, automation, management, and optimization.',
         icon: 'mlops',
         href: '/what-we-build/ai-solutions',
         skills: [
@@ -354,7 +354,7 @@ export const LANDING_PROCESS = [
     step: '04',
     title: 'Launch & Scale',
     description:
-      'We launch, monitor, optimise, and continuously improve your product with ongoing support built around long-term growth.',
+      'We launch, monitor, optimize, and continuously improve your product with ongoing support built around long-term growth.',
   },
 ] as const;
 
