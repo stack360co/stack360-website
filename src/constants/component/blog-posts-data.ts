@@ -443,22 +443,23 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'marketplace-payments-stripe',
     title: 'Marketplace Payments With Stripe: Deposits, Payouts and Refunds',
     seoTitle: 'Stripe Marketplace Payments: What We Built',
+    author: { name: 'M. Awais Aslam', role: 'Co-Founder' },
     reviewedBy: 'Azmat Rana',
     excerpt:
       'Security deposits, payouts to sellers, store credit for refunds and subscriptions: how we built marketplace payments with Stripe on six real platforms.',
     date: '2026-10-12',
     category: 'Marketplaces',
-    readTime: '4 min',
+    readTime: '5 min',
     intro:
       'Marketplace payments are harder than a normal checkout, because money moves between three parties: the buyer, the seller and you. Stripe handles most of the hard parts, but each marketplace needs its own setup. Here is what we built on six platforms, from security deposits to payouts.',
     sections: [
       {
         heading: 'Paying sellers with Stripe Connect',
-        body: 'Coach Catalyst lets clients pay coaches directly. We integrated Stripe Connect, with OAuth onboarding so each coach connects a Stripe account, and secure payout processing.\n\nWe designed the database schema for the marketplace before wiring up the payments, so it could scale securely. The marketplace opened a new revenue stream for coaches and for the platform.',
+        body: 'Coach Catalyst lets clients pay coaches directly. We integrated Stripe Connect with Express accounts. Stripe hosts each coach’s onboarding and identity checks, and coaches get a light dashboard for their payouts.\n\nWe designed the database schema for the marketplace before wiring up the payments, so it could scale securely. The marketplace opened a new revenue stream for coaches and for the platform.',
       },
       {
         heading: 'Security deposits for rentals',
-        body: 'Cinekit rents camera and production gear between creators in the UK, Europe and the US. Expensive kit needs a security deposit, and booking dates change often. We used Stripe to manage the deposits and payments across regions, and built Cinekit in one month. It has since grown past 100,000 users.\n\nIf you take deposits as card holds, know the limit. Stripe says an authorization for an online card payment is usually valid for 7 days. Longer rentals need an extended hold or a different approach.',
+        body: 'Cinekit rents camera and production gear between creators in the UK, Europe and the US. Expensive kit needs a security deposit, and booking dates change often. We take each deposit as a card hold through Stripe. The amount is authorized on the renter’s card, then released when the gear comes back. We built Cinekit in one month, and it has since grown past 100,000 users.\n\nCard holds have a limit. Stripe says an authorization for an online card payment is usually valid for 7 days. Longer rentals need an extended hold or a different approach.',
       },
       {
         heading: 'Refunds as store credit',
@@ -473,15 +474,19 @@ export const BLOG_POSTS: readonly BlogPost[] = [
         body: 'AutoBuffy, a US auto parts store, had no buy now, pay later option, unlike most US stores. We added Klarna through Stripe, with PayPal, AfterPay, debit and credit options alongside it. Buy now, pay later lifted sales by 50%.',
       },
       {
+        heading: 'What caused the most trouble',
+        body: 'Across these builds, four things took the most work, and none of them was the checkout itself.\n\n1. Seller onboarding. Stripe verifies each seller’s identity before paying out, and an unfinished check holds their money. Show sellers their onboarding status clearly.\n\n2. Refunds and disputes. A refund or chargeback has to be split correctly between buyer, seller and platform, including partial refunds.\n\n3. Webhooks. Stripe reports payments, payouts and disputes as events. Your records must update from them, and cope with the same event arriving twice.\n\n4. Currencies and regions. Selling across countries, as Cinekit does in the UK, Europe and the US, brings several currencies and tax rules.',
+      },
+      {
         heading: 'What to decide before you build',
-        body: '1. Who holds the money, and when does the seller get paid?\n\n2. What happens on a refund: money back to the card, or store credit?\n\n3. Do you need deposits, and how long do bookings last?\n\n4. Are sellers individuals or businesses, and in which countries? Stripe Connect onboarding depends on both.\n\n5. Will you earn through a commission, a subscription or both?',
+        body: '1. Who holds the money, and when does the seller get paid?\n\n2. What happens on a refund: money back to the card, or store credit?\n\n3. Do you need deposits, and how long do bookings last?\n\n4. Are sellers individuals or businesses, and in which countries? That shapes onboarding, and whether Standard, Express or Custom Connect accounts fit.\n\n5. Will you earn through a commission, a subscription or both?',
       },
     ],
     conclusion: {
       heading: 'Common questions',
       paragraphs: [
         'What is Stripe Connect? Stripe’s product for platforms that pay other people, such as coaches, sellers or hosts. Each one connects an account and receives payouts.',
-        'Can a marketplace hold a deposit without charging it? Yes. A card authorization reserves the money, usually for up to 7 days on online payments.',
+        'Can a marketplace hold a deposit without charging it? Yes. Cinekit takes deposits as card holds. A hold reserves the money on the card, usually for up to 7 days on online payments.',
         'Can refunds go to store credit instead of the card? Yes. Cercle’s wallet turns refunds and cancellations into credit.',
         'Which marketplaces have you built? Cinekit, Cercle, Coach Catalyst, Klingit, Cad Cam Masters, Truck-4 and Mi Taller, among others.',
       ],
