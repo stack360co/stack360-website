@@ -59,12 +59,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/our-work/news',
-        destination: '/',
+        destination: '/blog',
         permanent: true,
       },
       {
         source: '/our-work/learning-sessions',
-        destination: '/',
+        destination: '/blog',
         permanent: true,
       },
 
@@ -86,27 +86,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/services/graphic-designing',
-        destination: '/',
+        destination: '/what-we-build',
         permanent: true,
       },
       {
         source: '/services/ui-ux',
-        destination: '/',
+        destination: '/what-we-build',
         permanent: true,
       },
       {
         source: '/services/quality-assurance',
-        destination: '/',
+        destination: '/what-we-build/automation',
         permanent: true,
       },
       {
         source: '/services/digital-marketing',
-        destination: '/',
+        destination: '/what-we-build',
         permanent: true,
       },
       {
         source: '/services/data-science',
-        destination: '/',
+        destination: '/what-we-build/ai-solutions',
         permanent: true,
       },
 
@@ -187,45 +187,52 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // Case Studies
+      // Old portfolio address for a project that now has a case study
+      {
+        source: '/portfolio/autobuffy',
+        destination: '/our-work/case-studies/autobuffy',
+        permanent: true,
+      },
+
+      // Case Studies: each old address goes to the same study's new page
       {
         source: '/case-studies/truck4-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/truck-4',
         permanent: true,
       },
       {
         source: '/case-studies/autobuffy-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/autobuffy',
         permanent: true,
       },
       {
         source: '/case-studies/coach-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/coach-catalyst',
         permanent: true,
       },
       {
         source: '/case-studies/atc-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/atc',
         permanent: true,
       },
       {
         source: '/case-studies/cercle-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/cercle',
         permanent: true,
       },
       {
         source: '/case-studies/buffyhub-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/buffyhub',
         permanent: true,
       },
       {
         source: '/case-studies/klingit-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/klingit',
         permanent: true,
       },
       {
         source: '/case-studies/nextflag-case-study',
-        destination: '/our-work/case-studies',
+        destination: '/our-work/case-studies/nextflag',
         permanent: true,
       },
     ];
