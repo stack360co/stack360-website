@@ -501,22 +501,30 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'software-discovery-call',
     title: 'What Happens on a Discovery Call, and What You Get After',
     seoTitle: 'What Happens on a Software Discovery Call',
-    reviewedBy: 'Azmat Rana',
+    author: {
+      name: 'Azmat Rana',
+      role: 'CEO & Founder',
+      url: '/who-we-are/culture#azmat-rana',
+    },
     excerpt:
       'What a software discovery call with us covers, what to have ready, and what you get afterwards: a team recommendation, a timeline and a plan with milestones.',
     date: '2026-10-12',
     category: 'Delivery',
-    readTime: '3 min',
+    readTime: '4 min',
     intro:
       'A discovery call is a 20-minute conversation about what you want built, before anyone writes a plan. We use it to map your goals, your constraints and the systems the software must connect to. Afterwards, you get a recommended team, a timeline and a delivery plan with clear milestones.',
     sections: [
       {
         heading: 'How to book one',
-        body: 'You can book a 20-minute call from our contact page, or send us a message. We reply within one business day.\n\nA few lines beforehand help: what the software should do, who will use it and any deadline. You don’t need a written specification.',
+        body: 'You can book a 20-minute call from our contact page, or send us a message. We reply within one business day.\n\nA few lines beforehand help: what the software should do, who will use it and any deadline. You don’t need a written specification.\n\nFrom our side, a founder and a senior engineer join the call, so business and technical questions get answered on the spot.',
       },
       {
-        heading: 'What to have ready',
+        heading: 'What helps to have ready',
         body: '1. The problem the software solves, and for whom.\n\n2. What you use today: spreadsheets, an old app or a tool you’ve outgrown.\n\n3. The systems it must connect to, such as payments, a CRM or accounting software.\n\n4. Who will use it, and on which devices.\n\n5. What a good result looks like six months after launch.\n\n6. Any deadline, and what is driving it.',
+      },
+      {
+        heading: 'What most people haven’t worked out yet',
+        body: 'Most clients don’t have every answer when they book, and that is normal. These four come up most often.\n\n1. Integrations: which systems the software has to connect to.\n\n2. First release: what to build first, and what can wait.\n\n3. Maintenance: who looks after the software after launch.\n\n4. Timeline: how long it will really take.\n\nWorking these out is the point of the call. You don’t need the answers before you book.',
       },
       {
         heading: 'Why integrations come up so often',
@@ -524,7 +532,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'What you get after the call',
-        body: 'You get three things: a recommended team, a timeline and a delivery plan with clear milestones. If you want engineers to join your own team instead, you get a shortlist within 2 days and interview them yourself.\n\nMost of our projects take three to six months to build, and simpler ones take one to three. The plan says where yours sits, and why.',
+        body: 'Within two business days, you get three things: a recommended team, a timeline and a delivery plan with clear milestones. If you want engineers to join your own team instead, you get a shortlist within 2 days and interview them yourself.\n\nMost of our projects take three to six months to build, and simpler ones take one to three. The plan says where yours sits, and why.',
       },
       {
         heading: 'Once work starts',
@@ -539,6 +547,8 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       heading: 'Common questions',
       paragraphs: [
         'How long is a discovery call? 20 minutes. You can book one from our contact page.',
+        'Who joins from your side? A founder and a senior engineer.',
+        'When do we get the plan? Within two business days of the call.',
         'Do we need a written specification first? No. A few lines on what it should do and who will use it are enough.',
         'What happens if we decide not to go ahead? Nothing. The call doesn’t commit you to anything.',
         'How soon can engineers start? For staff augmentation, we send a shortlist within 2 days, and you can hire in as fast as a week.',
