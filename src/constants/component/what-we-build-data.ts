@@ -1,5 +1,6 @@
 /** Capability pages under /what-we-build — sourced from stack360.co/services where available. */
 
+import { getCaseStudySlugs } from '@/constants/component/our-work-case-studies-data';
 import { PORTFOLIO_PROJECTS_BY_SLUG } from '@/constants/component/our-work-portfolio-data';
 import { CULTURE_FOUNDER } from '@/constants/component/who-we-are-culture-data';
 
@@ -13,7 +14,10 @@ export type CapabilitySlug =
   | 'web-apps'
   | 'cloud'
   | 'devops'
-  | 'automation';
+  | 'automation'
+  | 'legacy-modernization'
+  | 'software-maintenance'
+  | 'marketplace-development';
 
 export interface CapabilityFaq {
   id: string;
@@ -112,7 +116,7 @@ export interface CapabilityPageData {
 }
 
 /** Slugs that have an in-depth case study — link to the deep dive, not the portfolio. */
-const CASE_STUDY_SLUGS = new Set(['autobuffy', 'atc', 'coach-catalyst', 'buffyhub']);
+const CASE_STUDY_SLUGS = new Set(getCaseStudySlugs());
 
 /**
  * Build a capability project reference from the shared portfolio registry so
@@ -2094,6 +2098,528 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
   },
+  'legacy-modernization': {
+    slug: 'legacy-modernization',
+    reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
+    hero: {
+      eyebrow: 'What We Build · Legacy Modernization',
+      title: 'Modernize Legacy Software',
+      highlight: 'Without Stopping The Business',
+      description:
+        'Legacy modernization brings an old system up to date in stages while people keep using it. We upgraded Autobuffy from Angular 8 to 13 in 20 days and moved Coach Catalyst from Vue 2 to Vue 3.',
+      cta: { label: 'Plan Your Modernization', href: '/contact' },
+    },
+    capabilitiesTitle: 'What Modernization Covers',
+    capabilitiesIntro:
+      'Old software rarely fails all at once. It gets slower to change, harder to hire for and riskier to deploy, until every new feature costs more than it should.',
+    capabilities: [
+      {
+        title: 'Framework upgrades',
+        description:
+          'Moving off versions that no longer get security fixes, such as AngularJS, Angular 8 or Vue 2, one tested release at a time.',
+      },
+      {
+        title: 'Rewriting the worst parts first',
+        description:
+          'Replacing the modules that cause the most bugs or slow everyone down, like Coach Catalyst’s CoffeeScript chat, while the rest keeps running.',
+      },
+      {
+        title: 'Replacing manual data feeds',
+        description:
+          'Swapping FTP uploads, CSV imports and spreadsheets for APIs and background jobs, as Autobuffy’s inventory microservice did.',
+      },
+      {
+        title: 'Making old apps readable to search engines',
+        description:
+          'Adding server-side rendering to single-page apps that search engines struggle to read. Autobuffy gained search visibility after we added it.',
+      },
+      {
+        title: 'Moving to modern hosting',
+        description:
+          'Taking apps off ageing servers onto managed cloud infrastructure, with automated deploys and monitoring in place first.',
+      },
+    ],
+    story: {
+      eyebrow: 'Project story · Autobuffy',
+      title: 'Upgrading a live store from Angular 8 to 13 in 20 days',
+      intro:
+        'Autobuffy is a US online store selling more than 100,000 auto parts. Its storefront ran on Angular 8, and the pages were built in the browser, which made them hard for search engines to read.',
+      problem:
+        'The outdated front end held back technical SEO, so the store was harder to find than it should have been. Inventory still arrived by FTP, CSV and Excel, which left stock levels depending on manual imports.',
+      changes: [
+        'Upgraded the storefront from Angular 8 to Angular 13 in 20 days.',
+        'Added server-side rendering, so search engines receive complete pages.',
+        'Replaced the FTP, CSV and Excel inventory imports with a microservice that syncs vendor stock through APIs in real time.',
+        'Gave the SEO team a way to update SEO attributes themselves, without a developer.',
+      ],
+      outcome:
+        'The upgrade raised search visibility, clicks and sales, and inventory is now accurate without manual work. Most modernization looks like this: a series of contained upgrades, each one shipped and checked before the next.',
+      facts: [
+        { label: 'Upgrade', value: 'Angular 8 to 13' },
+        { label: 'Time', value: '20 days' },
+        { label: 'Team', value: '6 engineers' },
+        { label: 'Stack', value: 'Angular, Ruby on Rails, Elasticsearch, AWS' },
+      ],
+      href: '/our-work/case-studies/autobuffy',
+      linkLabel: 'Read the full Autobuffy case study',
+    },
+    processTitle: 'How A Modernization Runs',
+    processIntro: 'We change one part at a time and keep the system working at every step.',
+    process: [
+      {
+        phase: 'Assess',
+        title: 'Map The System',
+        description:
+          'We read the code, the hosting and the data, and list what is outdated, what breaks most often and what blocks new features.',
+      },
+      {
+        phase: 'Plan',
+        title: 'Order The Upgrades',
+        description:
+          'Each change gets a scope and a test plan. The riskiest or most expensive problems usually go first.',
+      },
+      {
+        phase: 'Upgrade',
+        title: 'Change It In Stages',
+        description:
+          'We upgrade one module, framework or data feed at a time, behind tests, and release it before starting the next.',
+      },
+      {
+        phase: 'Verify',
+        title: 'Check And Hand Over',
+        description:
+          'Each release is checked against the old behaviour, monitored in production and documented for your team.',
+      },
+    ],
+    techTitle: 'Technology We Modernize',
+    techIntro: 'The frameworks and platforms we upgrade most often, and the ones we move them to.',
+    tech: [
+      'angular',
+      'vuedotjs',
+      'react',
+      'nextdotjs',
+      'rubyonrails',
+      'dotnet',
+      'docker',
+      'postgresql',
+    ],
+    benefitsTitle: 'Rewrite Or Modernize?',
+    benefitsIntro:
+      'A full rewrite is tempting and usually the riskier option. These are the questions we ask before recommending either.',
+    benefits: [
+      {
+        title: 'Does the core logic still work?',
+        description:
+          'If the business rules are right and only the technology is old, upgrade the technology and keep the logic.',
+      },
+      {
+        title: 'Is it the framework or the design?',
+        description:
+          'An old framework can be upgraded in steps. A data model that no longer fits the business may need rebuilding, starting with that part.',
+      },
+      {
+        title: 'Can you pause new features?',
+        description:
+          'A rewrite means months of building in parallel. If the business cannot wait that long for new features, modernize in stages.',
+      },
+      {
+        title: 'Who still knows the system?',
+        description:
+          'If the people who built it have gone, start by reading and testing it before changing anything.',
+      },
+      {
+        title: 'Rewrite when the platform is a dead end',
+        description:
+          'If hiring, hosting or security fixes are no longer possible for the platform, rewrite one module at a time.',
+      },
+      {
+        title: 'Keep it running throughout',
+        description:
+          'Old and new can run side by side while traffic moves across, so customers never notice the switch.',
+      },
+    ],
+    projectsTitle: 'Modernization In Action',
+    projectsIntro: 'Live products we upgraded without taking them offline.',
+    projectsCtaLabel: 'View All Case Studies',
+    projects: [projectRef('autobuffy'), projectRef('coach-catalyst'), projectRef('atc')],
+    faqsTitle: 'Legacy Modernization FAQs',
+    faqsIntro: 'What teams ask before they upgrade a system people depend on.',
+    faqs: [
+      {
+        id: 'modern-what',
+        question: 'What is legacy software modernization?',
+        answer:
+          'Bringing an older system up to date, whether that is its framework, hosting, data feeds or design, while the business keeps using it. It is usually done in stages rather than as one big rewrite.',
+      },
+      {
+        id: 'modern-downtime',
+        question: 'Will our system go offline during the upgrade?',
+        answer:
+          'It should not. We release each stage separately and test it against the old behaviour first. Coach Catalyst moved from Vue 2 to Vue 3 while coaches kept using it.',
+      },
+      {
+        id: 'modern-angular',
+        question: 'Can you move us off AngularJS or an old Angular version?',
+        answer:
+          'Yes. We upgraded Autobuffy from Angular 8 to 13 in 20 days, and our Angular developers handle AngularJS migrations as well.',
+      },
+      {
+        id: 'modern-takeover',
+        question: 'Can you work on a system another team built?',
+        answer:
+          'Yes. We start by reading the code and adding tests around the parts we will change, so we know what the system does before touching it.',
+      },
+      {
+        id: 'modern-cloud',
+        question: 'Can you move the system to the cloud at the same time?',
+        answer:
+          'Yes, hosting is often part of the work. We set up automated deploys and monitoring before moving traffic, then move one service at a time.',
+      },
+      OWNERSHIP_FAQ,
+    ],
+    cta: {
+      title: 'Ready To Modernize Your System?',
+      description:
+        'Tell us what you are running today and what keeps breaking, and we will suggest the first upgrade to make.',
+      primary: { label: 'Talk to us', href: '/contact' },
+      secondary: { label: 'View case studies', href: '/our-work/case-studies' },
+    },
+  },
+  'software-maintenance': {
+    slug: 'software-maintenance',
+    reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
+    hero: {
+      eyebrow: 'What We Build · Maintenance & Support',
+      title: 'Software Maintenance',
+      highlight: 'And Support After Launch',
+      description:
+        'Software maintenance keeps a live product secure, fast and working after launch, through updates, fixes, monitoring and small improvements. Our engineers have worked on Autobuffy for around 28,000 hours and on Coach Catalyst across a 30-month roadmap.',
+      cta: { label: 'Get Ongoing Support', href: '/contact' },
+    },
+    capabilitiesTitle: 'What Maintenance Covers',
+    capabilitiesIntro:
+      'Software that nobody looks after slows down, breaks with each operating system or package update, and turns into a security risk.',
+    capabilities: [
+      {
+        title: 'Security and version updates',
+        description:
+          'Framework, package and server updates applied and tested on a regular schedule, before old versions stop getting security fixes.',
+      },
+      {
+        title: 'Bug fixes',
+        description:
+          'Problems reported by users or caught by monitoring, fixed in order of impact, with each fix tested before release.',
+      },
+      {
+        title: 'Monitoring and alerts',
+        description:
+          'Error tracking, uptime checks and alerts for failed jobs, routed to an engineer who can act on them.',
+      },
+      {
+        title: 'Performance upkeep',
+        description:
+          'Slow pages and queries found and fixed as data grows, through indexing, caching and background jobs.',
+      },
+      {
+        title: 'Small improvements',
+        description:
+          'The changes that keep a product useful between big releases, such as a new report, an integration or a better form.',
+      },
+    ],
+    processTitle: 'How Ongoing Support Works',
+    processIntro: 'Support starts with learning the system, then settles into a steady routine.',
+    process: [
+      {
+        phase: 'Onboard',
+        title: 'Learn The System',
+        description:
+          'We get access, read the code and hosting, and set up monitoring if it is missing.',
+      },
+      {
+        phase: 'Agree',
+        title: 'Set The Routine',
+        description:
+          'We agree what gets checked, how often updates happen and how quickly each kind of issue gets a response.',
+      },
+      {
+        phase: 'Run',
+        title: 'Maintain And Improve',
+        description:
+          'Updates, fixes and small features ship on a regular cycle, each one tested on staging first.',
+      },
+      {
+        phase: 'Report',
+        title: 'Show The Work',
+        description:
+          'You see what changed, what was fixed and what is coming next, so the system never becomes a black box.',
+      },
+    ],
+    techTitle: 'Tools We Support With',
+    techIntro: 'Monitoring, deployment and data tools we use to keep products healthy.',
+    tech: ['sentry', 'docker', 'github', 'postgresql', 'redis', 'elasticsearch'],
+    benefitsTitle: 'Signs Your Software Needs Ongoing Support',
+    benefitsIntro:
+      'Most products need some upkeep after launch. These are the signs it has fallen behind.',
+    benefits: [
+      {
+        title: 'Updates keep getting postponed',
+        description:
+          'Each skipped framework or package update makes the next one bigger. Nextflag’s slowdown came from falling behind on them.',
+      },
+      {
+        title: 'Nobody knows the code any more',
+        description:
+          'When the original developers leave, small changes start taking weeks. A team that knows the system fixes that.',
+      },
+      {
+        title: 'Customers find the errors first',
+        description:
+          'If you hear about problems from users, monitoring is missing or nobody is watching it.',
+      },
+      {
+        title: 'It slows down as data grows',
+        description:
+          'Queries that were fine at launch get slow at scale. Autobuffy’s part search needed Elasticsearch and new indexes to stay fast.',
+      },
+      {
+        title: 'Security notices pile up',
+        description:
+          'Outdated packages are a common way in for attackers. Regular updates close those gaps.',
+      },
+      {
+        title: 'Small requests wait for months',
+        description:
+          'If a new report or field needs a full project, an ongoing team can deliver it in the normal cycle instead.',
+      },
+    ],
+    projectsTitle: 'Products We Look After',
+    projectsIntro: 'Long-running products our engineers have worked on for years.',
+    projectsCtaLabel: 'View All Case Studies',
+    projects: [projectRef('autobuffy'), projectRef('coach-catalyst'), projectRef('atc')],
+    faqsTitle: 'Maintenance And Support FAQs',
+    faqsIntro: 'What teams ask before handing over a live product.',
+    faqs: [
+      {
+        id: 'maint-what',
+        question: 'What does software maintenance include?',
+        answer:
+          'Security and version updates, bug fixes, monitoring, performance work and small improvements to a live product, on an agreed routine rather than as one-off projects.',
+      },
+      {
+        id: 'maint-other-team',
+        question: 'Can you support software another company built?',
+        answer:
+          'Yes. We start by reading the code, getting it running and adding monitoring, then take over updates and fixes once we know how it behaves.',
+      },
+      {
+        id: 'maint-response',
+        question: 'How quickly do you respond to problems?',
+        answer:
+          'We agree response times with you at the start, and urgent production issues come first. The routine depends on how critical the system is to your business.',
+      },
+      {
+        id: 'maint-mobile',
+        question: 'Do you maintain mobile apps as well?',
+        answer:
+          'Yes. Mobile apps need regular updates for new iOS and Android versions and store rules, so we keep them building and releasing on current versions.',
+      },
+      {
+        id: 'maint-features',
+        question: 'Can maintenance include new features?',
+        answer:
+          'Yes. Most support work mixes upkeep with small improvements. Larger features are scoped separately so they do not crowd out the essential work.',
+      },
+      OWNERSHIP_FAQ,
+    ],
+    cta: {
+      title: 'Need Someone To Look After Your Software?',
+      description:
+        'Tell us what you are running and what worries you about it, and we will suggest a support routine.',
+      primary: { label: 'Talk to us', href: '/contact' },
+      secondary: { label: 'View case studies', href: '/our-work/case-studies' },
+    },
+  },
+  'marketplace-development': {
+    slug: 'marketplace-development',
+    reviewer: FOUNDER_REVIEWER,
+    updated: '2026-10-12',
+    hero: {
+      eyebrow: 'What We Build · Marketplaces',
+      title: 'Build A Marketplace',
+      highlight: 'Buyers And Sellers Trust',
+      description:
+        'A marketplace connects two sides, such as renters and lenders or clinics and designers, and handles listings, bookings, payments and payouts between them. We have built Cad Cam Masters, Cinekit, Cercle and Truck-4.',
+      cta: { label: 'Plan Your Marketplace', href: '/contact' },
+    },
+    capabilitiesTitle: 'What A Marketplace Needs',
+    capabilitiesIntro:
+      'Most marketplaces struggle with trust and payments, not features. Both sides need to feel safe before the first transaction.',
+    capabilities: [
+      {
+        title: 'Listings and search',
+        description:
+          'Listing tools for sellers and filtered search for buyers. Cinekit lets creators search camera gear by location and category.',
+      },
+      {
+        title: 'Bookings and availability',
+        description:
+          'Calendars and date ranges that stay correct when many people book at once, as on Cinekit’s gear rentals.',
+      },
+      {
+        title: 'Payments, deposits and payouts',
+        description:
+          'Stripe for checkout, security deposits and payouts to sellers. Cinekit holds deposits on expensive gear, and Cad Cam Masters pays designers through the platform.',
+      },
+      {
+        title: 'Trust and verification',
+        description:
+          'Profiles, reviews and checks that make strangers comfortable trading. CashKart only lets verified agents buy devices from sellers.',
+      },
+      {
+        title: 'Returns, refunds and credit',
+        description:
+          'Clear flows for when things go wrong. Cercle refunds into store credit, so the money stays on the platform.',
+      },
+    ],
+    story: {
+      eyebrow: 'Project story · Cad Cam Masters',
+      title: 'Matching dental labs with remote CAD designers',
+      intro:
+        'Cad Cam Masters connects dental practices, clinics and labs with freelance dental CAD designers. Labs post jobs, designers bid, and the work and payments run through the platform. We built it over 18 months.',
+      problem:
+        'Dental CAD files are large, and uploading them during checkout stalled the servers for everyone else. Labs also needed a way to follow each design through its milestones.',
+      changes: [
+        'Built job posting and contract bidding, so labs can hire designers directly.',
+        'Moved heavy CAD file uploads into an asynchronous AWS pipeline, separate from the main web transactions.',
+        'Added milestone viewers so labs can review detailed renders as the work progresses.',
+        'Automated marketplace payments through Stripe.',
+      ],
+      outcome:
+        'Labs now work directly with remote CAD designers, which reduced clinic overhead and sped up prosthesis fabrication. That is the job of any marketplace: make the deal between both sides easier than any other way of doing it.',
+      facts: [
+        { label: 'Duration', value: '18 months' },
+        { label: 'Two sides', value: 'Dental labs and CAD designers' },
+        { label: 'Payments', value: 'Stripe' },
+        { label: 'Stack', value: 'React, Ruby on Rails, MySQL, AWS' },
+      ],
+      href: '/our-work/featured-projects#cadcam-masters',
+      linkLabel: 'See Cad Cam Masters in our projects',
+    },
+    processTitle: 'From Idea To First Transactions',
+    processIntro: 'A marketplace launches in one niche first and grows from there.',
+    process: [
+      {
+        phase: 'Discover',
+        title: 'Pick The First Market',
+        description:
+          'We agree which buyers and sellers to start with, what they trade and how money moves between them.',
+      },
+      {
+        phase: 'Design',
+        title: 'Design Both Sides',
+        description:
+          'Seller onboarding, listings, search, booking and checkout, designed so the first transaction is easy for both sides.',
+      },
+      {
+        phase: 'Build',
+        title: 'Build And Integrate',
+        description:
+          'Payments, payouts, notifications and admin tools, tested against real cases like cancellations and disputes.',
+      },
+      {
+        phase: 'Launch',
+        title: 'Launch And Learn',
+        description:
+          'We launch to a small group, watch where people drop off and improve those steps first.',
+      },
+    ],
+    techTitle: 'Technology Behind Our Marketplaces',
+    techIntro: 'The stack behind the marketplaces we have shipped.',
+    tech: ['rubyonrails', 'react', 'nextdotjs', 'stripe', 'postgresql', 'mysql', 'elasticsearch'],
+    benefitsTitle: 'What To Decide Before You Build A Marketplace',
+    benefitsIntro:
+      'These choices shape the data model and the payments set-up, so they are easier to make early.',
+    benefits: [
+      {
+        title: 'Who pays whom, and when',
+        description:
+          'Commission, subscription, listing fees or deposits. Stripe Connect handles most of these, but the model has to be chosen first.',
+      },
+      {
+        title: 'What happens when it goes wrong',
+        description:
+          'Cancellations, damage, refunds and disputes need rules before launch. Cercle refunds into store credit.',
+      },
+      {
+        title: 'Which side to grow first',
+        description:
+          'Most marketplaces recruit sellers first, so buyers find something to buy on day one.',
+      },
+      {
+        title: 'How trust is earned',
+        description:
+          'Verification, reviews and deposits. CashKart verifies every buying agent before they can trade.',
+      },
+      {
+        title: 'Heavy files and media',
+        description:
+          'Photos, video or CAD files need their own upload pipeline, as on Cad Cam Masters, or they slow the site for everyone.',
+      },
+      {
+        title: 'Web, app or both',
+        description:
+          'Many marketplaces start on the web and add apps once the model works. Truck-4 and Cinekit run as web platforms.',
+      },
+    ],
+    projectsTitle: 'Marketplaces In Action',
+    projectsIntro: 'Marketplaces from our portfolio.',
+    projectsCtaLabel: 'View All Case Studies',
+    projects: [projectRef('cinekit'), projectRef('cercle'), projectRef('cadcam-masters')],
+    faqsTitle: 'Marketplace Development FAQs',
+    faqsIntro: 'What founders ask before they build a two-sided platform.',
+    faqs: [
+      {
+        id: 'mkt-what',
+        question: 'What does marketplace development include?',
+        answer:
+          'Listings and search, bookings or orders, payments and payouts, trust features like verification and reviews, and the admin tools you need to run it.',
+      },
+      {
+        id: 'mkt-payments',
+        question: 'How do marketplace payments and payouts work?',
+        answer:
+          'We usually use Stripe Connect, which takes the buyer’s payment, holds deposits where needed and pays sellers their share. It also runs the identity checks sellers need before they can be paid.',
+      },
+      {
+        id: 'mkt-rental',
+        question: 'Can you build a rental marketplace?',
+        answer:
+          'Yes. Cinekit rents camera gear with security deposits, and Cercle rents designer fashion with returns, cleaning and store credit.',
+      },
+      {
+        id: 'mkt-b2b',
+        question: 'Do you build B2B marketplaces?',
+        answer:
+          'Yes. Cad Cam Masters matches dental labs with CAD designers, and Truck-4 lets businesses find, lease or buy trucks and trailers.',
+      },
+      {
+        id: 'mkt-scale',
+        question: 'Will it cope as it grows?',
+        answer:
+          'It has to be built for that from the start. Cinekit grew to more than 100,000 users, and Truck-4 runs on microservices with more than 2 million shipper records.',
+      },
+      OWNERSHIP_FAQ,
+    ],
+    cta: {
+      title: 'Ready To Build Your Marketplace?',
+      description:
+        'Tell us who is buying, who is selling and how money should move, and we will map out the first version.',
+      primary: { label: 'Talk to us', href: '/contact' },
+      secondary: { label: 'View case studies', href: '/our-work/case-studies' },
+    },
+  },
 };
 
 export function getCapabilityPage(slug: CapabilitySlug): CapabilityPageData {
@@ -2112,6 +2638,9 @@ export const CAPABILITY_SERVICE_NAMES: Record<CapabilitySlug, string> = {
   cloud: 'Cloud migration and cloud services',
   devops: 'DevOps consulting',
   automation: 'Business process automation',
+  'legacy-modernization': 'Legacy software modernization',
+  'software-maintenance': 'Software maintenance and support',
+  'marketplace-development': 'Marketplace development',
 };
 
 /** BrandIcon service slugs (short keys in SERVICE_ICONS). */
@@ -2126,20 +2655,26 @@ export const CAPABILITY_ICONS: Record<CapabilitySlug, string> = {
   cloud: 'cloud',
   devops: 'devops',
   automation: 'automation',
+  'legacy-modernization': 'integration',
+  'software-maintenance': 'staff',
+  'marketplace-development': 'web',
 };
 
 /** The services each service page links to: the ones its projects usually involve as well. */
 export const RELATED_CAPABILITIES: Record<CapabilitySlug, readonly CapabilitySlug[]> = {
-  'custom-software': ['web-apps', 'erp', 'automation'],
-  'web-apps': ['saas', 'custom-software', 'cloud'],
-  'mobile-apps': ['web-apps', 'saas', 'ai-solutions'],
+  'custom-software': ['legacy-modernization', 'software-maintenance', 'web-apps', 'erp'],
+  'web-apps': ['marketplace-development', 'saas', 'custom-software', 'cloud'],
+  'mobile-apps': ['web-apps', 'software-maintenance', 'saas', 'ai-solutions'],
   'ai-solutions': ['automation', 'saas', 'custom-software'],
-  erp: ['crm', 'automation', 'custom-software'],
+  erp: ['crm', 'automation', 'legacy-modernization'],
   crm: ['erp', 'automation', 'saas'],
-  saas: ['web-apps', 'mobile-apps', 'cloud'],
-  cloud: ['devops', 'saas', 'web-apps'],
-  devops: ['cloud', 'saas', 'custom-software'],
+  saas: ['marketplace-development', 'web-apps', 'cloud', 'software-maintenance'],
+  cloud: ['devops', 'legacy-modernization', 'saas'],
+  devops: ['cloud', 'software-maintenance', 'saas'],
   automation: ['ai-solutions', 'crm', 'erp'],
+  'legacy-modernization': ['software-maintenance', 'cloud', 'custom-software'],
+  'software-maintenance': ['legacy-modernization', 'devops', 'cloud'],
+  'marketplace-development': ['web-apps', 'saas', 'mobile-apps'],
 };
 
 /** The service page whose project story is this case study, if any. */

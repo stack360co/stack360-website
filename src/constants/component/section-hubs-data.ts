@@ -51,6 +51,24 @@ export const WHAT_WE_BUILD_HUB: SectionHubProps = {
       cta: 'Explore web',
     },
     {
+      title: 'Marketplaces',
+      blurb: 'Two-sided platforms with listings, bookings, deposits and payouts.',
+      href: '/what-we-build/marketplace-development',
+      cta: 'Explore marketplaces',
+    },
+    {
+      title: 'Legacy Modernization',
+      blurb: 'Old frameworks, data feeds and hosting brought up to date in stages.',
+      href: '/what-we-build/legacy-modernization',
+      cta: 'Explore modernization',
+    },
+    {
+      title: 'Maintenance & Support',
+      blurb: 'Updates, fixes and monitoring that keep live software healthy.',
+      href: '/what-we-build/software-maintenance',
+      cta: 'Explore support',
+    },
+    {
       title: 'Cloud',
       blurb: 'Resilient cloud architecture, migration, and cost-aware operations.',
       href: '/what-we-build/cloud',

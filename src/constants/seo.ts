@@ -358,6 +358,45 @@ export const seo = {
     keywords: ['Business Process Automation Services', 'QA Automation Services'],
   }),
 
+  whatWeBuildLegacyModernization: pageMeta({
+    absoluteTitle: 'Legacy Software Modernization Services | Stack360',
+    description:
+      'Modernize legacy software without stopping the business. We upgrade old frameworks, data feeds and hosting in stages, as for Autobuffy and Coach Catalyst.',
+    path: '/what-we-build/legacy-modernization',
+    keywords: [
+      'legacy software modernization',
+      'application modernization services',
+      'angularjs migration',
+      'legacy system upgrade',
+    ],
+  }),
+
+  whatWeBuildSoftwareMaintenance: pageMeta({
+    absoluteTitle: 'Software Maintenance and Support Services | Stack360',
+    description:
+      'Keep live software secure, fast and working after launch. Stack360 handles updates, bug fixes, monitoring and small improvements for web and mobile products.',
+    path: '/what-we-build/software-maintenance',
+    keywords: [
+      'software maintenance services',
+      'application support and maintenance',
+      'app maintenance services',
+      'software support company',
+    ],
+  }),
+
+  whatWeBuildMarketplaceDevelopment: pageMeta({
+    absoluteTitle: 'Marketplace Development Company | Stack360',
+    description:
+      'Build a two-sided marketplace with listings, bookings, Stripe payments and payouts. Stack360 built Cad Cam Masters, Cinekit, Cercle and Truck-4.',
+    path: '/what-we-build/marketplace-development',
+    keywords: [
+      'marketplace development company',
+      'marketplace app development',
+      'rental marketplace development',
+      'b2b marketplace development',
+    ],
+  }),
+
   whoWeHelp: pageMeta({
     title: 'Who We Help: Startups, SMEs and Enterprises',
     description:

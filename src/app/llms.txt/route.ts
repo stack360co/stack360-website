@@ -21,6 +21,9 @@ const SERVICE_ORDER: readonly CapabilitySlug[] = [
   'cloud',
   'devops',
   'automation',
+  'marketplace-development',
+  'legacy-modernization',
+  'software-maintenance',
 ];
 
 const COMPANY_PAGES = [

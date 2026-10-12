@@ -1266,6 +1266,23 @@ export const HIRE_TECH_FOR_CAPABILITY: Readonly<
   crm: ['ruby-on-rails-developers', 'vue-developers', 'react-developers', 'nodejs-developers'],
   'ai-solutions': ['python-developers', 'nodejs-developers', 'react-developers'],
   automation: ['python-developers', 'nodejs-developers', 'ruby-on-rails-developers'],
+  'legacy-modernization': [
+    'angular-developers',
+    'vue-developers',
+    'dotnet-developers',
+    'ruby-on-rails-developers',
+  ],
+  'software-maintenance': [
+    'ruby-on-rails-developers',
+    'react-developers',
+    'react-native-developers',
+    'nodejs-developers',
+  ],
+  'marketplace-development': [
+    'ruby-on-rails-developers',
+    'react-developers',
+    'react-native-developers',
+  ],
 };
 
 /** What We Build pages that list this hire page, for links back the other way. */
