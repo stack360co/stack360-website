@@ -1066,7 +1066,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     projectsIntro:
       'Explore how Stack360 builds scalable software, integrates complex systems, and solves challenging business requirements across industries.',
     projectsCtaLabel: 'View All Case Studies',
-    projects: [projectRef('atc'), projectRef('fisar'), projectRef('falcore')],
+    projects: [projectRef('buffyhub'), projectRef('westar'), projectRef('atc')],
     showTestimonials: true,
     faqsTitle: 'Frequently Asked Questions',
     faqsIntro:
