@@ -166,15 +166,33 @@ export function blogPostingJsonLd(post: {
   };
 }
 
-/** Labels for the section pages that sit between Home and a page in the breadcrumb trail. */
-const SECTION_LABELS: Readonly<Record<string, string>> = {
+/**
+ * Short breadcrumb labels for the fixed pages, so the trail reads "Who We Are > Our History"
+ * however the page titles are worded for search.
+ */
+const PAGE_LABELS: Readonly<Record<string, string>> = {
+  '/contact': 'Contact',
+  '/privacy': 'Privacy Policy',
+  '/terms': 'Terms of Use',
   '/what-we-build': 'What We Build',
   '/who-we-help': 'Who We Help',
+  '/who-we-help/industries': 'Industries',
+  '/who-we-help/startups': 'Startups',
+  '/who-we-help/smes': 'SMEs',
+  '/who-we-help/enterprises': 'Enterprises',
   '/our-work': 'Our Work',
   '/our-work/case-studies': 'Case Studies',
+  '/our-work/featured-projects': 'Featured Projects',
+  '/our-work/client-success-stories': 'Client Success Stories',
+  '/our-work/faqs': 'FAQs',
   '/who-we-are': 'Who We Are',
+  '/who-we-are/history': 'Our History',
+  '/who-we-are/culture': 'Our Culture',
+  '/who-we-are/how-we-work': 'How We Work',
   '/work-with-us': 'Work With Us',
+  '/work-with-us/software-partner': 'Software Partner',
   '/work-with-us/hire': 'Hire Talent',
+  '/work-with-us/careers': 'Careers',
 };
 
 function breadcrumbTrail(path: string, label: string) {
@@ -182,7 +200,7 @@ function breadcrumbTrail(path: string, label: string) {
   const trail = [{ name: 'Home', path: '/' }];
   parts.forEach((_, index) => {
     const prefix = `/${parts.slice(0, index + 1).join('/')}`;
-    const name = index === parts.length - 1 ? label : SECTION_LABELS[prefix];
+    const name = index === parts.length - 1 ? label : PAGE_LABELS[prefix];
     if (name) {
       trail.push({ name, path: prefix });
     }
@@ -195,7 +213,7 @@ export interface PageSchemaInput {
   name: string;
   description?: string;
   type?: 'WebPage' | 'AboutPage' | 'CollectionPage' | 'ContactPage';
-  /** This page's label in the breadcrumb trail. Defaults to the section label, then the name. */
+  /** This page's label in the breadcrumb trail. Defaults to its PAGE_LABELS entry, then the name. */
   crumb?: string;
   /** Questions shown on the page. Their presence makes the page an FAQPage. */
   faqs?: readonly { question: string; answer: string }[];
@@ -214,7 +232,7 @@ export function pageJsonLd(input: PageSchemaInput): JsonLd[] {
   const crumbs =
     input.path === '/'
       ? []
-      : breadcrumbTrail(input.path, input.crumb ?? SECTION_LABELS[input.path] ?? input.name);
+      : breadcrumbTrail(input.path, input.crumb ?? PAGE_LABELS[input.path] ?? input.name);
 
   const page: JsonLd = {
     '@context': 'https://schema.org',

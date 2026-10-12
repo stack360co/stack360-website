@@ -162,7 +162,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     linkLabel: 'React and Next.js developers',
     iconSlug: 'react',
     meta: {
-      title: 'Hire React Developers | React and Next.js Engineers',
+      title: 'Hire React and Next.js Developers',
       description:
         'Hire full-time remote React and Next.js developers who have shipped products like Fyxer, Cinekit and Truck-4. Vetted shortlist within 2 days.',
       keywords: [
@@ -623,7 +623,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     linkLabel: 'Ruby on Rails developers',
     iconSlug: 'rubyonrails',
     meta: {
-      title: 'Hire Ruby on Rails Developers | Rails Experts',
+      title: 'Hire Ruby on Rails (RoR) Developers',
       description:
         'Hire full-time remote Ruby on Rails developers. Rails is our deepest stack, behind Autobuffy, LegalAtoms, Klingit and Coach Catalyst. Shortlist in 2 days.',
       keywords: [
