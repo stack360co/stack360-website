@@ -224,30 +224,31 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'react-native-or-flutter',
     title: 'React Native or Flutter? How We Choose for Client Apps',
     seoTitle: 'React Native or Flutter? How We Choose',
+    author: { name: 'M. Awais Aslam', role: 'Co-Founder' },
     reviewedBy: 'Azmat Rana',
     excerpt:
       'How we pick React Native, Flutter or native code for a client app, with the reasons behind Nextflag, Orchyd, Houzi, StoreBevy and Slumber & Sprout.',
     date: '2026-10-12',
     category: 'Mobile',
-    readTime: '4 min',
+    readTime: '5 min',
     intro:
       'Choose React Native if your team already builds for the web in React. Choose Flutter if the app has a custom design that must look the same on every phone. Choose native Swift or Kotlin if the app depends on device features. We build all three, and here is what decided each of our apps.',
     sections: [
       {
         heading: 'When we pick React Native',
-        body: 'React Native apps are written in JavaScript or TypeScript and render real native components. Developers who know React can work on them, and some code can be shared with a React website.\n\nNextflag is a social travel app in React Native, with a map of location flags, following and wishlists. Orchyd, a private cycle and fertility tracker with an AI assistant, is React Native too. Trusted Tastes, a restaurant app built on recommendations from people you follow, uses React on the web and React Native on mobile.',
+        body: 'React Native apps are written in JavaScript or TypeScript and render real native components. Developers who know React can work on them, and some code can be shared with a React website.\n\nWe recommended React Native for Nextflag, a social travel app with a map of location flags, following and wishlists. Orchyd, a private cycle and fertility tracker with an AI assistant, is React Native too. Trusted Tastes, a restaurant app built on recommendations from people you follow, uses React on the web and React Native on mobile.',
       },
       {
         heading: 'When we pick Flutter',
-        body: 'Flutter draws every pixel itself with its own rendering engine. A custom design looks identical on iOS and Android, with no native view in between. Apps are written in Dart.\n\nHouzi is a real estate app built in Flutter, with 360° views of each property. StoreBevy is a white-label app in Flutter: one codebase, configured for each small retailer that wants its own branded store app.',
+        body: 'Flutter draws every pixel itself with its own rendering engine. A custom design looks identical on iOS and Android, with no native view in between. Apps are written in Dart.\n\nWe built Houzi, a real estate app in Flutter, with 360° views of each property. StoreBevy is a white-label app in Flutter: one codebase, configured for each small retailer that wants its own branded store app.',
       },
       {
         heading: 'When we go native',
         body: 'Some apps lean hard on the phone: health data, widgets, background location or heavy animation. Those are better built in Swift for iOS and Kotlin for Android, even though that means two codebases.\n\nSlumber & Sprout is a native iOS app that tracks children’s sleep and builds routines. We built the Rails backend it talks to, which recalculates sleep schedules with Sidekiq when a routine changes.',
       },
       {
-        heading: 'Cross-platform apps need upkeep',
-        body: 'When we started on Nextflag, the app lagged because React Native, its packages and the iOS pods were all out of date. We upgraded them together and tuned the app.\n\nWe also rewrote the post-upload screen, which often crashed the app, and saved onboarding progress at each step so people could resume. An animated splash screen replaced a static one, cutting load time and storage size. Whichever framework you choose, plan for regular upgrades.',
+        heading: 'Where the time goes',
+        body: 'Four things have cost us the most time on cross-platform apps, whichever framework the app uses.\n\n1. Package upgrades. The framework, its packages and the iOS pods have to move together. Nextflag lagged until we upgraded all three and tuned the app.\n\n2. Store review. Apple and Google can reject or hold a release, so leave room for review in every release plan.\n\n3. Older Android phones. An app that runs smoothly on a new iPhone can stutter on a low-end Android phone, so test on both.\n\n4. Push notifications. iOS uses Apple Push Notification service and Android uses Firebase Cloud Messaging, so each needs its own setup and testing.\n\nOn Nextflag we also rewrote the post-upload screen, which often crashed the app, and saved onboarding progress at each step so people could resume.',
       },
       {
         heading: 'The questions we ask first',
@@ -260,7 +261,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
         'Is React Native or Flutter faster? Both are fast enough for most business apps. The design, the data and the backend usually matter more.',
         'Can we switch frameworks later? Only by rebuilding the screens. The backend and APIs can stay, so choose with the long term in mind.',
         'Can one team build for iOS and Android? Yes. With React Native or Flutter, one codebase ships to both stores.',
-        'Do you take over apps another team built? Yes. Nextflag’s work started with upgrades to its existing React Native code.',
+        'Do you take over apps another team built? Yes. The first step is getting the project building on current tools and reading its crash reports, before changing anything.',
       ],
     },
     related: [
