@@ -13,13 +13,13 @@ export const LANDING_HERO = {
     'Win Markets.',
   ],
   intro:
-    'Stack360 is a software development agency founded in 2021. We have delivered more than 200 web, mobile, AI and SaaS projects for companies in the US, the UK and beyond.',
+    'Stack360 is a software development agency founded in 2019. We have delivered more than 200 web, mobile, AI and SaaS projects for companies in the US, the UK and beyond.',
 } as const;
 
 export const LANDING_STATS = [
   { value: '200+', label: 'Projects delivered' },
   { value: '200+', label: 'Clients served' },
-  { value: '2021', label: 'Founded' },
+  { value: '2019', label: 'Founded' },
   { value: '100%', label: 'Success rate' },
 ] as const;
 

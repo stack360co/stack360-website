@@ -442,7 +442,7 @@ export const seo = {
   }),
 
   whoWeAre: pageMeta({
-    absoluteTitle: 'About Stack360 | Software Development Agency Since 2021',
+    absoluteTitle: 'About Stack360 | Software Development Agency Since 2019',
     description:
       'Meet Stack360: our history, our engineering culture, and how we design, build, and ship complex software for startups, SMEs, and enterprises.',
     path: '/who-we-are',

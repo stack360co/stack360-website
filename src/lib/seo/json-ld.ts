@@ -41,7 +41,7 @@ export function organizationJsonLd(): JsonLd {
     email: SITE_EMAIL,
     telephone: SITE_PHONE_E164,
     founder: { '@id': FOUNDER_ID },
-    foundingDate: '2021',
+    foundingDate: '2019',
     numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 10, maxValue: 49 },
     knowsAbout: [
       'Custom software development',
