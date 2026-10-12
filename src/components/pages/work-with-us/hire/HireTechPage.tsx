@@ -16,9 +16,9 @@ import PageHero from '@/components/shared/PageHero';
 import { HIRE_NEED_OPTIONS, HIRE_PROMISE } from '@/constants/component/hire-talent-data';
 import {
   getRelatedCapabilities,
+  HIRE_OWNERSHIP_FAQ,
   HIRE_TECH_PAGES,
   type HireTechPage,
-  hireSharedFaqs,
 } from '@/constants/component/hire-tech-data';
 import { breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo/json-ld';
 
@@ -79,7 +79,7 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
   const pagePath = `/work-with-us/hire/${page.slug}`;
   const others = HIRE_TECH_PAGES.filter((other) => other.slug !== page.slug);
   const services = getRelatedCapabilities(page.slug);
-  const faqs = [...page.faqs, ...hireSharedFaqs(page.name)];
+  const faqs = [...page.faqs, HIRE_OWNERSHIP_FAQ];
 
   return (
     <div className="flex w-full flex-col">

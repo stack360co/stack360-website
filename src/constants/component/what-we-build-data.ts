@@ -58,14 +58,7 @@ const FOUNDER_REVIEWER: CapabilityReviewer = {
   href: '/who-we-are/culture',
 };
 
-/** Cost and ownership answers shared by every reviewed capability page. */
-const PRICING_FAQ = (subject: string): CapabilityFaq => ({
-  id: 'cost',
-  question: `How much does ${subject} cost?`,
-  answer:
-    'It depends on the scope. After the discovery call you get a timeline and a delivery plan with clear milestones, before any build work starts.',
-});
-
+/** Ownership answer shared by every reviewed capability page. */
 const OWNERSHIP_FAQ: CapabilityFaq = {
   id: 'ownership',
   question: 'Who owns the code and intellectual property?',
@@ -143,6 +136,7 @@ function projectRef(slug: string): CapabilityProjectRef {
 export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   'web-apps': {
     slug: 'web-apps',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · Web Apps',
       title: 'Build Powerful Web Apps For',
@@ -181,6 +175,31 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Integrate websites with CRMs, ERPs, APIs, payment systems, databases, analytics platforms, and third-party business applications.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Cercle',
+      title: 'Building a fashion rental marketplace that keeps up with demand',
+      intro:
+        'Cercle is a UK marketplace for renting high-end fashion. Lenders list luxury clothing and accessories to earn from them, and renters wear them for a fraction of the retail price. It had to be fast, handle payments and returns reliably, and sell through social channels as well as the site.',
+      problem:
+        'Slow pages raised bounce rates and cost sales. Checkout had no store credit, so refunds and cancellations were clumsy. Shoppers expected to buy from social channels too, worn items needed cleaning and repair before they could be rented again, and bugs left delivery and payment statuses wrong.',
+      changes: [
+        'Sped up product data handling and image caching, and moved heavy work into Sidekiq background jobs so pages stay responsive.',
+        'Built a wallet and store-credit flow for refunds and cancellations, with encryption and secure tokenisation.',
+        'Integrated the Facebook commerce APIs, so the catalogue, inventory and orders stay in sync between the site and Facebook.',
+        'Connected Advanced Clothing Solutions, so used items ship from the renter, get cleaned and repaired, and return to stock.',
+        'Fixed the Solidus admin configuration so delivery and payment statuses stay accurate.',
+      ],
+      outcome:
+        'Faster pages cut bounce rates and supported higher sales, renting and returning became smoother, and store credits kept refunds on the platform. Most web app work looks like this: speed, payments and the integrations behind the screen decide whether people come back.',
+      facts: [
+        { label: 'Team', value: '2 engineers' },
+        { label: 'Effort', value: '2,112 hours' },
+        { label: 'Payments', value: 'Stripe and store credits' },
+        { label: 'Stack', value: 'Ruby on Rails, Solidus, Next.js, PostgreSQL' },
+      ],
+      href: '/our-work/case-studies/cercle',
+      linkLabel: 'Read the full Cercle case study',
+    },
     processTitle: 'From Concept To Launch',
     processIntro:
       'Our website design and development process connects strategy, UX, engineering, testing, optimisation, and deployment to deliver reliable digital experiences.',
@@ -222,39 +241,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'google',
       'graphql',
     ],
-    benefitsTitle: 'Websites Built For Growth',
+    benefitsTitle: 'Website, Web App Or Both?',
     benefitsIntro:
-      'Our website development services combine performance, usability, scalability, security, and flexibility to support long-term digital growth.',
+      'A marketing website and a web application solve different problems, and many businesses need both. This is how we tell them apart.',
     benefits: [
       {
-        title: 'Better User Experience',
+        title: 'A website informs',
         description:
-          'Create intuitive, responsive experiences that help visitors navigate your website easily and find the information they need.',
+          'It explains what you offer, ranks in search and turns visitors into enquiries. Content and speed matter most.',
       },
       {
-        title: 'Faster Performance',
+        title: 'A web app does work',
         description:
-          'Optimised architecture, code, assets, and infrastructure help websites load faster and deliver smoother experiences across devices.',
+          'Customers log in to buy, book, rent, track or manage something. Accounts, data and reliability matter most.',
       },
       {
-        title: 'Flexible Functionality',
+        title: 'Search needs server rendering',
         description:
-          'Custom development allows your website to support unique workflows, features, integrations, and business requirements.',
+          'Pages that should rank, such as product and category pages, need server-side rendering. Autobuffy gained search visibility after we added it.',
       },
       {
-        title: 'Scalable Architecture',
+        title: 'Speed is a feature',
         description:
-          'Build websites and web applications that can support growing traffic, content, customers, transactions, and functionality.',
+          'Slow pages on Cercle were costing sales until heavy work moved into background jobs and images were cached.',
       },
       {
-        title: 'Seamless Integrations',
+        title: 'Payments shape the build',
         description:
-          'Connect your website with business systems, APIs, payment platforms, CRMs, ERPs, analytics tools, and third-party services.',
+          'Subscriptions, deposits, store credit, refunds and payouts all need planning in the data model before checkout is designed.',
       },
       {
-        title: 'Conversion-Focused Experiences',
+        title: 'Plan the integrations',
         description:
-          'Combine clear user journeys, intuitive interfaces, strong functionality, and performance to help turn more visitors into customers.',
+          'Most of the hard work sits behind the screen: inventory feeds, shipping, social catalogues and accounting.',
       },
     ],
     projectsTitle: 'Web Projects In Action',
@@ -268,34 +287,35 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     faqs: [
       {
         id: 'web-includes',
-        question: 'What does website development include?',
+        question: 'What does web app development include?',
         answer:
-          'Website development can include frontend and backend development, CMS implementation, integrations, ecommerce functionality, databases, APIs, testing, deployment, and ongoing optimisation.',
+          'Design, front end, backend, database, integrations, testing and hosting, plus the admin tools your team uses to run it day to day.',
       },
       {
-        id: 'web-custom-vs-template',
-        question: 'What is the difference between custom and template-based website development?',
+        id: 'web-vs-site',
+        question: 'Should we build a website or a web application?',
         answer:
-          'Custom website development creates functionality and experiences around your specific requirements, while templates provide predefined structures with more limited flexibility.',
+          'A website explains what you offer and wins enquiries. A web application is something people log in to and use. Many businesses need both, often on the same domain.',
       },
       {
         id: 'web-ecommerce',
-        question: 'Can you develop ecommerce websites?',
+        question: 'Can you develop ecommerce and marketplace platforms?',
         answer:
-          'Yes. Our ecommerce website development services support product catalogues, payments, customer accounts, integrations, inventory workflows, and scalable online shopping experiences.',
+          'Yes. Autobuffy sells more than 100,000 auto parts, Cercle runs fashion rentals with store credits and returns, and Cad Cam Masters is a B2B dental marketplace.',
       },
       {
         id: 'web-integrate',
-        question: 'Can you integrate a website with existing business systems?',
+        question: 'Can you integrate a web app with existing business systems?',
         answer:
-          'Yes. We integrate websites with CRMs, ERPs, APIs, payment gateways, databases, analytics platforms, SaaS applications, and other business systems.',
+          'Yes. Cercle syncs its catalogue and orders with Facebook and works with a clothing-renewal partner, and Autobuffy pulls vendor inventory through its own microservice.',
       },
       {
-        id: 'web-apps',
-        question: 'Can you develop web applications instead of traditional websites?',
+        id: 'web-faster',
+        question: 'Can you make an existing web app faster?',
         answer:
-          'Yes. As a web app development company, we build interactive web applications, customer portals, SaaS platforms, dashboards, internal tools, and complex business applications.',
+          'Usually, yes. We profile first, then fix what is slow: background jobs and image caching on Cercle, Elasticsearch for part search on Autobuffy.',
       },
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Build A Better Website?',
@@ -487,7 +507,6 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         answer:
           'Yes. We handle signing, test builds, store listings and replies to review feedback, or work inside the release process you already have.',
       },
-      PRICING_FAQ('mobile app development'),
       OWNERSHIP_FAQ,
       {
         id: 'mobile-integrate',
@@ -507,6 +526,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   devops: {
     slug: 'devops',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · DevOps',
       title: 'Build Faster With Smarter',
@@ -545,6 +565,32 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Monitor infrastructure, applications, deployments, and system performance to identify issues early and improve operational visibility.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Truck-4',
+      title: 'Repeatable releases for a microservices marketplace',
+      intro:
+        'Truck-4 is a marketplace for renting, leasing and buying trucks, tractors and trailers, built as a set of microservices holding more than 2 million shipper records. With many services to build, test and deploy, releases had to be repeatable and safe.',
+      problem:
+        'Deploying many services onto Kubernetes by hand was slow and error-prone, and integration bugs between services surfaced late. Services depended on each other, so one slow call could drag down response times, and uploaded files could carry malware into the platform.',
+      changes: [
+        'Automated builds and deployments with Azure DevOps pipelines and Helm charts, so every release follows the same steps.',
+        'Added SonarQube and CI checks that catch code and integration problems before they reach production.',
+        'Ran each service on Kubernetes, so it can be deployed and scaled on its own.',
+        'Used RabbitMQ for asynchronous messaging between services, so one slow service does not hold up the others.',
+        'Scanned every upload with ClamAV in real time before it is accepted.',
+        'Added fallbacks and monitoring so sign-in keeps working when an upstream service fails.',
+      ],
+      outcome:
+        'Releases are automated and repeatable, problems surface in the pipeline instead of in production, and Kubernetes scaling cut operations cost while raising throughput. That is the point of DevOps: make shipping routine, so the team can release more often with less risk.',
+      facts: [
+        { label: 'Team', value: '3 engineers' },
+        { label: 'Effort', value: '1,232 hours' },
+        { label: 'Shipper records', value: '2M+' },
+        { label: 'Stack', value: 'Kubernetes, Helm, Azure DevOps, RabbitMQ' },
+      ],
+      href: '/our-work/case-studies/truck-4',
+      linkLabel: 'Read the full Truck-4 case study',
+    },
     processTitle: 'From Code To Production',
     processIntro:
       'Our DevOps consulting approach connects development, infrastructure, automation, security, and monitoring to create efficient software delivery pipelines.',
@@ -585,39 +631,37 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'prometheus',
       'grafana',
     ],
-    benefitsTitle: 'DevOps Built For Performance',
+    benefitsTitle: 'Where DevOps Pays Off First',
     benefitsIntro:
-      'Our DevOps consulting services help teams release faster, automate operations, improve reliability, and create scalable technology environments.',
+      'You do not need every tool at once. These are the changes that usually make the biggest difference, in roughly this order.',
     benefits: [
       {
-        title: 'Faster Delivery',
+        title: 'One-step deploys',
         description:
-          'Automated development and deployment workflows reduce manual bottlenecks and help teams release reliable software more frequently.',
+          'If releasing takes a person and a checklist, automate it first. Truck-4 deploys every service the same way with pipelines and Helm.',
       },
       {
-        title: 'Greater Automation',
+        title: 'Tests on every change',
         description:
-          'DevOps automation reduces repetitive infrastructure and deployment tasks while improving consistency across development and production environments.',
+          'Automated tests and code checks on each pull request catch problems while they are cheap to fix.',
       },
       {
-        title: 'Improved Reliability',
-        description:
-          'Continuous monitoring, automated testing, and resilient infrastructure help identify problems earlier and maintain stable application performance.',
+        title: 'A staging copy of production',
+        description: 'Every change runs on staging before customers see it.',
       },
       {
-        title: 'Better Scalability',
+        title: 'Monitoring that reaches a person',
         description:
-          'Cloud-native infrastructure and automated provisioning make it easier to scale applications and resources as demand changes.',
+          'Logs and alerts for errors, slow responses and failed jobs, routed to someone who can act on them.',
       },
       {
-        title: 'Stronger Collaboration',
+        title: 'Infrastructure as code',
         description:
-          'Connected development and operations workflows improve communication, ownership, visibility, and accountability throughout the software lifecycle.',
+          'Servers and settings defined in files can be reviewed, repeated and rebuilt after a failure.',
       },
       {
-        title: 'Reduced Operational Risk',
-        description:
-          'Standardised environments, automated processes, monitoring, and controlled deployments reduce configuration errors and unexpected production issues.',
+        title: 'Rollbacks that work',
+        description: 'Every deploy should be easy to undo. Practise it before you need it.',
       },
     ],
     projectsTitle: 'DevOps In Action',
@@ -630,35 +674,36 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'Find answers to technical questions about DevOps consulting, automation, CI/CD, cloud infrastructure, containers, monitoring, and deployment.',
     faqs: [
       {
-        id: 'devops-scope',
+        id: 'devops-includes',
         question: 'What does DevOps consulting include?',
         answer:
-          'DevOps consulting can include infrastructure assessment, CI/CD implementation, cloud optimisation, deployment automation, containerisation, monitoring, security, and operational improvements.',
-      },
-      {
-        id: 'devops-automation',
-        question: 'How can DevOps automation improve software delivery?',
-        answer:
-          'DevOps automation reduces manual deployment and infrastructure tasks, improves consistency, accelerates releases, and helps teams detect and resolve issues faster.',
+          'Reviewing how you build, test, release and run your software today, then setting up the pipelines, environments, monitoring and infrastructure as code that make releases routine.',
       },
       {
         id: 'devops-cicd',
         question: 'Can you build CI/CD pipelines for existing applications?',
         answer:
-          'Yes. We can design and implement CI/CD pipelines for existing applications, including automated testing, builds, deployments, environment management, and release workflows.',
+          'Yes. The Truck-4 pipelines in Azure DevOps build, check and deploy each service to Kubernetes with Helm.',
       },
       {
-        id: 'devops-cloud',
-        question: 'Can you help migrate applications to cloud infrastructure?',
+        id: 'devops-kubernetes',
+        question: 'Do we need Kubernetes?',
         answer:
-          'Yes. Our DevOps development services can support cloud migration, infrastructure configuration, containerisation, deployment automation, monitoring, and post-migration optimisation.',
+          'Not always. It suits products with many services, like Truck-4. A single application often runs more simply on a managed container service.',
       },
       {
         id: 'devops-reliability',
         question: 'How do you improve DevOps infrastructure reliability?',
         answer:
-          'We combine infrastructure automation, monitoring, testing, deployment controls, scalable architecture, and proactive optimisation to improve reliability and reduce operational risks.',
+          'Monitoring and alerts first, then fallbacks for the services you depend on, automated deploys with easy rollback and regular test restores of your backups.',
       },
+      {
+        id: 'devops-migrate',
+        question: 'Can you help migrate applications to cloud infrastructure?',
+        answer:
+          'Yes. We move one service or environment at a time, with pipelines and monitoring in place before any traffic switches over.',
+      },
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Modernize Your DevOps Environment?',
@@ -857,7 +902,6 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         answer:
           'Yes. We build agents that read context, call your tools and APIs and carry out defined workflows. Each one has limits on what it can change, and a person approves the steps that matter.',
       },
-      PRICING_FAQ('AI development'),
       OWNERSHIP_FAQ,
     ],
     cta: {
@@ -871,6 +915,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   erp: {
     slug: 'erp',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · ERP',
       title: 'Build Enterprise Software That',
@@ -904,6 +949,31 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Give decision-makers real-time access to business information, performance insights, and operational data across departments.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · BuffyHub',
+      title: 'One back office for inventory, orders, brands and vendors',
+      intro:
+        'BuffyHub gives online sellers one place to run inventory, orders, brands and vendors across Amazon, eBay and Walmart. As volumes grew, the platform had to hold far more data and traffic without slowing down or going offline.',
+      problem:
+        'Inventory, order, brand and vendor records were growing fast, and the existing setup was not built to store or serve that much data. Busy periods slowed pages down, no single integration connected all the selling channels, and the stored data needed stronger protection.',
+      changes: [
+        'Moved the data onto Amazon RDS and S3, sized for large volumes of inventory, order, brand and vendor records.',
+        'Put the application behind an Elastic Load Balancer on EC2, so traffic spreads out and capacity grows without downtime.',
+        'Connected payment gateways, shipping providers and inventory systems through APIs and webhooks, so data moves between them without manual exports.',
+        'Added encryption, authentication and authorisation around the stored data.',
+        'Cut load times with caching, minification and lazy loading, and covered the platform with unit, integration and acceptance tests.',
+      ],
+      outcome:
+        'Sellers run their whole catalogue and order flow from one platform that handles more traffic and keeps their data protected. Most ERP work comes down to this: one reliable record of stock, orders and suppliers that every channel reads from.',
+      facts: [
+        { label: 'Team', value: '2 engineers' },
+        { label: 'Effort', value: '3,344 hours' },
+        { label: 'Channels', value: 'Amazon, eBay, Walmart' },
+        { label: 'Stack', value: 'Ruby on Rails, PostgreSQL, AWS' },
+      ],
+      href: '/our-work/case-studies/buffyhub',
+      linkLabel: 'Read the full BuffyHub case study',
+    },
     processTitle: 'From Vision To Enterprise',
     processIntro:
       'Our enterprise software development process aligns business goals, technical architecture, user needs, and scalability from planning through deployment.',
@@ -944,39 +1014,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'docker',
       'kubernetes',
     ],
-    benefitsTitle: 'Built For Business Impact',
+    benefitsTitle: 'When To Build An ERP Instead Of Buying One',
     benefitsIntro:
-      'Enterprise software should do more than digitise processes. It should improve operations, customer experiences, decision-making, and long-term business growth.',
+      'Most companies should start with an off-the-shelf ERP. Building your own makes sense in a few specific cases, and these are the questions we ask first.',
     benefits: [
       {
-        title: 'Greater Efficiency',
+        title: 'Your channels are unusual',
         description:
-          'Automate repetitive workflows and reduce manual processes to help teams accomplish more with fewer operational bottlenecks.',
+          'If you sell through marketplaces, wholesale and your own store, and no product syncs them the way you work, a custom core can. BuffyHub runs Amazon, eBay and Walmart from one place.',
       },
       {
-        title: 'Connected Operations',
+        title: 'Your costing is your edge',
         description:
-          'Unify departments, applications, and data so your teams can collaborate through connected digital workflows.',
+          'Manufacturers and service firms with their own way of costing jobs often lose that detail inside a standard ERP.',
       },
       {
-        title: 'Better Visibility',
+        title: 'You pay for modules you never use',
         description:
-          'Centralise critical business information and give decision-makers clearer insights through real-time dashboards and reporting.',
+          'Large suites charge for breadth. A focused system that covers your real workflows can cost less to run.',
       },
       {
-        title: 'Scalable Growth',
+        title: 'It has to talk to everything',
         description:
-          'Build flexible enterprise applications that adapt to growing users, expanding operations, and evolving business requirements.',
+          'Accounting, shipping, payments and storefronts. Integration is usually the bulk of an ERP project, so we scope it first.',
       },
       {
-        title: 'Stronger Security',
+        title: 'Buy when a standard ERP fits',
         description:
-          'Protect sensitive business information with secure architecture, access controls, integrations, and development practices.',
+          'If an established product covers your processes, use it and build only the integrations or reports it lacks.',
       },
       {
-        title: 'Lower Technology Costs',
+        title: 'Migrate in stages',
         description:
-          'Replace fragmented systems and manual processes with integrated software that improves efficiency and reduces unnecessary operational overhead.',
+          'Move one area at a time, such as inventory first and invoicing next, so the business never runs on a half-finished system.',
       },
     ],
     projectsTitle: 'Related Case Studies',
@@ -990,35 +1060,36 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'Find answers to common questions about enterprise software development, architecture, integrations, security, scalability, and implementation.',
     faqs: [
       {
-        id: 'erp-what-is',
-        question: 'What is enterprise software development?',
+        id: 'erp-what',
+        question: 'What does ERP development involve?',
         answer:
-          'Enterprise software development involves building applications and platforms that support complex business processes, large user bases, integrations, data requirements, and organisational workflows.',
+          'Building the system that holds your stock, orders, suppliers and finances in one place, then connecting it to the tools around it: storefronts, marketplaces, accounting, shipping and payments.',
       },
       {
-        id: 'erp-custom-vs-enterprise',
-        question: 'What is the difference between custom and enterprise software development?',
+        id: 'erp-build-buy',
+        question: 'Should we build an ERP or buy one?',
         answer:
-          'Custom software addresses specific business requirements, while enterprise software typically supports complex workflows, multiple departments, integrations, security requirements, and large-scale operations.',
+          'Buy if an established product covers your processes. Build, or extend one, when your channels, costing or workflows are what the standard products get wrong.',
       },
       {
         id: 'erp-integrate',
-        question: 'Can you integrate enterprise software with existing systems?',
+        question: 'Can you integrate an ERP with our existing systems?',
         answer:
-          'Yes. We integrate enterprise applications with CRMs, ERPs, databases, APIs, cloud platforms, payment systems, and other business software.',
+          'Yes. On BuffyHub we connected payment gateways, shipping providers and inventory systems through APIs and webhooks, so data flows between them automatically.',
       },
       {
-        id: 'erp-scalable',
-        question: 'How do you make enterprise applications scalable?',
+        id: 'erp-migrate',
+        question: 'How do you move us off the old system without disruption?',
         answer:
-          'We use modular architecture, scalable databases, cloud infrastructure, API-driven design, performance optimisation, monitoring, and security practices to support long-term growth.',
+          'One area at a time. We migrate and check the data for each part, run old and new side by side where needed, and switch over once the numbers match.',
       },
       {
-        id: 'erp-mobile',
-        question: 'Can you develop enterprise mobile applications?',
+        id: 'erp-scale',
+        question: 'Will it keep up as order volumes grow?',
         answer:
-          'Yes. We develop enterprise mobile applications that connect with existing systems and provide secure access to business workflows, data, and services.',
+          'It has to be designed for that from the start. BuffyHub runs on Amazon RDS, S3 and load-balanced EC2, so it takes on more data and traffic without downtime.',
       },
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Build Enterprise Software That Scales?',
@@ -1031,6 +1102,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   crm: {
     slug: 'crm',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · CRM',
       title: 'Build CRM Software That',
@@ -1069,6 +1141,32 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Build flexible CRM software that adapts to growing teams, customer data, workflows, and evolving requirements.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Klingit',
+      title: 'Keeping clients, designers and managers on the same page',
+      intro:
+        'Klingit connects brands with a global pool of creatives for design and motion work. More than 5,000 projects have run through it, with clients, designers, managers and admins all working in the same system.',
+      problem:
+        'Communication between clients, designers, managers and admins was scattered, which delayed projects and frustrated everyone. The old project tools were manual, so progress was hard to see and deadlines slipped. Onboarding a new client onto multi-person work was slow, and requests added mid-project pushed past budget and timeline.',
+      changes: [
+        'Built a central communication hub with real-time updates, one-to-one messaging and clear assignment tracking.',
+        'Added project-state tracking, automated workflows and progress views, so everyone can see where each job stands.',
+        'Automated client onboarding with instructions, plan templates and instant access to the right channels.',
+        'Gave clients self-serve progress views, so they can check on their work without asking.',
+        'Introduced a change-management step that documents new requests and renegotiates scope and budget when needed.',
+        'Added encryption and access controls around client data and brand assets.',
+      ],
+      outcome:
+        'Clients, designers and admins now work from one shared dashboard, with less chasing and clearer workloads, and the self-serve progress views raised client satisfaction and retention. A good CRM does exactly this: it puts every client conversation and commitment where the whole team can see it.',
+      facts: [
+        { label: 'Team', value: '2 engineers' },
+        { label: 'Effort', value: '1,400 hours' },
+        { label: 'Projects run', value: '5,000+' },
+        { label: 'Stack', value: 'Ruby on Rails, Vue.js, Redis, Stripe' },
+      ],
+      href: '/our-work/case-studies/klingit',
+      linkLabel: 'Read the full Klingit case study',
+    },
     processTitle: 'From Strategy To Success',
     processIntro:
       'Our CRM development process aligns business goals, customer journeys, technical architecture, and scalability throughout every development stage.',
@@ -1109,39 +1207,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'docker',
       'kubernetes',
     ],
-    benefitsTitle: 'Drive Growth With Smarter CRM',
+    benefitsTitle: 'Build A CRM Or Customise One?',
     benefitsIntro:
-      'Custom CRM software connects teams, automates operations, and gives your business better tools for customer growth and retention.',
+      'Most teams should start with an established CRM. A custom one earns its cost when your client relationships do not fit a standard sales pipeline.',
     benefits: [
       {
-        title: 'Greater Efficiency',
+        title: 'Your clients work inside it',
         description:
-          'Automate repetitive workflows so teams spend less time managing processes and more time building valuable customer relationships.',
+          'When clients log in to see progress, upload files or approve work, as they do on Klingit, a portal built around your process beats a bolted-on one.',
       },
       {
-        title: 'Connected Teams',
+        title: 'Your pipeline is not a funnel',
         description:
-          'Give sales, marketing, support, and management teams shared access to accurate customer information and connected workflows.',
+          'Projects, subscriptions, support cases and bookings rarely fit the deals-and-stages model that standard CRMs are built around.',
       },
       {
-        title: 'Better Insights',
+        title: 'Support is the relationship',
         description:
-          'Use customer data and analytics to help teams understand performance, identify opportunities, and make informed decisions.',
+          'If most contact comes through support, routing and ticket history matter more than a sales pipeline. Contakti routes incoming messages to the right team with AI.',
       },
       {
-        title: 'Personalised Experiences',
+        title: 'Data has to sync both ways',
         description:
-          'Use customer history, preferences, and interactions to create relevant experiences that strengthen engagement, retention, and loyalty.',
+          'Billing, scheduling and email need to read from and write back to the CRM, or the team stops trusting it.',
       },
       {
-        title: 'Flexible Workflows',
+        title: 'Customise when a standard CRM fits',
         description:
-          'Configure CRM workflows around your processes instead of forcing teams to adapt operations to rigid software.',
+          'If HubSpot or Salesforce covers your process, configure and integrate it instead of building from scratch.',
       },
       {
-        title: 'Scalable Growth',
+        title: 'Plan the data migration early',
         description:
-          'Extend your CRM with features, integrations, users, and automation as your customer base and requirements grow.',
+          'Moving years of contacts and history is usually the riskiest part, so it gets mapped and tested before launch.',
       },
     ],
     projectsTitle: 'CRM Solutions In Action',
@@ -1157,32 +1255,33 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'crm-integrate',
         question: 'Can you integrate custom CRM software with existing business systems?',
         answer:
-          'Yes. We can integrate CRM platforms with ERP systems, accounting software, marketing platforms, payment gateways, APIs, databases, and third-party applications.',
+          'Yes. A CRM is only useful when the tools around it feed it. Integrations with email, billing, calendars and support channels are part of the scope from the start.',
       },
       {
         id: 'crm-migrate',
         question: 'How do you migrate customer data from an existing CRM system?',
         answer:
-          'We plan structured data migration, map existing records, validate data integrity, and securely transfer customer information into the new CRM.',
+          'We map every field in the old system, clean out duplicates and move a test batch for you to check. The rest follows once the numbers match.',
       },
       {
-        id: 'crm-architecture',
-        question: 'How do you design scalable architecture for custom CRM software?',
+        id: 'crm-portal',
+        question: 'Can our clients log in to see their own projects?',
         answer:
-          'We use modular architecture, scalable databases, cloud infrastructure, API-driven design, caching, monitoring, and performance optimisation for long-term growth.',
+          'Yes. Klingit gives clients self-serve progress views, which raised client satisfaction and retention.',
       },
       {
-        id: 'crm-workflows',
+        id: 'crm-automation',
         question: 'Can you build automated workflows for sales and customer management?',
         answer:
-          'Yes. We can automate lead assignment, follow-ups, notifications, approvals, customer communications, task management, reporting, and other CRM workflows.',
+          'Yes. Klingit automates client onboarding with instructions, plan templates and access to the right channels, and Contakti routes support tickets to the right team automatically.',
       },
       {
         id: 'crm-roles',
         question: 'Can you develop role-based CRM applications for multiple departments?',
         answer:
-          'Yes. We develop role-based CRM applications that give sales, marketing, support, management, and other teams access to relevant workflows and information.',
+          'Yes. Klingit is built for four roles, clients, designers, managers and admins, and each one sees the parts of the system they need.',
       },
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Build A Smarter CRM For Growth?',
@@ -1195,6 +1294,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   saas: {
     slug: 'saas',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · SaaS',
       title: 'Build Scalable SaaS Products That',
@@ -1233,6 +1333,31 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'As an AI SaaS development company, we integrate intelligent features, automation, recommendations, and AI-powered workflows into modern SaaS products.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Coach Catalyst',
+      title: 'Turning a coaching tool into a marketplace that pays coaches directly',
+      intro:
+        'Coach Catalyst is a platform where fitness coaches run their client programmes: scheduling, messaging and progress tracking. The product worked, but it was slow, hard to use and built on code that made new features risky.',
+      problem:
+        'Pages loaded slowly and people struggled to finish tasks. Coaches had no built-in way to get paid by their clients. The chat module was written in CoffeeScript and struggled under load. The codebase had never been planned for a community feature, and the front end was still on Vue 2.',
+      changes: [
+        'Redesigned the interface for clarity and cut load times by optimising code, requests and media.',
+        'Built a Stripe Connect marketplace with OAuth onboarding, so coaches get paid by their clients directly and payouts are handled securely.',
+        'Rewrote the CoffeeScript chat in Vue.js with real-time updates that hold up under load.',
+        'Added a community module in phases, isolating its components so the rest of the product kept working.',
+        'Migrated the front end from Vue 2 to Vue 3 with the Composition API, which also reduced the bundle size.',
+      ],
+      outcome:
+        'The platform is faster and easier to use, and the marketplace opened a new revenue stream for coaches and for the business. That is typical of SaaS work: most of the value comes from improving a live product without interrupting the customers who pay for it.',
+      facts: [
+        { label: 'Team', value: '2 engineers' },
+        { label: 'Effort', value: '4,272 hours' },
+        { label: 'Payments', value: 'Stripe Connect' },
+        { label: 'Stack', value: 'Ruby on Rails, Vue 3, PostgreSQL, Redis' },
+      ],
+      href: '/our-work/case-studies/coach-catalyst',
+      linkLabel: 'Read the full Coach Catalyst case study',
+    },
     processTitle: 'From Idea To Scale',
     processIntro:
       'Our SaaS development process combines product strategy, architecture, design, development, testing, deployment, and continuous optimisation.',
@@ -1274,39 +1399,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'docker',
       'kubernetes',
     ],
-    benefitsTitle: 'SaaS Built For Growth',
+    benefitsTitle: 'What To Get Right Early In A SaaS Product',
     benefitsIntro:
-      'Our SaaS development services create products designed for scalability, recurring revenue, operational efficiency, customer retention, and continuous product improvement.',
+      'Some SaaS decisions are cheap to change later and some are not. These are the ones we settle at the start.',
     benefits: [
       {
-        title: 'Faster Market Entry',
+        title: 'How tenants are separated',
         description:
-          'SaaS MVP development helps validate product ideas quickly while creating a foundation that supports future features and customers.',
+          'Whether customers share a database or each get their own affects security, cost and how hard enterprise deals become later.',
       },
       {
-        title: 'Flexible Scaling',
+        title: 'Billing and payouts',
         description:
-          'SaaS platform development supports increasing users, transactions, data volumes, integrations, and functionality without unnecessary architectural limitations.',
+          'Subscriptions, trials, usage pricing or marketplace payouts like the Stripe Connect setup on Coach Catalyst all shape the data model.',
       },
       {
-        title: 'Recurring Revenue',
+        title: 'Roles and permissions',
         description:
-          'Build subscription-based products with flexible plans, billing workflows, customer management, usage tracking, and revenue-focused product experiences.',
+          'Admins, team members and end customers need different access. Retrofitting permissions into a live product is slow and risky.',
       },
       {
-        title: 'Better Customer Experiences',
+        title: 'An MVP that is a real product',
         description:
-          'Create intuitive SaaS applications that simplify complex workflows, improve productivity, and give customers reliable access across devices.',
+          'Ship the smallest version paying customers will use, with sign-up and billing working, and leave the rest for later.',
       },
       {
-        title: 'Lower Infrastructure Costs',
+        title: 'Upgrades without downtime',
         description:
-          'Cloud-based SaaS architecture helps businesses optimise shared infrastructure while efficiently supporting multiple customers and growing workloads.',
+          'Frameworks age. Coach Catalyst moved from Vue 2 to Vue 3 while customers kept using it, which is far easier when the code is kept tidy.',
       },
       {
-        title: 'Continuous Innovation',
+        title: 'Usage data from day one',
         description:
-          'SaaS products can evolve continuously through regular releases, feature improvements, integrations, automation, analytics, and customer-driven development.',
+          'Product analytics show which features people pay for, so the roadmap follows evidence instead of guesses.',
       },
     ],
     projectsTitle: 'SaaS Products In Action',
@@ -1319,35 +1444,36 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'Find answers to technical questions about SaaS architecture, multi-tenancy, MVP development, scalability, integrations, and product deployment.',
     faqs: [
       {
-        id: 'saas-what-is',
+        id: 'saas-what',
         question: 'What is SaaS application development?',
         answer:
-          'SaaS application development involves building cloud-based software that customers access online, typically through subscriptions, usage-based pricing, or recurring plans.',
-      },
-      {
-        id: 'saas-custom-vs-traditional',
-        question: 'How does custom SaaS development differ from traditional software development?',
-        answer:
-          'Custom SaaS development focuses on cloud delivery, multi-tenancy, recurring subscriptions, scalable infrastructure, continuous releases, and supporting multiple customers through one platform.',
+          'Building software that customers subscribe to and use in a browser or an app. It also covers what a subscription business needs around it: accounts, billing, roles, onboarding and analytics.',
       },
       {
         id: 'saas-mvp',
         question: 'Can you build a SaaS MVP before developing the full product?',
         answer:
-          'Yes. Our SaaS MVP development approach focuses on essential functionality, allowing businesses to validate product assumptions before investing in broader development.',
+          'Yes. An MVP should include the core workflow, sign-up and billing, so you learn whether people will pay. Everything else waits for evidence.',
       },
       {
-        id: 'saas-multi-tenant',
+        id: 'saas-multitenant',
         question: 'How do you build scalable multi-tenant SaaS applications?',
         answer:
-          'We use tenant-aware architecture, secure data isolation, scalable databases, cloud infrastructure, access controls, monitoring, and performance optimisation.',
+          'We decide early whether customers share tables scoped by tenant or get separate databases, based on your security needs and target customers. Then that rule is enforced in one place in the code.',
+      },
+      {
+        id: 'saas-takeover',
+        question: 'Can you take over an existing SaaS product?',
+        answer:
+          'Yes. On Coach Catalyst we rewrote the chat, migrated the front end to Vue 3 and added a Stripe Connect marketplace while the platform stayed live.',
       },
       {
         id: 'saas-hire',
         question: 'Can I hire SaaS developers for an existing product?',
         answer:
-          'Yes. You can hire SaaS developers from Stack360 to extend an existing application, improve architecture, develop features, resolve technical challenges, or support ongoing product development.',
+          'Yes. We can place full-time engineers in your team, or take on a defined part of the roadmap ourselves.',
       },
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Build Your SaaS Product?',
@@ -1521,7 +1647,6 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         answer:
           'With a discovery call to map your goals, constraints and the systems involved. You then get a team recommendation, a timeline and a delivery plan with milestones before the build begins.',
       },
-      PRICING_FAQ('custom software'),
       {
         id: 'custom-contract',
         question: 'Do we need to sign a long-term contract?',
@@ -1577,6 +1702,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   cloud: {
     slug: 'cloud',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · Cloud',
       title: 'Move To Cloud With',
@@ -1615,6 +1741,31 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Our cloud application development services create modern applications designed for flexible infrastructure, high availability, performance, and future growth.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Autobuffy',
+      title: 'Keeping a 100,000-part store fast under heavy traffic',
+      intro:
+        'Autobuffy is an online auto parts store selling more than 100,000 parts on a dropshipping model. Customers search by make, model and year while vendors send constant inventory updates. Six of our engineers have put around 28,000 hours into it.',
+      problem:
+        'The server setup struggled with the volume of API calls and file activity, so the site slowed down under traffic. Admin uploads competed with shoppers for the same servers. Large files went to the server first and then on to S3, which was slow and expensive, and inventory still arrived by FTP, CSV and Excel.',
+      changes: [
+        'Put the store behind AWS load balancers with auto-scaling, so capacity follows traffic.',
+        'Split the shop and the admin onto separate servers, so heavy admin uploads no longer slow customers down.',
+        'Switched to direct uploads from the browser to S3, cutting server load and cost.',
+        'Built an inventory microservice that pulls vendor stock automatically and keeps it in sync in real time through APIs.',
+        'Added Elasticsearch and reworked the database indexes, so searching by make, model and year is fast again.',
+      ],
+      outcome:
+        'The store stays reliable at peak load, and inventory is accurate without manual imports. Cloud work is mostly this: shaping the infrastructure around how the application is really used. Then it scales where it needs to and costs less where it does not.',
+      facts: [
+        { label: 'Team', value: '6 engineers' },
+        { label: 'Effort', value: '28,000 hours' },
+        { label: 'Catalogue', value: '100,000+ parts' },
+        { label: 'Stack', value: 'Ruby on Rails, Angular, Elasticsearch, AWS' },
+      ],
+      href: '/our-work/case-studies/autobuffy',
+      linkLabel: 'Read the full Autobuffy case study',
+    },
     processTitle: 'From Infrastructure To Cloud',
     processIntro:
       'Our cloud migration consulting services align business requirements, infrastructure, applications, data, security, and deployment strategies before migration begins.',
@@ -1656,39 +1807,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'github',
       'gitlab',
     ],
-    benefitsTitle: 'Cloud Built For Growth',
+    benefitsTitle: 'Getting The Cloud Right',
     benefitsIntro:
-      'Our cloud services help businesses modernise infrastructure, improve scalability, strengthen security, and optimise technology costs.',
+      'Moving to the cloud does not make software faster or cheaper on its own. These are the decisions that do.',
     benefits: [
       {
-        title: 'Flexible Scaling',
+        title: 'Scale the busy parts',
         description:
-          'Cloud infrastructure allows businesses to scale computing, storage, and application resources based on changing workloads and demand.',
+          'Separate the pieces that see spikes, like the Autobuffy storefront, from the ones that do not, and scale each on its own.',
       },
       {
-        title: 'Improved Reliability',
+        title: 'Managed services first',
         description:
-          'Resilient cloud architecture, monitoring, backups, and automated processes help maintain application availability and reduce operational disruptions.',
+          'Managed databases, storage and load balancers remove most routine operations work before you write any automation.',
       },
       {
-        title: 'Better Cost Control',
+        title: 'Send files straight to storage',
         description:
-          'Optimise cloud resources and infrastructure usage to reduce unnecessary spending while maintaining the performance your applications require.',
+          'Uploading through your own servers costs money and slows them down. Direct uploads to object storage avoid both.',
       },
       {
-        title: 'Stronger Security',
+        title: 'Keep secrets out of code',
         description:
-          'Managed cloud security services help protect infrastructure, applications, identities, workloads, and sensitive business information.',
+          'Credentials belong in a secrets manager with access limited by role, never in the repository.',
       },
       {
-        title: 'Faster Innovation',
+        title: 'Separate staging from production',
         description:
-          'Modern cloud environments give development teams flexible infrastructure for launching applications, testing features, and deploying updates faster.',
+          'Test every change on a copy of production first. It is the cheapest insurance a team can buy.',
       },
       {
-        title: 'Simplified Management',
+        title: 'Watch the bill',
         description:
-          'Cloud automation and managed services reduce infrastructure complexity, allowing teams to focus more on products and business priorities.',
+          'Set budgets and alerts from day one. Idle servers and oversized databases are the usual surprise.',
       },
     ],
     projectsTitle: 'Cloud Solutions In Action',
@@ -1701,35 +1852,36 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'Find answers to technical questions about cloud migration, infrastructure, security, application development, managed services, and optimisation.',
     faqs: [
       {
-        id: 'cloud-migration-how',
+        id: 'cloud-migration',
         question: 'How do cloud migration services work?',
         answer:
-          'We assess your infrastructure, applications, workloads, dependencies, and requirements before creating a migration strategy, executing the move, and optimising the resulting cloud environment.',
+          'We map what you run today and agree a target design. Then we move one service or environment at a time, test each step, and switch traffic over once everything checks out.',
       },
       {
-        id: 'cloud-migrate-apps',
+        id: 'cloud-existing',
         question: 'Can you migrate existing applications to the cloud?',
         answer:
-          'Yes. We can migrate existing applications, databases, workloads, and infrastructure while selecting appropriate cloud architectures based on performance, security, and scalability requirements.',
+          'Yes, including apps that were never built for it. Often the first step is separating heavy jobs, uploads or admin work from what customers use, as we did on Autobuffy.',
       },
       {
-        id: 'cloud-managed',
-        question: 'What are managed cloud services?',
+        id: 'cloud-providers',
+        question: 'Which cloud providers do you work with?',
         answer:
-          'Managed cloud services provide ongoing monitoring, maintenance, optimisation, security, infrastructure management, and technical support for cloud environments.',
+          'Mainly AWS and Azure. Autobuffy and BuffyHub run on AWS, and Truck-4 runs on Kubernetes with Azure DevOps pipelines.',
       },
       {
         id: 'cloud-security',
         question: 'How do you secure cloud infrastructure?',
         answer:
-          'We use secure architecture, identity and access controls, encryption, network security, monitoring, vulnerability management, and appropriate security practices based on your environment.',
+          'With least-privilege access, encryption for data at rest and in transit, secrets kept in a managed vault, private networking for databases and audit logging.',
       },
       {
-        id: 'cloud-app-dev',
-        question: 'Can you develop applications specifically for cloud environments?',
+        id: 'cloud-cost',
+        question: 'Can you lower our cloud bill?',
         answer:
-          'Yes. Our cloud application development services create scalable applications designed around cloud infrastructure, APIs, containers, automation, monitoring, and high availability.',
+          'Often. Right-sizing servers, sending uploads straight to storage and scaling only the busy parts usually make the biggest difference.',
       },
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Modernize Your Cloud Infrastructure?',
@@ -1742,6 +1894,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
 
   automation: {
     slug: 'automation',
+    reviewer: FOUNDER_REVIEWER,
     hero: {
       eyebrow: 'What We Build · Automation',
       title: 'Automate Business Processes And',
@@ -1780,6 +1933,31 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Build automation workflows that support growing transaction volumes, teams, customers, and increasingly complex business processes.',
       },
     ],
+    story: {
+      eyebrow: 'Project story · Luxe Excursions',
+      title: 'Automating the busywork behind a Tenerife tour company',
+      intro:
+        'Luxe Excursions sells luxury tours, packages and rentals in Tenerife. We built its booking platform and staff CMS, and we also run its SEO, Google Ads and Business Profile. Much of the value has come from automating small jobs that used to depend on someone remembering.',
+      problem:
+        'When a guest paid or sent a trip request, only the guest got an email, so the team could miss a sale or an enquiry. Asking guests for Google reviews was manual, and reviews drive how the business shows up in local search.',
+      changes: [
+        'Staff get an email the moment a booking is paid or a trip request comes in, with the guest set as reply-to so they can answer straight away.',
+        'Each alert goes out once per booking, so payment retries and repairs never send duplicates.',
+        'Every guest gets one automatic Google review request at 10:00 local time the day after their last activity. It only goes out within a week of the trip, and never twice to the same address.',
+        'Test and agency bookings are left out of review requests, and a lock stops two workers from sending the same email.',
+        'Payments run through Stripe, and staff edit tours, prices and images in the CMS without a developer.',
+      ],
+      outcome:
+        'The team hears about every sale and enquiry as it happens, review requests go out on their own, and the website runs day to day without developer help. Good automation is usually this unglamorous: it takes the jobs people forget and does them the same way every time.',
+      facts: [
+        { label: 'Status', value: 'Live' },
+        { label: 'Stack', value: 'Django, Next.js, PostgreSQL, Stripe' },
+        { label: 'Hosting', value: 'AWS' },
+        { label: 'We also run', value: 'SEO, Google Ads, Business Profile' },
+      ],
+      href: 'https://luxeexcursionstenerife.com',
+      linkLabel: 'Visit Luxe Excursions',
+    },
     processTitle: 'From Manual To Automated',
     processIntro:
       'Our automation process identifies repetitive work, maps workflows, integrates systems, and implements reliable automation around your business operations.',
@@ -1820,39 +1998,39 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'docker',
       'kubernetes',
     ],
-    benefitsTitle: 'Automation Built For Efficiency',
+    benefitsTitle: 'What To Automate First',
     benefitsIntro:
-      'Business process automation helps teams reduce manual work, improve accuracy, accelerate operations, and focus resources on higher-value activities.',
+      'The best candidates are frequent, rule-based and annoying. These are the ones that usually pay back fastest.',
     benefits: [
       {
-        title: 'Less Manual Work',
+        title: 'Alerts people should not miss',
         description:
-          'Automate repetitive administrative tasks so employees can spend more time on strategic, customer-facing, and revenue-generating activities.',
+          'New sales, enquiries, failed payments and expiring documents. Luxe Excursions emails staff the moment a booking is paid.',
       },
       {
-        title: 'Faster Processes',
+        title: 'Follow-ups that get forgotten',
         description:
-          'Automated workflows reduce unnecessary delays between tasks, approvals, departments, systems, and business operations.',
+          'Review requests, reminders and renewals sent on a schedule. Luxe asks every guest for a review the day after their trip.',
       },
       {
-        title: 'Fewer Errors',
+        title: 'Data re-keyed between systems',
         description:
-          'Standardised automated processes reduce human error and improve consistency across repetitive and data-intensive workflows.',
+          'Orders, stock and invoices copied from one tool to another by hand. Autobuffy now pulls vendor inventory automatically.',
       },
       {
-        title: 'Connected Operations',
+        title: 'Checks against a rulebook',
         description:
-          'Connect your business applications and systems so information moves automatically between workflows without unnecessary manual intervention.',
+          'Compliance and certification checks that flag problems early. Alertia cross-checks guard shifts against licence expiry dates.',
       },
       {
-        title: 'Better Visibility',
+        title: 'Routing incoming work',
         description:
-          'Track automated workflows, process performance, bottlenecks, and outcomes to identify opportunities for continuous operational improvement.',
+          'Sending each ticket or request to the right person. Contakti routes support messages with AI.',
       },
       {
-        title: 'Scalable Automation',
+        title: 'Leave judgement calls to people',
         description:
-          'Expand automation across teams, processes, and systems as transaction volumes and operational requirements continue to grow.',
+          'Automate the steps around a decision, then let a person make it. Refunds, hiring and pricing exceptions are good examples.',
       },
     ],
     projectsTitle: 'Automation In Action',
@@ -1865,35 +2043,36 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       'Find answers to technical questions about business process automation, integrations, workflows, AI automation, and automated software testing.',
     faqs: [
       {
-        id: 'auto-what-is',
+        id: 'automation-what',
         question: 'What are business process automation services?',
         answer:
-          'Business process automation services use software, integrations, workflows, and intelligent systems to automate repetitive business processes and reduce manual intervention.',
+          'Finding the repetitive, rule-based work in your business, then building the software that does it: alerts, follow-ups, data syncs, approvals and checks.',
       },
       {
-        id: 'auto-which-processes',
+        id: 'automation-which',
         question: 'Which business processes can you automate?',
         answer:
-          'We can automate approvals, notifications, data entry, reporting, lead management, customer workflows, document processing, system synchronisation, and other repetitive processes.',
+          'Booking and order alerts, review requests and reminders, inventory and order syncs, invoice generation, document checks and support routing. Each of these runs in a project we have built.',
       },
       {
-        id: 'auto-cross-system',
+        id: 'automation-systems',
         question: 'Can you automate workflows across different business systems?',
         answer:
-          'Yes. We integrate CRMs, ERPs, databases, SaaS platforms, APIs, and internal applications to automate processes across multiple systems.',
+          'Yes. Most automation is integration work: Cercle syncs its catalogue and orders with Facebook, and ATC sends billable hours to Zoho Books.',
       },
       {
-        id: 'auto-qa',
+        id: 'automation-qa',
         question: 'Do you provide QA automation services?',
         answer:
-          'Yes. Where required, we can automate software testing workflows to improve test coverage, consistency, regression testing, and release confidence.',
+          'Yes. We write automated test suites, including Selenium browser tests, and run them on every change.',
       },
       {
-        id: 'auto-ai',
+        id: 'automation-ai',
         question: 'Can AI be used for business process automation?',
         answer:
-          'Yes. We can combine AI with traditional automation to handle tasks involving document processing, classification, data extraction, recommendations, content generation, and intelligent decision support.',
+          'Yes, where the input is messy, such as reading documents or routing free-text messages. Natif extracts fields from scans and handwriting, and Contakti routes tickets with AI. Rule-based steps usually work better without it.',
       },
+      OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Automate Your Business Processes?',

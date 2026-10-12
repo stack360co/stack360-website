@@ -931,20 +931,10 @@ export function getRelatedCapabilities(techSlug: string) {
     }));
 }
 
-/** Cost and ownership answers shown on every hire page, worded the same everywhere. */
-export function hireSharedFaqs(name: string): HireTechFaq[] {
-  return [
-    {
-      id: 'cost',
-      question: `What does a ${name} developer cost?`,
-      answer:
-        'It depends on the engineer’s seniority and how long you need them. Tell us about the role, and we will talk through the options when we send your shortlist.',
-    },
-    {
-      id: 'ownership',
-      question: 'Who owns the code our developer writes?',
-      answer:
-        'You do. Everything our engineers write for you, including the source code and the intellectual property in it, belongs to you.',
-    },
-  ];
-}
+/** Ownership answer shown on every hire page, worded the same everywhere. */
+export const HIRE_OWNERSHIP_FAQ: HireTechFaq = {
+  id: 'ownership',
+  question: 'Who owns the code our developer writes?',
+  answer:
+    'You do. Everything our engineers write for you, including the source code and the intellectual property in it, belongs to you.',
+};
