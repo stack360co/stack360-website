@@ -93,6 +93,8 @@ export interface CapabilityPageData {
   processTitle: string;
   processIntro: string;
   process: { title: string; description: string; phase?: string }[];
+  /** Optional facts row under the process: what working together looks like day to day. */
+  engagement?: { title: string; items: readonly { label: string; value: string }[] };
   /** Optional outcomes section rendered after tech. */
   benefitsTitle?: string;
   benefitsIntro?: string;
@@ -1574,6 +1576,27 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'After launch we monitor it, fix what comes up and add features as the business changes.',
       },
     ],
+    engagement: {
+      title: 'What working with us looks like',
+      items: [
+        { label: 'Team', value: 'A small dedicated team. ATC was built by 3 engineers.' },
+        {
+          label: 'Progress',
+          value:
+            'Weekly demos of working software, checked against the milestones agreed at the start.',
+        },
+        {
+          label: 'Contract',
+          value:
+            'A defined first scope and no long-term contract. You add more once the fit is proven.',
+        },
+        {
+          label: 'Communication',
+          value:
+            'A shared Slack channel and project board. Full Blown Media, whose review is on Clutch, ran its project through Slack and Trello.',
+        },
+      ],
+    },
     techTitle: 'Technology Behind Our Software',
     techIntro: 'The stacks we build custom software on, picked to suit the team that will run it.',
     tech: [

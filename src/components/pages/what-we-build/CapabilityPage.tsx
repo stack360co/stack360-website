@@ -339,6 +339,22 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
               </MotionStaggerItem>
             ))}
           </MotionStagger>
+
+          {data.engagement ? (
+            <MotionReveal className="mt-xl rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm">
+              <h3 className="text-lg font-bold text-neutral-900">{data.engagement.title}</h3>
+              <dl className="mt-md grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
+                {data.engagement.items.map((item) => (
+                  <div key={item.label}>
+                    <dt className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                      {item.label}
+                    </dt>
+                    <dd className="mt-xs text-sm leading-relaxed text-neutral-700">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </MotionReveal>
+          ) : null}
         </div>
       </MotionSection>
 
