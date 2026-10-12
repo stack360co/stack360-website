@@ -335,18 +335,23 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'vue-2-to-vue-3-migration',
     title: 'Moving a Live SaaS From Vue 2 to Vue 3',
     seoTitle: 'Vue 2 to Vue 3 Migration on a Live SaaS',
+    author: { name: 'Ali Haider', role: 'Co-Founder & CTO' },
     reviewedBy: 'Azmat Rana',
     excerpt:
       'How we moved Coach Catalyst, a live coaching platform, from Vue 2 to Vue 3, rebuilt its CoffeeScript chat in Vue and added Stripe Connect payouts.',
     date: '2026-10-12',
     category: 'Engineering',
-    readTime: '3 min',
+    readTime: '4 min',
     intro:
       'Vue 2 reached end of life on December 31, 2023, so it no longer gets official fixes, including security fixes. We moved Coach Catalyst, a live coaching platform, from Vue 2 to Vue 3. The same project rebuilt its chat, added a community module and set up Stripe Connect payouts for coaches. Here is what the migration involved.',
     sections: [
       {
         heading: 'What changes between Vue 2 and Vue 3',
         body: 'Most Vue 2 code still works in Vue 3, but not all of it. These changes touch most apps.\n\n1. Apps start with createApp instead of new Vue, and plugins install with app.use.\n\n2. Filters are gone. They become methods or computed properties.\n\n3. The event bus pattern, using $on and $off, is gone. Components talk through props, events or a store.\n\n4. Many plugins needed new versions for Vue 3, and some never got one.',
+      },
+      {
+        heading: 'How we ran the move',
+        body: 'We migrated Coach Catalyst section by section, while coaches and clients kept using it. Vue’s migration build, @vue/compat, runs Vue 2 code on Vue 3 and warns about each change. We fixed those warnings one area at a time.\n\nWe kept Vuex for state management, updated for Vue 3. Pinia is now Vue’s recommended store for new code, but Vuex still works with Vue 3, so it didn’t need to change.',
       },
       {
         heading: 'Components, directives and plugins',
@@ -362,7 +367,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'How to plan a Vue 3 move',
-        body: '1. List every plugin and check it has a Vue 3 version. Replace the ones that don’t before you start.\n\n2. Use the migration build, @vue/compat, which runs Vue 2 code on Vue 3 and warns about each change. You can then fix the warnings one at a time.\n\n3. Vuex works with Vue 3, but Pinia is now Vue’s recommended store for new code.\n\n4. Keep the app releasable throughout, and move one section at a time.',
+        body: '1. List every plugin and check it has a Vue 3 version. Replace the ones that don’t before you start.\n\n2. Use the migration build, @vue/compat, and fix its warnings one area at a time.\n\n3. Don’t change your store unless you need to. Vuex works with Vue 3, and you can move to Pinia later.\n\n4. Keep the app releasable throughout, and move one section at a time.',
       },
     ],
     conclusion: {
@@ -370,7 +375,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       paragraphs: [
         'Is Vue 2 still safe to run? It still works, but it has had no official updates since December 31, 2023, including security fixes.',
         'Do we have to rewrite everything in the Composition API? No. Vue 3 supports the Options API. Coach Catalyst moved to the Composition API, but it is optional.',
-        'Can the app stay live during the move? Yes, if you migrate one section at a time and release as you go.',
+        'Can the app stay live during the move? Yes. Coach Catalyst stayed live while we migrated it section by section.',
         'How big was the team? Two engineers, across 4,272 hours on the platform.',
       ],
     },
