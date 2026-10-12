@@ -228,7 +228,7 @@ export default function ContactForm() {
               </span>
             </label>
             <span className="font-mono text-[10px] text-neutral-500">
-              Min 10 – Max 500 characters
+              Min 10 – Max 2,000 characters
             </span>
           </div>
 
@@ -236,7 +236,7 @@ export default function ContactForm() {
             id="message"
             name="message"
             rows={5}
-            maxLength={500}
+            maxLength={2000}
             value={formValues.message ?? ''}
             disabled={isLoading}
             onChange={handleChange}
@@ -272,7 +272,7 @@ export default function ContactForm() {
                   : 'text-neutral-500'
               }`}
             >
-              {formValues.message?.length ?? 0}/500
+              {formValues.message?.length ?? 0}/2000
             </span>
           </div>
         </div>

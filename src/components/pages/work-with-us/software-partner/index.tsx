@@ -1,6 +1,13 @@
+import { Suspense } from 'react';
+import ContactChannel from '@/components/pages/contact/ContactChannel';
+import ContactForm from '@/components/pages/contact/ContactForm';
 import MotionCard from '@/components/shared/motion/MotionCard';
 import MotionSection from '@/components/shared/motion/MotionSection';
-import { MotionStagger, MotionStaggerItem } from '@/components/shared/motion/MotionStagger';
+import {
+  MotionReveal,
+  MotionStagger,
+  MotionStaggerItem,
+} from '@/components/shared/motion/MotionStagger';
 import PageClosingCta from '@/components/shared/PageClosingCta';
 import PageHero from '@/components/shared/PageHero';
 import {
@@ -20,6 +27,7 @@ export default function SoftwarePartnerPage() {
         title={SOFTWARE_PARTNER_HERO.title}
         highlight={SOFTWARE_PARTNER_HERO.highlight}
         description={SOFTWARE_PARTNER_HERO.description}
+        cta={{ label: 'Tell us about your project', href: '#start-project' }}
       />
 
       <MotionSection className="border-b border-neutral-200 py-2xl">
@@ -110,6 +118,39 @@ export default function SoftwarePartnerPage() {
               </MotionStaggerItem>
             ))}
           </MotionStagger>
+        </div>
+      </MotionSection>
+
+      {/* The home page's "Start Your Project" lands here, so the form is on this page too. */}
+      <MotionSection id="start-project" className="scroll-mt-24 border-t border-neutral-200 py-2xl">
+        <div className="site-container grid grid-cols-1 gap-2xl lg:grid-cols-12">
+          <div className="space-y-xl lg:sticky lg:top-24 lg:col-span-5 lg:self-start">
+            <MotionStagger>
+              <MotionStaggerItem>
+                <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
+                  Tell us about your project
+                </h2>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <p className="mt-md max-w-prose text-pretty text-sm leading-relaxed text-neutral-600">
+                  A few lines on what you want to build is enough. A lead engineer replies within
+                  one business day with next steps.
+                </p>
+              </MotionStaggerItem>
+            </MotionStagger>
+            <ContactChannel />
+          </div>
+
+          <MotionReveal className="lg:col-span-7">
+            <MotionCard
+              interactive={false}
+              className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl shadow-sm"
+            >
+              <Suspense fallback={<p className="text-sm text-neutral-600">Loading form…</p>}>
+                <ContactForm />
+              </Suspense>
+            </MotionCard>
+          </MotionReveal>
         </div>
       </MotionSection>
 

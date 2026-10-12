@@ -310,7 +310,10 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
               interactive={false}
               className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl shadow-sm"
             >
-              <HireForm defaultSkills={[page.skillId]} />
+              <HireForm
+                defaultSkills={[page.skillId]}
+                title={`Get ${page.name} developer profiles in 2 days`}
+              />
             </MotionCard>
           </MotionReveal>
         </div>
