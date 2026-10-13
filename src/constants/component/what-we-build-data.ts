@@ -2628,6 +2628,12 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Listings and search, bookings or orders, payments and payouts, trust features like verification and reviews, and the admin tools you need to run it.',
       },
       {
+        id: 'mkt-stack',
+        question: 'Which tech stack do you build marketplaces with?',
+        answer:
+          'Most of ours run on Ruby on Rails. Cad Cam Masters pairs Rails with React, and Cercle uses React and Next.js on Rails. Cinekit is built in Rails, CashKart pairs Rails with Vue, and Truck-4 uses React with Node.js services.',
+      },
+      {
         id: 'mkt-payments',
         question: 'How do marketplace payments and payouts work?',
         answer:
