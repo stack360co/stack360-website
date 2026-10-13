@@ -58,8 +58,9 @@ export default function ConsentBanner() {
             Cookies on stack360.co
           </p>
           <p className="text-pretty text-sm leading-relaxed text-neutral-600">
-            We&apos;d like to use Google Analytics cookies to understand how people find and use
-            this site. You can change your choice any time from Cookie settings in the footer.{' '}
+            We&apos;d like to use Google Analytics and Microsoft Clarity cookies to understand how
+            people find and use this site. You can change your choice any time from Cookie settings
+            in the footer.{' '}
             <Link href="/privacy#cookies" className="font-bold text-primary underline">
               Privacy policy
             </Link>
