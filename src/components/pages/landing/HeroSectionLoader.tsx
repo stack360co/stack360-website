@@ -4,8 +4,9 @@ import dynamic from 'next/dynamic';
 import HeroSectionLoading from '@/components/layout/Loading/HeroSectionLoading';
 import { LANDING_HERO } from '@/constants/component/landing-data';
 
+// Server-rendered so the hero text is in the first paint (it was the page's LCP element);
+// the skeleton still covers client-side loads of the chunk.
 const HeroSection = dynamic(() => import('@/components/pages/landing/HeroSection'), {
-  ssr: false,
   loading: () => (
     <HeroSectionLoading
       hideNavbar

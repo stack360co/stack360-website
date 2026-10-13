@@ -11,19 +11,11 @@ import { useCanAnimate } from '@/hooks/use-can-animate';
 
 const ROTATING_PHRASES = LANDING_HERO.phrases;
 
+/** Clients whose testimonials appear on the site. */
 const TEAM_AVATARS = [
-  {
-    src: 'https://randomuser.me/api/portraits/women/44.jpg',
-    alt: 'Stack360 client partner',
-  },
-  {
-    src: 'https://randomuser.me/api/portraits/men/32.jpg',
-    alt: 'Stack360 client partner',
-  },
-  {
-    src: 'https://randomuser.me/api/portraits/women/68.jpg',
-    alt: 'Stack360 client partner',
-  },
+  { src: '/assets/clients/daniel-spence.webp', alt: 'Daniel Spence, CEO, Cybix AI' },
+  { src: '/assets/clients/ernest-tomkiewicz.webp', alt: 'Ernest Tomkiewicz, founder, NPTAAS' },
+  { src: '/assets/clients/mohammad-jafar.webp', alt: 'Mohammed Jafar, founder, Somer Pharmacy' },
 ] as const;
 
 const stagger: Variants = {
