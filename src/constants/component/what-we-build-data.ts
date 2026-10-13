@@ -2481,7 +2481,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   'marketplace-development': {
     slug: 'marketplace-development',
     reviewer: FOUNDER_REVIEWER,
-    updated: '2026-10-12',
+    updated: '2026-10-13',
     reading: {
       href: '/blog/marketplace-payments-stripe',
       label: 'Marketplace payments with Stripe: deposits, payouts and refunds',
