@@ -22,6 +22,10 @@ export const SITE_PHONE_E164_2 = '+447460333169';
 export const SITE_PHONE_HREF = `tel:${SITE_PHONE_E164}` as const;
 export const SITE_PHONE_HREF_2 = `tel:${SITE_PHONE_E164_2}` as const;
 
+/** US phone — E.164 and tel: link (the display value is SITE_PHONE_USA). */
+export const SITE_PHONE_USA_E164 = '+17134439180';
+export const SITE_PHONE_USA_HREF = `tel:${SITE_PHONE_USA_E164}` as const;
+
 export const SITE_SOCIAL = {
   linkedin: 'https://www.linkedin.com/company/stack360co',
   github: 'https://github.com/stack360co',
