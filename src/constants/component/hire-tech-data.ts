@@ -48,11 +48,14 @@ export interface HireTechPage {
   faqs: readonly HireTechFaq[];
   /** A blog post that goes deeper on this stack, shown under the FAQs. */
   reading?: { href: string; label: string };
+  /** When the page content last changed (YYYY-MM-DD). Feeds the sitemap, so bump it on edits. */
+  updated?: string;
 }
 
 export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   {
     slug: 'swift-developers',
+    updated: '2026-10-12',
     skillId: 'swift',
     name: 'Swift',
     linkLabel: 'Swift and iOS developers',
@@ -166,6 +169,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'react-developers',
+    updated: '2026-10-13',
     skillId: 'react',
     name: 'React',
     linkLabel: 'React and Next.js developers',
@@ -307,6 +311,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'react-native-developers',
+    updated: '2026-10-12',
     skillId: 'react-native',
     name: 'React Native',
     linkLabel: 'React Native developers',
@@ -425,6 +430,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'nodejs-developers',
+    updated: '2026-10-12',
     skillId: 'nodejs',
     name: 'Node.js',
     linkLabel: 'Node.js and NestJS developers',
@@ -559,6 +565,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'flutter-developers',
+    updated: '2026-10-12',
     skillId: 'flutter',
     name: 'Flutter',
     linkLabel: 'Flutter developers',
@@ -668,6 +675,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'ruby-on-rails-developers',
+    updated: '2026-10-12',
     skillId: 'ruby-on-rails',
     name: 'Ruby on Rails',
     linkLabel: 'Ruby on Rails developers',
@@ -813,6 +821,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'angular-developers',
+    updated: '2026-10-12',
     skillId: 'angular',
     name: 'Angular',
     linkLabel: 'Angular developers',
@@ -927,6 +936,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'python-developers',
+    updated: '2026-10-12',
     skillId: 'python',
     name: 'Python and Django',
     linkLabel: 'Python and Django developers',
@@ -1053,6 +1063,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'vue-developers',
+    updated: '2026-10-12',
     skillId: 'vue',
     name: 'Vue.js',
     linkLabel: 'Vue.js developers',
@@ -1178,6 +1189,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
   },
   {
     slug: 'dotnet-developers',
+    updated: '2026-10-12',
     skillId: 'dotnet',
     name: '.NET',
     linkLabel: '.NET developers',

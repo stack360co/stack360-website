@@ -26,6 +26,19 @@ export const SITE_PHONE_HREF_2 = `tel:${SITE_PHONE_E164_2}` as const;
 export const SITE_PHONE_USA_E164 = '+17134439180';
 export const SITE_PHONE_USA_HREF = `tel:${SITE_PHONE_USA_E164}` as const;
 
+/**
+ * Lahore office, where the team works. Address, phone and hours match the
+ * Google Business Profile. The postcode is left out until the profile (54660)
+ * and the directories (54792) agree.
+ */
+export const SITE_PHONE_PK = '+92 331 1111753';
+export const SITE_PHONE_PK_E164 = '+923311111753';
+export const SITE_PHONE_PK_HREF = `tel:${SITE_PHONE_PK_E164}` as const;
+export const LAHORE_OFFICE_ADDRESS = '82-G, First Floor, DHA Phase 1, Lahore, Punjab, Pakistan';
+export const LAHORE_OFFICE_HOURS = 'Mon–Fri • 10:00 AM–10:00 PM Pakistan time (UTC+5)';
+export const LAHORE_OFFICE_MAP_URL =
+  'https://www.google.com/maps/search/?api=1&query=Stack360%2C%2082-G%20DHA%20Phase%201%2C%20Lahore';
+
 export const SITE_SOCIAL = {
   linkedin: 'https://www.linkedin.com/company/stack360co',
   github: 'https://github.com/stack360co',
@@ -47,14 +60,14 @@ export const SITE_PROFILES = {
 } as const;
 
 export const SITE_OFFICES = [
-  // {
-  //   country: 'Pakistan',
-  //   role: 'Global Delivery Center',
-  //   streetAddress: '82-G, First Floor, DHA Phase 1',
-  //   addressLocality: 'Lahore',
-  //   addressRegion: 'Punjab',
-  //   addressCountry: 'PK',
-  // },
+  {
+    country: 'Pakistan',
+    role: 'Lahore office',
+    streetAddress: '82-G, First Floor, DHA Phase 1',
+    addressLocality: 'Lahore',
+    addressRegion: 'Punjab',
+    addressCountry: 'PK',
+  },
   {
     country: 'United States',
     role: 'Stack360 Ai Solutions LLC',

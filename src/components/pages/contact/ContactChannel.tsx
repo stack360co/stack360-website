@@ -1,4 +1,4 @@
-import { Mail, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import BookCallButton from '@/components/shared/BookCallButton';
 import FormTestimonial from '@/components/shared/FormTestimonial';
@@ -61,7 +61,10 @@ export default function ContactChannel({
 
       <MotionStagger className="grid grid-cols-1 gap-md sm:grid-cols-2">
         {CONTACT_OFFICES.map((office) => (
-          <MotionStaggerItem key={office.country} className="h-full">
+          <MotionStaggerItem
+            key={office.country}
+            className={'hours' in office ? 'h-full sm:col-span-2' : 'h-full'}
+          >
             <MotionCard className="flex h-full flex-col justify-between rounded-lg border border-neutral-200 bg-neutral-50 p-md">
               <div>
                 <div className="flex items-center gap-sm">
@@ -79,6 +82,29 @@ export default function ContactChannel({
                 <p className="mt-sm text-sm font-semibold text-neutral-900">{office.country}</p>
               </div>
               <p className="mt-xs text-xs leading-relaxed text-neutral-600">{office.address}</p>
+              {'hours' in office ? (
+                <div className="mt-sm space-y-xs text-xs text-neutral-600">
+                  <p>{office.hours}</p>
+                  <p className="flex flex-wrap gap-x-md gap-y-xs">
+                    <a
+                      href={office.phone.href}
+                      className="inline-flex items-center gap-xs font-semibold text-neutral-900 hover:text-primary"
+                    >
+                      <Phone size={12} className="text-primary" aria-hidden />
+                      {office.phone.label}
+                    </a>
+                    <a
+                      href={office.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-xs font-semibold text-neutral-900 hover:text-primary"
+                    >
+                      <MapPin size={12} className="text-primary" aria-hidden />
+                      Get directions
+                    </a>
+                  </p>
+                </div>
+              ) : null}
             </MotionCard>
           </MotionStaggerItem>
         ))}

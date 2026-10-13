@@ -137,7 +137,7 @@ export const seo = {
   terms: pageMeta({
     title: 'Terms of Use',
     description:
-      'Terms governing use of the Stack360 website and engagement with our software architecture services.',
+      "The terms for using the Stack360 website: what our service pages describe, how we write and review the site's content, intellectual property and contact.",
     path: '/terms',
   }),
 
