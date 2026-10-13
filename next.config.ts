@@ -74,6 +74,17 @@ const nextConfig: NextConfig = {
         destination: '/what-we-build/web-apps',
         permanent: true,
       },
+      // Old root-level service URLs that still have backlinks (found in Ahrefs, 2026-10-13).
+      {
+        source: '/web-development',
+        destination: '/what-we-build/web-apps',
+        permanent: true,
+      },
+      {
+        source: '/qa-testing',
+        destination: '/what-we-build/qa-testing',
+        permanent: true,
+      },
       {
         source: '/services/mobile-development',
         destination: '/what-we-build/mobile-apps',
@@ -186,6 +197,17 @@ const nextConfig: NextConfig = {
         destination: '/work-with-us/hire/swift-developers',
         permanent: true,
       },
+      {
+        source: '/hire-talent/ruby-on-rails-developer',
+        destination: '/work-with-us/hire/ruby-on-rails-developers',
+        permanent: true,
+      },
+      // Any other old hire-talent variant lands on the hire hub rather than a 404.
+      {
+        source: '/hire-talent/:path+',
+        destination: '/work-with-us/hire',
+        permanent: true,
+      },
 
       // Old portfolio address for a project that now has a case study
       {
@@ -193,6 +215,25 @@ const nextConfig: NextConfig = {
         destination: '/our-work/case-studies/autobuffy',
         permanent: true,
       },
+      {
+        source: '/portfolio/:path*',
+        destination: '/our-work/featured-projects',
+        permanent: true,
+      },
+      {
+        source: '/portfolio-category/:path*',
+        destination: '/our-work/featured-projects',
+        permanent: true,
+      },
+
+      // Old WordPress pages still crawled by Ahrefs (2026-10-13). Theme internals stay 404.
+      { source: '/our-team', destination: '/who-we-are/culture', permanent: true },
+      { source: '/home-new', destination: '/', permanent: true },
+      { source: '/SEO', destination: '/what-we-build/digital-marketing', permanent: true },
+      { source: '/seo', destination: '/what-we-build/digital-marketing', permanent: true },
+      { source: '/tag/:path*', destination: '/blog', permanent: true },
+      { source: '/category/:path*', destination: '/blog', permanent: true },
+      { source: '/author/:path*', destination: '/blog', permanent: true },
 
       // Case Studies: each old address goes to the same study's new page
       {
