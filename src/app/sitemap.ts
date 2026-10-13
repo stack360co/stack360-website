@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getBlogPost, getBlogSlugs } from '@/constants/component/blog-posts-data';
-import { getHireTechSlugs } from '@/constants/component/hire-tech-data';
+import { getHireTechPage, getHireTechSlugs } from '@/constants/component/hire-tech-data';
 import { getCaseStudySlugs } from '@/constants/component/our-work-case-studies-data';
 import { CAPABILITY_PAGES, type CapabilitySlug } from '@/constants/component/what-we-build-data';
 import { SITE_URL } from '@/constants/site';
@@ -55,7 +55,16 @@ const ROUTES = [
   '/terms',
 ] as readonly string[];
 
-/** Service pages and posts carry the date their content last changed; everything else uses the site date. */
+/** Other pages whose content changed after the site date, with the date it last changed. */
+const PAGE_UPDATED: Record<string, string> = {
+  '/': '2026-10-12',
+  '/work-with-us/hire': '2026-10-12',
+  '/work-with-us/hire/dedicated-team': '2026-10-12',
+  '/our-work/project-timelines': '2026-10-12',
+  '/privacy': '2026-10-13',
+};
+
+/** Posts, service pages and hire pages carry the date their content last changed; others use the site date. */
 function pageLastModified(path: string): Date {
   if (path.startsWith('/blog/')) {
     const post = getBlogPost(path.replace('/blog/', ''));
@@ -63,8 +72,16 @@ function pageLastModified(path: string): Date {
       return new Date(post.updated ?? post.date);
     }
   }
+  if (path.startsWith('/work-with-us/hire/')) {
+    const updated = getHireTechPage(path.replace('/work-with-us/hire/', ''))?.updated;
+    if (updated) {
+      return new Date(updated);
+    }
+  }
   const slug = path.replace('/what-we-build/', '') as CapabilitySlug;
-  const updated = path.startsWith('/what-we-build/') ? CAPABILITY_PAGES[slug]?.updated : undefined;
+  const updated = path.startsWith('/what-we-build/')
+    ? CAPABILITY_PAGES[slug]?.updated
+    : PAGE_UPDATED[path];
   return updated ? new Date(updated) : LAST_MODIFIED;
 }
 
