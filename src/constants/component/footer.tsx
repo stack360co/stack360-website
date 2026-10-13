@@ -23,7 +23,7 @@ export const OFFICES: FooterOffice[] = [
     lines: ['12828 Willow Centre Dr, Houston,', 'TX 77066, USA'],
   },
   {
-    label: 'UK mailing address',
+    label: 'UK (mailing address)',
     lines: ['58 St. Johns Road, Barking,', 'Essex, IG11 7XL United Kingdom'],
   },
 ];

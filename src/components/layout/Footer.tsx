@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-2xl sm:grid-cols-2 lg:grid-cols-12 lg:gap-xl">
           <div className="space-y-lg lg:col-span-4">
             <Stack360Logo animateWordmark={false} />
-            <p className="max-w-[20rem] text-pretty text-sm leading-relaxed text-neutral-600">
+            <p className="max-w-content text-pretty text-sm leading-relaxed text-neutral-600">
               Stack360 is a software development company with its team in Lahore. Since 2019 we have
               built software and placed dedicated developers for companies in the US and UK.
             </p>
