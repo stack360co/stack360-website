@@ -52,7 +52,7 @@ export function OpenRolesTableSkeleton() {
               {SKELETON_ROW_KEYS.map((key) => (
                 <tr key={key}>
                   <td className="px-xl py-lg first:pl-xl">
-                    <div className="h-4 w-4/5 max-w-xs rounded-md bg-neutral-200" />
+                    <div className="h-4 w-4/5 max-w-[20rem] rounded-md bg-neutral-200" />
                   </td>
                   <td className="px-xl py-lg">
                     <div className="h-6 w-20 rounded-full bg-neutral-200/80" />

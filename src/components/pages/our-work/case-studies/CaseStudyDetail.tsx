@@ -163,7 +163,7 @@ export default function CaseStudyDetailView({ study }: CaseStudyDetailProps) {
       {/* Results */}
       <MotionSection className="border-b border-neutral-200 bg-neutral-100/50 py-2xl">
         <div className="site-container">
-          <MotionReveal className="mb-xl max-w-2xl">
+          <MotionReveal className="mb-xl max-w-[42rem]">
             <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
               Results
             </h2>
