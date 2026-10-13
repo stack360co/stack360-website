@@ -5,7 +5,7 @@ export const CASE_STUDIES_HERO = {
   title: 'Our success',
   highlight: 'stories.',
   description:
-    'We recruit top-tier tech talent, streamline development cycles, and deliver measurable outcomes — from eCommerce and fitness platforms to internal operations systems.',
+    'How we built software for eight clients: the problem, what we did, the team and the hours it took. From eCommerce and fitness platforms to internal operations systems.',
 } as const;
 
 export const CASE_STUDIES = [

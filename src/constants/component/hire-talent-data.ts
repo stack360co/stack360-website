@@ -1,4 +1,10 @@
-import { SITE_EMAIL, SITE_EMAIL_HREF, SITE_PHONE, SITE_PHONE_HREF } from '@/constants/site';
+import {
+  LAHORE_OFFICE_ADDRESS,
+  SITE_EMAIL,
+  SITE_EMAIL_HREF,
+  SITE_PHONE,
+  SITE_PHONE_HREF,
+} from '@/constants/site';
 
 export const HIRE_HERO = {
   eyebrow: 'Work With Us · Hire Talent',
@@ -11,6 +17,11 @@ export const HIRE_HERO = {
 export const HIRE_PROMISE = 'Get shortlists within 2 days. Hire in as fast as 1 week.';
 
 export const HIRE_CONTACT = [
+  {
+    label: 'Lahore office (where our team works)',
+    value: LAHORE_OFFICE_ADDRESS,
+    icon: 'building' as const,
+  },
   {
     label: 'US registered address (Stack360 Ai Solutions LLC)',
     value: '12828 Willow Centre Dr, Houston, TX 77066, USA',

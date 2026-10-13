@@ -1,4 +1,5 @@
 import {
+  LAHORE_OFFICE_ADDRESS,
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE,
@@ -74,11 +75,11 @@ export const ASSISTANT_CONTACT: AssistantContactField[] = [
     href: SITE_PHONE_HREF,
     copyValue: SITE_PHONE_E164,
   },
-  // {
-  //   label: 'Pakistan · Global Delivery Center',
-  //   value: '82-G, First Floor, DHA Phase 1, Lahore, Punjab, Pakistan',
-  //   copyValue: '82-G, First Floor, DHA Phase 1, Lahore, Punjab, Pakistan',
-  // },
+  {
+    label: 'Pakistan · Lahore office',
+    value: LAHORE_OFFICE_ADDRESS,
+    copyValue: LAHORE_OFFICE_ADDRESS,
+  },
   {
     label: 'United Kingdom · Mailing address',
     value: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',

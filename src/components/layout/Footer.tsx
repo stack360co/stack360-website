@@ -10,15 +10,7 @@ import {
   SERVICE_LINKS,
   SOCIAL_LINKS,
 } from '@/constants/component/footer';
-import {
-  SITE_NAME,
-  SITE_PHONE,
-  SITE_PHONE_2,
-  SITE_PHONE_E164,
-  SITE_PHONE_E164_2,
-  SITE_PHONE_USA,
-  SITE_PHONE_USA_HREF,
-} from '@/constants/site';
+import { SITE_NAME } from '@/constants/site';
 import { cn } from '@/styles/tailwind.utils';
 import Stack360Logo from './Navbar/Stack360Logo';
 
@@ -53,10 +45,6 @@ function FooterLinkColumn({
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const waUk1 = SITE_PHONE_E164.replace(/[^0-9]/g, '');
-  const waUk2 = SITE_PHONE_E164_2.replace(/[^0-9]/g, '');
-  // const waUsa = SITE_PHONE_USA.replace(/[^0-9]/g, '');
-
   return (
     <footer className="site-section border-t-2 border-primary bg-neutral-50">
       <div className="site-container py-2xl">
@@ -69,69 +57,44 @@ export default function Footer() {
             </p>
 
             <div className="space-y-xl">
-              {OFFICES.map((office) => {
-                const isUSA =
-                  office.label.toLowerCase().includes('usa') ||
-                  office.label.toLowerCase().includes('us');
-                const flagCode = isUSA ? 'us' : 'gb';
+              {OFFICES.map((office) => (
+                <div key={office.label} className="space-y-xs">
+                  <div className="flex items-center gap-xs">
+                    <Image
+                      src={`https://flagcdn.com/w40/${office.flag}.png`}
+                      alt={`${office.label} flag`}
+                      width={20}
+                      height={14}
+                      className="h-3.5 w-5 rounded-xs object-cover shadow-xs"
+                    />
+                    <p className="font-bold text-neutral-900 text-sm ml-1">{office.label}:</p>
+                  </div>
 
-                return (
-                  <div key={office.label} className="space-y-xs">
-                    <div className="flex items-center gap-xs">
-                      <Image
-                        src={`https://flagcdn.com/w40/${flagCode}.png`}
-                        alt={`${office.label} flag`}
-                        width={20}
-                        height={14}
-                        className="h-3.5 w-5 rounded-xs object-cover shadow-xs"
-                      />
-                      <p className="font-bold text-neutral-900 text-sm ml-1">{office.label}:</p>
-                    </div>
-
-                    <div className="flex gap-sm pl-6">
-                      <MapPin size={16} className="mt-0.5 shrink-0 text-primary" aria-hidden />
-                      <div className="text-sm leading-relaxed text-neutral-600">
-                        {office.lines.map((line) => (
-                          <p key={line}>{line}</p>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="pl-6 pt-xs space-y-1">
-                      {isUSA ? (
-                        <a
-                          href={SITE_PHONE_USA_HREF}
-                          className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
-                        >
-                          <Phone size={14} className="shrink-0 text-primary" aria-hidden />
-                          <span>{SITE_PHONE_USA}</span>
-                        </a>
-                      ) : (
-                        <>
-                          <a
-                            href={`https://wa.me/${waUk1}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
-                          >
-                            <Phone size={14} className="shrink-0 text-primary" aria-hidden />
-                            <span>{SITE_PHONE}</span>
-                          </a>
-                          <a
-                            href={`https://wa.me/${waUk2}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
-                          >
-                            <Phone size={14} className="shrink-0 text-primary" aria-hidden />
-                            <span>{SITE_PHONE_2}</span>
-                          </a>
-                        </>
-                      )}
+                  <div className="flex gap-sm pl-6">
+                    <MapPin size={16} className="mt-0.5 shrink-0 text-primary" aria-hidden />
+                    <div className="text-sm leading-relaxed text-neutral-600">
+                      {office.lines.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
                     </div>
                   </div>
-                );
-              })}
+
+                  <div className="pl-6 pt-xs space-y-1">
+                    {office.phones.map((phone) => (
+                      <a
+                        key={phone.href}
+                        href={phone.href}
+                        target={phone.external ? '_blank' : undefined}
+                        rel={phone.external ? 'noopener noreferrer' : undefined}
+                        className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
+                      >
+                        <Phone size={14} className="shrink-0 text-primary" aria-hidden />
+                        <span>{phone.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

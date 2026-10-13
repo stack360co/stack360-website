@@ -3,7 +3,14 @@ import {
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE,
+  SITE_PHONE_2,
+  SITE_PHONE_E164,
+  SITE_PHONE_E164_2,
   SITE_PHONE_HREF,
+  SITE_PHONE_PK,
+  SITE_PHONE_PK_HREF,
+  SITE_PHONE_USA,
+  SITE_PHONE_USA_HREF,
   SITE_SOCIAL,
 } from '@/constants/site';
 
@@ -12,19 +19,44 @@ export interface FooterLink {
   href: string;
 }
 
+export interface FooterPhone {
+  label: string;
+  href: string;
+  /** WhatsApp links open in a new tab; tel: links don't. */
+  external?: boolean;
+}
+
 export interface FooterOffice {
   label: string;
+  /** flagcdn.com country code. */
+  flag: 'pk' | 'us' | 'gb';
   lines: string[];
+  phones: FooterPhone[];
 }
+
+const whatsApp = (e164: string) => `https://wa.me/${e164.replace(/[^0-9]/g, '')}`;
 
 export const OFFICES: FooterOffice[] = [
   {
+    label: 'Lahore office (where our team works)',
+    flag: 'pk',
+    lines: ['82-G, First Floor, DHA Phase 1,', 'Lahore, Punjab, Pakistan'],
+    phones: [{ label: SITE_PHONE_PK, href: SITE_PHONE_PK_HREF }],
+  },
+  {
     label: 'US · Stack360 Ai Solutions LLC (registered address)',
+    flag: 'us',
     lines: ['12828 Willow Centre Dr, Houston,', 'TX 77066, USA'],
+    phones: [{ label: SITE_PHONE_USA, href: SITE_PHONE_USA_HREF }],
   },
   {
     label: 'UK (mailing address)',
+    flag: 'gb',
     lines: ['58 St. Johns Road, Barking,', 'Essex, IG11 7XL United Kingdom'],
+    phones: [
+      { label: SITE_PHONE, href: whatsApp(SITE_PHONE_E164), external: true },
+      { label: SITE_PHONE_2, href: whatsApp(SITE_PHONE_E164_2), external: true },
+    ],
   },
 ];
 
