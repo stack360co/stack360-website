@@ -266,9 +266,11 @@ a.bg-primary *::selection,
   instead of waiting for React to hydrate (over 5 s on a mid-range phone). The
   page under it is already server-rendered, and the route loading.tsx screens
   still cover anything that is not ready yet. React removes the gate as before.
+  Kept short (gone 0.5 s after first paint): Google counts the page as painted
+  only once the gate is gone, so a longer gate shows up as a slower LCP.
 */
 .initial-load-gate {
-  animation: initial-load-gate-out 250ms ease-out 900ms both;
+  animation: initial-load-gate-out 200ms ease-out 300ms both;
 }
 
 @keyframes initial-load-gate-out {
