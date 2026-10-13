@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from 'next/font/google';
-import Script from 'next/script';
 import ConsentBanner from '@/components/analytics/ConsentBanner';
 import InitialLoadingGate from '@/components/layout/Loading/InitialLoadingGate';
 import { seo } from '@/constants/seo';
@@ -22,9 +21,15 @@ export const metadata = seo.root;
 
 export default function RootLayout({ children }: Readonly<ReactComponentChildren>) {
   return (
-    // suppressHydrationWarning: beforeInteractive script may add `js` before React hydrates
+    // suppressHydrationWarning: the head script adds `js` to <html> before React hydrates
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Runs before first paint, so `js-only` chrome (the navbar) takes its space from the
+            start instead of popping in once the bundle loads, which shifted the page. */}
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static one-line class toggle
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js');" }}
+        />
         {/* Consent defaults must be in place before Tag Manager loads. */}
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static Consent Mode and GTM loader
@@ -41,9 +46,6 @@ export default function RootLayout({ children }: Readonly<ReactComponentChildren
             title="Google Tag Manager"
           />
         </noscript>
-        <Script id="enhance-js" strategy="beforeInteractive">
-          {`document.documentElement.classList.add('js');`}
-        </Script>
         <noscript>
           <style>{`
             .js-only { display: none !important; }

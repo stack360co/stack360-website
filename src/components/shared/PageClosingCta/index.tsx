@@ -33,12 +33,14 @@ export default function PageClosingCta({
   const { ref, visible } = useMotionVisible<HTMLElement>();
 
   return (
+    // overflow-x-clip: the buttons slide in from the right, and before they arrive their offset
+    // made the page a few pixels wider than a phone screen.
     <motion.section
       ref={ref}
       initial={false}
       animate={visible ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
-      className="site-section border-t border-neutral-200 bg-neutral-100 py-2xl"
+      className="site-section overflow-x-clip border-t border-neutral-200 bg-neutral-100 py-2xl"
     >
       <div className="site-container flex flex-col items-start justify-between gap-lg md:flex-row md:items-center">
         <motion.div

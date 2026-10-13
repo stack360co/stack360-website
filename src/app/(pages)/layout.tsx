@@ -1,5 +1,6 @@
 import BlueprintGrid from '@/components/layout/BlueprintGrid';
 import Footer from '@/components/layout/Footer';
+import RouteLoadingOverlay from '@/components/layout/Loading/RouteLoadingOverlay';
 import NavbarLoader from '@/components/layout/Navbar/NavbarLoader';
 import NoJsSiteNav from '@/components/layout/Navbar/NoJsSiteNav';
 import JsonLd from '@/components/seo/JsonLd';
@@ -28,6 +29,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <NoJsSiteNav />
         </noscript>
       </div>
+
+      <RouteLoadingOverlay />
 
       <main id="main-content" className="relative z-10 min-h-[calc(100vh-4.5rem)] w-full">
         {children}

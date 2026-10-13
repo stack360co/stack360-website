@@ -1,14 +1,9 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import NavbarSkeleton from './NavbarSkeleton';
+import PremiumNavbar from '@/components/layout/Navbar';
 
-// Server-rendered so the menu is in the first paint and its links are in the HTML; the
-// skeleton still covers client-side loads of the chunk.
-const PremiumNavbar = dynamic(() => import('@/components/layout/Navbar'), {
-  loading: () => <NavbarSkeleton />,
-});
-
+// Imported directly, not with next/dynamic: a dynamic import wraps the menu in a Suspense
+// boundary, and a static page then ships it inside a hidden block that only JavaScript reveals.
 export default function NavbarLoader() {
   return <PremiumNavbar />;
 }
