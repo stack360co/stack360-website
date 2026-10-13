@@ -55,6 +55,22 @@ export default function PrivacyPage() {
               advertising.
             </p>
             <p className="text-pretty">
+              We also use Microsoft Clarity, loaded the same way, to see how people use our pages:
+              clicks, scrolling and session recordings. Clarity masks form fields and other
+              sensitive text by default. It sets its own cookies (named <code>_clck</code> and{' '}
+              <code>_clsk</code>), and Microsoft may set cookies such as <code>MUID</code>.
+              Microsoft handles this data under the{' '}
+              <a
+                className="font-bold text-primary underline"
+                href="https://privacy.microsoft.com/privacystatement"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Microsoft Privacy Statement
+              </a>
+              .
+            </p>
+            <p className="text-pretty">
               If you&apos;re in the European Economic Area, the UK or Switzerland, these cookies are
               only set after you accept them in the cookie banner. Elsewhere they&apos;re on by
               default. Wherever you are, you can change your choice at any time from &ldquo;Cookie

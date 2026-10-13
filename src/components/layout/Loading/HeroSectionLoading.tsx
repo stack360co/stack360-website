@@ -45,7 +45,7 @@ export default function HeroSectionLoading({
                 <div className="h-10 w-3/5 animate-pulse rounded-lg bg-primary/20 md:h-16" />
               </div>
 
-              <div className="mt-lg flex w-full max-w-2xl flex-col items-center space-y-xs">
+              <div className="mt-lg flex w-full max-w-[42rem] flex-col items-center space-y-xs">
                 <div className="h-4 w-full animate-pulse rounded-md bg-neutral-200/80" />
                 <div className="h-4 w-4/5 animate-pulse rounded-md bg-neutral-200/80" />
               </div>

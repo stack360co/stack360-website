@@ -1,0 +1,4 @@
+# Build settings stay in the Netlify dashboard. This file only adds the IndexNow plugin,
+# which tells Bing which pages changed after each production deploy.
+[[plugins]]
+  package = "./plugins/indexnow"

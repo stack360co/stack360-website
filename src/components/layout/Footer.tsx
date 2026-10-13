@@ -17,6 +17,7 @@ import {
   SITE_PHONE_E164,
   SITE_PHONE_E164_2,
   SITE_PHONE_USA,
+  SITE_PHONE_USA_HREF,
 } from '@/constants/site';
 import { cn } from '@/styles/tailwind.utils';
 import Stack360Logo from './Navbar/Stack360Logo';
@@ -98,15 +99,13 @@ export default function Footer() {
 
                     <div className="pl-6 pt-xs space-y-1">
                       {isUSA ? (
-                        <span
-                          // href={`https://wa.me/${waUsa}`}
-                          // target="_blank"
-                          // rel="noopener noreferrer"
+                        <a
+                          href={SITE_PHONE_USA_HREF}
                           className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
                         >
                           <Phone size={14} className="shrink-0 text-primary" aria-hidden />
                           <span>{SITE_PHONE_USA}</span>
-                        </span>
+                        </a>
                       ) : (
                         <>
                           <a

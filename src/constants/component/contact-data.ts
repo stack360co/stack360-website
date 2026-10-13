@@ -1,4 +1,10 @@
-import { SITE_EMAIL, SITE_EMAIL_HREF, SITE_PHONE, SITE_PHONE_USA } from '@/constants/site';
+import {
+  SITE_EMAIL,
+  SITE_EMAIL_HREF,
+  SITE_PHONE,
+  SITE_PHONE_USA,
+  SITE_PHONE_USA_HREF,
+} from '@/constants/site';
 
 export const CONTACT_HERO = {
   eyebrow: 'Contact',
@@ -29,10 +35,10 @@ export const CONTACT_CHANNELS = [
     type: 'phone',
     label: 'US',
     value: SITE_PHONE_USA,
-    // href: `https://wa.me/${SITE_PHONE_USA.replace(/[^0-9]/g, '')}`,
+    href: SITE_PHONE_USA_HREF,
     hint: 'Mon–Fri • 9:00 AM–6:00 PM',
-    // target: '_blank',
-    // rel: 'noopener noreferrer',
+    target: '_self',
+    rel: undefined,
   },
   {
     type: 'email',

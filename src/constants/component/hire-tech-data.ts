@@ -186,7 +186,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       title: 'Hire React developers',
       highlight: 'who have shipped real products.',
       description:
-        'Our React and Next.js engineers have built an AI email assistant, a gear-rental marketplace with around 100,000 users and a trucking platform. They join your team full time and overlap with US hours.',
+        'Our React and Next.js engineers have built an AI email assistant, a gear-rental marketplace with around 100,000 users and a trucking platform. Each passes a technical interview, a coding test, a work review and an English check, and you get a shortlist within 2 days. They join your team full time and overlap with US hours.',
     },
     workTitle: 'What our React developers work on',
     workIntro:

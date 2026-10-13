@@ -2481,7 +2481,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   'marketplace-development': {
     slug: 'marketplace-development',
     reviewer: FOUNDER_REVIEWER,
-    updated: '2026-10-12',
+    updated: '2026-10-13',
     reading: {
       href: '/blog/marketplace-payments-stripe',
       label: 'Marketplace payments with Stripe: deposits, payouts and refunds',
@@ -2626,6 +2626,12 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         question: 'What does marketplace development include?',
         answer:
           'Listings and search, bookings or orders, payments and payouts, trust features like verification and reviews, and the admin tools you need to run it.',
+      },
+      {
+        id: 'mkt-stack',
+        question: 'Which tech stack do you build marketplaces with?',
+        answer:
+          'Most of ours run on Ruby on Rails. Cad Cam Masters pairs Rails with React, and Cercle uses React and Next.js on Rails. Cinekit is built in Rails, CashKart pairs Rails with Vue, and Truck-4 uses React with Node.js services.',
       },
       {
         id: 'mkt-payments',
