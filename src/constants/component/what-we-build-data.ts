@@ -767,7 +767,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Writing assistance',
         description:
-          'Drafting tools that work inside an existing workflow. We worked on Fyxer, an assistant that drafts email replies in the user’s own tone.',
+          'Drafting tools that work inside an existing workflow, such as email replies a person reviews before they go out.',
       },
       {
         title: 'AI at the core of a product',
@@ -858,7 +858,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Drafting work people already do',
         description:
-          'Email replies, meeting notes and first drafts that a person approves before they go out. Fyxer drafts replies in the user’s own tone.',
+          'Email replies, meeting notes and first drafts that a person approves before they go out.',
       },
       {
         title: 'Scoring against clear criteria',
@@ -887,7 +887,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'ai-types',
         question: 'What types of custom AI solutions can Stack360 develop?',
         answer:
-          'Document processing (Natif), chat over live data (Money Ball), email and meeting assistants (Fyxer), assessment tools (Evalufy), plus AI agents and recommendation features inside existing products.',
+          'Document processing (Natif), chat over live data (Money Ball), assessment tools (Evalufy), plus AI agents and recommendation features inside existing products.',
       },
       {
         id: 'ai-accuracy',
