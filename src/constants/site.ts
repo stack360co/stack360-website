@@ -54,7 +54,7 @@ export const SITE_SOCIAL = {
 export const SITE_PROFILES = {
   clutch: 'https://clutch.co/profile/stack360',
   goodfirms: 'https://www.goodfirms.co/company/stack360',
-  designrush: 'https://www.designrush.com/agency/profile/stack-360',
+  designrush: 'https://www.designrush.com/agency/profile/stack360-2',
   crunchbase: 'https://www.crunchbase.com/organization/stack360',
   fiverr: 'https://www.fiverr.com/agencies/stack360',
 } as const;
