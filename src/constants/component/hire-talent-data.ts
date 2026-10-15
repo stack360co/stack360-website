@@ -23,8 +23,8 @@ export const HIRE_CONTACT = [
     icon: 'building' as const,
   },
   {
-    label: 'US registered address (Stack360 Ai Solutions LLC)',
-    value: '12828 Willow Centre Dr, Houston, TX 77066, USA',
+    label: 'US mailing address (Stack360 AI Solutions LLC)',
+    value: '12828 Willow Centre Dr, Ste D, Houston, TX 77066, USA',
     icon: 'building' as const,
   },
   {

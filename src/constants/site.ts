@@ -70,8 +70,8 @@ export const SITE_OFFICES = [
   },
   {
     country: 'United States',
-    role: 'Stack360 Ai Solutions LLC',
-    streetAddress: '12828 Willow Centre Dr',
+    role: 'Stack360 AI Solutions LLC',
+    streetAddress: '12828 Willow Centre Dr, Ste D',
     addressLocality: 'Houston',
     addressRegion: 'TX',
     postalCode: '77066',
