@@ -1,9 +1,9 @@
 import {
-  Building2,
   Factory,
   GraduationCap,
   HeartPulse,
   Landmark,
+  Plane,
   Radio,
   ShoppingCart,
   Truck,
@@ -91,16 +91,16 @@ export const INDUSTRIES = [
     result: 'Our project: Cad Cam Masters · dental labs matched with CAD designers',
   },
   {
-    name: 'Real Estate',
-    icon: <Building2 className="h-5 w-5" />,
+    name: 'Travel & Tourism',
+    icon: <Plane className="h-5 w-5" />,
     painPoints: [
-      'Scattered listings across portals',
-      'Slow tenant onboarding and leasing',
-      'Opaque sales pipeline visibility',
+      'Booking tools that refuse valid trips',
+      'Sales that staff hear about too late',
+      'Too few reviews on Google Maps',
     ],
     solution:
-      'Property management portals with CRM integration, digital leasing flows, and portfolio analytics.',
-    result: 'Our project: Houzi · property app with 360° views',
+      'Booking platforms with online payments, a staff CMS, instant sale alerts and automated review requests.',
+    result: 'Our project: Luxe Excursions · booking refusals from 75% to 0%',
   },
   {
     name: 'Media',

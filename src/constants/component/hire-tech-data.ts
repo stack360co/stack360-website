@@ -115,13 +115,6 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         caseStudy: '/our-work/case-studies/nextflag',
       },
       {
-        name: 'Orchyd',
-        summary:
-          'Private cycle and fertility tracking app with an AI assistant for menstrual health questions and access to OB-GYN advice.',
-        stack: ['React Native', 'OpenAI API', 'Firebase'],
-        url: 'https://www.orchyd.com',
-      },
-      {
         name: 'Slumber & Sprout',
         summary:
           'Sleep app for children on the App Store. We built the Rails backend the app talks to.',
@@ -177,7 +170,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     meta: {
       title: 'Hire React and Next.js Developers',
       description:
-        'Hire full-time remote React and Next.js developers who have shipped products like Fyxer, Cinekit and Truck-4. Vetted shortlist within 2 days.',
+        'Hire full-time remote React and Next.js developers who have shipped products like Cinekit, Truck-4 and Luxe Excursions. Vetted shortlist within 2 days.',
       keywords: [
         'hire react developers',
         'hire next.js developers',
@@ -209,7 +202,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         title: 'AI features in the interface',
         description:
-          'Streaming answers, drafts the user can edit before sending, and review steps for anything automated. We worked on Fyxer, an assistant that drafts email replies in the user’s own tone.',
+          'Streaming answers, drafts the user can edit before sending, and review steps for anything automated.',
       },
       {
         title: 'Inherited React codebases',
@@ -220,13 +213,6 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     projectsTitle: 'React projects we have delivered',
     projectsIntro: 'Products from our portfolio with a React or Next.js front end.',
     projects: [
-      {
-        name: 'Fyxer',
-        summary:
-          'AI executive assistant that sorts the inbox, drafts replies in your tone and writes up meeting notes, working with Gmail and Outlook.',
-        stack: ['React', 'Python', 'Django'],
-        url: 'https://www.fyxer.com',
-      },
       {
         name: 'Cinekit',
         summary:
@@ -319,7 +305,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     meta: {
       title: 'Hire React Native Developers for iOS and Android',
       description:
-        'Hire full-time remote React Native developers who have shipped apps like Nextflag and Orchyd to the App Store and Google Play. Shortlist within 2 days.',
+        'Hire full-time remote React Native developers who have shipped apps like Nextflag and Trusted Tastes to the App Store and Google Play. Shortlist within 2 days.',
       keywords: [
         'hire react native developers',
         'react native developers for hire',
@@ -368,13 +354,6 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
           'Social app for creating and sharing location flags, following people and planning trips from real recommendations.',
         stack: ['React Native', 'Rails GraphQL API', 'PostgreSQL'],
         caseStudy: '/our-work/case-studies/nextflag',
-      },
-      {
-        name: 'Orchyd',
-        summary:
-          'Free, private cycle and fertility tracker with an AI assistant for menstrual health questions and round-the-clock OB-GYN access.',
-        stack: ['React Native', 'OpenAI API', 'Firebase'],
-        url: 'https://www.orchyd.com',
       },
       {
         name: 'Trusted Tastes',
@@ -508,13 +487,6 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         stack: ['Node.js', 'Laravel', 'React', 'AWS'],
         url: 'https://dealforma.com',
       },
-      {
-        name: 'BlockCircle',
-        summary:
-          'Investment analytics for the digital-asset market, with tools for self-education and tracking wealth.',
-        stack: ['Node.js', 'React', 'MongoDB'],
-        url: 'https://blockcircle.com',
-      },
     ],
     tech: [
       'nodedotjs',
@@ -573,7 +545,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     meta: {
       title: 'Hire Flutter Developers for iOS and Android Apps',
       description:
-        'Hire full-time remote Flutter developers for custom-designed iOS and Android apps from one Dart codebase. Proven on Houzi. Vetted shortlist within 2 days.',
+        'Hire full-time remote Flutter developers for custom-designed iOS and Android apps from one Dart codebase. Vetted shortlist within 2 days.',
       keywords: [
         'hire flutter developers',
         'flutter developers for hire',
@@ -595,7 +567,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         title: 'Custom interfaces',
         description:
-          'Branded screens, animation and layouts that would take extra native work in other frameworks. Houzi’s property app includes 360° views of each listing.',
+          'Branded screens, animation and layouts that would take extra native work in other frameworks.',
       },
       {
         title: 'White-label apps',
@@ -616,12 +588,6 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
     projectsTitle: 'Flutter apps we have delivered',
     projectsIntro: 'Apps from our portfolio built in Flutter.',
     projects: [
-      {
-        name: 'Houzi',
-        summary: 'Real estate search and transaction platform with 360° property views.',
-        stack: ['Flutter', 'Laravel'],
-        url: 'https://houzi.io',
-      },
       {
         name: 'StoreBevy',
         summary:

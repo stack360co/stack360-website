@@ -1,8 +1,8 @@
 import { ArrowUpRight } from 'lucide-react';
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
+import TestimonialsSection from '@/components/pages/landing/TestimonialsSection';
 import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
 import JsonLd from '@/components/seo/JsonLd';
 import BrandIcon from '@/components/shared/BrandIcon';
@@ -25,8 +25,6 @@ import {
 } from '@/constants/component/what-we-build-data';
 import { pageJsonLdFromMeta, serviceJsonLd } from '@/lib/seo/json-ld';
 import { capitalize } from '@/utils/string';
-
-const TestimonialsSection = dynamic(() => import('@/components/pages/landing/TestimonialsSection'));
 
 const TECH_LABELS: Record<string, string> = {
   react: 'React',

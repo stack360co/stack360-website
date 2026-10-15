@@ -430,16 +430,6 @@ export const LANDING_TESTIMONIALS: readonly Testimonial[] = [
   },
   {
     quote:
-      'Stack360 built the platforms behind our AI automation practice with scalable architecture, clean integrations, and reliable delivery. They gave us the technical foundation to focus on helping businesses adopt intelligent systems.',
-    name: 'Daniel Spence',
-    role: 'CEO',
-    company: 'Cybix AI',
-    industry: 'AI & Automation · United Kingdom',
-    rating: 5,
-    avatar: '/assets/clients/daniel-spence.webp',
-  },
-  {
-    quote:
       'Stack360 built NPTAAS from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
     name: 'Ernest Tomkiewicz',
     role: 'Founder & Certified Public Accountant',

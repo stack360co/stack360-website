@@ -44,9 +44,9 @@ export const OFFICES: FooterOffice[] = [
     phones: [{ label: SITE_PHONE_PK, href: SITE_PHONE_PK_HREF }],
   },
   {
-    label: 'US · Stack360 Ai Solutions LLC (registered address)',
+    label: 'US · Stack360 AI Solutions LLC (mailing address)',
     flag: 'us',
-    lines: ['12828 Willow Centre Dr, Houston,', 'TX 77066, USA'],
+    lines: ['12828 Willow Centre Dr, Ste D,', 'Houston, TX 77066, USA'],
     phones: [{ label: SITE_PHONE_USA, href: SITE_PHONE_USA_HREF }],
   },
   {

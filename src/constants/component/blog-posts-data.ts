@@ -189,7 +189,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Check which part they built',
-        body: 'A team page can list a dozen apps, but one developer usually owned one piece of each. Ask which part was theirs: the API, the mobile app, the payments or the deployment.\n\nOn our hire pages, the stack listed beside each project shows the part we built. Where a product is public, such as Orchyd or Houzi, open it and try it. Our case studies also record the team size and hours behind each build.',
+        body: 'A team page can list a dozen apps, but one developer usually owned one piece of each. Ask which part was theirs: the API, the mobile app, the payments or the deployment.\n\nOn our hire pages, the stack listed beside each project shows the part we built. Where a product is public, such as Cinekit or Trusted Tastes, open it and try it. Our case studies also record the team size and hours behind each build.',
       },
       {
         heading: 'Watch them work in your setup',
@@ -234,7 +234,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     author: { name: 'M. Awais Aslam', role: 'Co-Founder' },
     reviewedBy: 'Azmat Rana',
     excerpt:
-      'How we pick React Native, Flutter or native code for a client app, with the reasons behind Nextflag, Orchyd, Houzi, StoreBevy and Slumber & Sprout.',
+      'How we pick React Native, Flutter or native code for a client app, with the reasons behind Nextflag, Trusted Tastes, StoreBevy and Slumber & Sprout.',
     date: '2026-10-12',
     category: 'Mobile',
     readTime: '5 min',
@@ -243,11 +243,11 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     sections: [
       {
         heading: 'When we pick React Native',
-        body: 'React Native apps are written in JavaScript or TypeScript and render real native components. Developers who know React can work on them, and some code can be shared with a React website.\n\nWe recommended [React Native](/work-with-us/hire/react-native-developers) for Nextflag, a social travel app with a map of location flags, following and wishlists. Orchyd, a private cycle and fertility tracker with an AI assistant, is React Native too. Trusted Tastes, a restaurant app built on recommendations from people you follow, uses React on the web and React Native on mobile.',
+        body: 'React Native apps are written in JavaScript or TypeScript and render real native components. Developers who know React can work on them, and some code can be shared with a React website.\n\nWe recommended [React Native](/work-with-us/hire/react-native-developers) for Nextflag, a social travel app with a map of location flags, following and wishlists. Trusted Tastes, a restaurant app built on recommendations from people you follow, uses React on the web and React Native on mobile.',
       },
       {
         heading: 'When we pick Flutter',
-        body: 'Flutter draws every pixel itself with its own rendering engine. A custom design looks identical on iOS and Android, with no native view in between. Apps are written in Dart.\n\nOur [Flutter developers](/work-with-us/hire/flutter-developers) built Houzi, a real estate app with 360° views of each property. StoreBevy is a white-label app in Flutter: one codebase, configured for each small retailer that wants its own branded store app.',
+        body: 'Flutter draws every pixel itself with its own rendering engine. A custom design looks identical on iOS and Android, with no native view in between. Apps are written in Dart.\n\nOur [Flutter developers](/work-with-us/hire/flutter-developers) built StoreBevy, a white-label app in Flutter: one codebase, configured for each small retailer that wants its own branded store app.',
       },
       {
         heading: 'When we go native',

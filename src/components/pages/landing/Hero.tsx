@@ -13,7 +13,7 @@ const ROTATING_PHRASES = LANDING_HERO.phrases;
 
 /** Clients whose testimonials appear on the site. */
 const TEAM_AVATARS = [
-  { src: '/assets/clients/daniel-spence.webp', alt: 'Daniel Spence, CEO, Cybix AI' },
+  { src: '/assets/clients/cameron-kashani.webp', alt: 'Cameron Kashani, Data & Analytics Specialist, Google' },
   { src: '/assets/clients/ernest-tomkiewicz.webp', alt: 'Ernest Tomkiewicz, founder, NPTAAS' },
   { src: '/assets/clients/mohammad-jafar.webp', alt: 'Mohammed Jafar, founder, Somer Pharmacy' },
 ] as const;
@@ -48,15 +48,22 @@ function RotatingPhrase({ reduced }: { reduced: boolean | null }) {
 
   const phrase = ROTATING_PHRASES[index];
 
+  // The ::after sizer reserves the longest phrase's height (two lines on narrow phones) in
+  // both branches, so the hero doesn't grow and re-centre when the animation takes over.
+  // Being CSS content, it stays out of the h1 text that crawlers read.
+  const slot =
+    "relative mt-sm block min-h-[1.15em] overflow-hidden text-primary after:invisible after:block after:content-['Perform_Under_Load.']";
+
   if (!canAnimate) {
-    return <span className="mt-sm block text-primary">{ROTATING_PHRASES[0]}</span>;
+    return (
+      <span className={slot}>
+        <span className="absolute inset-x-0 top-0 block">{ROTATING_PHRASES[0]}</span>
+      </span>
+    );
   }
 
   return (
-    <span className="relative mt-sm block min-h-[1.15em] overflow-hidden text-primary">
-      <span className="invisible block" aria-hidden>
-        Perform Under Load.
-      </span>
+    <span className={slot}>
       <span className="sr-only" aria-live="polite">
         {phrase}
       </span>

@@ -11,7 +11,7 @@ interface ContactChannelProps {
 }
 
 export default function ContactChannel({
-  testimonialName = 'Daniel Spence',
+  testimonialName = 'Ernest Tomkiewicz',
 }: ContactChannelProps = {}) {
   return (
     <div className="space-y-xl lg:col-span-5">

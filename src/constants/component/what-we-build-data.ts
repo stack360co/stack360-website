@@ -369,7 +369,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Cross-platform apps',
         description:
-          'One React Native or Flutter codebase for iOS and Android. Houzi’s Flutter app shows properties with 360-degree views.',
+          'One React Native or Flutter codebase for iOS and Android. Nextflag and Trusted Tastes run on React Native.',
       },
       {
         title: 'White-label apps',
@@ -469,7 +469,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Flutter',
         description:
-          'When a custom design has to look identical on every phone. Houzi’s real estate app, with 360° property views, is built in Flutter.',
+          'When a custom design has to look identical on every phone. StoreBevy’s white-label store app is built in Flutter.',
       },
       {
         title: 'A fast web app instead',
@@ -510,7 +510,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'mobile-android-ios',
         question: 'Can you develop both Android and iOS applications?',
         answer:
-          'Yes, natively in Swift and Kotlin or with React Native and Flutter. Nextflag, Orchyd and Trusted Tastes are mobile apps we have built.',
+          'Yes, natively in Swift and Kotlin or with React Native and Flutter. Nextflag and Trusted Tastes are mobile apps we have built.',
       },
       {
         id: 'mobile-takeover',
@@ -767,7 +767,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Writing assistance',
         description:
-          'Drafting tools that work inside an existing workflow. We worked on Fyxer, an assistant that drafts email replies in the user’s own tone.',
+          'Drafting tools that work inside an existing workflow, such as email replies a person reviews before they go out.',
       },
       {
         title: 'AI at the core of a product',
@@ -858,7 +858,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Drafting work people already do',
         description:
-          'Email replies, meeting notes and first drafts that a person approves before they go out. Fyxer drafts replies in the user’s own tone.',
+          'Email replies, meeting notes and first drafts that a person approves before they go out.',
       },
       {
         title: 'Scoring against clear criteria',
@@ -887,7 +887,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         id: 'ai-types',
         question: 'What types of custom AI solutions can Stack360 develop?',
         answer:
-          'Document processing (Natif), chat over live data (Money Ball), email and meeting assistants (Fyxer), assessment tools (Evalufy), plus AI agents and recommendation features inside existing products.',
+          'Document processing (Natif), chat over live data (Money Ball), assessment tools (Evalufy), plus AI agents and recommendation features inside existing products.',
       },
       {
         id: 'ai-accuracy',

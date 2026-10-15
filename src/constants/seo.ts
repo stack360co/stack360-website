@@ -515,9 +515,9 @@ export const seo = {
   }),
 
   whoWeAre: pageMeta({
-    absoluteTitle: 'About Stack360 | Software Development Agency Since 2019',
+    absoluteTitle: 'About Stack360 | Software House in DHA Lahore Since 2019',
     description:
-      'Meet Stack360: our history, our engineering culture, and how we design, build, and ship complex software for startups, SMEs, and enterprises.',
+      'Stack360 is a software house in DHA Lahore that has built software and placed dedicated developers for US and UK companies since 2019. Meet the team.',
     path: '/who-we-are',
   }),
 

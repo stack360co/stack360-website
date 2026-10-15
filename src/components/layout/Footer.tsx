@@ -10,7 +10,7 @@ import {
   SERVICE_LINKS,
   SOCIAL_LINKS,
 } from '@/constants/component/footer';
-import { SITE_NAME } from '@/constants/site';
+import { SITE_NAME, SITE_PROFILES } from '@/constants/site';
 import { cn } from '@/styles/tailwind.utils';
 import Stack360Logo from './Navbar/Stack360Logo';
 
@@ -128,6 +128,25 @@ export default function Footer() {
               >
                 <Mail size={16} className="shrink-0 text-primary" aria-hidden />
                 {CONTACT.email.label}
+              </a>
+            </div>
+
+            <div className="md:space-y-md space-y-xs border-t border-neutral-200 pt-lg">
+              <h2 className="text-base font-bold tracking-tight text-neutral-900">Find us on</h2>
+              <a
+                href={SITE_PROFILES.goodfirms}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block transition-opacity hover:opacity-80"
+              >
+                {/* GoodFirms' hosted badge, embedded as they provide it */}
+                <Image
+                  src="https://assets.goodfirms.co/badges/available-on-goodfirms.png"
+                  alt="Available on GoodFirms"
+                  width={160}
+                  height={48}
+                  unoptimized
+                />
               </a>
             </div>
           </div>
