@@ -34,6 +34,7 @@ const COMPANY_PAGES = [
   { label: 'Our history', path: '/who-we-are/history' },
   { label: 'Our culture and founder', path: '/who-we-are/culture' },
   { label: 'How we work', path: '/who-we-are/how-we-work' },
+  { label: 'Our Lahore office: address, hours and directions', path: '/who-we-are/lahore' },
   { label: 'Working with us as a software partner', path: '/work-with-us/software-partner' },
   { label: 'Client success stories', path: '/our-work/client-success-stories' },
   { label: 'Frequently asked questions', path: '/our-work/faqs' },

@@ -188,6 +188,13 @@ export const WHO_WE_ARE_HUB: SectionHubProps = {
       href: '/who-we-are/how-we-work',
       cta: 'How we work',
     },
+    {
+      title: 'Lahore Office',
+      blurb:
+        'Our office in DHA Phase 1, where the whole team works. Address, hours and directions.',
+      href: '/who-we-are/lahore',
+      cta: 'Our Lahore office',
+    },
   ],
   cta: {
     title: 'Want to build with us?',
