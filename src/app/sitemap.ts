@@ -64,6 +64,7 @@ const PAGE_UPDATED: Record<string, string> = {
   '/work-with-us/hire/dedicated-team': '2026-10-12',
   '/our-work/project-timelines': '2026-10-12',
   '/privacy': '2026-10-13',
+  '/who-we-are': '2026-10-15',
 };
 
 /** Posts, service pages and hire pages carry the date their content last changed; others use the site date. */
