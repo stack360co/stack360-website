@@ -102,6 +102,7 @@ export function lahoreOfficeJsonLd(): JsonLd {
             streetAddress: office.streetAddress,
             addressLocality: office.addressLocality,
             addressRegion: office.addressRegion,
+            postalCode: office.postalCode,
             addressCountry: office.addressCountry,
           },
         }
@@ -244,6 +245,7 @@ const PAGE_LABELS: Readonly<Record<string, string>> = {
   '/who-we-are/history': 'Our History',
   '/who-we-are/culture': 'Our Culture',
   '/who-we-are/how-we-work': 'How We Work',
+  '/who-we-are/lahore': 'Lahore Office',
   '/work-with-us': 'Work With Us',
   '/work-with-us/software-partner': 'Software Partner',
   '/work-with-us/hire': 'Hire Talent',

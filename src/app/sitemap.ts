@@ -45,6 +45,7 @@ const ROUTES = [
   '/who-we-are/history',
   '/who-we-are/culture',
   '/who-we-are/how-we-work',
+  '/who-we-are/lahore',
   '/work-with-us',
   '/work-with-us/software-partner',
   '/work-with-us/hire',
@@ -58,13 +59,14 @@ const ROUTES = [
 /** Other pages whose content changed after the site date, with the date it last changed. */
 const PAGE_UPDATED: Record<string, string> = {
   '/': '2026-10-13',
-  '/contact': '2026-10-13',
+  '/contact': '2026-10-16',
   '/our-work/case-studies': '2026-10-13',
-  '/work-with-us/hire': '2026-10-12',
+  '/work-with-us/hire': '2026-10-16',
   '/work-with-us/hire/dedicated-team': '2026-10-12',
   '/our-work/project-timelines': '2026-10-12',
   '/privacy': '2026-10-13',
-  '/who-we-are': '2026-10-15',
+  '/who-we-are': '2026-10-16',
+  '/who-we-are/lahore': '2026-10-16',
 };
 
 /** Posts, service pages and hire pages carry the date their content last changed; others use the site date. */
