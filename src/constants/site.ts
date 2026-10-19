@@ -58,6 +58,7 @@ export const SITE_PROFILES = {
   designrush: 'https://www.designrush.com/agency/profile/stack360-2',
   crunchbase: 'https://www.crunchbase.com/organization/stack360',
   fiverr: 'https://www.fiverr.com/agencies/stack360',
+  upwork: 'https://www.upwork.com/agencies/stack360/',
 } as const;
 
 export const SITE_OFFICES = [
