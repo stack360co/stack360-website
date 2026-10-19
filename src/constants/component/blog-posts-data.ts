@@ -40,6 +40,74 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
+    slug: 'ai-or-rules-business-automation',
+    title: 'AI or Rules? How to Choose What to Automate in Your Business',
+    seoTitle: 'AI vs Rule-Based Automation: How to Choose',
+    author: { name: 'Tayyab Zia', role: 'Head Software Engineer' },
+    reviewedBy: 'Azmat Rana',
+    excerpt:
+      'Most automation that saves a business time has no AI in it. How we decide between plain rules and AI, with real projects: Alertia, Natif.ai, Contakti, Money Ball and Luxe Excursions.',
+    date: '2026-10-19',
+    category: 'AI',
+    readTime: '7 min',
+    intro:
+      'Most of the automation that saves a business time has no AI in it. It’s an email that goes out when a booking is paid, a check that flags an expired license, or a report that builds itself. AI earns its place when the input is messy: a scanned form in another language, a customer’s free-text message, or a question nobody wrote a rule for. We build both kinds. Here is how we decide which one a job needs, with the projects that taught us.',
+    sections: [
+      {
+        heading: 'The short answer',
+        body: 'Use rules when you can write the decision down as “if this, then that.” Use AI when the decision depends on reading something a person would have to interpret, and when a wrong answer can be caught before it does damage. If an off-the-shelf tool already does the job, configure it before you build anything.\n\nAnd price it before you build it. An AI feature that costs more to run than the work it replaces will be switched off.',
+      },
+      {
+        heading: 'Start with the job, not the technology',
+        body: 'The first question we ask in every discovery call is simple: where is your team doing too much manual work? If nobody can point to a job that eats hours every week, the project probably doesn’t need AI at all.\n\nFor each manual job, write down three things: how often it happens, what it costs when someone forgets or gets it wrong, and whether the right action can be written as a rule. The jobs that are frequent, costly to miss and rule-based go first. They’re cheap to build, easy to test and pay back quickly.\n\nAlertia is a good example. The client first asked for AI. When we looked at the data, it arrived in a small set of known formats. So we mapped each format to a fixed JSON structure and ran the work as a plain automation service. The result was predictable, easy to test, and spared the client an AI bill of around $1,000 for a job that rules could do.',
+      },
+      {
+        heading: 'When plain rules are the better tool',
+        body: 'Compliance checks are rules written by someone else, which makes them ideal for plain automation. Alertia cross-checks guard shifts against license expiry dates and sends renewal alerts, so nobody works a shift with an expired license. NPTAAS schedules auditors, logs compliance points and generates its audit reports with no manual calculation. If a regulator or a contract already defines the rule, code the rule. A model adds cost and risk without adding value.\n\nAlerts and follow-ups work the same way. On Luxe Excursions, a tour company in Tenerife, staff now get an email the moment a booking is paid, with the guest set as reply-to. Each alert goes out once per booking, so a payment retry never sends a duplicate. Every guest gets one Google review request the morning after their trip, never twice.\n\nThe biggest win there wasn’t AI either. The booking planner was refusing 75% of three-activity itineraries, because the schedule data was wrong. Once the data was corrected, refusals went to 0%. [Read the full Luxe Excursions story](/blog/luxe-excursions-booking-planner), or see how we approach [business process automation](/what-we-build/automation).',
+      },
+      {
+        heading: 'When AI earns its place',
+        body: 'AI is worth it when the input doesn’t arrive in a neat format, and when you can catch a wrong answer before it causes harm.\n\nThe first case is reading messy documents. Natif.ai processes incoming documents, including low-quality photos and handwritten notes. We built the backend that runs OCR and handwriting recognition, classifies each document and pulls out the fields. German-language documents were the hardest. So a person reviewed every extraction before it was used. Once a document’s layout had been captured and stored, the next document of the same kind was much easier: the layout was already known, and only the values changed.\n\nThe second is sorting free-text messages. Contakti brings email, chat, SMS and voice into one support hub. Customers don’t describe their problem in a fixed pattern, so the routing uses AI to read each message and send it to the right team. A misrouted ticket is easy to spot and move, which keeps the cost of a mistake small.\n\nThe third is answering questions from your own data. Money Ball lets NFL fans ask about players and teams in plain English. A general model would invent numbers, so the system looks up a live stats database first and the model only explains what it found. This is called retrieval-augmented generation, or RAG. We wrote up [how we stopped it making things up](/blog/stop-ai-chatbot-hallucinations), and our [AI solutions](/what-we-build/ai-solutions) page shows where else it fits.',
+      },
+      {
+        heading: 'When to configure a tool instead of building one',
+        body: 'Sometimes the answer is neither custom AI nor custom code. A US bookkeeping firm needed every new lead from Meta, LinkedIn, Google Ads, its website and phone calls answered straight away. GoHighLevel’s starter plan already connected to all of those sources, so we configured it rather than building a CRM. Each new lead gets a text and an email immediately and is assigned to a rep, and the follow-up sequence stops when the lead replies.\n\nBuild only the part a tool can’t do. [When to build and when to configure](/blog/custom-crm-or-gohighlevel) covers how we decide.',
+      },
+      {
+        heading: 'Why clients switch AI features off',
+        body: 'When a client has turned an AI feature off, the reason was cost. It wasn’t that the model failed. It cost more to run than the manual work it replaced. That matches the wider picture: Gartner predicted that at least 30% of generative AI projects would be abandoned after proof of concept by the end of 2025, because of poor data quality, inadequate risk controls, escalating costs or unclear business value ([Gartner, 2024](https://www.gartner.com/en/newsroom/press-releases/2024-07-29-gartner-predicts-30-percent-of-generative-ai-projects-will-be-abandoned-after-proof-of-concept-by-end-of-2025)).\n\nThe most common mistake we see is starting with the AI tool instead of the job. Teams add a model to a process that a rule could run, then find the running bill, the data cleanup and the checking take more effort than the work it saved.\n\nWhen clients do need a model, most US and UK clients ask for open-source models hosted on AWS. The data stays in their own cloud account, and the cost is predictable. We also work with OpenAI and Anthropic models when a client prefers them.',
+      },
+      {
+        heading: 'How to keep AI automation from going wrong',
+        body: '1. Start with one task, and prove it on real examples before widening it.\n\n2. Ground the model in your data. If it answers from memory, it will eventually invent something.\n\n3. Keep a person in the loop where mistakes are costly, as we did with every Natif.ai extraction.\n\n4. Log everything and alert on failure. An automation that fails silently is worse than none.\n\n5. Never ship a feature that hasn’t passed testing. Our AI features do fail in testing; that’s what testing is for. Nothing goes to production until it works on real and awkward cases, checked against the source.\n\nRetrieval reduces errors but doesn’t remove them. Stanford researchers found that legal research tools built on retrieval still hallucinated between 17% and 33% of the time ([Magesh et al., 2024](https://arxiv.org/abs/2405.20362)). That’s why testing and human review matter as much as the model.',
+      },
+      {
+        heading: 'A checklist before you start',
+        body: '1. The job takes real manual time, often enough to matter.\n\n2. You can say what a correct result looks like.\n\n3. If it’s rule-based, the rule is written down and agreed.\n\n4. If it needs AI, the input is messy and a wrong answer can be caught.\n\n5. You’ve estimated what it will cost to run each month.\n\n6. You’ve checked whether an existing tool already does it.\n\n7. Someone owns the data the automation depends on.\n\n8. A person gets alerted when it fails.',
+      },
+    ],
+    conclusion: {
+      heading: 'Common questions',
+      paragraphs: [
+        'Is AI automation the same as business process automation? No. Business process automation follows rules you define. AI automation adds a model where the input needs interpreting, such as documents or free text. Most businesses need far more of the first than the second.',
+        'What should a small business automate first? The job your team spends the most manual time on, if it can be written as a rule: alerts people shouldn’t miss, follow-ups that get forgotten, and data retyped between systems.',
+        'Can AI read scanned or handwritten documents in other languages? Yes. On Natif.ai it reads photos, handwriting and German-language documents. Every extraction should still be checked by a person before it’s used.',
+        'Which AI models do you use? Most of our US and UK clients choose open-source models hosted on AWS, so their data stays in their own cloud account. We also use OpenAI and Anthropic models when a client prefers them.',
+        'Do we need a custom build or an off-the-shelf tool? If a tool like GoHighLevel already covers the job, configure it. Build only what it can’t do.',
+        'Who owns the code? You do. Everything we build for a client, including the source code, belongs to the client.',
+      ],
+    },
+    related: [
+      { label: 'Business process automation', href: '/what-we-build/automation' },
+      { label: 'AI solutions', href: '/what-we-build/ai-solutions' },
+      {
+        label: 'How to stop an AI chatbot from making things up',
+        href: '/blog/stop-ai-chatbot-hallucinations',
+      },
+      { label: 'Luxe Excursions case study', href: '/blog/luxe-excursions-booking-planner' },
+    ],
+  },
+  {
     slug: 'xamarin-to-dotnet-maui-migration',
     title: 'Moving a Xamarin App to .NET MAUI: How We Do It, Step by Step',
     seoTitle: 'Xamarin to .NET MAUI: How We Migrate an App',
