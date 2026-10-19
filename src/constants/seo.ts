@@ -542,6 +542,13 @@ export const seo = {
     path: '/who-we-are/how-we-work',
   }),
 
+  whoWeAreLahore: pageMeta({
+    absoluteTitle: 'Stack360 Lahore Office: Address, Hours and Directions',
+    description:
+      'Stack360’s office is at 82-G, First Floor, DHA Phase 1, Lahore 54660. Open Monday to Friday, 10 AM to 10 PM. Directions, contact details and our team.',
+    path: '/who-we-are/lahore',
+  }),
+
   workWithUs: pageMeta({
     title: 'Work With Us: Partner, Hire or Join',
     description:

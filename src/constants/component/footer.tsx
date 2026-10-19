@@ -32,6 +32,8 @@ export interface FooterOffice {
   flag: 'pk' | 'us' | 'gb';
   lines: string[];
   phones: FooterPhone[];
+  /** Page about this office, linked from its label. */
+  href?: string;
 }
 
 const whatsApp = (e164: string) => `https://wa.me/${e164.replace(/[^0-9]/g, '')}`;
@@ -40,7 +42,8 @@ export const OFFICES: FooterOffice[] = [
   {
     label: 'Lahore office (where our team works)',
     flag: 'pk',
-    lines: ['82-G, First Floor, DHA Phase 1,', 'Lahore, Punjab, Pakistan'],
+    href: '/who-we-are/lahore',
+    lines: ['82-G, First Floor, DHA Phase 1,', 'Lahore 54660, Punjab, Pakistan'],
     phones: [{ label: SITE_PHONE_PK, href: SITE_PHONE_PK_HREF }],
   },
   {

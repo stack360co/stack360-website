@@ -204,11 +204,12 @@ export const ASSISTANT_SERVICES: Record<string, AssistantServiceResult[]> = {
 
 export const ASSISTANT_WHO_WE_ARE = {
   intro:
-    'Stack360 is a custom software architecture studio. We design and ship complex systems for startups, SMEs, and enterprises — with delivery from Lahore and a UK regional office.',
+    'Stack360 is a software development company with its team in Lahore. Since 2019 we have built software and placed dedicated developers for companies in the US and UK.',
   links: [
     { label: 'Our History', href: '/who-we-are/history' },
     { label: 'Culture', href: '/who-we-are/culture' },
     { label: 'How We Work', href: '/who-we-are/how-we-work' },
+    { label: 'Lahore Office', href: '/who-we-are/lahore' },
   ],
 } as const;
 

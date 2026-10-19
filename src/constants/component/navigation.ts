@@ -227,6 +227,11 @@ export const NAVIGATION_DATA: NavSection[] = [
             desc: 'Inside look at our daily iterations, architectural planning, and staging lines.',
             href: '/who-we-are/how-we-work',
           },
+          {
+            title: 'Lahore Office',
+            desc: 'Where the whole team works: 82-G, DHA Phase 1. Address, hours and directions.',
+            href: '/who-we-are/lahore',
+          },
         ],
       },
     ],

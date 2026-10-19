@@ -67,7 +67,16 @@ export default function Footer() {
                       height={14}
                       className="h-3.5 w-5 rounded-xs object-cover shadow-xs"
                     />
-                    <p className="font-bold text-neutral-900 text-sm ml-1">{office.label}:</p>
+                    <p className="font-bold text-neutral-900 text-sm ml-1">
+                      {office.href ? (
+                        <Link href={office.href} className="transition-colors hover:text-primary">
+                          {office.label}
+                        </Link>
+                      ) : (
+                        office.label
+                      )}
+                      :
+                    </p>
                   </div>
 
                   <div className="flex gap-sm pl-6">
