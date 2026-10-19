@@ -161,7 +161,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-2xl flex flex-col items-center gap-sm border-t border-neutral-200 pt-xl sm:flex-row sm:justify-between">
+        <div className="mt-2xl flex flex-col items-center gap-sm border-t border-neutral-200 pb-[6rem] pt-xl sm:flex-row sm:justify-between sm:pb-0">
           <p className="text-center text-sm text-neutral-600">
             © {currentYear} {SITE_NAME}. All Rights Reserved
           </p>

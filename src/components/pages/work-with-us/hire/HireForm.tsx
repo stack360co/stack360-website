@@ -24,7 +24,7 @@ interface HireFormProps {
 
 export default function HireForm({
   defaultSkills = [],
-  title = "Let's Build With AI",
+  title = 'Get developer profiles in 2 days',
 }: HireFormProps = {}) {
   const formId = useId();
   const [status, setStatus] = useState<Status>('idle');

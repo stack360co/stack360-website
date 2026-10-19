@@ -167,17 +167,17 @@ export const NAVIGATION_DATA: NavSection[] = [
         items: [
           {
             title: 'Case Studies',
-            desc: 'Deep deep-dives explaining performance problems and technical answers.',
+            desc: 'In-depth write-ups of the problems we solved and how we solved them.',
             href: '/our-work/case-studies',
           },
           {
             title: 'Featured Projects',
-            desc: 'A showcase spotlighting our absolute highest tier engineering tasks.',
+            desc: 'A selection of the products we have built for clients.',
             href: '/our-work/featured-projects',
           },
           {
             title: 'Client Success Stories',
-            desc: 'Real statistical returns generated for our industry partners.',
+            desc: 'What changed for our clients after we built with them.',
             href: '/our-work/client-success-stories',
           },
         ],
@@ -187,7 +187,7 @@ export const NAVIGATION_DATA: NavSection[] = [
         items: [
           {
             title: 'Blog',
-            desc: 'Engineering thought pieces covering fullstack architectures.',
+            desc: 'Practical guides from our engineers on building software, hiring developers and AI.',
             href: '/blog',
           },
           {
@@ -214,7 +214,7 @@ export const NAVIGATION_DATA: NavSection[] = [
         items: [
           {
             title: 'History',
-            desc: 'Tracing our path from a minor technical garage up to a complex engineering firm.',
+            desc: 'How Stack360 has grown since 2019.',
             href: '/who-we-are/history',
           },
           {
@@ -224,7 +224,7 @@ export const NAVIGATION_DATA: NavSection[] = [
           },
           {
             title: 'How We Work',
-            desc: 'Inside look at our daily iterations, architectural planning, and staging lines.',
+            desc: 'How we plan, build, test and hand over your project.',
             href: '/who-we-are/how-we-work',
           },
           {
@@ -251,7 +251,7 @@ export const NAVIGATION_DATA: NavSection[] = [
         items: [
           {
             title: 'Looking for a software partner',
-            desc: 'Review our Feature Projects, Client Success Stories, and Case Studies to initiate contract development pipelines.',
+            desc: 'Get software built: a plan with milestones in two business days, then working software every week.',
             href: '/work-with-us/software-partner',
           },
           {
