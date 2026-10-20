@@ -59,27 +59,34 @@ export default function ConsentBanner() {
           </p>
           <p className="text-pretty text-sm leading-relaxed text-neutral-600">
             We&apos;d like to use Google Analytics and Microsoft Clarity cookies to understand how
-            people find and use this site. You can change your choice any time from Cookie settings
-            in the footer.{' '}
+            people find and use this site, and Google advertising cookies to measure and show our
+            ads. You can change your choice any time from Cookie settings in the footer.{' '}
             <Link href="/privacy#cookies" className="font-bold text-primary underline">
               Privacy policy
             </Link>
           </p>
         </div>
-        <div className="flex shrink-0 gap-sm">
+        <div className="flex shrink-0 flex-wrap gap-sm">
           <button
             type="button"
             onClick={() => choose('denied')}
-            className="inline-flex min-h-11 flex-1 items-center justify-center rounded-sm border border-neutral-300 bg-neutral-50 px-lg text-sm font-bold text-neutral-800 transition-colors hover:border-neutral-500 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex-none"
+            className="inline-flex min-h-11 flex-1 items-center justify-center whitespace-nowrap rounded-sm border border-neutral-300 bg-neutral-50 px-md text-sm font-bold text-neutral-800 transition-colors hover:border-neutral-500 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex-none"
           >
             Reject
           </button>
           <button
             type="button"
-            onClick={() => choose('granted')}
-            className="inline-flex min-h-11 flex-1 items-center justify-center rounded-sm bg-primary px-lg text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex-none"
+            onClick={() => choose('analytics')}
+            className="inline-flex min-h-11 flex-1 items-center justify-center whitespace-nowrap rounded-sm border border-neutral-300 bg-neutral-50 px-md text-sm font-bold text-neutral-800 transition-colors hover:border-neutral-500 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:flex-none"
           >
-            Accept
+            Analytics only
+          </button>
+          <button
+            type="button"
+            onClick={() => choose('all')}
+            className="inline-flex min-h-11 basis-full items-center justify-center whitespace-nowrap rounded-sm bg-primary px-md text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:basis-auto"
+          >
+            Accept all
           </button>
         </div>
       </div>

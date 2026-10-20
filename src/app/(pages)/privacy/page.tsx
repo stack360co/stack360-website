@@ -46,13 +46,29 @@ export default function PrivacyPage() {
             </p>
           </div>
           <div id="cookies" className="scroll-mt-24 space-y-sm">
-            <h2 className="text-lg font-bold text-neutral-900">Cookies and analytics</h2>
+            <h2 className="text-lg font-bold text-neutral-900">
+              Cookies, analytics and advertising
+            </h2>
             <p className="text-pretty">
               We use Google Analytics, loaded through Google Tag Manager, to understand how visitors
               find and use this site: which pages are viewed, where visits come from, and when a
               contact or hire form is sent. Google Analytics sets cookies (named <code>_ga</code>{' '}
-              and <code>_ga_*</code>) that last up to two years. We don&apos;t use them for
-              advertising.
+              and <code>_ga_*</code>) that last up to two years.
+            </p>
+            <p className="text-pretty">
+              We use Google&apos;s advertising features to measure whether our Google Ads lead to
+              inquiries and to show our ads to people who have visited this site. Google may set
+              advertising cookies for this, such as <code>_gcl_au</code>. Google handles this data
+              under the{' '}
+              <a
+                className="font-bold text-primary underline"
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Privacy Policy
+              </a>
+              .
             </p>
             <p className="text-pretty">
               We also use Microsoft Clarity, loaded the same way, to see how people use our pages:
@@ -72,9 +88,10 @@ export default function PrivacyPage() {
             </p>
             <p className="text-pretty">
               If you&apos;re in the European Economic Area, the UK or Switzerland, these cookies are
-              only set after you accept them in the cookie banner. Elsewhere they&apos;re on by
-              default. Wherever you are, you can change your choice at any time from &ldquo;Cookie
-              settings&rdquo; at the bottom of every page.
+              only set after you accept them in the cookie banner, where you can allow analytics
+              only, or analytics and advertising. Elsewhere they&apos;re on by default. Wherever you
+              are, you can change your choice at any time from &ldquo;Cookie settings&rdquo; at the
+              bottom of every page.
             </p>
           </div>
           <div className="space-y-sm">

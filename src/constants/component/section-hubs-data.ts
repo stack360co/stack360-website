@@ -172,7 +172,7 @@ export const WHO_WE_ARE_HUB: SectionHubProps = {
   chapters: [
     {
       title: 'History',
-      blurb: 'From a technical garage to a complex engineering firm.',
+      blurb: 'How Stack360 has grown since 2019.',
       href: '/who-we-are/history',
       cta: 'Our history',
     },
@@ -184,7 +184,7 @@ export const WHO_WE_ARE_HUB: SectionHubProps = {
     },
     {
       title: 'How We Work',
-      blurb: 'Daily iterations, architectural planning, and staging lines.',
+      blurb: 'How we plan, build, test and hand over your project.',
       href: '/who-we-are/how-we-work',
       cta: 'How we work',
     },
