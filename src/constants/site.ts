@@ -62,6 +62,7 @@ export const SITE_PROFILES = {
   g2: 'https://www.g2.com/products/stack360/reviews',
   trustpilot: 'https://www.trustpilot.com/review/stack360.co',
   techreviewer: 'https://techreviewer.co/companies/stack360',
+  techbehemoths: 'https://techbehemoths.com/company/stack360',
 } as const;
 
 export const SITE_OFFICES = [

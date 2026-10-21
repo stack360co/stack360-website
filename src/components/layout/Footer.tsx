@@ -142,21 +142,39 @@ export default function Footer() {
 
             <div className="md:space-y-md space-y-xs border-t border-neutral-200 pt-lg">
               <h2 className="text-base font-bold tracking-tight text-neutral-900">Find us on</h2>
-              <a
-                href={SITE_PROFILES.goodfirms}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block transition-opacity hover:opacity-80"
-              >
-                {/* GoodFirms' hosted badge, embedded as they provide it */}
-                <Image
-                  src="https://assets.goodfirms.co/badges/available-on-goodfirms.png"
-                  alt="Available on GoodFirms"
-                  width={160}
-                  height={48}
-                  unoptimized
-                />
-              </a>
+              <div className="flex flex-wrap items-center gap-md">
+                <a
+                  href={SITE_PROFILES.goodfirms}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block transition-opacity hover:opacity-80"
+                >
+                  {/* GoodFirms' hosted badge, embedded as they provide it */}
+                  <Image
+                    src="https://assets.goodfirms.co/badges/available-on-goodfirms.png"
+                    alt="Available on GoodFirms"
+                    width={160}
+                    height={48}
+                    unoptimized
+                  />
+                </a>
+                {/* TechBehemoths' verification badge: keep the data attribute and a follow link, their bot checks both */}
+                <a
+                  href={SITE_PROFILES.techbehemoths}
+                  target="_blank"
+                  rel="noopener"
+                  data-techbehemoths-verification
+                  className="inline-block transition-opacity hover:opacity-80"
+                >
+                  <Image
+                    src="https://cdn.techbehemoths.com/public/static/validation/tb-verified-logo.svg"
+                    alt="TechBehemoths Verification"
+                    width={123}
+                    height={40}
+                    unoptimized
+                  />
+                </a>
+              </div>
               <a
                 href={SITE_PROFILES.clutch}
                 target="_blank"
