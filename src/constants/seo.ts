@@ -135,14 +135,14 @@ export const seo = {
   }),
 
   terms: pageMeta({
-    title: 'Terms of Use',
+    title: 'Terms of Use for the Website and Its Content',
     description:
       "The terms for using the Stack360 website: what our service pages describe, how we write and review the site's content, intellectual property and contact.",
     path: '/terms',
   }),
 
   privacy: pageMeta({
-    title: 'Privacy Policy',
+    title: 'Privacy Policy: How We Handle Your Data',
     description:
       'How Stack360 collects and uses contact and inquiry information when you use our website or request talent or project support.',
     path: '/privacy',

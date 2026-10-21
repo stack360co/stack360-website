@@ -3,13 +3,13 @@
  * repeats this copy to give crawlers and first paint a real H1.
  */
 export const LANDING_HERO = {
-  lead: 'Building Products that',
+  lead: 'Custom software built to',
   phrases: [
     'Scale Seamlessly.',
     'Drive Outcomes.',
     'Perform Under Load.',
-    'Solves Problems',
-    'Creates Value.',
+    'Solve Problems.',
+    'Create Value.',
     'Win Markets.',
   ],
   intro:

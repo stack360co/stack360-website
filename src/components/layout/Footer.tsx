@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CookieSettingsButton } from '@/components/analytics/ConsentBanner';
@@ -156,6 +156,15 @@ export default function Footer() {
                   height={48}
                   unoptimized
                 />
+              </a>
+              <a
+                href={SITE_PROFILES.clutch}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
+              >
+                <Star size={16} className="shrink-0 text-primary" aria-hidden />
+                Our reviews on Clutch
               </a>
             </div>
           </div>

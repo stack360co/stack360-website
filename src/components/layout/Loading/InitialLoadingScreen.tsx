@@ -9,7 +9,7 @@ export default function InitialLoadingScreen() {
 
       <NavbarSkeleton />
 
-      <main className="relative z-10 flex flex-1 items-center justify-center p-md">
+      <div className="relative z-10 flex flex-1 items-center justify-center p-md">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,var(--token-neutral-50)_0%,var(--token-neutral-50)_40%,color-mix(in_srgb,var(--token-neutral-100)_55%,var(--token-neutral-50))_100%)]"
@@ -52,7 +52,7 @@ export default function InitialLoadingScreen() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

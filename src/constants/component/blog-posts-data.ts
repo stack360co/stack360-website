@@ -46,7 +46,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     author: { name: 'Tayyab Zia', role: 'Head Software Engineer' },
     reviewedBy: 'Azmat Rana',
     excerpt:
-      'Most automation that saves a business time has no AI in it. How we decide between plain rules and AI, with real projects: Alertia, Natif.ai, Contakti, Money Ball and Luxe Excursions.',
+      'Most automation that saves a business time has no AI in it. How we choose between plain rules and AI, using five of our own projects as examples.',
     date: '2026-10-19',
     category: 'AI',
     readTime: '7 min',
@@ -512,6 +512,10 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       { label: 'AI solutions', href: '/what-we-build/ai-solutions' },
       { label: 'Hire Python and Django developers', href: '/work-with-us/hire/python-developers' },
       { label: 'Business process automation', href: '/what-we-build/automation' },
+      {
+        label: 'AI or rules? How to choose what to automate',
+        href: '/blog/ai-or-rules-business-automation',
+      },
     ],
   },
   {
@@ -727,6 +731,10 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       { label: 'CRM development', href: '/what-we-build/crm' },
       { label: 'Business process automation', href: '/what-we-build/automation' },
       { label: 'SEO and Google Ads', href: '/what-we-build/digital-marketing' },
+      {
+        label: 'AI or rules? How to choose what to automate',
+        href: '/blog/ai-or-rules-business-automation',
+      },
     ],
   },
   {
@@ -789,6 +797,10 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       { label: 'Business process automation', href: '/what-we-build/automation' },
       { label: 'SEO and Google Ads', href: '/what-we-build/digital-marketing' },
       { label: 'Visit Luxe Excursions', href: 'https://luxeexcursionstenerife.com' },
+      {
+        label: 'AI or rules? How to choose what to automate',
+        href: '/blog/ai-or-rules-business-automation',
+      },
     ],
   },
   {
@@ -907,6 +919,8 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       { label: 'Custom software development', href: '/what-we-build/custom-software' },
       { label: 'How we work', href: '/who-we-are/how-we-work' },
       { label: 'Contact us', href: '/contact' },
+      { label: 'MVP development: scope, build and launch', href: '/blog/mvp-development-guide' },
+      { label: 'Quality as a release gate', href: '/blog/quality-as-a-release-gate' },
     ],
   },
   {
@@ -958,6 +972,10 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       { label: 'Custom software development', href: '/what-we-build/custom-software' },
       { label: 'SaaS development', href: '/what-we-build/saas' },
       { label: 'How long software projects take', href: '/blog/how-long-software-projects-take' },
+      {
+        label: 'Designing systems that survive growth',
+        href: '/blog/designing-systems-that-survive-growth',
+      },
     ],
   },
   {

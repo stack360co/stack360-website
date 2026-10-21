@@ -58,14 +58,16 @@ const ROUTES = [
 
 /** Other pages whose content changed after the site date, with the date it last changed. */
 const PAGE_UPDATED: Record<string, string> = {
-  '/': '2026-10-19',
+  '/': '2026-10-21',
+  '/what-we-build': '2026-10-21',
   '/contact': '2026-10-16',
   '/our-work/case-studies': '2026-10-13',
   '/work-with-us/hire': '2026-10-16',
   '/work-with-us/hire/dedicated-team': '2026-10-12',
   '/our-work/project-timelines': '2026-10-12',
-  '/privacy': '2026-10-19',
-  '/who-we-are': '2026-10-16',
+  '/privacy': '2026-10-21',
+  '/terms': '2026-10-21',
+  '/who-we-are': '2026-10-21',
   '/who-we-are/lahore': '2026-10-16',
 };
 
