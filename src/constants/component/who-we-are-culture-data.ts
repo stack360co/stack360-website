@@ -120,6 +120,7 @@ export const CULTURE_COLLAGE_PHOTOS = [
 export const CULTURE_FOUNDER = {
   name: 'Azmat Rana',
   role: 'CEO & Founder',
+  linkedin: 'https://www.linkedin.com/in/azmatrana50',
   image: {
     src: '/assets/who-we-are/leaders/azmat-rana.webp',
     alt: 'Azmat Rana, CEO and Founder of Stack360',

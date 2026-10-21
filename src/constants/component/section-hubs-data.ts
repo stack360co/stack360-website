@@ -2,7 +2,7 @@ import type { SectionHubProps } from '@/components/shared/SectionHub';
 
 export const WHAT_WE_BUILD_HUB: SectionHubProps = {
   crumb: 'What We Build',
-  title: 'Systems we architect',
+  title: 'Software development services,',
   highlight: 'end to end.',
   description:
     'ERP, CRM, AI, SaaS, and the platform layer underneath — one studio accountable for the full stack. Built for software partners and client teams who need durable systems, not slideware.',
@@ -151,8 +151,8 @@ export const WHO_WE_HELP_HUB: SectionHubProps = {
 
 export const WHO_WE_ARE_HUB: SectionHubProps = {
   crumb: 'Who We Are',
-  title: 'The studio behind',
-  highlight: 'the systems.',
+  title: 'A Lahore software team',
+  highlight: 'building for US and UK companies.',
   description:
     'Stack360 is a software development agency founded in 2019 by Azmat Rana. Here is our history, our culture and how we ship.',
   exploreBlurb: 'Learn how Stack360 is built — history, culture, and delivery rituals.',

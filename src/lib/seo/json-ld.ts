@@ -141,6 +141,7 @@ export function founderJsonLd(): JsonLd {
     description: `${CULTURE_FOUNDER.role} of ${SITE_NAME}, the software development agency he founded in 2019.`,
     image: absoluteUrl(CULTURE_FOUNDER.image.src),
     url: absoluteUrl('/who-we-are/culture'),
+    sameAs: [CULTURE_FOUNDER.linkedin],
     worksFor: { '@id': ORGANIZATION_ID },
   };
 }

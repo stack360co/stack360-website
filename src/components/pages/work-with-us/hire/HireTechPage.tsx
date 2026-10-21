@@ -381,6 +381,14 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
             ))}
             <li>
               <Link
+                href="/work-with-us/hire/dedicated-team"
+                className="inline-flex items-center gap-sm rounded-md border border-neutral-200 bg-neutral-50 px-md py-sm text-sm font-semibold text-neutral-800 transition-colors hover:border-primary/30 hover:text-primary"
+              >
+                Dedicated development team
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/work-with-us/hire"
                 className="inline-flex items-center gap-sm rounded-md border border-neutral-200 bg-neutral-50 px-md py-sm text-sm font-semibold text-neutral-800 transition-colors hover:border-primary/30 hover:text-primary"
               >

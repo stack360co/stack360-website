@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CookieSettingsButton } from '@/components/analytics/ConsentBanner';
@@ -142,20 +142,47 @@ export default function Footer() {
 
             <div className="md:space-y-md space-y-xs border-t border-neutral-200 pt-lg">
               <h2 className="text-base font-bold tracking-tight text-neutral-900">Find us on</h2>
+              <div className="flex flex-wrap items-center gap-md">
+                <a
+                  href={SITE_PROFILES.goodfirms}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block transition-opacity hover:opacity-80"
+                >
+                  {/* GoodFirms' hosted badge, embedded as they provide it */}
+                  <Image
+                    src="https://assets.goodfirms.co/badges/available-on-goodfirms.png"
+                    alt="Available on GoodFirms"
+                    width={160}
+                    height={48}
+                    unoptimized
+                  />
+                </a>
+                {/* TechBehemoths' verification badge: keep the data attribute and a follow link, their bot checks both */}
+                <a
+                  href={SITE_PROFILES.techbehemoths}
+                  target="_blank"
+                  rel="noopener"
+                  data-techbehemoths-verification
+                  className="inline-block transition-opacity hover:opacity-80"
+                >
+                  <Image
+                    src="https://cdn.techbehemoths.com/public/static/validation/tb-verified-logo.svg"
+                    alt="TechBehemoths Verification"
+                    width={123}
+                    height={40}
+                    unoptimized
+                  />
+                </a>
+              </div>
               <a
-                href={SITE_PROFILES.goodfirms}
+                href={SITE_PROFILES.clutch}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block transition-opacity hover:opacity-80"
+                className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
               >
-                {/* GoodFirms' hosted badge, embedded as they provide it */}
-                <Image
-                  src="https://assets.goodfirms.co/badges/available-on-goodfirms.png"
-                  alt="Available on GoodFirms"
-                  width={160}
-                  height={48}
-                  unoptimized
-                />
+                <Star size={16} className="shrink-0 text-primary" aria-hidden />
+                Our reviews on Clutch
               </a>
             </div>
           </div>

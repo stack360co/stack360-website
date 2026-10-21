@@ -59,6 +59,10 @@ export const SITE_PROFILES = {
   crunchbase: 'https://www.crunchbase.com/organization/stack360',
   fiverr: 'https://www.fiverr.com/agencies/stack360',
   upwork: 'https://www.upwork.com/agencies/stack360/',
+  g2: 'https://www.g2.com/products/stack360/reviews',
+  trustpilot: 'https://www.trustpilot.com/review/stack360.co',
+  techreviewer: 'https://techreviewer.co/companies/stack360',
+  techbehemoths: 'https://techbehemoths.com/company/stack360',
 } as const;
 
 export const SITE_OFFICES = [

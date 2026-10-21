@@ -1939,10 +1939,10 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   automation: {
     slug: 'automation',
     reviewer: FOUNDER_REVIEWER,
-    updated: '2026-10-12',
+    updated: '2026-10-21',
     reading: {
-      href: '/blog/luxe-excursions-booking-planner',
-      label: 'Our booking planner refused 75% of trips. The fix was the data.',
+      href: '/blog/ai-or-rules-business-automation',
+      label: 'AI or rules? How to choose what to automate in your business',
     },
     hero: {
       eyebrow: 'What We Build · Automation',
