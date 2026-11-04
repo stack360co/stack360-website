@@ -2,9 +2,18 @@
 
 import { AlertCircle, CheckCircle2, X } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { type ChangeEvent, type FocusEvent, type FormEvent, useEffect, useState } from 'react';
+import {
+  type ChangeEvent,
+  type FocusEvent,
+  type FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import FormHoneypot from '@/components/shared/FormHoneypot';
 import { CONTACT_FORM_FIELDS } from '@/constants/component/contact-data';
 import { pushEvent } from '@/lib/analytics';
+import { FORM_FALLBACK_MESSAGE, formGuardFields } from '@/lib/form-guard';
 import { type ContactFormData, contactSchema } from '@/schema/contact';
 
 type Status = 'idle' | 'loading' | 'sent' | 'error';
@@ -21,6 +30,8 @@ export default function ContactForm() {
     {}
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const startedAt = useRef(Date.now());
 
   const searchParams = useSearchParams();
   const role = searchParams.get('role')?.trim() ?? '';
@@ -115,13 +126,14 @@ export default function ContactForm() {
           name,
           email,
           message,
+          ...formGuardFields(honeypotRef.current?.value ?? '', startedAt.current),
         }),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result.error ?? 'Failed to submit form.');
+        throw new Error(result.error ?? FORM_FALLBACK_MESSAGE);
       }
 
       setStatus('sent');
@@ -130,8 +142,15 @@ export default function ContactForm() {
       setFieldErrors({});
     } catch (error) {
       console.error(error);
-      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong.');
+      // fetch throws a TypeError when the network fails; that has no server message, so the
+      // fallback still gives the visitor an email address.
+      setErrorMessage(
+        error instanceof Error && !(error instanceof TypeError)
+          ? error.message
+          : FORM_FALLBACK_MESSAGE
+      );
       setStatus('error');
+      pushEvent('form_error', { form_name: 'contact' });
     }
   };
 
@@ -139,6 +158,8 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate>
+      <FormHoneypot inputRef={honeypotRef} />
+
       {source === 'chat-assistant' && (
         <div className="mb-lg rounded-md border border-primary/20 bg-primary/5 px-md py-sm">
           <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-primary">
