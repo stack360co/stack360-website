@@ -67,6 +67,17 @@ const nextConfig: NextConfig = {
         destination: '/blog',
         permanent: true,
       },
+      // The blog moved from /our-work/blog; Search Console still finds the old addresses (404s).
+      {
+        source: '/our-work/blog',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/our-work/blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
 
       // Services
       {

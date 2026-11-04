@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import ConsentBanner from '@/components/analytics/ConsentBanner';
+import LeadAttribution from '@/components/analytics/LeadAttribution';
 import InitialLoadingGate from '@/components/layout/Loading/InitialLoadingGate';
 import { seo } from '@/constants/seo';
 import { GTM_HEAD_SNIPPET, GTM_ID } from '@/lib/analytics';
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: Readonly<ReactComponentChildren
           <InitialLoadingGate>{children}</InitialLoadingGate>
         </Providers>
         <ConsentBanner />
+        <LeadAttribution />
       </body>
     </html>
   );

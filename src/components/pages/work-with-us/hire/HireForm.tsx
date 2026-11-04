@@ -1,8 +1,9 @@
 'use client';
 
 import { AlertCircle, CheckCircle2, X } from 'lucide-react';
-import { type ChangeEvent, type FocusEvent, type FormEvent, useId, useState } from 'react';
+import { type ChangeEvent, type FocusEvent, type FormEvent, useId, useRef, useState } from 'react';
 import BrandIcon from '@/components/shared/BrandIcon';
+import FormHoneypot from '@/components/shared/FormHoneypot';
 import {
   HIRE_NEED_OPTIONS,
   HIRE_SKILLS,
@@ -10,6 +11,8 @@ import {
   type HireSkillId,
 } from '@/constants/component/hire-talent-data';
 import { pushEvent } from '@/lib/analytics';
+import { FORM_FALLBACK_MESSAGE, formGuardFields } from '@/lib/form-guard';
+import { leadContext } from '@/lib/lead-context';
 import { type HireFormData, hireSchema } from '@/schema/hire';
 import { cn } from '@/styles/tailwind.utils';
 
@@ -40,6 +43,8 @@ export default function HireForm({
 
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof HireFormData, string>>>({});
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const startedAt = useRef(Date.now());
 
   const fieldElementIds: Record<keyof HireFormData, string> = {
     name: `${formId}-name`,
@@ -185,13 +190,15 @@ export default function HireForm({
           skillLabels,
           needLabel,
           notes,
+          ...formGuardFields(honeypotRef.current?.value ?? '', startedAt.current),
+          context: leadContext(),
         }),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result.error ?? 'Failed to submit form.');
+        throw new Error(result.error ?? FORM_FALLBACK_MESSAGE);
       }
 
       setStatus('sent');
@@ -202,8 +209,15 @@ export default function HireForm({
       setFieldErrors({});
     } catch (error) {
       console.error(error);
-      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong.');
+      // fetch throws a TypeError when the network fails; that has no server message, so the
+      // fallback still gives the visitor an email address.
+      setErrorMessage(
+        error instanceof Error && !(error instanceof TypeError)
+          ? error.message
+          : FORM_FALLBACK_MESSAGE
+      );
       setStatus('error');
+      pushEvent('form_error', { form_name: 'hire' });
     }
   };
 
@@ -217,13 +231,15 @@ export default function HireForm({
 
   return (
     <form onSubmit={onSubmit} noValidate aria-labelledby={`${formId}-title`}>
+      <FormHoneypot inputRef={honeypotRef} />
+
       <div className="mb-lg space-y-sm">
         <h2 id={`${formId}-title`} className="text-2xl font-bold tracking-tight text-neutral-900">
           {title}
         </h2>
         <p className="max-w-prose text-sm leading-relaxed text-neutral-600">
-          Select skills and engagement length. We follow up with a shortlist — not a generic
-          brochure.
+          Only your name and email are required. Within 2 days we send profiles of engineers who
+          have passed our four checks, and you interview them before anyone starts.
         </p>
       </div>
 
@@ -327,14 +343,8 @@ export default function HireForm({
       </div>
 
       <fieldset id={`${formId}-skills-fieldset`} className="mt-xl">
-        <legend className={labelClass}>
-          Skills / technology
-          <span className="text-primary" aria-hidden>
-            {' '}
-            *
-          </span>
-        </legend>
-        <p className="mt-xs text-xs text-neutral-600">Select all that apply.</p>
+        <legend className={labelClass}>Skills / technology (optional)</legend>
+        <p className="mt-xs text-xs text-neutral-600">Select any that apply.</p>
         <div className="mt-md flex flex-wrap gap-sm">
           {HIRE_SKILLS.map((skill) => {
             const selected = skills.includes(skill.id);
@@ -374,11 +384,8 @@ export default function HireForm({
 
       <fieldset id={`${formId}-need-fieldset`} className="mt-xl">
         <legend className="text-base font-bold text-neutral-900">
-          What best describes your need?
-          <span className="text-primary" aria-hidden>
-            {' '}
-            *
-          </span>
+          What best describes your need?{' '}
+          <span className="text-sm font-normal text-neutral-500">(optional)</span>
         </legend>
         <p className="mt-xs text-sm text-neutral-600">
           Stack360 developers are full-time, dedicated resources on your team.
@@ -441,7 +448,7 @@ export default function HireForm({
           disabled={isLoading}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder="Would you like to tell us anything else?"
+          placeholder="Role, start date, time zone or team size"
           className={cn(
             baseInputClass,
             'resize-y border-neutral-200 focus-visible:border-primary focus-visible:ring-primary/15'
@@ -492,7 +499,8 @@ export default function HireForm({
         </output>
       ) : null}
 
-      <div className="mt-lg flex items-center justify-end">
+      {/* Button on the left: the floating chat and scroll-to-top buttons sit bottom right. */}
+      <div className="mt-lg flex flex-col items-stretch gap-sm sm:flex-row sm:items-center sm:gap-md">
         <button
           type="submit"
           disabled={isLoading}
@@ -500,6 +508,7 @@ export default function HireForm({
         >
           {isLoading ? 'Sending...' : 'Get my shortlist'}
         </button>
+        <p className="text-xs text-neutral-600">We reply within one business day.</p>
       </div>
     </form>
   );

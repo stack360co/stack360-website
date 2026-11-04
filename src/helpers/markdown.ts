@@ -58,10 +58,21 @@ const formFormatters: Record<string, (data: Record<string, any>) => string> = {
     }),
 };
 
-export function generateFormText(formType: string, reqBody: Record<string, any>): string {
+export function generateFormText(
+  formType: string,
+  reqBody: Record<string, any>,
+  leadContext: KeyValuePair[] = []
+): string {
   const formatter = formFormatters[formType];
   if (!formatter) {
     throw new Error(`Invalid Form Type detected: ${formType}`);
   }
-  return formatter(reqBody);
+  const contextLines = leadContext
+    .filter(({ value }) => value)
+    .map(({ label, value }) => `**${label}:** ${value}`);
+  const text = contextLines.length
+    ? [formatter(reqBody), '', '#### Lead context', ...contextLines].join('\n')
+    : formatter(reqBody);
+  // Visitor text must not be able to ping the whole channel.
+  return text.replace(/@(channel|all|here)\b/gi, '@​$1');
 }

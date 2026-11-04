@@ -253,6 +253,42 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
         </div>
       </MotionSection>
 
+      {/* Request form, with this technology already ticked. It follows the hiring steps so a
+          visitor who has just read how it works can ask for profiles without scrolling past
+          the tools and FAQs. */}
+      <MotionSection id="hire-form" className="scroll-mt-24 border-b border-neutral-200 py-2xl">
+        <div className="site-container grid grid-cols-1 gap-2xl lg:grid-cols-12">
+          <div className="space-y-xl lg:sticky lg:top-24 lg:col-span-5 lg:self-start">
+            <MotionStagger>
+              <MotionStaggerItem>
+                <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
+                  Request {page.name} developers
+                </h2>
+              </MotionStaggerItem>
+              <MotionStaggerItem>
+                <p className="mt-md max-w-prose text-pretty text-sm leading-relaxed text-neutral-600">
+                  Tell us about the role and we will reply with next steps. {page.name} is already
+                  selected; add any other skills the role needs.
+                </p>
+              </MotionStaggerItem>
+            </MotionStagger>
+            <ContactChannel testimonialName="Cameron Kashani" />
+          </div>
+
+          <MotionReveal className="lg:col-span-7">
+            <MotionCard
+              interactive={false}
+              className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl shadow-sm"
+            >
+              <HireForm
+                defaultSkills={[page.skillId]}
+                title={`Get ${page.name} developer profiles in 2 days`}
+              />
+            </MotionCard>
+          </MotionReveal>
+        </div>
+      </MotionSection>
+
       {/* Stack */}
       <MotionSection className="border-b border-neutral-200 py-2xl">
         <div className="site-container flex flex-col gap-xl lg:flex-row lg:items-end lg:justify-between">
@@ -305,40 +341,16 @@ export default function HireTechPageView({ page }: { page: HireTechPage }) {
               </Link>
             </p>
           ) : null}
-        </div>
-      </MotionSection>
-
-      {/* Request form, with this technology already ticked */}
-      <MotionSection id="hire-form" className="scroll-mt-24 border-b border-neutral-200 py-2xl">
-        <div className="site-container grid grid-cols-1 gap-2xl lg:grid-cols-12">
-          <div className="space-y-xl lg:sticky lg:top-24 lg:col-span-5 lg:self-start">
-            <MotionStagger>
-              <MotionStaggerItem>
-                <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
-                  Request {page.name} developers
-                </h2>
-              </MotionStaggerItem>
-              <MotionStaggerItem>
-                <p className="mt-md max-w-prose text-pretty text-sm leading-relaxed text-neutral-600">
-                  Tell us about the role and we will reply with next steps. {page.name} is already
-                  selected; add any other skills the role needs.
-                </p>
-              </MotionStaggerItem>
-            </MotionStagger>
-            <ContactChannel testimonialName="Cameron Kashani" />
-          </div>
-
-          <MotionReveal className="lg:col-span-7">
-            <MotionCard
-              interactive={false}
-              className="rounded-xl border border-neutral-200 bg-neutral-50 p-xl shadow-sm"
+          <p className="mt-lg text-sm text-neutral-600">
+            Ready to see who is available?{' '}
+            <Link
+              href="#hire-form"
+              className="font-semibold text-primary transition-colors hover:text-primary-dark"
             >
-              <HireForm
-                defaultSkills={[page.skillId]}
-                title={`Get ${page.name} developer profiles in 2 days`}
-              />
-            </MotionCard>
-          </MotionReveal>
+              Request {page.name} developer profiles
+            </Link>{' '}
+            and interview them before anyone starts.
+          </p>
         </div>
       </MotionSection>
 
