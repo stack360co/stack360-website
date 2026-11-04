@@ -24,8 +24,8 @@ interface PlatformRating {
 }
 
 /**
- * Figures copied from each public profile (checked 19 Oct 2026). Update them when
- * the profiles change, and never show a badge or award the platform hasn't given us.
+ * Figures copied from each public profile (checked 19 Oct 2026; G2 added 4 Nov 2026). Update
+ * them when the profiles change, and never show a badge or award the platform hasn't given us.
  */
 const PLATFORM_RATINGS: readonly PlatformRating[] = [
   {
@@ -46,6 +46,12 @@ const PLATFORM_RATINGS: readonly PlatformRating[] = [
     figure: '5.0',
     measure: 'Average of 20 client reviews',
     href: SITE_PROFILES.fiverr,
+  },
+  {
+    platform: 'G2',
+    figure: '5.0',
+    measure: 'Verified client review',
+    href: SITE_PROFILES.g2,
   },
 ];
 
@@ -80,7 +86,7 @@ export default function TrustBadges() {
           animate={visible ? 'show' : 'hidden'}
           className="w-full max-w-5xl bg-neutral-200"
         >
-          <motion.ul className="grid grid-cols-1 gap-px md:grid-cols-3">
+          <motion.ul className="grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-4">
             {PLATFORM_RATINGS.map((rating) => (
               <motion.li
                 key={rating.platform}

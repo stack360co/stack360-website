@@ -1,6 +1,15 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Pause, Play, Quote, Star, UserRound } from 'lucide-react';
+import {
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play,
+  Quote,
+  Star,
+  UserRound,
+} from 'lucide-react';
 import {
   AnimatePresence,
   motion,
@@ -229,6 +238,8 @@ export default function TestimonialsCarousel() {
               <blockquote className="text-pretty text-sm font-normal leading-relaxed text-neutral-800 sm:text-base md:text-lg">
                 &ldquo;{longestTestimonial.quote}&rdquo;
               </blockquote>
+              {/* Room for a review-source link, so cards with one don't change the height */}
+              <p className="text-xs">&nbsp;</p>
             </div>
 
             {/* Active Animated Slide */}
@@ -299,6 +310,17 @@ export default function TestimonialsCarousel() {
                 <blockquote className="relative z-10 text-pretty text-sm font-normal leading-relaxed text-neutral-800 sm:text-base md:text-lg">
                   &ldquo;{current.quote}&rdquo;
                 </blockquote>
+                {current.source ? (
+                  <a
+                    href={current.source.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-10 inline-flex w-fit items-center gap-xs text-xs font-semibold text-primary transition-colors hover:text-primary-dark"
+                  >
+                    {current.source.label}
+                    <ArrowUpRight size={12} aria-hidden />
+                  </a>
+                ) : null}
               </motion.article>
             </AnimatePresence>
           </div>
