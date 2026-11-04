@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { routes } from '@/constants/routes';
-import { describeLead, leadContextSchema } from '@/helpers/lead-context';
+import { describeLead, domainAge, leadContextSchema } from '@/helpers/lead-context';
 import { generateFormText } from '@/helpers/markdown';
 import { FORM_FALLBACK_MESSAGE, isLikelySpam } from '@/lib/form-guard';
 import { contactSchema } from '@/schema/contact';
@@ -56,6 +56,7 @@ export async function POST(request: NextRequest) {
 
   const leadContext = describeLead({
     context: leadContextSchema.parse(body.context ?? {}),
+    domain: await domainAge(parsed.data.email),
     email: parsed.data.email,
     headers: request.headers,
   });
