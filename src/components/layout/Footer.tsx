@@ -13,6 +13,7 @@ import {
 import { SITE_NAME, SITE_PROFILES } from '@/constants/site';
 import { cn } from '@/styles/tailwind.utils';
 import Stack360Logo from './Navbar/Stack360Logo';
+import ReviewWidgets from './ReviewWidgets';
 
 function FooterLinkColumn({
   title,
@@ -139,53 +140,68 @@ export default function Footer() {
                 {CONTACT.email.label}
               </a>
             </div>
+          </div>
+        </div>
 
-            <div className="md:space-y-md space-y-xs border-t border-neutral-200 pt-lg">
-              <h2 className="text-base font-bold tracking-tight text-neutral-900">Find us on</h2>
-              <div className="flex flex-wrap items-center gap-md">
+        <div className="mt-2xl space-y-lg border-t border-neutral-200 pt-xl">
+          <h2 className="text-base font-bold tracking-tight text-neutral-900">Find us on</h2>
+          <div className="flex flex-wrap items-center gap-x-xl gap-y-lg">
+            <a
+              href={SITE_PROFILES.goodfirms}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block transition-opacity hover:opacity-80"
+            >
+              {/* GoodFirms' hosted badge, embedded as they provide it */}
+              <Image
+                src="https://assets.goodfirms.co/badges/available-on-goodfirms.png"
+                alt="Available on GoodFirms"
+                width={160}
+                height={48}
+                unoptimized
+              />
+            </a>
+            {/* TechBehemoths' verification badge: keep the data attribute and a follow link, their bot checks both */}
+            <a
+              href={SITE_PROFILES.techbehemoths}
+              target="_blank"
+              rel="noopener"
+              data-techbehemoths-verification
+              className="inline-block transition-opacity hover:opacity-80"
+            >
+              <Image
+                src="https://cdn.techbehemoths.com/public/static/validation/tb-verified-logo.svg"
+                alt="TechBehemoths Verification"
+                width={123}
+                height={40}
+                unoptimized
+              />
+            </a>
+            <ReviewWidgets />
+          </div>
+          <ul className="flex flex-wrap gap-x-xl gap-y-sm">
+            {[
+              {
+                label: 'Top Rated Plus on Upwork, 100% Job Success',
+                href: SITE_PROFILES.upwork,
+              },
+              { label: '5.0 verified client review on G2', href: SITE_PROFILES.g2 },
+              { label: 'Our reviews on Clutch', href: SITE_PROFILES.clutch },
+              { label: 'Our profile on DesignRush', href: SITE_PROFILES.designrush },
+            ].map((profile) => (
+              <li key={profile.href}>
                 <a
-                  href={SITE_PROFILES.goodfirms}
+                  href={profile.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block transition-opacity hover:opacity-80"
+                  className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
                 >
-                  {/* GoodFirms' hosted badge, embedded as they provide it */}
-                  <Image
-                    src="https://assets.goodfirms.co/badges/available-on-goodfirms.png"
-                    alt="Available on GoodFirms"
-                    width={160}
-                    height={48}
-                    unoptimized
-                  />
+                  <Star size={16} className="shrink-0 text-primary" aria-hidden />
+                  {profile.label}
                 </a>
-                {/* TechBehemoths' verification badge: keep the data attribute and a follow link, their bot checks both */}
-                <a
-                  href={SITE_PROFILES.techbehemoths}
-                  target="_blank"
-                  rel="noopener"
-                  data-techbehemoths-verification
-                  className="inline-block transition-opacity hover:opacity-80"
-                >
-                  <Image
-                    src="https://cdn.techbehemoths.com/public/static/validation/tb-verified-logo.svg"
-                    alt="TechBehemoths Verification"
-                    width={123}
-                    height={40}
-                    unoptimized
-                  />
-                </a>
-              </div>
-              <a
-                href={SITE_PROFILES.clutch}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-sm text-sm text-neutral-700 transition-colors hover:text-primary"
-              >
-                <Star size={16} className="shrink-0 text-primary" aria-hidden />
-                Our reviews on Clutch
-              </a>
-            </div>
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-2xl flex flex-col items-center gap-sm border-t border-neutral-200 pb-[6rem] pt-xl sm:flex-row sm:justify-between sm:pb-0">

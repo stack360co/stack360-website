@@ -415,9 +415,25 @@ export interface Testimonial {
    * user icon instead.
    */
   avatar?: string;
+  /** Where the review is published, when it is on a review platform the visitor can check. */
+  source?: { label: string; href: string };
 }
 
 export const LANDING_TESTIMONIALS: readonly Testimonial[] = [
+  {
+    // Mitchell's words from his G2 review (20 Oct 2026), shortened with an ellipsis only.
+    quote:
+      'The team developed our Luxe Excursions Tenerife website and set up our Google and Meta advertising campaigns… They automated booking and ticket generation based on the excursions a person selects, and implemented a dynamic booking system and CMS.',
+    name: 'Mitchell Woods',
+    role: 'Director',
+    company: 'Luxe Excursions Tenerife',
+    industry: 'Travel & Tours · Spain',
+    rating: 5,
+    source: {
+      label: 'Verified review on G2',
+      href: 'https://www.g2.com/products/stack360/reviews',
+    },
+  },
   {
     quote:
       'Stack360 brought enterprise-grade engineering to our build with thoughtful architecture, disciplined delivery, and a team that turned ambitious product requirements into production-ready systems.',
