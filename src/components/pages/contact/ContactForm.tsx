@@ -14,6 +14,7 @@ import FormHoneypot from '@/components/shared/FormHoneypot';
 import { CONTACT_FORM_FIELDS } from '@/constants/component/contact-data';
 import { pushEvent } from '@/lib/analytics';
 import { FORM_FALLBACK_MESSAGE, formGuardFields } from '@/lib/form-guard';
+import { leadContext } from '@/lib/lead-context';
 import { type ContactFormData, contactSchema } from '@/schema/contact';
 
 type Status = 'idle' | 'loading' | 'sent' | 'error';
@@ -127,6 +128,7 @@ export default function ContactForm() {
           email,
           message,
           ...formGuardFields(honeypotRef.current?.value ?? '', startedAt.current),
+          context: leadContext(),
         }),
       });
 

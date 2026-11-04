@@ -12,6 +12,7 @@ import {
 } from '@/constants/component/hire-talent-data';
 import { pushEvent } from '@/lib/analytics';
 import { FORM_FALLBACK_MESSAGE, formGuardFields } from '@/lib/form-guard';
+import { leadContext } from '@/lib/lead-context';
 import { type HireFormData, hireSchema } from '@/schema/hire';
 import { cn } from '@/styles/tailwind.utils';
 
@@ -190,6 +191,7 @@ export default function HireForm({
           needLabel,
           notes,
           ...formGuardFields(honeypotRef.current?.value ?? '', startedAt.current),
+          context: leadContext(),
         }),
       });
 
