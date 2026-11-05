@@ -4,6 +4,7 @@ import {
   SITE_EMAIL_HREF,
   SITE_PHONE,
   SITE_PHONE_HREF,
+  UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 
 export const HIRE_HERO = {
@@ -28,8 +29,8 @@ export const HIRE_CONTACT = [
     icon: 'building' as const,
   },
   {
-    label: 'UK mailing address',
-    value: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
+    label: 'UK office (Stack360 Ltd)',
+    value: UK_OFFICE_ADDRESS,
     icon: 'building' as const,
   },
   {

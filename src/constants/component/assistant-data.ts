@@ -5,6 +5,7 @@ import {
   SITE_PHONE,
   SITE_PHONE_E164,
   SITE_PHONE_HREF,
+  UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 
 export type AssistantQuickActionId =
@@ -81,9 +82,9 @@ export const ASSISTANT_CONTACT: AssistantContactField[] = [
     copyValue: LAHORE_OFFICE_ADDRESS,
   },
   {
-    label: 'United Kingdom · Mailing address',
-    value: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
-    copyValue: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
+    label: 'United Kingdom · Stack360 Ltd',
+    value: UK_OFFICE_ADDRESS,
+    copyValue: UK_OFFICE_ADDRESS,
   },
 ];
 

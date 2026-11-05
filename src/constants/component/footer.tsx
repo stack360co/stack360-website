@@ -53,9 +53,9 @@ export const OFFICES: FooterOffice[] = [
     phones: [{ label: SITE_PHONE_USA, href: SITE_PHONE_USA_HREF }],
   },
   {
-    label: 'UK (mailing address)',
+    label: 'UK office · Stack360 Ltd',
     flag: 'gb',
-    lines: ['58 St. Johns Road, Barking,', 'Essex, IG11 7XL United Kingdom'],
+    lines: ['Office 2253, 85 Dunstall Hill,', 'Wolverhampton, WV6 0SR, United Kingdom'],
     phones: [
       { label: SITE_PHONE, href: whatsApp(SITE_PHONE_E164), external: true },
       { label: SITE_PHONE_2, href: whatsApp(SITE_PHONE_E164_2), external: true },

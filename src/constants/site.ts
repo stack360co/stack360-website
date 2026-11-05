@@ -40,6 +40,12 @@ export const LAHORE_OFFICE_HOURS = 'Mon–Fri • 10:00 AM–10:00 PM Pakistan t
 export const LAHORE_OFFICE_MAP_URL =
   'https://www.google.com/maps/place/?q=place_id:ChIJEwYaJrcFGTkRC8hxET6XWgo';
 
+/** Stack360 Ltd, as registered at Companies House (incorporated 5 Nov 2026). */
+export const UK_COMPANY_NAME = 'Stack360 Ltd';
+export const UK_COMPANY_NUMBER = '17564014';
+export const UK_OFFICE_ADDRESS =
+  'Office 2253, 85 Dunstall Hill, Wolverhampton, WV6 0SR, United Kingdom';
+
 export const SITE_SOCIAL = {
   linkedin: 'https://www.linkedin.com/company/stack360co',
   github: 'https://github.com/stack360co',
@@ -86,11 +92,11 @@ export const SITE_OFFICES = [
   },
   {
     country: 'United Kingdom',
-    role: 'Mailing address',
-    streetAddress: '58 St. Johns Road',
-    addressLocality: 'Barking',
-    addressRegion: 'Essex',
-    postalCode: 'IG11 7XL',
+    role: 'Stack360 Ltd',
+    streetAddress: 'Office 2253, 85 Dunstall Hill',
+    addressLocality: 'Wolverhampton',
+    addressRegion: 'England',
+    postalCode: 'WV6 0SR',
     addressCountry: 'GB',
   },
 ] as const;

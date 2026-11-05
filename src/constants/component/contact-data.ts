@@ -9,6 +9,7 @@ import {
   SITE_PHONE_PK_HREF,
   SITE_PHONE_USA,
   SITE_PHONE_USA_HREF,
+  UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 
 export const CONTACT_HERO = {
@@ -74,9 +75,9 @@ export const CONTACT_OFFICES = [
   },
   {
     country: 'United Kingdom',
-    role: 'Mailing address',
+    role: 'UK office · Stack360 Ltd',
     flagSrc: 'https://flagcdn.com/gb.svg',
-    address: '58 St. Johns Road, Barking, Essex, IG11 7XL, United Kingdom',
+    address: UK_OFFICE_ADDRESS,
   },
 ] as const;
 

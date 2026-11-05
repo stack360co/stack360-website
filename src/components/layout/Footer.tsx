@@ -10,7 +10,13 @@ import {
   SERVICE_LINKS,
   SOCIAL_LINKS,
 } from '@/constants/component/footer';
-import { SITE_NAME, SITE_PROFILES } from '@/constants/site';
+import {
+  SITE_NAME,
+  SITE_PROFILES,
+  UK_COMPANY_NAME,
+  UK_COMPANY_NUMBER,
+  UK_OFFICE_ADDRESS,
+} from '@/constants/site';
 import { cn } from '@/styles/tailwind.utils';
 import Stack360Logo from './Navbar/Stack360Logo';
 import ReviewWidgets from './ReviewWidgets';
@@ -205,12 +211,19 @@ export default function Footer() {
         </div>
 
         <div className="mt-2xl flex flex-col items-center gap-sm border-t border-neutral-200 pb-[6rem] pt-xl sm:flex-row sm:justify-between sm:pb-0">
-          <p className="text-center text-sm text-neutral-600">
-            © {currentYear} {SITE_NAME}. All Rights Reserved
-          </p>
+          <div className="space-y-xs text-center sm:text-left">
+            <p className="text-sm text-neutral-600">
+              © {currentYear} {SITE_NAME}. All Rights Reserved
+            </p>
+            {/* UK law asks a company's website to show these details. */}
+            <p className="text-xs text-neutral-600">
+              {UK_COMPANY_NAME} is registered in England and Wales, company number{' '}
+              {UK_COMPANY_NUMBER}. Registered office: {UK_OFFICE_ADDRESS}.
+            </p>
+          </div>
           <nav
             aria-label="Legal"
-            className="flex items-center gap-lg text-sm text-neutral-600 sm:pr-[9rem]"
+            className="flex shrink-0 items-center gap-lg whitespace-nowrap text-sm text-neutral-600 sm:pr-[9rem]"
           >
             <Link href="/privacy" className="transition-colors hover:text-primary">
               Privacy

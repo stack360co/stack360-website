@@ -8,6 +8,7 @@ import {
   SITE_EMAIL_HREF,
   SITE_PHONE_PK,
   SITE_PHONE_PK_HREF,
+  UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 
 export const LAHORE_HERO = {
@@ -75,7 +76,7 @@ export const LAHORE_FAQS = [
   {
     id: 'where',
     question: 'Where is the Stack360 office?',
-    answer: `${LAHORE_OFFICE_ADDRESS}. The whole team works here; our US and UK addresses are mailing addresses.`,
+    answer: `${LAHORE_OFFICE_ADDRESS}. The whole team works here. Our UK company, Stack360 Ltd, is at ${UK_OFFICE_ADDRESS}, and our US company, Stack360 AI Solutions LLC, is in Houston, Texas.`,
   },
   {
     id: 'hours',
