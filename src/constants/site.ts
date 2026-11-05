@@ -7,7 +7,7 @@ export const SITE_TAGLINE = 'Your Reliable Software Development Agency';
 
 /** Company description for the homepage meta and Organization schema; the same line as the footer. */
 export const SITE_DESCRIPTION =
-  'Stack360 is a software development company with its team in Lahore, building software and placing dedicated developers for US and UK companies since 2019.';
+  'Stack360 builds software, automation and dedicated developer teams for UK and US companies. 200+ projects since 2019, built by our engineering team in Lahore.';
 
 /** Sales inbox — display value and mailto target. */
 export const SITE_EMAIL = 'sales@stack360.co';
