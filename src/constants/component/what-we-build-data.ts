@@ -1939,7 +1939,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   automation: {
     slug: 'automation',
     reviewer: FOUNDER_REVIEWER,
-    updated: '2026-10-21',
+    updated: '2026-11-05',
     reading: {
       href: '/blog/ai-or-rules-business-automation',
       label: 'AI or rules? How to choose what to automate in your business',
@@ -1949,7 +1949,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       title: 'Business Process Automation',
       highlight: 'For The Jobs People Forget',
       description:
-        'Business process automation takes repetitive, rule-based jobs off your team, such as alerts, follow-ups, data syncs and checks. For Luxe Excursions, staff hear about every booking instantly and every guest gets one review request after their trip.',
+        'Business process automation takes repetitive, rule-based jobs off your team, such as alerts, follow-ups, data syncs and checks. For Luxe Excursions, a UK-registered tour company in Tenerife, staff hear about every booking instantly and every guest gets one review request after their trip.',
       cta: { label: 'Automate Your Processes', href: '/contact' },
     },
     capabilitiesTitle: 'What We Automate',
@@ -1986,19 +1986,22 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       eyebrow: 'Project story · Luxe Excursions',
       title: 'Automating the busywork behind a Tenerife tour company',
       intro:
-        'Luxe Excursions sells luxury tours, packages and rentals in Tenerife. We built its booking platform and staff CMS, and we also run its SEO, Google Ads and Business Profile. Much of the value has come from automating small jobs that used to depend on someone remembering.',
+        'Luxe Excursions Tenerife Ltd is a UK company, registered in Scotland, that sells luxury tours, packages and rentals in Tenerife. We built its booking platform and staff CMS, and we also run its SEO, Google Ads and Business Profile. Much of the value has come from automating small jobs that used to depend on someone remembering.',
       problem:
         'When a guest paid or sent a trip request, only the guest got an email, so the team could miss a sale or an enquiry. Asking guests for Google reviews was manual, and reviews drive how the business shows up in local search.',
       changes: [
+        'Guests choose their activities and pay online, and the booking and tickets follow on their own. Staff assign the times afterwards, and booking refusals fell from 75% to 0%.',
         'Staff get an email the moment a booking is paid or a trip request comes in, with the guest set as reply-to so they can answer straight away.',
         'Each alert goes out once per booking, so payment retries and repairs never send duplicates.',
         'Every guest gets one automatic Google review request at 10:00 local time the day after their last activity. It only goes out within a week of the trip, and never twice to the same address.',
         'Test and agency bookings are left out of review requests, and a lock stops two workers from sending the same email.',
         'Payments run through Stripe, and staff edit tours, prices and images in the CMS without a developer.',
+        'Bookings, trip requests and WhatsApp clicks are tracked in Google Analytics, and Google Ads learns from them.',
       ],
       outcome:
         'The team hears about every sale and enquiry as it happens, review requests go out on their own, and the website runs day to day without developer help. Good automation is usually this unglamorous: it takes the jobs people forget and does them the same way every time.',
       facts: [
+        { label: 'Client', value: 'Luxe Excursions Tenerife Ltd (UK)' },
         { label: 'Status', value: 'Live' },
         { label: 'Stack', value: 'Django, Next.js, PostgreSQL, Stripe' },
         { label: 'Hosting', value: 'AWS' },
@@ -2084,6 +2087,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
     projectsIntro: 'Automations from our portfolio.',
     projectsCtaLabel: 'View All Case Studies',
     projects: [projectRef('cercle'), projectRef('falcore'), projectRef('alertia')],
+    showTestimonials: true,
     faqsTitle: 'Automation Services FAQs',
     faqsIntro: 'What teams ask before handing work to software.',
     faqs: [
