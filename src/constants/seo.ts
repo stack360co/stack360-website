@@ -350,11 +350,15 @@ export const seo = {
   }),
 
   whatWeBuildAutomation: pageMeta({
-    absoluteTitle: 'Business Process Automation Services | Stack360',
+    absoluteTitle: 'AI and Business Process Automation Services | Stack360',
     description:
-      'Automate repetitive business processes with Stack360. We build workflows that connect your systems, cut manual work, and scale operations.',
+      'AI and business process automation for UK and US companies. We automate the jobs your team repeats, such as alerts, follow-ups and data syncs. Free review.',
     path: '/what-we-build/automation',
-    keywords: ['Business Process Automation Services', 'QA Automation Services'],
+    keywords: [
+      'AI Automation Agency',
+      'Business Process Automation Services',
+      'QA Automation Services',
+    ],
   }),
 
   whatWeBuildLegacyModernization: pageMeta({

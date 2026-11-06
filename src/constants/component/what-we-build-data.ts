@@ -1939,18 +1939,18 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
   automation: {
     slug: 'automation',
     reviewer: FOUNDER_REVIEWER,
-    updated: '2026-11-05',
+    updated: '2026-11-06',
     reading: {
       href: '/blog/ai-or-rules-business-automation',
       label: 'AI or rules? How to choose what to automate in your business',
     },
     hero: {
       eyebrow: 'What We Build · Automation',
-      title: 'Business Process Automation',
+      title: 'AI And Business Process Automation',
       highlight: 'For The Jobs People Forget',
       description:
-        'Business process automation takes repetitive, rule-based jobs off your team, such as alerts, follow-ups, data syncs and checks. For Luxe Excursions, a UK-registered tour company in Tenerife, staff hear about every booking instantly and every guest gets one review request after their trip.',
-      cta: { label: 'Automate Your Processes', href: '/contact' },
+        'We use AI and simple rules to take repetitive jobs off your team, such as alerts, follow-ups, data syncs and checks. For Luxe Excursions, a UK-registered tour company in Tenerife, staff hear about every booking instantly and every guest gets one review request after their trip.',
+      cta: { label: 'Book A Free Automation Review', href: '/contact' },
     },
     capabilitiesTitle: 'What We Automate',
     capabilitiesIntro:
@@ -1974,7 +1974,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Data syncs between systems',
         description:
-          'Orders, stock, hours and invoices kept in step between tools through APIs and scheduled jobs.',
+          'Orders, stock, hours and invoices kept in step between tools through APIs, scheduled jobs and workflow tools such as n8n.',
       },
       {
         title: 'Test automation',
@@ -2121,13 +2121,19 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
         answer:
           'Yes, where the input is messy, such as reading documents or routing free-text messages. Natif extracts fields from scans and handwriting, and Contakti routes tickets with AI. Rule-based steps usually work better without it.',
       },
+      {
+        id: 'automation-n8n',
+        question: 'Do you build workflows in n8n or Zapier?',
+        answer:
+          'Yes. We build n8n workflows and can run n8n in containers on your own servers, so your data stays with you. For a simple link between two apps, Zapier is often enough. When a workflow outgrows these tools, we build it as code.',
+      },
       OWNERSHIP_FAQ,
     ],
     cta: {
       title: 'Ready To Hand Off The Repetitive Work?',
       description:
-        'Tell us which jobs your team repeats every week. We reply within one business day to set up a discovery call.',
-      primary: { label: 'Start Your Automation Project', href: '/contact' },
+        'Book a free 20-minute automation review. Tell us one job your team repeats, and we will show you what to automate first and what to leave to people.',
+      primary: { label: 'Book A Free Automation Review', href: '/contact' },
       secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
     },
   },
