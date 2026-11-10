@@ -113,6 +113,9 @@ export function saveConsent(choice: ConsentChoice) {
     ad_user_data: ads,
     ad_personalization: ads,
   });
+  // GA4 picks the update up by itself, but Tag Manager only re-checks consent-gated tags such as
+  // Clarity on a new event. Without this, Clarity waits for the next full page load.
+  pushEvent('consent_update', { consent_choice: choice });
 }
 
 /**
