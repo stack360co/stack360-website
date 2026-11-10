@@ -218,7 +218,6 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
         summary:
           'Peer-to-peer rental marketplace for filmmaking gear, with around 100,000 users across the UK, Europe and the US and a recommendation system built on trust.',
         stack: ['React', 'Ruby on Rails'],
-        url: 'https://www.cinekit.co',
       },
       {
         name: 'Truck-4',
