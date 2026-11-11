@@ -28,6 +28,13 @@ export default function PrivacyPage() {
               message content, and any skills or engagement preferences you submit. Server logs may
               include IP address and basic request metadata for security and reliability.
             </p>
+            <p className="text-pretty">
+              With each inquiry or call booking we also record how you found us: the first page you
+              visited and when, the site that referred you, any campaign tags in the link, your
+              approximate location (city and country, from your IP address) and whether you used a
+              phone or a computer. If you arrived from one of our Google ads and allowed advertising
+              cookies, we also record Google&apos;s ad click ID.
+            </p>
           </div>
           <div className="space-y-sm">
             <h2 className="text-lg font-bold text-neutral-900">How we use it</h2>
@@ -58,8 +65,12 @@ export default function PrivacyPage() {
             <p className="text-pretty">
               We use Google&apos;s advertising features to measure whether our Google Ads lead to
               inquiries and to show our ads to people who have visited this site. Google may set
-              advertising cookies for this, such as <code>_gcl_au</code>. Google handles this data
-              under the{' '}
+              advertising cookies for this, such as <code>_gcl_au</code>. When an inquiry that came
+              from one of our ads becomes a qualified lead or a client, we may tell Google Ads,
+              using the ad click ID and a hashed (scrambled, one-way) copy of your email address, so
+              we can see which ads bring real work. We only do this if you allowed advertising
+              cookies, or if you&apos;re outside the European Economic Area, the UK and Switzerland.
+              Google handles this data under the{' '}
               <a
                 className="font-bold text-primary underline"
                 href="https://policies.google.com/privacy"

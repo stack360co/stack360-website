@@ -2,6 +2,12 @@ import { z } from 'zod';
 
 /** Every field is optional: older pages send no context, and a bad value just drops out. */
 const field = z.string().trim().max(200).optional().catch(undefined);
+const clickId = z
+  .string()
+  .regex(/^[A-Za-z0-9_-]{8,200}$/)
+  .optional()
+  .catch(undefined);
+const timestamp = z.iso.datetime().optional().catch(undefined);
 
 export const leadContextSchema = z
   .object({
@@ -9,9 +15,17 @@ export const leadContextSchema = z
     referrer: field,
     firstPage: field,
     firstReferrer: field,
+    firstSeenAt: timestamp,
     utmSource: field,
     utmMedium: field,
     utmCampaign: field,
+    utmTerm: field,
+    utmContent: field,
+    gclid: clickId,
+    gbraid: clickId,
+    wbraid: clickId,
+    clickAt: timestamp,
+    adConsent: z.enum(['granted', 'denied', 'not_required', 'unknown']).optional().catch(undefined),
   })
   .catch({});
 
@@ -139,7 +153,32 @@ export async function domainAge(email: string): Promise<string | undefined> {
   }
 }
 
-/** The "Lead context" lines added under each enquiry in Mattermost. */
+const CONSENT_LABELS = {
+  granted: 'granted',
+  not_required: 'not required (outside the UK and EU)',
+  denied: 'not given (do not send to Google Ads)',
+  unknown: 'not answered yet (do not send to Google Ads)',
+} as const;
+
+/** The Google Ads click behind this lead, shown only when the visitor allowed advertising. */
+function adClick(context: LeadContextData): { id?: string; at?: string } {
+  if (context.adConsent !== 'granted' && context.adConsent !== 'not_required') {
+    return {};
+  }
+  const [type, id] = context.gclid
+    ? ['gclid', context.gclid]
+    : context.gbraid
+      ? ['gbraid', context.gbraid]
+      : context.wbraid
+        ? ['wbraid', context.wbraid]
+        : [];
+  return id ? { id: `${type} ${id}`, at: context.clickAt } : {};
+}
+
+/**
+ * The "Lead context" lines added under each enquiry in Mattermost and the sales@ email. Each line
+ * is "Label: value", so Claude's routines can copy them into the CRM.
+ */
 export function describeLead({
   context,
   domain,
@@ -148,17 +187,24 @@ export function describeLead({
 }: {
   context: LeadContextData;
   domain?: string;
-  email: string;
+  email?: string;
   headers: Headers;
 }): { label: string; value?: string }[] {
   const userAgent = headers.get('user-agent') ?? '';
+  const click = adClick(context);
   return [
     { label: 'Found us via', value: foundVia(context) },
+    { label: 'Keyword', value: context.utmTerm },
+    { label: 'Ad content', value: context.utmContent },
     { label: 'First page', value: context.firstPage },
+    { label: 'First visit', value: context.firstSeenAt },
     { label: 'Sent from', value: context.page },
     { label: 'Location', value: location(headers) },
     { label: 'Device', value: /Mobi|Android|iPhone|iPad/i.test(userAgent) ? 'Mobile' : 'Desktop' },
-    { label: 'Email', value: emailType(email) },
+    { label: 'Email', value: email ? emailType(email) : undefined },
     { label: 'Domain', value: domain },
+    { label: 'Ad click ID', value: click.id },
+    { label: 'Ad clicked', value: click.at },
+    { label: 'Ad consent', value: context.adConsent && CONSENT_LABELS[context.adConsent] },
   ];
 }

@@ -57,6 +57,16 @@ const formSummaries: Record<string, (data: Record<string, any>) => FormSummary> 
     bodyHeader: 'Notes',
     bodyContent: notes,
   }),
+
+  booking: ({ inviteeUri, eventUri }) => ({
+    title: '## 📅 New Calendly Booking From The Website',
+    label: 'Calendly booking',
+    fields: [
+      { label: 'Calendly invitee', value: inviteeUri },
+      { label: 'Calendly event', value: eventUri },
+    ],
+    bodyContent: 'Their name, email and time are in Calendly. This adds how they found us.',
+  }),
 };
 
 export function summarizeForm(formType: string, reqBody: Record<string, any>): FormSummary {
