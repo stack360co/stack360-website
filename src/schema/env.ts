@@ -11,6 +11,10 @@ export const serverSchema = z.object({
   // NEXT_BE_API_HOST_NAME: z.string().min(1),
   // NEXT_BE_API_PORT: z.coerce.number(),
   MATTERMOST_WEBHOOK_ID: z.string().min(1),
+  // Optional: also email each website lead to sales@ through Resend. Leave either one unset and
+  // leads go to Mattermost only. No min(1): an empty value must not fail the whole server.
+  RESEND_API_KEY: z.string().optional(),
+  LEAD_EMAIL_FROM: z.string().optional(),
 });
 
 export const clientSchema = z.object({
