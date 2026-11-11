@@ -3,12 +3,14 @@
 import { CalendarClock } from 'lucide-react';
 import { useEffect } from 'react';
 import { pushEvent } from '@/lib/analytics';
+import { leadContext } from '@/lib/lead-context';
 
 /**
  * "Book a 20-minute call" card for the contact channels. Shown only when
  * NEXT_PUBLIC_CALENDLY_URL is set (a https://calendly.com/... link).
- * Calendly's widget script loads on first click, not on page load, and a
- * completed booking is sent to GA4 as a lead.
+ * Calendly's widget script loads on first click, not on page load. A completed
+ * booking is sent to GA4 as a lead, and to Mattermost and sales@ with how the
+ * visitor found us, so Claude can add it to the CRM with its source.
  */
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '';
 const WIDGET_JS = 'https://assets.calendly.com/assets/external/widget.js';
@@ -52,6 +54,20 @@ export default function BookCallButton() {
         event.data?.event === 'calendly.event_scheduled'
       ) {
         pushEvent('generate_lead', { form_name: 'calendly' });
+        const payload = event.data.payload ?? {};
+        fetch('/api/contact/m-webhook', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            formType: 'booking',
+            inviteeUri: payload.invitee?.uri,
+            eventUri: payload.event?.uri,
+            context: leadContext(),
+          }),
+          keepalive: true,
+        }).catch(() => {
+          // Calendly already has the booking, so a failure loses nothing but its source.
+        });
       }
     };
     window.addEventListener('message', onMessage);

@@ -4,6 +4,7 @@ import { describeLead, domainAge, leadContextSchema } from '@/helpers/lead-conte
 import { buildLeadEmail, sendLeadEmail } from '@/helpers/lead-email';
 import { generateFormText, summarizeForm } from '@/helpers/markdown';
 import { FORM_FALLBACK_MESSAGE, isLikelySpam } from '@/lib/form-guard';
+import { bookingPayloadSchema } from '@/schema/booking';
 import { contactSchema } from '@/schema/contact';
 import { hirePayloadSchema } from '@/schema/hire';
 
@@ -12,6 +13,7 @@ const MAX_BODY_BYTES = 20_000;
 const payloadSchemas = {
   contact: contactSchema,
   hire: hirePayloadSchema,
+  booking: bookingPayloadSchema,
 };
 
 export async function POST(request: NextRequest) {
@@ -55,17 +57,20 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Calendly bookings arrive without a name or email; those are in Calendly itself.
+  const person: { name?: string; email?: string; company?: string } =
+    'email' in parsed.data ? parsed.data : {};
   const leadContext = describeLead({
     context: leadContextSchema.parse(body.context ?? {}),
-    domain: await domainAge(parsed.data.email),
-    email: parsed.data.email,
+    domain: person.email ? await domainAge(person.email) : undefined,
+    email: person.email,
     headers: request.headers,
   });
 
   const summary = summarizeForm(formType as string, parsed.data);
   const [chat, email] = await Promise.allSettled([
     postToMattermost(generateFormText(summary, leadContext)),
-    sendLeadEmail(buildLeadEmail(summary, leadContext, parsed.data), parsed.data.email),
+    sendLeadEmail(buildLeadEmail(summary, leadContext, person), person.email),
   ]);
   if (chat.status === 'rejected') {
     console.error('Mattermost webhook failed', chat.reason);

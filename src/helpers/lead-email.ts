@@ -22,15 +22,18 @@ function oneLine(value: string, max: number): string {
 export function buildLeadEmail(
   summary: FormSummary,
   leadContext: KeyValuePair[],
-  person: { name: string; email: string; company?: string }
+  person: { name?: string; email?: string; company?: string }
 ): LeadEmail {
   const newDomain = leadContext.some(
     ({ label, value }) => label === 'Domain' && value?.startsWith('⚠️')
   );
-  const who = person.company
-    ? `${oneLine(person.name, 60)} (${oneLine(person.company, 60)})`
-    : oneLine(person.name, 60);
-  const subject = [LEAD_SUBJECT_PREFIX, newDomain ? '⚠️ New domain ·' : '', `${summary.label}:`, who]
+  const name = person.name ? oneLine(person.name, 60) : '';
+  const who = name && person.company ? `${name} (${oneLine(person.company, 60)})` : name;
+  const subject = [
+    LEAD_SUBJECT_PREFIX,
+    newDomain ? '⚠️ New domain ·' : '',
+    who ? `${summary.label}: ${who}` : summary.label,
+  ]
     .filter(Boolean)
     .join(' ');
 
@@ -40,11 +43,15 @@ export function buildLeadEmail(
   const sections = [
     `${summary.label} from stack360.co`,
     lines(summary.fields).join('\n'),
-    summary.bodyContent ? `${summary.bodyHeader ?? 'Message'}:\n${summary.bodyContent}` : '',
+    summary.bodyContent && summary.bodyHeader
+      ? `${summary.bodyHeader}:\n${summary.bodyContent}`
+      : (summary.bodyContent ?? ''),
     leadContext.some(({ value }) => value)
       ? ['Lead context', ...lines(leadContext)].join('\n')
       : '',
-    `Replying goes straight to ${person.email}. If anything looks off, run the scam checklist first.`,
+    person.email
+      ? `Replying goes straight to ${person.email}. If anything looks off, run the scam checklist first.`
+      : '',
   ];
   return { subject, text: sections.filter(Boolean).join('\n\n') };
 }
@@ -55,7 +62,7 @@ export function buildLeadEmail(
  */
 export async function sendLeadEmail(
   email: LeadEmail,
-  replyTo: string
+  replyTo?: string
 ): Promise<'sent' | 'skipped'> {
   const apiKey = envVars.RESEND_API_KEY?.trim();
   const from = envVars.LEAD_EMAIL_FROM?.trim();
