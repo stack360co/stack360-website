@@ -1,7 +1,8 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { routes } from '@/constants/routes';
 import { describeLead, domainAge, leadContextSchema } from '@/helpers/lead-context';
-import { generateFormText } from '@/helpers/markdown';
+import { buildLeadEmail, sendLeadEmail } from '@/helpers/lead-email';
+import { generateFormText, summarizeForm } from '@/helpers/markdown';
 import { FORM_FALLBACK_MESSAGE, isLikelySpam } from '@/lib/form-guard';
 import { contactSchema } from '@/schema/contact';
 import { hirePayloadSchema } from '@/schema/hire';
@@ -61,15 +62,24 @@ export async function POST(request: NextRequest) {
     headers: request.headers,
   });
 
-  try {
-    await postToMattermost(generateFormText(formType as string, parsed.data, leadContext));
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    // Mattermost is the only place leads land, so a failure is logged and the visitor is
-    // given the sales email instead of the raw error.
-    console.error('Mattermost webhook failed', error);
-    return NextResponse.json({ success: false, error: FORM_FALLBACK_MESSAGE }, { status: 502 });
+  const summary = summarizeForm(formType as string, parsed.data);
+  const [chat, email] = await Promise.allSettled([
+    postToMattermost(generateFormText(summary, leadContext)),
+    sendLeadEmail(buildLeadEmail(summary, leadContext, parsed.data), parsed.data.email),
+  ]);
+  if (chat.status === 'rejected') {
+    console.error('Mattermost webhook failed', chat.reason);
   }
+  if (email.status === 'rejected') {
+    console.error('Lead email failed', email.reason);
+  }
+
+  // The lead goes to Mattermost and to sales@. One copy landing is enough; if neither did, the
+  // visitor is given the sales email instead of the raw error.
+  if (chat.status === 'fulfilled' || (email.status === 'fulfilled' && email.value === 'sent')) {
+    return NextResponse.json({ success: true });
+  }
+  return NextResponse.json({ success: false, error: FORM_FALLBACK_MESSAGE }, { status: 502 });
 }
 
 /** Posts the message, retrying once so a brief Mattermost hiccup doesn't lose a lead. */
