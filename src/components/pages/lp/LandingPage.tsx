@@ -231,7 +231,7 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
               className="hidden min-h-10 items-center gap-xs rounded-sm border border-neutral-200 px-md text-xs font-bold uppercase tracking-wider text-neutral-800 transition-colors hover:border-[#25D366] hover:text-neutral-900 sm:inline-flex"
             >
               <MessageCircle size={14} className="text-[#1DA851]" aria-hidden />
-              WhatsApp
+              WhatsApp us
             </a>
             <a
               href="#book"
@@ -458,7 +458,7 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                 className={`w-full sm:w-auto ${whatsappButton}`}
               >
                 <MessageCircle size={16} className="text-[#1DA851]" aria-hidden />
-                Message us on WhatsApp
+                WhatsApp us
               </a>
               <a href="#book" className={`w-full sm:w-auto ${primaryButton}`}>
                 Book your free review
@@ -503,7 +503,7 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
         href={whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Message us on WhatsApp"
+        aria-label="WhatsApp us"
         className="fixed right-md bottom-md z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#1DA851] text-white shadow-lg transition-colors hover:bg-[#178F44] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:hidden"
       >
         <MessageCircle size={26} aria-hidden />

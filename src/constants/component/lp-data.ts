@@ -1,4 +1,4 @@
-import { SITE_PHONE, SITE_PROFILES } from '@/constants/site';
+import { SITE_PHONE_E164_2, SITE_PROFILES } from '@/constants/site';
 
 /**
  * Landing pages for Google Ads traffic, at /lp/<slug>. One template, one page per ad group. Each
@@ -139,7 +139,8 @@ export const getLpVariant = (slug: string) => LP_VARIANTS.find((variant) => vari
  * WhatsApp
  * --------------------------------------------------------------------------------------------- */
 
-const WHATSAPP_NUMBER = SITE_PHONE.replace(/[^0-9]/g, '');
+/** WhatsApp messages only (+44 7460 333169, the site footer's WhatsApp number): no calls from the ads. */
+const WHATSAPP_NUMBER = SITE_PHONE_E164_2.replace(/[^0-9]/g, '');
 
 /** Click-to-chat link with the page in the message, so the CRM can tell where the chat came from. */
 export const lpWhatsAppLink = (variant: LpVariant) =>

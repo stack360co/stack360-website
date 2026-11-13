@@ -112,7 +112,7 @@ export default function LpHero({
             className="inline-flex items-center gap-xs font-bold text-neutral-800 underline decoration-[#25D366] underline-offset-2 hover:text-neutral-900"
           >
             <MessageCircle size={14} className="text-[#1DA851]" aria-hidden />
-            Message us on WhatsApp
+            WhatsApp us
           </a>
         </p>
       </section>
@@ -141,7 +141,7 @@ export default function LpHero({
           className="mt-sm inline-flex min-h-11 w-full items-center justify-center gap-xs rounded-sm border border-neutral-300 bg-neutral-50 px-lg text-sm font-bold text-neutral-800 transition-colors hover:border-[#25D366] hover:text-neutral-900"
         >
           <MessageCircle size={16} className="text-[#1DA851]" aria-hidden />
-          Or message us on WhatsApp
+          Or WhatsApp us
         </a>
       </section>
     </div>
