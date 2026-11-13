@@ -6,19 +6,17 @@ import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
 import { LANDING_TESTIMONIALS } from '@/constants/component/landing-data';
 import {
   formatPrice,
-  getLpThemeContent,
-  LP_AUDIT,
+  getLpPageContent,
   LP_PACKAGE_TERMS,
   LP_PACKAGES,
   LP_PROOF,
   LP_SHORT_QUOTE,
   LP_TRUST,
-  LP_VAT,
   type LpPackage,
   type LpProofId,
   type LpVariant,
   lpWhatsAppLink,
-  vatLabel,
+  VAT_LABEL,
 } from '@/constants/component/lp-data';
 import {
   SITE_EMAIL,
@@ -39,25 +37,9 @@ const primaryButton =
   'inline-flex min-h-11 items-center justify-center gap-xs rounded-sm bg-primary px-lg py-sm text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
 const whatsappButton =
   'inline-flex min-h-11 items-center justify-center gap-xs rounded-sm border border-neutral-300 bg-neutral-50 px-lg py-sm text-sm font-bold text-neutral-800 transition-colors hover:border-[#25D366] hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
-const placeholderClass =
-  'rounded-sm border border-dashed border-warning bg-warning/10 px-xs text-warning';
 
 /** Mitchell's G2 review: the one client quote about automation, so every page shows it. */
 const REVIEW = LANDING_TESTIMONIALS.find((t) => t.name === 'Mitchell Woods');
-
-/** The VAT words beside a price. Until Waris confirms the VAT position they show as a placeholder. */
-function Vat() {
-  return LP_VAT === 'tbc' ? (
-    <span
-      className={`text-xs font-semibold ${placeholderClass}`}
-      title="VAT wording to be confirmed"
-    >
-      {vatLabel()}
-    </span>
-  ) : (
-    <span className="text-xs font-semibold text-neutral-600">{vatLabel()}</span>
-  );
-}
 
 function ProofCard({ id }: { id: LpProofId }) {
   const proof = LP_PROOF[id];
@@ -74,7 +56,7 @@ function ProofCard({ id }: { id: LpProofId }) {
   );
 }
 
-function PackageCard({ pkg }: { pkg: LpPackage }) {
+function PackageCard({ pkg, summary }: { pkg: LpPackage; summary?: string }) {
   return (
     <div className="flex h-full flex-col rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm">
       <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
@@ -82,17 +64,18 @@ function PackageCard({ pkg }: { pkg: LpPackage }) {
       </p>
       <h3 className="mt-sm text-lg font-bold text-neutral-900 lg:min-h-[3.5rem]">{pkg.name}</h3>
       <p className="mt-xs text-sm leading-relaxed text-neutral-600 lg:min-h-[3rem]">
-        {pkg.summary}
+        {summary ?? pkg.summary}
       </p>
-      <p className="mt-md flex flex-wrap items-baseline gap-x-xs gap-y-1">
+      <p className="mt-md flex flex-wrap items-baseline gap-x-xs">
+        {pkg.from ? <span className="text-sm font-semibold text-neutral-600">from</span> : null}
         <span className="text-3xl font-black tracking-tight text-neutral-900">
           {formatPrice(pkg.price)}
         </span>
         {pkg.per ? <span className="text-sm font-semibold text-neutral-600">{pkg.per}</span> : null}
-        <Vat />
       </p>
-      <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary">
-        Fixed price
+      <p className="text-xs font-semibold text-neutral-600">{VAT_LABEL}</p>
+      <p className="mt-xs font-mono text-[10px] font-bold uppercase tracking-widest text-primary">
+        Fixed price · {pkg.payment}
       </p>
       <ul className="mt-md flex-1 space-y-sm">
         {pkg.includes.map((item) => (
@@ -128,7 +111,12 @@ function OfferCard({
     <div className="flex flex-col gap-lg rounded-xl border-2 border-primary/40 bg-neutral-50 p-lg shadow-sm md:flex-row md:items-center md:justify-between md:p-xl">
       <div>
         <p className={eyebrow}>Start here · Free</p>
-        <Heading className="mt-sm text-xl font-bold text-neutral-900 md:text-2xl">{title}</Heading>
+        <Heading
+          id={headingLevel === 'h2' ? 'offer-heading' : undefined}
+          className="mt-sm text-xl font-bold text-neutral-900 md:text-2xl"
+        >
+          {title}
+        </Heading>
         <p className="mt-xs max-w-[40rem] text-sm leading-relaxed text-neutral-600">
           {description}
         </p>
@@ -142,7 +130,7 @@ function OfferCard({
 }
 
 export default function LandingPage({ variant }: { variant: LpVariant }) {
-  const content = getLpThemeContent(variant.theme);
+  const content = getLpPageContent(variant);
   const whatsapp = lpWhatsAppLink(variant);
   const lead = LP_PROOF[variant.proof[0]];
   const year = new Date().getFullYear();
@@ -280,7 +268,9 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
             <h2 id="proof-heading" className={`mt-sm ${sectionTitle}`}>
               What it looks like when it’s live
             </h2>
-            <p className={sectionIntro}>Results from projects we have built and run.</p>
+            <p className={sectionIntro}>
+              {variant.proofNote ?? 'Results from projects we have built and run.'}
+            </p>
             <div className="mt-xl grid grid-cols-1 gap-md md:grid-cols-3">
               {variant.proof.map((id) => (
                 <ProofCard key={id} id={id} />
@@ -341,80 +331,70 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
           </section>
         ) : null}
 
-        <section
-          id="pricing"
-          aria-labelledby="pricing-heading"
-          className="site-section scroll-mt-24 border-b border-neutral-200 bg-linear-to-b from-neutral-50 to-neutral-100 py-2xl"
-        >
-          <div className="site-container">
-            <p className={eyebrow}>Fixed-price packages</p>
-            <h2 id="pricing-heading" className={`mt-sm ${sectionTitle}`}>
-              Fixed prices, agreed before we start
-            </h2>
-            <p className={sectionIntro}>
-              No hourly rates. 200+ projects since 2019, Top Rated Plus on Upwork, and 60% fewer
-              manual workflows for Cercle.
-            </p>
+        {variant.packages.length > 0 ? (
+          <section
+            id="pricing"
+            aria-labelledby="pricing-heading"
+            className="site-section scroll-mt-24 border-b border-neutral-200 bg-linear-to-b from-neutral-50 to-neutral-100 py-2xl"
+          >
+            <div className="site-container">
+              <p className={eyebrow}>Fixed-price packages</p>
+              <h2 id="pricing-heading" className={`mt-sm ${sectionTitle}`}>
+                Fixed prices, agreed up front
+              </h2>
+              <p className={sectionIntro}>
+                No hourly rates. 200+ projects since 2019, Top Rated Plus on Upwork, and 60% fewer
+                manual workflows for Cercle. All prices are business prices, + VAT at 20%.
+              </p>
 
-            <div id="offer" className="mt-xl scroll-mt-24">
+              <div id="offer" className="mt-xl scroll-mt-24">
+                <OfferCard
+                  headingLevel="h3"
+                  title={content.offer.cardTitle}
+                  description={`${content.offer.description} A founder and a senior engineer join the call, and you get a written plan within two business days.`}
+                />
+              </div>
+
+              <div
+                className={`mt-md grid grid-cols-1 gap-md ${
+                  variant.packages.length === 4
+                    ? 'sm:grid-cols-2 lg:grid-cols-4'
+                    : variant.packages.length === 3
+                      ? 'md:grid-cols-3'
+                      : 'md:grid-cols-2'
+                }`}
+              >
+                {variant.packages.map((id) => (
+                  <PackageCard
+                    key={id}
+                    pkg={LP_PACKAGES[id]}
+                    summary={variant.packageSummaries?.[id]}
+                  />
+                ))}
+              </div>
+
+              <p className="mt-lg text-sm font-semibold text-neutral-800">{LP_PACKAGE_TERMS}</p>
+              <p className="mt-xs text-sm text-neutral-600">
+                Larger or custom projects: quoted after the review. Work outside a package is quoted
+                in writing first.
+              </p>
+            </div>
+          </section>
+        ) : (
+          <section
+            id="offer"
+            aria-labelledby="offer-heading"
+            className="site-section scroll-mt-24 border-b border-neutral-200 bg-linear-to-b from-neutral-50 to-neutral-100 py-2xl"
+          >
+            <div className="site-container">
               <OfferCard
-                headingLevel="h3"
-                title={
-                  variant.theme === 'automation'
-                    ? 'Free 20-minute automation review'
-                    : 'Free 20-minute AI review'
-                }
-                description={
-                  variant.theme === 'automation'
-                    ? 'A founder and a senior engineer look at one job your team repeats and tell you what to automate first. You get a written plan within two business days.'
-                    : `${content.offer.description} You get a written plan within two business days.`
-                }
+                headingLevel="h2"
+                title={content.offer.cardTitle}
+                description={`${content.offer.description} A founder and a senior engineer join the call. After it you get a written plan within two business days, and a fixed price agreed up front.`}
               />
             </div>
-
-            <div
-              className={`mt-md grid grid-cols-1 gap-md ${
-                variant.packages.length > 2 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-2'
-              }`}
-            >
-              {variant.packages.map((id) => (
-                <PackageCard key={id} pkg={LP_PACKAGES[id]} />
-              ))}
-            </div>
-
-            {variant.audit ? (
-              <div className="mt-md flex flex-col gap-md rounded-xl border border-dashed border-neutral-300 bg-neutral-50 p-lg md:flex-row md:items-center md:justify-between">
-                <div>
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
-                    Optional · {LP_AUDIT.timing}
-                  </p>
-                  <p className="mt-xs flex flex-wrap items-baseline gap-x-sm gap-y-1">
-                    <span className="text-lg font-bold text-neutral-900">{LP_AUDIT.name}</span>
-                    <span className="text-lg font-black text-neutral-900">
-                      {formatPrice(LP_AUDIT.price)}
-                    </span>
-                    <Vat />
-                  </p>
-                  <p className="mt-xs max-w-[48rem] text-sm leading-relaxed text-neutral-600">
-                    {LP_AUDIT.description}
-                  </p>
-                </div>
-                <a
-                  href="#book"
-                  className="inline-flex shrink-0 items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
-                >
-                  Ask about it on your free review
-                  <ArrowRight size={14} aria-hidden />
-                </a>
-              </div>
-            ) : null}
-
-            <p className="mt-lg text-sm font-semibold text-neutral-800">{LP_PACKAGE_TERMS}</p>
-            <p className="mt-xs text-sm text-neutral-600">
-              Larger or custom projects: quoted after the review.
-            </p>
-          </div>
-        </section>
+          </section>
+        )}
 
         <section
           aria-labelledby="steps-heading"
