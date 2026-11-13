@@ -15,6 +15,9 @@ export const contactSchema = z.object({
     .min(1, 'Please enter your email address.')
     .max(254, 'Your email address is too long.'),
 
+  // Sent by the ads landing pages' form; the contact page's form doesn't ask for it.
+  company: z.string().trim().max(120, 'Please shorten your company name.').optional(),
+
   message: z
     .string()
     .trim()
