@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarClock, Send } from 'lucide-react';
+import { CalendarClock, MessageCircle, Send } from 'lucide-react';
 import { type ReactNode, useEffect, useState } from 'react';
 import CalendlyInline from './CalendlyInline';
 import LpLeadForm from './LpLeadForm';
@@ -19,6 +19,7 @@ export default function LpHero({
   formTab,
   jobLabel,
   jobPlaceholder,
+  whatsappHref,
 }: {
   /** Headline and intro: first on every screen. */
   pitch: ReactNode;
@@ -28,6 +29,8 @@ export default function LpHero({
   formTab: string;
   jobLabel: string;
   jobPlaceholder: string;
+  /** Click-to-chat link with this page in the message. */
+  whatsappHref: string;
 }) {
   const [panel, setPanel] = useState<Panel>('book');
 
@@ -43,8 +46,10 @@ export default function LpHero({
   }, []);
 
   const tabClass = (active: boolean) =>
-    `flex min-h-11 flex-1 items-center justify-center gap-xs rounded-md px-sm text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
-      active ? 'bg-white text-neutral-900 shadow-sm' : 'text-neutral-600 hover:text-neutral-900'
+    `flex min-h-11 flex-1 items-center justify-center gap-xs rounded-sm px-sm text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
+      active
+        ? 'bg-neutral-50 text-neutral-900 shadow-sm'
+        : 'text-neutral-600 hover:text-neutral-900'
     }`;
 
   const showBooking = () => {
@@ -59,7 +64,7 @@ export default function LpHero({
 
       <fieldset
         aria-label="How would you like to get in touch?"
-        className="flex gap-xs rounded-lg bg-neutral-200/70 p-xs lg:hidden"
+        className="flex gap-xs rounded-md border border-neutral-200 bg-neutral-100 p-xs lg:hidden"
       >
         <button
           type="button"
@@ -85,7 +90,7 @@ export default function LpHero({
         id="book"
         aria-labelledby="book-heading"
         // Calendly needs at least 320px, so on phones the calendar runs edge to edge.
-        className={`-mx-lg scroll-mt-md border-y border-neutral-200 bg-white py-md sm:mx-0 sm:rounded-xl sm:border sm:p-lg sm:shadow-card lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:block ${
+        className={`-mx-lg scroll-mt-24 border-y border-neutral-200 bg-neutral-50 py-md sm:mx-0 sm:rounded-xl sm:border sm:p-lg sm:shadow-sm lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:block ${
           panel === 'book' ? '' : 'hidden'
         }`}
       >
@@ -94,15 +99,27 @@ export default function LpHero({
             {offerTitle}
           </h2>
           <p className="mt-xs mb-md text-sm text-neutral-600">
-            Pick a time below. You’ll talk it through with a lead engineer.
+            A founder and a senior engineer join the call. Pick a time below.
           </p>
         </div>
         <CalendlyInline />
+        <p className="mt-sm px-lg text-center text-sm text-neutral-600 sm:px-0">
+          Rather chat first?{' '}
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-xs font-bold text-neutral-800 underline decoration-[#25D366] underline-offset-2 hover:text-neutral-900"
+          >
+            <MessageCircle size={14} className="text-[#1DA851]" aria-hidden />
+            Message us on WhatsApp
+          </a>
+        </p>
       </section>
 
       <section
         aria-labelledby="form-heading"
-        className={`rounded-xl border border-neutral-200 bg-white p-md shadow-card sm:p-lg lg:col-start-1 lg:row-start-3 lg:self-start lg:block ${
+        className={`rounded-xl border border-neutral-200 bg-neutral-50 p-md shadow-sm sm:p-lg lg:col-start-1 lg:row-start-3 lg:self-start lg:block ${
           panel === 'form' ? '' : 'hidden'
         }`}
       >
@@ -117,6 +134,15 @@ export default function LpHero({
           jobPlaceholder={jobPlaceholder}
           onBookInstead={showBooking}
         />
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-sm inline-flex min-h-11 w-full items-center justify-center gap-xs rounded-sm border border-neutral-300 bg-neutral-50 px-lg text-sm font-bold text-neutral-800 transition-colors hover:border-[#25D366] hover:text-neutral-900"
+        >
+          <MessageCircle size={16} className="text-[#1DA851]" aria-hidden />
+          Or message us on WhatsApp
+        </a>
       </section>
     </div>
   );

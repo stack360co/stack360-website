@@ -1,76 +1,168 @@
-import { ArrowRight, Check, ChevronDown, Quote, Star } from 'lucide-react';
+import { ArrowRight, Check, MessageCircle, Quote, Star } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CookieSettingsButton } from '@/components/analytics/ConsentBanner';
+import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
 import { LANDING_TESTIMONIALS } from '@/constants/component/landing-data';
 import {
   formatPrice,
   getLpThemeContent,
-  LP_PRICES,
+  LP_PACKAGES,
   LP_PROOF,
+  LP_SHORT_QUOTE,
   LP_TRUST,
+  type LpPackage,
+  type LpProofId,
   type LpVariant,
+  lpWhatsAppLink,
+  vatNote,
 } from '@/constants/component/lp-data';
+import {
+  SITE_EMAIL,
+  SITE_EMAIL_HREF,
+  SITE_NAME,
+  UK_COMPANY_NAME,
+  UK_COMPANY_NUMBER,
+  UK_OFFICE_ADDRESS,
+} from '@/constants/site';
 import LpHero from './LpHero';
+import LpWhatsAppTracker from './LpWhatsAppTracker';
 
-const eyebrowClass = 'font-mono text-[11px] font-bold uppercase tracking-widest text-primary-dark';
-const sectionTitleClass = 'text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl';
+/* The site's own type and component styles (PageHero, CapabilityPage, PageClosingCta). */
+const sectionTitle = 'text-balance text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl';
+const sectionIntro = 'mt-sm max-w-3xl text-pretty text-sm leading-relaxed text-neutral-600';
+const eyebrow = 'font-mono text-[10px] font-bold uppercase tracking-widest text-primary';
+const primaryButton =
+  'inline-flex min-h-11 items-center justify-center gap-xs rounded-sm bg-primary px-lg py-sm text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
+const whatsappButton =
+  'inline-flex min-h-11 items-center justify-center gap-xs rounded-sm border border-neutral-300 bg-neutral-50 px-lg py-sm text-sm font-bold text-neutral-800 transition-colors hover:border-[#25D366] hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
+const placeholderClass =
+  'rounded-sm border border-dashed border-warning bg-warning/10 px-xs text-warning';
 
-/** Mitchell's G2 review is the one client quote about automation, so every variant shows it. */
+/** Mitchell's G2 review: the one client quote about automation, so every page shows it. */
 const REVIEW = LANDING_TESTIMONIALS.find((t) => t.name === 'Mitchell Woods');
 
-/** A price that hasn't been set yet, styled so nobody mistakes the preview for a finished page. */
-function Price({ value, className }: { value: number | null; className?: string }) {
+/** A price that hasn't been approved yet, styled so nobody mistakes the preview for a final page. */
+function Price({ value }: { value: number | null }) {
   const text = formatPrice(value);
   return value === null ? (
-    <span
-      className={`${className ?? ''} rounded-sm border border-dashed border-warning bg-warning/10 px-xs text-warning`}
-      title="Price to be set"
-    >
+    <span className={placeholderClass} title="Price to be confirmed">
       {text}
     </span>
   ) : (
-    <span className={className}>{text}</span>
+    text
+  );
+}
+
+function ProofCard({ id }: { id: LpProofId }) {
+  const proof = LP_PROOF[id];
+  return (
+    <div className="flex h-full flex-col rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm">
+      <p className="font-mono text-2xl font-black text-primary">{proof.metric}</p>
+      <p className="mt-xs font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+        {proof.metricLabel}
+      </p>
+      <h3 className="mt-lg text-lg font-bold text-neutral-900">{proof.client}</h3>
+      <p className="text-xs text-neutral-500">{proof.context}</p>
+      <p className="mt-sm text-sm leading-relaxed text-neutral-600">{proof.description}</p>
+    </div>
+  );
+}
+
+function PackageCard({ pkg }: { pkg: LpPackage }) {
+  return (
+    <div className="flex h-full flex-col rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm">
+      <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+        {pkg.timing}
+      </p>
+      <h3 className="mt-sm text-lg font-bold text-neutral-900 lg:min-h-[3.5rem]">{pkg.name}</h3>
+      <p className="mt-xs text-sm leading-relaxed text-neutral-600 lg:min-h-[4.5rem]">
+        {pkg.summary}
+      </p>
+      <p className="mt-md text-2xl font-black tracking-tight text-neutral-900">
+        {pkg.from ? <span className="text-sm font-semibold text-neutral-600">from </span> : null}
+        <Price value={pkg.price} />
+        {pkg.per ? (
+          <span className="text-sm font-semibold text-neutral-600"> {pkg.per}</span>
+        ) : null}
+      </p>
+      <ul className="mt-md flex-1 space-y-sm">
+        {pkg.includes.map((item) => (
+          <li key={item} className="flex items-start gap-sm text-sm text-neutral-700">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+            {item}
+          </li>
+        ))}
+      </ul>
+      <a
+        href="#book"
+        className="mt-lg inline-flex items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
+      >
+        Start with a free review
+        <ArrowRight size={14} aria-hidden />
+      </a>
+    </div>
+  );
+}
+
+function OfferCard({
+  title,
+  description,
+  headingLevel,
+}: {
+  title: string;
+  description: string;
+  headingLevel: 'h2' | 'h3';
+}) {
+  const Heading = headingLevel;
+  return (
+    <div className="flex flex-col gap-lg rounded-xl border-2 border-primary/40 bg-neutral-50 p-lg shadow-sm md:flex-row md:items-center md:justify-between md:p-xl">
+      <div>
+        <p className={eyebrow}>Start here · Free</p>
+        <Heading className="mt-sm text-xl font-bold text-neutral-900 md:text-2xl">{title}</Heading>
+        <p className="mt-xs max-w-[40rem] text-sm leading-relaxed text-neutral-600">
+          {description}
+        </p>
+      </div>
+      <a href="#book" className={`shrink-0 ${primaryButton}`}>
+        Book your free review
+        <ArrowRight size={14} aria-hidden />
+      </a>
+    </div>
   );
 }
 
 export default function LandingPage({ variant }: { variant: LpVariant }) {
   const content = getLpThemeContent(variant.theme);
-  const prices = LP_PRICES[variant.theme];
+  const whatsapp = lpWhatsAppLink(variant);
+  const lead = LP_PROOF[variant.proof[0]];
+  const year = new Date().getFullYear();
+  const vat = vatNote();
 
   const pitch = (
-    <div>
-      <p className={eyebrowClass}>{variant.eyebrow}</p>
-      <h1 className="mt-sm text-balance text-3xl font-bold leading-tight tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">
+    <div className="space-y-md">
+      <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
+        {variant.eyebrow} · Free 20-minute review
+      </p>
+      <h1 className="text-balance text-4xl font-black leading-tight tracking-tight text-neutral-900 md:text-5xl">
         {variant.headline}
       </h1>
-      <p className="mt-md max-w-[36rem] text-base leading-relaxed text-neutral-700 md:text-lg">
-        {variant.intro}
+      <p className="max-w-[40rem] text-base leading-relaxed text-neutral-600 md:text-lg">
+        {variant.subhead}
       </p>
-    </div>
-  );
-
-  const details = (
-    <div>
-      <ul className="space-y-sm">
-        {[
-          content.offer.description,
-          'A written plan within two business days of the call',
-          'You own everything we build',
-        ].map((point) => (
-          <li key={point} className="flex items-start gap-sm text-sm text-neutral-800 md:text-base">
-            <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-            {point}
-          </li>
-        ))}
-      </ul>
-      <ul className="mt-lg flex flex-wrap gap-x-lg gap-y-sm" aria-label="Ratings and track record">
+      <ul className="flex flex-wrap gap-x-lg gap-y-xs pt-xs" aria-label="Ratings and track record">
         {LP_TRUST.map((item) => (
-          <li key={item.label} className="flex items-center gap-xs text-sm text-neutral-700">
-            <Star className="h-4 w-4 shrink-0 fill-primary text-primary" aria-hidden />
+          <li
+            key={item.label}
+            className="flex items-center gap-xs text-xs text-neutral-700 sm:text-sm"
+          >
+            <Star className="h-3.5 w-3.5 shrink-0 fill-primary text-primary" aria-hidden />
             {item.href ? (
               <a
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-neutral-300 underline-offset-2 hover:text-primary"
+                className="text-neutral-700 underline decoration-neutral-300 underline-offset-2 hover:text-primary"
               >
                 {item.label}
               </a>
@@ -83,177 +175,327 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
     </div>
   );
 
+  const details = (
+    <figure className="rounded-xl border border-neutral-200 bg-neutral-50 p-md shadow-sm sm:p-lg">
+      <div className="flex flex-wrap items-baseline gap-x-md gap-y-xs">
+        <p className="font-mono text-2xl font-black text-primary">{lead.metric}</p>
+        <p className="text-sm text-neutral-700">
+          <span className="font-semibold text-neutral-900">{lead.metricLabel}</span> · {lead.client}
+        </p>
+      </div>
+      {REVIEW ? (
+        <>
+          <blockquote className="mt-sm text-sm leading-relaxed text-neutral-700">
+            “{LP_SHORT_QUOTE}”
+          </blockquote>
+          <figcaption className="mt-xs text-xs text-neutral-500">
+            {REVIEW.name}, {REVIEW.role}, {REVIEW.company}
+            {REVIEW.source ? (
+              <>
+                {' · '}
+                <a
+                  href={REVIEW.source.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-600 underline underline-offset-2 hover:text-primary"
+                >
+                  {REVIEW.source.label}
+                </a>
+              </>
+            ) : null}
+          </figcaption>
+        </>
+      ) : null}
+    </figure>
+  );
+
   return (
     <>
-      <section className="site-container pt-lg pb-2xl md:pt-xl">
-        <LpHero
-          pitch={pitch}
-          details={details}
-          offerTitle={content.offer.title}
-          formTab={content.jobField.tab}
-          jobLabel={content.jobField.label}
-          jobPlaceholder={content.jobField.placeholder}
-        />
-      </section>
+      <LpWhatsAppTracker />
 
-      <section
-        aria-labelledby="proof-heading"
-        className="border-t border-neutral-200 bg-white py-2xl"
-      >
-        <div className="site-container">
-          <p className={eyebrowClass}>Our work</p>
-          <h2 id="proof-heading" className={`mt-sm ${sectionTitleClass}`}>
-            What it looks like when it’s live
-          </h2>
-          <ul className="mt-xl grid grid-cols-1 gap-lg md:grid-cols-3">
-            {content.proofOrder.map((id) => {
-              const proof = LP_PROOF[id];
-              return (
-                <li key={id} className="flex flex-col rounded-xl border border-neutral-200 p-lg">
-                  <p className="text-sm font-semibold text-neutral-900">{proof.client}</p>
-                  <p className="text-xs text-neutral-600">{proof.context}</p>
-                  <p className="mt-lg text-3xl font-bold tracking-tight text-primary-dark">
-                    {proof.result}
-                  </p>
-                  <p className="text-sm font-medium text-neutral-800">{proof.resultLabel}</p>
-                  <p className="mt-md text-sm leading-relaxed text-neutral-700">
-                    {proof.description}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-          {REVIEW ? (
-            <figure className="mt-xl rounded-xl bg-neutral-100 p-lg md:p-xl">
-              <Quote className="h-6 w-6 text-primary" aria-hidden />
-              <blockquote className="mt-sm text-base leading-relaxed text-neutral-800 md:text-lg">
-                “{REVIEW.quote}”
-              </blockquote>
-              <figcaption className="mt-md text-sm text-neutral-700">
-                <span className="font-semibold text-neutral-900">{REVIEW.name}</span>, {REVIEW.role}
-                , {REVIEW.company}
-                {REVIEW.source ? (
-                  <>
-                    {' · '}
-                    <a
-                      href={REVIEW.source.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline underline-offset-2 hover:text-primary"
-                    >
-                      {REVIEW.source.label}
-                    </a>
-                  </>
-                ) : null}
-              </figcaption>
-            </figure>
-          ) : null}
-        </div>
-      </section>
-
-      <section aria-labelledby="pricing-heading" className="py-2xl">
-        <div className="site-container grid grid-cols-1 gap-xl lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-center">
-          <div>
-            <p className={eyebrowClass}>Pricing</p>
-            <h2 id="pricing-heading" className={`mt-sm ${sectionTitleClass}`}>
-              {content.pricing.fromLabel} <Price value={prices.from} />
-            </h2>
-            <p className="mt-md max-w-[32rem] text-base leading-relaxed text-neutral-700">
-              Start with one piece of work at a fixed price. Larger projects are quoted after the
-              review call, once we know what’s involved.
-            </p>
-          </div>
-          <div className="rounded-xl border-2 border-primary/40 bg-white p-lg shadow-card md:p-xl">
-            <div className="flex flex-wrap items-baseline justify-between gap-sm">
-              <h3 className="text-xl font-bold text-neutral-900">{content.pricing.packageName}</h3>
-              <p className="text-2xl font-bold text-neutral-900">
-                <Price value={prices.starter} />{' '}
-                <span className="text-sm font-medium text-neutral-600">fixed price</span>
-              </p>
-            </div>
-            <p className="mt-xs text-sm text-neutral-700">{content.pricing.packageSummary}</p>
-            <ul className="mt-lg grid grid-cols-1 gap-sm sm:grid-cols-2">
-              {content.pricing.includes.map((item) => (
-                <li key={item} className="flex items-start gap-sm text-sm text-neutral-800">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
-                  {item}
-                </li>
-              ))}
-            </ul>
+      {/* The site's navbar bar, without the menu: nothing here leads off the page. */}
+      <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-neutral-50/90 shadow-xs backdrop-blur-md">
+        <div className="site-container flex h-16 items-center justify-between gap-md sm:h-18">
+          <span className="flex items-center gap-sm">
+            <Image src="/favicon.svg" alt="" width={32} height={32} priority />
+            <Image
+              src="/stack360-text.svg"
+              alt={SITE_NAME}
+              width={108}
+              height={20}
+              priority
+              className="h-5 w-auto"
+            />
+          </span>
+          <div className="flex items-center gap-sm">
+            <a
+              href={whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden min-h-10 items-center gap-xs rounded-sm border border-neutral-200 px-md text-xs font-bold uppercase tracking-wider text-neutral-800 transition-colors hover:border-[#25D366] hover:text-neutral-900 sm:inline-flex"
+            >
+              <MessageCircle size={14} className="text-[#1DA851]" aria-hidden />
+              WhatsApp
+            </a>
             <a
               href="#book"
-              className="mt-lg inline-flex min-h-11 items-center gap-xs rounded-md bg-primary px-lg py-sm text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex min-h-10 items-center whitespace-nowrap rounded-sm bg-primary px-md text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-primary-dark hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
-              Start with a free review
-              <ArrowRight className="h-4 w-4" aria-hidden />
+              <span className="sm:hidden">Free review</span>
+              <span className="hidden sm:inline">Book a free review</span>
             </a>
           </div>
         </div>
-      </section>
+      </header>
 
-      <section
-        aria-labelledby="steps-heading"
-        className="border-y border-neutral-200 bg-white py-2xl"
-      >
-        <div className="site-container">
-          <p className={eyebrowClass}>How it works</p>
-          <h2 id="steps-heading" className={`mt-sm ${sectionTitleClass}`}>
-            From first call to working software
-          </h2>
-          <ol className="mt-xl grid grid-cols-1 gap-lg md:grid-cols-3">
-            {content.steps.map((step, index) => (
-              <li key={step.title} className="rounded-xl border border-neutral-200 p-lg">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 font-mono text-sm font-bold text-primary">
-                  {index + 1}
-                </span>
-                <h3 className="mt-md text-lg font-bold text-neutral-900">{step.title}</h3>
-                <p className="mt-xs text-sm leading-relaxed text-neutral-700">{step.description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section aria-labelledby="faq-heading" className="py-2xl">
-        <div className="site-container max-w-3xl">
-          <p className={eyebrowClass}>FAQ</p>
-          <h2 id="faq-heading" className={`mt-sm ${sectionTitleClass}`}>
-            Questions people ask first
-          </h2>
-          <div className="mt-xl divide-y divide-neutral-200 border-y border-neutral-200">
-            {content.faqs.map((faq) => (
-              <details key={faq.question} className="group py-md">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-md text-base font-semibold text-neutral-900 marker:hidden [&::-webkit-details-marker]:hidden">
-                  {faq.question}
-                  <ChevronDown
-                    className="h-5 w-5 shrink-0 text-neutral-500 transition-transform group-open:rotate-180"
-                    aria-hidden
-                  />
-                </summary>
-                <p className="mt-sm text-sm leading-relaxed text-neutral-700">{faq.answer}</p>
-              </details>
-            ))}
+      <main id="main-content" className="relative z-10">
+        <section className="site-section border-b border-neutral-200 bg-linear-to-b from-neutral-50/80 via-neutral-50/80 to-neutral-100 pt-xl pb-2xl md:pt-2xl">
+          <div className="site-container">
+            <LpHero
+              pitch={pitch}
+              details={details}
+              offerTitle={content.offer.title}
+              formTab={content.jobField.tab}
+              jobLabel={content.jobField.label}
+              jobPlaceholder={content.jobField.placeholder}
+              whatsappHref={whatsapp}
+            />
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="bg-neutral-900 py-2xl">
-        <div className="site-container flex flex-col items-start gap-lg md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-white md:text-3xl">{content.closing.title}</h2>
-            <p className="mt-sm max-w-[36rem] text-base text-neutral-300">
-              {content.closing.description}
+        <section
+          aria-labelledby="proof-heading"
+          className="site-section border-b border-neutral-200 py-2xl"
+        >
+          <div className="site-container">
+            <p className={eyebrow}>Our work</p>
+            <h2 id="proof-heading" className={`mt-sm ${sectionTitle}`}>
+              What it looks like when it’s live
+            </h2>
+            <p className={sectionIntro}>Results from projects we have built and run.</p>
+            <div className="mt-xl grid grid-cols-1 gap-md md:grid-cols-3">
+              {variant.proof.map((id) => (
+                <ProofCard key={id} id={id} />
+              ))}
+            </div>
+            {REVIEW ? (
+              <figure className="mt-xl rounded-xl border border-neutral-200 bg-neutral-100 p-lg md:p-xl">
+                <Quote className="h-6 w-6 text-primary" aria-hidden />
+                <blockquote className="mt-sm max-w-4xl text-pretty text-base leading-relaxed text-neutral-800 md:text-lg">
+                  “{REVIEW.quote}”
+                </blockquote>
+                <figcaption className="mt-md text-sm text-neutral-600">
+                  <span className="font-bold text-neutral-900">{REVIEW.name}</span>, {REVIEW.role},{' '}
+                  {REVIEW.company}
+                  {REVIEW.source ? (
+                    <>
+                      {' · '}
+                      <a
+                        href={REVIEW.source.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-2 hover:text-primary"
+                      >
+                        {REVIEW.source.label}
+                      </a>
+                    </>
+                  ) : null}
+                </figcaption>
+              </figure>
+            ) : null}
+          </div>
+        </section>
+
+        {variant.legalAccounting ? (
+          <section
+            id="legal-accounting"
+            aria-labelledby="legal-heading"
+            className="site-section scroll-mt-24 border-b border-neutral-200 bg-neutral-100 py-2xl"
+          >
+            <div className="site-container">
+              <p className={eyebrow}>Law firms and accountants</p>
+              <h2 id="legal-heading" className={`mt-sm ${sectionTitle}`}>
+                Paperwork and new enquiries, handled on their own
+              </h2>
+              <p className={sectionIntro}>
+                Two jobs that fill a practice’s week: preparing documents and answering new leads
+                before they go cold.
+              </p>
+              <div className="mt-xl grid grid-cols-1 gap-md md:grid-cols-2">
+                <ProofCard id="legalatoms" />
+                <ProofCard id="bookkeeping" />
+              </div>
+              <a href="#book" className={`mt-xl ${primaryButton}`}>
+                Book a free review for your firm
+                <ArrowRight size={14} aria-hidden />
+              </a>
+            </div>
+          </section>
+        ) : null}
+
+        {variant.theme === 'automation' ? (
+          <section
+            id="pricing"
+            aria-labelledby="pricing-heading"
+            className="site-section scroll-mt-24 border-b border-neutral-200 bg-linear-to-b from-neutral-50 to-neutral-100 py-2xl"
+          >
+            <div className="site-container">
+              <p className={eyebrow}>Fixed-price packages</p>
+              <h2 id="pricing-heading" className={`mt-sm ${sectionTitle}`}>
+                A fixed price, agreed before we start
+              </h2>
+              <p className={sectionIntro}>No hourly rates. Start with the free review.</p>
+
+              <div id="offer" className="mt-xl scroll-mt-24">
+                <OfferCard
+                  headingLevel="h3"
+                  title="Free 20-minute automation review"
+                  description="A founder and a senior engineer look at one job your team repeats and tell you what to automate first. You get a written plan within two business days."
+                />
+              </div>
+
+              <div className="mt-md grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
+                {LP_PACKAGES.map((pkg) => (
+                  <PackageCard key={pkg.id} pkg={pkg} />
+                ))}
+              </div>
+
+              <p className="mt-lg text-sm font-semibold text-neutral-800">
+                Larger or custom projects: quoted after the review.
+              </p>
+              <p className="mt-xs text-xs text-neutral-600">
+                {vat.includes('[TBC') ? <span className={placeholderClass}>{vat}</span> : vat}
+              </p>
+            </div>
+          </section>
+        ) : (
+          <section
+            id="offer"
+            aria-labelledby="offer-heading"
+            className="site-section scroll-mt-24 border-b border-neutral-200 bg-linear-to-b from-neutral-50 to-neutral-100 py-2xl"
+          >
+            <div className="site-container">
+              <OfferCard
+                headingLevel="h2"
+                title={content.offer.title}
+                description={`${content.offer.description} After the review you get a written plan within two business days, and a fixed price agreed before we start.`}
+              />
+            </div>
+          </section>
+        )}
+
+        <section
+          aria-labelledby="steps-heading"
+          className="site-section border-b border-neutral-200 bg-neutral-100 py-2xl"
+        >
+          <div className="site-container">
+            <h2 id="steps-heading" className={sectionTitle}>
+              How it works
+            </h2>
+            <p className={sectionIntro}>Three steps from the first call to working software.</p>
+            <ol className="mt-xl grid grid-cols-1 gap-md md:grid-cols-3">
+              {content.steps.map((step) => (
+                <li
+                  key={step.title}
+                  className="h-full rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm"
+                >
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                    {step.phase}
+                  </p>
+                  <h3 className="mt-sm text-lg font-bold text-neutral-900">{step.title}</h3>
+                  <p className="mt-sm text-sm leading-relaxed text-neutral-600">
+                    {step.description}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section aria-labelledby="faq-heading" className="site-section py-2xl">
+          <div className="site-container max-w-3xl">
+            <h2
+              id="faq-heading"
+              className="text-balance text-2xl font-bold tracking-tight text-neutral-900"
+            >
+              Questions people ask first
+            </h2>
+            <p className="mt-sm mb-xl text-sm leading-relaxed text-neutral-600">
+              Straight answers before you book.
+            </p>
+            <FaqAccordion items={content.faqs} />
+          </div>
+        </section>
+
+        {/* The site's closing call to action, with WhatsApp as the second choice. */}
+        <section className="site-section border-t border-neutral-200 bg-neutral-100 py-2xl">
+          <div className="site-container flex flex-col items-start justify-between gap-lg md:flex-row md:items-center">
+            <div className="max-w-3xl space-y-sm">
+              <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
+                {content.closing.title}
+              </h2>
+              <p className="text-sm leading-relaxed text-neutral-600">
+                {content.closing.description}
+              </p>
+            </div>
+            <div className="flex w-full flex-col gap-sm sm:w-auto sm:flex-row">
+              <a
+                href={whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full sm:w-auto ${whatsappButton}`}
+              >
+                <MessageCircle size={16} className="text-[#1DA851]" aria-hidden />
+                Message us on WhatsApp
+              </a>
+              <a href="#book" className={`w-full sm:w-auto ${primaryButton}`}>
+                Book your free review
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-section relative z-10 border-t-2 border-primary bg-neutral-50">
+        <div className="site-container flex flex-col gap-md py-xl pb-24 sm:flex-row sm:items-end sm:justify-between sm:pb-xl">
+          <div className="space-y-xs text-center sm:text-left">
+            <p className="text-sm text-neutral-600">
+              © {year} {SITE_NAME} ·{' '}
+              <a href={SITE_EMAIL_HREF} className="text-neutral-700 hover:text-primary">
+                {SITE_EMAIL}
+              </a>
+            </p>
+            {/* UK law asks a company's website to show these details. */}
+            <p className="text-xs text-neutral-600">
+              {UK_COMPANY_NAME} is registered in England and Wales, company number{' '}
+              {UK_COMPANY_NUMBER}. Registered office: {UK_OFFICE_ADDRESS}.
             </p>
           </div>
-          <a
-            href="#book"
-            className="inline-flex min-h-12 shrink-0 items-center gap-xs rounded-md bg-primary px-xl py-md text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          <nav
+            aria-label="Legal"
+            className="flex shrink-0 items-center justify-center gap-lg whitespace-nowrap text-sm text-neutral-600"
           >
-            Book your free review
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </a>
+            <Link href="/privacy" className="transition-colors hover:text-primary">
+              Privacy
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-primary">
+              Terms
+            </Link>
+            <CookieSettingsButton className="cursor-pointer transition-colors hover:text-primary" />
+          </nav>
         </div>
-      </section>
+      </footer>
+
+      {/* Phones: WhatsApp stays one tap away while scrolling. */}
+      <a
+        href={whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Message us on WhatsApp"
+        className="fixed right-md bottom-md z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#1DA851] text-white shadow-lg transition-colors hover:bg-[#178F44] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:hidden"
+      >
+        <MessageCircle size={26} aria-hidden />
+      </a>
     </>
   );
 }

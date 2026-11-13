@@ -24,7 +24,7 @@ type Values = Record<Field, string>;
 const EMPTY: Values = { name: '', email: '', company: '', message: '' };
 
 const inputClass = (invalid: boolean) =>
-  `min-h-11 w-full rounded-md border bg-white px-md py-sm text-base text-neutral-900 outline-none transition-colors placeholder:text-neutral-500 focus-visible:ring-2 disabled:opacity-60 sm:text-sm ${
+  `min-h-11 w-full rounded-md border bg-neutral-50 px-md py-sm text-base text-neutral-900 outline-none transition-colors placeholder:text-neutral-500 focus-visible:ring-2 disabled:opacity-60 sm:text-sm ${
     invalid
       ? 'border-danger focus-visible:border-danger focus-visible:ring-danger/15'
       : 'border-neutral-300 focus-visible:border-primary focus-visible:ring-primary/15'
@@ -228,7 +228,7 @@ export default function LpLeadForm({
       <button
         type="submit"
         disabled={sending}
-        className="mt-lg min-h-12 w-full rounded-md bg-primary px-xl py-md text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-lg min-h-12 w-full rounded-sm bg-primary px-xl py-md text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60"
       >
         {sending ? 'Sending…' : 'Send it to us'}
       </button>
