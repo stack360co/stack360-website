@@ -1,0 +1,28 @@
+# Build settings for AWS Amplify Hosting (app stack360-website, eu-west-1). This file overrides
+# the build spec in the Amplify console. The site's settings (Mattermost hook, Resend key, Calendly
+# link...) are environment variables on the Amplify app, never in this repo.
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 22 && nvm use 22
+        - node --version
+        - npm ci
+    build:
+      commands:
+        # Amplify passes app settings to the build only; write the server-side ones to
+        # .env.production so the Next.js server can read them at runtime.
+        - env | grep -E '^(MATTERMOST_WEBHOOK_ID|RESEND_API_KEY|LEAD_EMAIL_FROM|NEXT_PUBLIC_[A-Z_]+)=' >> .env.production || true
+        - npm run build
+    postBuild:
+      commands:
+        # Tell Bing which pages changed. Never fails the build.
+        - node scripts/indexnow.mjs || true
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
