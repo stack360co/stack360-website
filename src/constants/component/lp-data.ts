@@ -14,8 +14,12 @@ export type LpTheme = 'automation' | 'ai';
 
 export interface LpVariant {
   slug: string;
-  /** automation pages show the packages and prices; ai pages offer the free review only. */
+  /** Picks the offer wording, the form's question, the steps and the FAQ. */
   theme: LpTheme;
+  /** Fixed-price packages shown under the free review (#pricing), in order. */
+  packages: readonly LpPackageId[];
+  /** Adds the optional paid automation audit under the packages. */
+  audit?: boolean;
   /** Browser tab title, before " | Stack360". */
   title: string;
   /** Meta description. The page is noindex, so this mostly shows when the link is shared. */
@@ -37,6 +41,8 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'automation',
     theme: 'automation',
+    packages: ['starter', 'pack', 'presence', 'care'],
+    audit: true,
     title: 'Business Automation: Free 20-Minute Review',
     description:
       'Still retyping data between systems? We connect your tools so the data moves on its own. Fixed-price packages and a free 20-minute review.',
@@ -51,6 +57,8 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'ai-automation',
     theme: 'automation',
+    packages: ['starter', 'pack', 'presence', 'care'],
+    audit: true,
     title: 'AI Automation: Free 20-Minute Review',
     description:
       'Jobs your team keeps forgetting? Staff get an alert the moment a lead or booking arrives. Fixed-price packages and a free 20-minute review.',
@@ -64,6 +72,8 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'n8n',
     theme: 'automation',
+    packages: ['n8n', 'starter', 'pack', 'care'],
+    audit: true,
     title: 'n8n Automation: Free 20-Minute Review',
     description:
       'n8n workflows breaking without anyone noticing? We build and look after n8n workflows that report their own failures, on your own servers if you want.',
@@ -77,6 +87,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'ai-agents',
     theme: 'ai',
+    packages: ['chatbot', 'care'],
     title: 'AI Agent Development: Free 20-Minute Review',
     description:
       'Requests piling up and documents read by hand? AI agents that work from your own data, with a person checking where it matters.',
@@ -90,6 +101,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'ai-chatbots',
     theme: 'ai',
+    packages: ['chatbot', 'care'],
     title: 'AI Chatbot Development: Free 20-Minute Review',
     description:
       'Answering the same questions all day? A chatbot that looks the answer up in your own records before it replies. Book a free 20-minute review.',
@@ -121,98 +133,145 @@ export const lpWhatsAppLink = (variant: LpVariant) =>
  * --------------------------------------------------------------------------------------------- */
 
 /**
- * Prices are Waris's call and aren't approved yet. While a value is null the page shows an obvious
- * "£[TBC]" placeholder, so a preview can't be mistaken for a finished page. Google Ads requires
- * the price in an ad to match this page exactly, so change them together.
+ * Fixed prices Waris approved on 13 Nov 2026 (research chat's UK benchmark, section 3). Google Ads
+ * requires the price in an ad to match this page exactly, so change ads and pages together.
+ * Prices appear on the /lp pages only, not on the main site.
  */
-export const LP_PRICES = {
-  single: null as number | null,
-  pack: null as number | null,
-  presence: null as number | null,
-  /** A month. */
-  care: null as number | null,
-};
 
-/** Whether the prices include VAT. null shows a placeholder. */
-export const LP_PRICES_INCLUDE_VAT: boolean | null = null;
+/**
+ * VAT position. 'tbc' shows a "[VAT TBC]" placeholder beside each price until Waris confirms
+ * whether Stack360 Ltd is VAT-registered.
+ */
+export const LP_VAT = 'tbc' as 'tbc' | 'registered' | 'not-registered';
 
-export const formatPrice = (value: number | null) =>
-  value === null ? '£[TBC]' : `£${value.toLocaleString('en-GB')}`;
+/** The words beside every price. */
+export const vatLabel = () =>
+  LP_VAT === 'registered'
+    ? '+ VAT at 20% (business price)'
+    : LP_VAT === 'not-registered'
+      ? 'No VAT to add'
+      : '[VAT TBC]';
 
-export const vatNote = () =>
-  LP_PRICES_INCLUDE_VAT === null
-    ? 'Prices [TBC: including or excluding] VAT.'
-    : LP_PRICES_INCLUDE_VAT
-      ? 'Prices include VAT.'
-      : 'Prices exclude VAT.';
+export const formatPrice = (value: number) => `£${value.toLocaleString('en-GB')}`;
+
+export type LpPackageId = 'n8n' | 'starter' | 'pack' | 'presence' | 'chatbot' | 'care';
 
 export interface LpPackage {
-  id: string;
   name: string;
-  summary: string;
-  price: number | null;
-  /** "from £X" rather than a set price. */
-  from?: boolean;
+  price: number;
   /** Shown after the price, e.g. "a month". */
   per?: string;
   timing: string;
+  summary: string;
   includes: string[];
+  /** Small print: what the fixed price doesn't cover. */
+  excluded: string;
 }
 
-/** The four paid packages. The free review sits above them as the main offer. */
-export const LP_PACKAGES: readonly LpPackage[] = [
-  {
-    id: 'single',
-    name: 'Single automation',
-    summary: 'One workflow, built end to end and switched on.',
-    price: LP_PRICES.single,
-    from: true,
-    timing: 'Live in about 1 week',
+const AUTOMATION_EXCLUDED =
+  'Tool subscriptions, AI usage, cleaning messy data, apps without an API';
+
+export const LP_PACKAGES: Record<LpPackageId, LpPackage> = {
+  n8n: {
+    name: 'n8n workflow build',
+    price: 449,
+    timing: '1 week',
+    summary: 'One workflow in your own n8n, cloud or self-hosted.',
     includes: [
-      'One workflow, in n8n or as code',
-      'Tested on real cases before it goes live',
-      'Every run logged, failures flagged to a person',
-      'You own the workflow and the code',
+      'One defined workflow, up to about 15 nodes and 3 connected apps',
+      'Error alerts when a run fails',
+      'Short documentation',
+      '14 days of fixes',
     ],
+    excluded:
+      'Setting up a self-hosted n8n server (+£150), n8n and app subscriptions, AI model usage.',
   },
-  {
-    id: 'pack',
+  starter: {
+    name: 'Automation Starter',
+    price: 895,
+    timing: '2 weeks',
+    summary: 'One workflow, end to end.',
+    includes: [
+      '45-minute discovery and a written process map',
+      'One workflow in Zapier, Make or n8n (up to 4 apps, one AI step allowed)',
+      'Tested on real data',
+      'Handover video and runbook',
+      '30 days of support',
+    ],
+    excluded: `${AUTOMATION_EXCLUDED}.`,
+  },
+  pack: {
     name: 'Business automation pack',
-    summary: '3–5 connected workflows that pass data between your tools.',
-    price: LP_PRICES.pack,
-    from: true,
-    timing: 'Live in 2–3 weeks',
+    price: 2950,
+    timing: '4 weeks',
+    summary: '3 to 5 workflows across your tools.',
     includes: [
-      '3–5 workflows, connected to each other',
-      'Each one switched on separately, with a person able to override it',
-      'Every run logged, failures flagged to a person',
-      'You own the workflows and the code',
+      'Half-day discovery workshop',
+      '3 to 5 workflows across up to 6 apps',
+      'Alerts dashboard',
+      'Staff training session',
+      '60 days of support',
     ],
+    excluded: `${AUTOMATION_EXCLUDED}, data migration, custom software.`,
   },
-  {
-    id: 'presence',
+  presence: {
     name: 'Online presence and lead engine',
+    price: 1750,
+    timing: '3 weeks',
     summary: 'Get found, get reviewed and catch every lead.',
-    price: LP_PRICES.presence,
-    from: true,
-    timing: 'Live in 3–4 weeks',
     includes: [
-      'Website refresh',
-      'Google Business Profile set up',
-      'Review requests sent after each job',
-      'Lead capture into a CRM',
+      'Refresh of up to 6 website pages in your brand (mobile speed, schema, copy edits)',
+      'Google Business Profile optimization (categories, services, photos, first 4 posts)',
+      'Automatic review requests after each job',
+      'Leads from forms, calls and WhatsApp clicks into a CRM pipeline',
+      'GA4 and Search Console, with conversion tracking',
     ],
+    excluded: 'New copywriting beyond edits, photography, CRM or SMS licenses, ad spend.',
   },
-  {
-    id: 'care',
+  chatbot: {
+    name: 'AI Chatbot Pilot',
+    price: 1495,
+    timing: 'Live in 1 week, then a 4-week pilot',
+    summary: 'A chatbot that answers from your own records.',
+    includes: [
+      'Answers from your website, FAQs and up to 20 documents',
+      'On your website (WhatsApp +£300)',
+      'Leads into your CRM or inbox',
+      'Hands off to a person',
+      'Guardrails, weekly tuning and a usage report during the pilot',
+    ],
+    excluded:
+      'Model and hosting costs, paid direct (typically £20–£60 a month), WhatsApp Business API fees, regulated advice content.',
+  },
+  care: {
     name: 'Care plan',
-    summary: 'We keep your automations running after launch.',
-    price: LP_PRICES.care,
+    price: 149,
     per: 'a month',
-    timing: 'Monthly, after launch',
-    includes: ['Monitoring', 'Fixes when something breaks', 'Small changes each month'],
+    timing: 'Monthly, 30 days’ notice',
+    summary: 'Monitoring and fixes, monthly.',
+    includes: [
+      'Monitoring of up to 5 automations or one chatbot',
+      'Fixes within 2 working days',
+      'Up to 2 hours of changes a month',
+      'Hosting and updates for a site we built',
+      'A one-page monthly report',
+    ],
+    excluded: 'New builds, third-party subscriptions.',
   },
-];
+};
+
+/** Optional paid audit, shown under the packages on the automation pages. */
+export const LP_AUDIT = {
+  name: 'Automation audit',
+  price: 295,
+  timing: '5 working days',
+  description:
+    'A 1-hour call and a written list of the 3 automations worth doing first, with the hours saved and the fixed price for each. The fee is credited in full against any build within 60 days.',
+};
+
+/** True for every package. Shown under the cards. */
+export const LP_PACKAGE_TERMS =
+  'Every package is a fixed price: 50% at the start and 50% at go-live. You own every account and workflow.';
 
 /* ------------------------------------------------------------------------------------------------
  * Proof
@@ -361,6 +420,12 @@ const step2 = {
   description: 'You get a written plan with milestones within two business days of the call.',
 };
 
+/** A package's price with the VAT words, for running text. */
+const price = (id: LpPackageId) => `${formatPrice(LP_PACKAGES[id].price)} ${vatLabel()}`;
+
+const PAYMENT =
+  '50% is paid at the start and 50% at go-live, and you own every account and workflow.';
+
 export function getLpThemeContent(theme: LpTheme): LpThemeContent {
   if (theme === 'automation') {
     return {
@@ -386,7 +451,7 @@ export function getLpThemeContent(theme: LpTheme): LpThemeContent {
           phase: 'Step 3',
           title: 'Built and live',
           description:
-            'Each automation is built, tested on real cases and switched on separately, with a person able to override it. A single automation goes live in about a week.',
+            'Each automation is tested on real data and switched on with a person able to override it. Fixed-price builds go live in 1 to 4 weeks, depending on the package.',
         },
       ],
       faqs: [
@@ -399,7 +464,7 @@ export function getLpThemeContent(theme: LpTheme): LpThemeContent {
         {
           id: 'cost',
           question: 'How much does it cost?',
-          answer: `Fixed prices, agreed before we start: a single automation from ${formatPrice(LP_PRICES.single)}, a pack of 3–5 workflows from ${formatPrice(LP_PRICES.pack)}, and a care plan at ${formatPrice(LP_PRICES.care)} a month. Larger or custom projects are quoted after the review. ${vatNote()}`,
+          answer: `Fixed prices: an n8n workflow build is ${price('n8n')}, the Automation Starter ${price('starter')}, the Business automation pack ${price('pack')}, and the care plan ${price('care')} a month. Larger or custom projects are quoted after the review. ${PAYMENT}`,
         },
         {
           id: 'tools',
@@ -456,7 +521,7 @@ export function getLpThemeContent(theme: LpTheme): LpThemeContent {
         phase: 'Step 3',
         title: 'Built on your data',
         description:
-          'We connect the model to your documents or databases and test it on real examples before anyone relies on it.',
+          'We connect the model to your documents or databases and test it on real examples before anyone relies on it. The chatbot pilot goes live in a week.',
       },
     ],
     faqs: [
@@ -475,8 +540,7 @@ export function getLpThemeContent(theme: LpTheme): LpThemeContent {
       {
         id: 'cost',
         question: 'How much does it cost?',
-        answer:
-          'It depends on the task and your data, so we price it after the review: you get a fixed price, agreed before we start.',
+        answer: `The AI Chatbot Pilot is ${price('chatbot')}: live in a week, then a 4-week pilot. The care plan is ${price('care')} a month. Other AI work gets a fixed price after the review. ${PAYMENT}`,
       },
       {
         id: 'models',
