@@ -81,7 +81,7 @@ function PackageCard({ pkg }: { pkg: LpPackage }) {
         {pkg.timing}
       </p>
       <h3 className="mt-sm text-lg font-bold text-neutral-900 lg:min-h-[3.5rem]">{pkg.name}</h3>
-      <p className="mt-xs text-sm leading-relaxed text-neutral-600 lg:min-h-[4.5rem]">
+      <p className="mt-xs text-sm leading-relaxed text-neutral-600 lg:min-h-[3rem]">
         {pkg.summary}
       </p>
       <p className="mt-md flex flex-wrap items-baseline gap-x-xs gap-y-1">
