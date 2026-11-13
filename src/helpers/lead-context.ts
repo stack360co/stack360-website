@@ -82,8 +82,35 @@ function foundVia(context: LeadContextData): string {
   return SOURCES.find(([pattern]) => pattern.test(host))?.[1] ?? host;
 }
 
-/** Netlify adds the visitor's approximate location as base64 JSON in `x-nf-geo`. */
-function location(headers: Headers): string | undefined {
+/** CloudFront headers can be URL-encoded (cities with accents); a bad value is just left out. */
+function headerText(headers: Headers, name: string): string | undefined {
+  const value = headers.get(name)?.trim();
+  if (!value) {
+    return undefined;
+  }
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
+/**
+ * The visitor's approximate location. On AWS Amplify, CloudFront sends `cloudfront-viewer-*`
+ * headers. On Netlify (the previous host, kept as a fallback) it came as base64 JSON in `x-nf-geo`.
+ */
+export function location(headers: Headers): string | undefined {
+  const cloudfront = [
+    headerText(headers, 'cloudfront-viewer-city'),
+    headerText(headers, 'cloudfront-viewer-country-region-name'),
+    headerText(headers, 'cloudfront-viewer-country-name') ??
+      headerText(headers, 'cloudfront-viewer-country'),
+  ]
+    .filter(Boolean)
+    .join(', ');
+  if (cloudfront) {
+    return cloudfront;
+  }
   const geo = headers.get('x-nf-geo');
   if (geo) {
     try {
