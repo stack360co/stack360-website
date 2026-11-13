@@ -3,15 +3,13 @@ import {
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE,
-  SITE_PHONE_2,
   SITE_PHONE_E164,
-  SITE_PHONE_E164_2,
-  SITE_PHONE_HREF,
   SITE_PHONE_PK,
   SITE_PHONE_PK_HREF,
   SITE_PHONE_USA,
   SITE_PHONE_USA_HREF,
   SITE_SOCIAL,
+  SITE_WHATSAPP_HREF,
 } from '@/constants/site';
 
 export interface FooterLink {
@@ -56,15 +54,12 @@ export const OFFICES: FooterOffice[] = [
     label: 'UK office · Stack360 Ltd',
     flag: 'gb',
     lines: ['Office 2253, 85 Dunstall Hill,', 'Wolverhampton, WV6 0SR, United Kingdom'],
-    phones: [
-      { label: SITE_PHONE, href: whatsApp(SITE_PHONE_E164), external: true },
-      { label: SITE_PHONE_2, href: whatsApp(SITE_PHONE_E164_2), external: true },
-    ],
+    phones: [{ label: SITE_PHONE, href: whatsApp(SITE_PHONE_E164), external: true }],
   },
 ];
 
 export const CONTACT = {
-  phone: { label: SITE_PHONE, href: SITE_PHONE_HREF },
+  phone: { label: SITE_PHONE, href: SITE_WHATSAPP_HREF },
   email: { label: SITE_EMAIL, href: SITE_EMAIL_HREF },
 } as const;
 

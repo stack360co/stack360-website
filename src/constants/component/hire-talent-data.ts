@@ -3,7 +3,7 @@ import {
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE,
-  SITE_PHONE_HREF,
+  SITE_WHATSAPP_HREF,
   UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 
@@ -34,9 +34,9 @@ export const HIRE_CONTACT = [
     icon: 'building' as const,
   },
   {
-    label: 'Phone',
+    label: 'WhatsApp (messages only)',
     value: SITE_PHONE,
-    href: SITE_PHONE_HREF,
+    href: SITE_WHATSAPP_HREF,
     icon: 'phone' as const,
   },
   {
