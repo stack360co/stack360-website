@@ -3,7 +3,13 @@
 import { CalendarClock } from 'lucide-react';
 import { useEffect } from 'react';
 import { pushEvent } from '@/lib/analytics';
-import { leadContext } from '@/lib/lead-context';
+import {
+  CALENDLY_ENABLED,
+  CALENDLY_URL,
+  calendlyBookingUrl,
+  listenForCalendlyBookings,
+  loadCalendlyWidget,
+} from '@/lib/calendly';
 
 /**
  * "Book a 20-minute call" card for the contact channels. Shown only when
@@ -12,90 +18,19 @@ import { leadContext } from '@/lib/lead-context';
  * booking is sent to GA4 as a lead, and to Mattermost and sales@ with how the
  * visitor found us, so Claude can add it to the CRM with its source.
  */
-const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL ?? '';
-const WIDGET_JS = 'https://assets.calendly.com/assets/external/widget.js';
-const WIDGET_CSS = 'https://assets.calendly.com/assets/external/widget.css';
-
-type CalendlyWindow = Window & {
-  Calendly?: { initPopupWidget: (options: { url: string }) => void };
-};
-
-function loadWidget(): Promise<void> {
-  const w = window as CalendlyWindow;
-  if (w.Calendly) {
-    return Promise.resolve();
-  }
-  if (!document.querySelector(`link[href="${WIDGET_CSS}"]`)) {
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = WIDGET_CSS;
-    document.head.appendChild(css);
-  }
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = WIDGET_JS;
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Calendly widget failed to load'));
-    document.head.appendChild(script);
-  });
-}
-
 export default function BookCallButton() {
-  const enabled = /^https:\/\/calendly\.com\/.+/.test(CALENDLY_URL);
+  useEffect(() => (CALENDLY_ENABLED ? listenForCalendlyBookings() : undefined), []);
 
-  useEffect(() => {
-    if (!enabled) {
-      return;
-    }
-    const onMessage = (event: MessageEvent) => {
-      if (
-        event.origin === 'https://calendly.com' &&
-        event.data?.event === 'calendly.event_scheduled'
-      ) {
-        pushEvent('generate_lead', { form_name: 'calendly' });
-        const payload = event.data.payload ?? {};
-        fetch('/api/contact/m-webhook', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            formType: 'booking',
-            inviteeUri: payload.invitee?.uri,
-            eventUri: payload.event?.uri,
-            context: leadContext(),
-          }),
-          keepalive: true,
-        }).catch(() => {
-          // Calendly already has the booking, so a failure loses nothing but its source.
-        });
-      }
-    };
-    window.addEventListener('message', onMessage);
-    return () => window.removeEventListener('message', onMessage);
-  }, [enabled]);
-
-  if (!enabled) {
+  if (!CALENDLY_ENABLED) {
     return null;
   }
 
   const openBooking = async () => {
-    // UTM tags show up on each booking in Calendly. The same link is used in outbound email, so
-    // website bookings say "Website web form" and carry the page they came from.
-    // Built by hand with encodeURIComponent: URLSearchParams turns spaces into "+", which
-    // Calendly's widget re-encodes, so the booking would read "Website+web+form".
-    const tags = {
-      utm_source: 'Website web form',
-      utm_medium: 'stack360.co',
-      utm_content: window.location.pathname,
-    };
-    const query = Object.entries(tags)
-      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-      .join('&');
-    const bookingUrl = `${CALENDLY_URL}${CALENDLY_URL.includes('?') ? '&' : '?'}${query}`;
+    const bookingUrl = calendlyBookingUrl();
     pushEvent('book_call_click', { link_url: CALENDLY_URL });
     try {
-      await loadWidget();
-      (window as CalendlyWindow).Calendly?.initPopupWidget({ url: bookingUrl });
+      const calendly = await loadCalendlyWidget();
+      calendly.initPopupWidget({ url: bookingUrl });
     } catch {
       window.open(bookingUrl, '_blank', 'noopener,noreferrer');
     }
