@@ -13,14 +13,15 @@ export const SITE_DESCRIPTION =
 export const SITE_EMAIL = 'sales@stack360.co';
 export const SITE_EMAIL_HREF = `mailto:${SITE_EMAIL}` as const;
 
-/** UK phone — display, E.164, and tel: link. */
-export const SITE_PHONE = '+44 7404 350490';
+/**
+ * UK number: WhatsApp messages only, no calls (Waris, 13 Nov 2026), so it links to WhatsApp,
+ * never tel:. Display, E.164 and the click-to-chat link.
+ */
+export const SITE_PHONE = '+44 7460 333169';
+export const SITE_PHONE_E164 = '+447460333169';
+export const SITE_WHATSAPP_HREF = `https://wa.me/${SITE_PHONE_E164.slice(1)}` as const;
+
 export const SITE_PHONE_USA = '+1 (713) 443 9180';
-export const SITE_PHONE_2 = '+44 7460 333169';
-export const SITE_PHONE_E164 = '+447404350490';
-export const SITE_PHONE_E164_2 = '+447460333169';
-export const SITE_PHONE_HREF = `tel:${SITE_PHONE_E164}` as const;
-export const SITE_PHONE_HREF_2 = `tel:${SITE_PHONE_E164_2}` as const;
 
 /** US phone — E.164 and tel: link (the display value is SITE_PHONE_USA). */
 export const SITE_PHONE_USA_E164 = '+17134439180';

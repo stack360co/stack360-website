@@ -4,7 +4,7 @@ import {
   SITE_EMAIL_HREF,
   SITE_PHONE,
   SITE_PHONE_E164,
-  SITE_PHONE_HREF,
+  SITE_WHATSAPP_HREF,
   UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 
@@ -71,9 +71,9 @@ export const ASSISTANT_CONTACT: AssistantContactField[] = [
     copyValue: SITE_EMAIL,
   },
   {
-    label: 'Phone',
+    label: 'WhatsApp (messages only)',
     value: SITE_PHONE,
-    href: SITE_PHONE_HREF,
+    href: SITE_WHATSAPP_HREF,
     copyValue: SITE_PHONE_E164,
   },
   {

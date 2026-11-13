@@ -9,6 +9,7 @@ import {
   SITE_PHONE_PK_HREF,
   SITE_PHONE_USA,
   SITE_PHONE_USA_HREF,
+  SITE_WHATSAPP_HREF,
   UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 
@@ -32,7 +33,7 @@ export const CONTACT_CHANNELS = [
     type: 'phone',
     label: 'WhatsApp (UK)',
     value: SITE_PHONE,
-    href: `https://wa.me/${SITE_PHONE.replace(/[^0-9]/g, '')}`,
+    href: SITE_WHATSAPP_HREF,
     hint: LAHORE_OFFICE_HOURS,
     target: '_blank',
     rel: 'noopener noreferrer',
