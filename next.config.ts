@@ -22,14 +22,20 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // The Netlify default domain serves a duplicate copy of the site; send it to
-      // the real domain. Exact host only, so deploy previews keep working.
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'stack360static.netlify.app' }],
-        destination: 'https://stack360.co/:path*',
-        permanent: true,
-      },
+      // Hosts that serve a duplicate copy of the site go to the real domain: www, and AWS
+      // Amplify's own address. Amplify's console redirect rules didn't survive redeploys, so the
+      // redirects live here. Amplify passes the visitor's host as `host` or `x-forwarded-host`.
+      ...['www.stack360.co', 'main.dh71mgyv937gh.amplifyapp.com'].flatMap((duplicateHost) =>
+        (['host', 'x-forwarded-host'] as const).map((headerName) => ({
+          source: '/:path*',
+          has:
+            headerName === 'host'
+              ? [{ type: 'host' as const, value: duplicateHost }]
+              : [{ type: 'header' as const, key: headerName, value: duplicateHost }],
+          destination: 'https://stack360.co/:path*',
+          permanent: true,
+        }))
+      ),
       // Old URLs still collect impressions in Search Console; send each one to the
       // page that matches its intent rather than the home page.
       {
