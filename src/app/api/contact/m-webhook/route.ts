@@ -1,8 +1,10 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { routes } from '@/constants/routes';
+import { sendAutoReply } from '@/helpers/lead-autoreply';
 import { describeLead, domainAge, leadContextSchema } from '@/helpers/lead-context';
 import { buildLeadEmail, sendLeadEmail } from '@/helpers/lead-email';
 import { generateFormText, summarizeForm } from '@/helpers/markdown';
+import { getClientIp } from '@/lib/client-ip';
 import { FORM_FALLBACK_MESSAGE, isLikelySpam } from '@/lib/form-guard';
 import { bookingPayloadSchema } from '@/schema/booking';
 import { contactSchema } from '@/schema/contact';
@@ -82,6 +84,15 @@ export async function POST(request: NextRequest) {
   // The lead goes to Mattermost and to sales@. One copy landing is enough; if neither did, the
   // visitor is given the sales email instead of the raw error.
   if (chat.status === 'fulfilled' || (email.status === 'fulfilled' && email.value === 'sent')) {
+    // Confirm receipt to the sender: fixed text, once per address. A failure here is only logged,
+    // because the enquiry itself already reached us.
+    if ((formType === 'contact' || formType === 'hire') && person.email) {
+      try {
+        await sendAutoReply({ to: person.email, form: formType, ip: getClientIp(request) });
+      } catch (error) {
+        console.error('Lead auto-reply failed', error);
+      }
+    }
     return NextResponse.json({ success: true });
   }
   return NextResponse.json({ success: false, error: FORM_FALLBACK_MESSAGE }, { status: 502 });
