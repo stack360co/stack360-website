@@ -141,6 +141,9 @@ function LuxeCaseStudy({ version }: { version: 'automation' | 'google' }) {
               </li>
             ))}
           </ul>
+          <p className="mt-md rounded-lg border border-neutral-200 bg-neutral-50 p-sm text-sm font-semibold leading-relaxed text-neutral-900">
+            {LP_LUXE_CASE.timeAndCost}
+          </p>
         </div>
       </div>
       <figure className="mt-xl border-t border-neutral-200 pt-lg">

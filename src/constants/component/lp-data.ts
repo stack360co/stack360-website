@@ -425,8 +425,8 @@ export const LP_ACCOUNTANTS = {
 
 /* ------------------------------------------------------------------------------------------------
  * Guarantee, reviews and the Luxe case study (approved by Waris on 16 Nov 2026; marketing chat's
- * note "lp proof, reviews and guarantee"). Don't add the build's duration or price: neither is
- * published. Cameron Kashani's and Mohammed Jafar's quotes stay off the /lp pages for now.
+ * note "lp proof, reviews and guarantee"). The Luxe duration and cost are Waris's figures (16 Nov),
+ * shown with Mitchell's OK. Cameron Kashani's and Mohammed Jafar's quotes stay off the /lp pages for now.
  * --------------------------------------------------------------------------------------------- */
 
 /**
@@ -537,6 +537,8 @@ export const LP_LUXE_CASE = {
       text: 'Google Analytics tracks bookings, trip requests and WhatsApp clicks, and Google Ads learns from them.',
     },
   ],
+  /** A past project's cost, billed in dollars, not an offer: so no "+ VAT". £ at $1.30–$1.38. */
+  timeAndCost: '3 months from brief to live. Total cost: about £4,500 (US$6,000).',
   result: [
     'Booking refusals went from 75% to 0%.',
     'The team hears about every sale and enquiry as it happens, and review requests go out on their own.',
