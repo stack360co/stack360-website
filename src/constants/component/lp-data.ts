@@ -389,6 +389,31 @@ export const LP_TRUST: readonly { label: string; href?: string }[] = [
   { label: 'Stack360 Ltd, a UK company' },
 ];
 
+/**
+ * "For accounting practices" inside /lp/automation#legal-accounting, at #accountants. UK cold
+ * emails to accountancy practices link here. Approved by Waris on 16 Nov 2026 (marketing chat's
+ * note "accountants section and ads"). UK spelling.
+ *
+ * Don't add Xero, QuickBooks, Dext or MTD integration claims, or ATC/Zoho proof: none of them is
+ * on the site. The MTD dates are GOV.UK's; add no more without a source.
+ */
+export const LP_ACCOUNTANTS = {
+  title: 'For accounting practices',
+  pain: 'Chasing clients for records every quarter?',
+  mtd: 'Making Tax Digital for Income Tax applies to sole traders and landlords with income over £50,000 from April 2026, and over £30,000 from April 2027. Every client who moves onto it adds quarterly work.',
+  mtdSource: {
+    label: 'GOV.UK: when you need to use Making Tax Digital for Income Tax',
+    href: 'https://www.gov.uk/guidance/find-out-if-and-when-you-need-to-use-making-tax-digital-for-income-tax',
+  },
+  automate:
+    'We automate the admin around it: document requests and reminders that go out on their own, client onboarding that lands in your practice tools, and syncs between the systems you already use, so nobody retypes data.',
+  proof: [
+    'For a bookkeeping firm, every new lead now gets a text and an email straight away and goes to a named person.',
+    'For Natif.ai, we built AI that pulls the fields out of invoices, forms and low-quality scans, so staff stop keying them in.',
+    'Deadlines and checks are rules, so we run them as plain automation: predictable, logged and easy to test.',
+  ],
+} as const;
+
 /** Mitchell's G2 review, shortened with an ellipsis only, for the first screen. */
 export const LP_SHORT_QUOTE =
   'They automated booking and ticket generation based on the excursions a person selects…';
