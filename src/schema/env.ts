@@ -15,6 +15,9 @@ export const serverSchema = z.object({
   // leads go to Mattermost only. No min(1): an empty value must not fail the whole server.
   RESEND_API_KEY: z.string().optional(),
   LEAD_EMAIL_FROM: z.string().optional(),
+  // Optional: the DynamoDB table that limits the instant auto-reply to people who send the contact
+  // or hire form (one per address, three per IP a day). Unset turns the auto-reply off.
+  LEAD_AUTOREPLY_TABLE: z.string().optional(),
 });
 
 export const clientSchema = z.object({
