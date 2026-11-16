@@ -65,7 +65,7 @@ const PAGE_UPDATED: Record<string, string> = {
   '/work-with-us/hire': '2026-10-16',
   '/work-with-us/hire/dedicated-team': '2026-10-12',
   '/our-work/project-timelines': '2026-10-12',
-  '/privacy': '2026-10-21',
+  '/privacy': '2026-11-16',
   '/terms': '2026-10-21',
   '/who-we-are': '2026-10-21',
   '/who-we-are/lahore': '2026-10-16',

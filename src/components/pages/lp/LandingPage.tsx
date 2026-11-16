@@ -7,6 +7,7 @@ import { LANDING_TESTIMONIALS } from '@/constants/component/landing-data';
 import {
   formatPrice,
   getLpPageContent,
+  LP_ACCOUNTANTS,
   LP_PACKAGE_TERMS,
   LP_PACKAGES,
   LP_PROOF,
@@ -323,6 +324,45 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                 <ProofCard id="legalatoms" />
                 <ProofCard id="bookkeeping" />
               </div>
+
+              {/* UK cold emails to accountancy practices link straight here: keep the id. */}
+              <div
+                id="accountants"
+                className="mt-xl scroll-mt-24 rounded-xl border-2 border-primary/40 bg-neutral-50 p-lg shadow-sm md:p-xl"
+              >
+                <p className={eyebrow}>{LP_ACCOUNTANTS.title}</p>
+                <h3 className="mt-sm text-balance text-xl font-bold tracking-tight text-neutral-900 md:text-2xl">
+                  {LP_ACCOUNTANTS.pain}
+                </h3>
+                <p className="mt-sm max-w-3xl text-pretty text-sm leading-relaxed text-neutral-700">
+                  {LP_ACCOUNTANTS.mtd}{' '}
+                  <a
+                    href={LP_ACCOUNTANTS.mtdSource.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-600 underline underline-offset-2 hover:text-primary"
+                  >
+                    Source: {LP_ACCOUNTANTS.mtdSource.label}
+                  </a>
+                </p>
+                <p className="mt-sm max-w-3xl text-pretty text-sm leading-relaxed text-neutral-700">
+                  {LP_ACCOUNTANTS.automate}
+                </p>
+                <ul className="mt-md max-w-3xl space-y-sm">
+                  {LP_ACCOUNTANTS.proof.map((item) => (
+                    <li key={item} className="flex items-start gap-sm text-sm text-neutral-800">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-md text-sm font-semibold text-neutral-900">
+                  Single automation from {formatPrice(LP_PACKAGES.single.price)} + VAT at 20%, or 3
+                  workflows from {formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%. Start with a
+                  free 20-minute review.
+                </p>
+              </div>
+
               <a href="#book" className={`mt-xl ${primaryButton}`}>
                 Book a free review for your firm
                 <ArrowRight size={14} aria-hidden />

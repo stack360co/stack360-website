@@ -144,7 +144,7 @@ export const seo = {
   privacy: pageMeta({
     title: 'Privacy Policy: How We Handle Your Data',
     description:
-      'How Stack360 collects and uses contact and inquiry information when you use our website or request talent or project support.',
+      'How Stack360 Ltd collects and uses personal data under UK GDPR: enquiries, client work, business prospecting, cookies, your rights and how to complain to the ICO.',
     path: '/privacy',
   }),
 
