@@ -37,6 +37,10 @@ export interface LpVariant {
   proofNote?: string;
   /** Adds the "law firms and accountants" section (#legal-accounting). */
   legalAccounting?: boolean;
+  /** Adds the Luxe case study (#luxe) after the proof cards: automation or Google-side version. */
+  caseStudy?: 'automation' | 'google';
+  /** The client quote in the proof section when there's no case study (default: Mitchell's). */
+  proofReview?: LpReviewId;
 }
 
 export const LP_VARIANTS: readonly LpVariant[] = [
@@ -54,6 +58,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     topic: 'automation',
     proof: ['luxe', 'cercle', 'alertia'],
     legalAccounting: true,
+    caseStudy: 'automation',
   },
   {
     slug: 'ai-automation',
@@ -68,6 +73,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
       'We automate the jobs that depend on someone remembering, so staff get an alert the moment a lead or booking arrives. A free 20-minute review tells you what to automate first.',
     topic: 'AI automation',
     proof: ['luxe', 'bookkeeping', 'alertia'],
+    caseStudy: 'automation',
   },
   {
     slug: 'n8n',
@@ -100,6 +106,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
       'AI agents that work from your own data and tools, with a person checking where it matters. Start with a free 20-minute review of the task.',
     topic: 'AI agents',
     proof: ['natif', 'moneyball', 'alertia'],
+    proofReview: 'corcoran',
   },
   {
     slug: 'ai-chatbots',
@@ -114,6 +121,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
       'A chatbot that looks the answer up in your own records before it replies, so it doesn’t make things up. Start with a free 20-minute review.',
     topic: 'an AI chatbot',
     proof: ['moneyball', 'natif', 'luxe'],
+    proofReview: 'corcoran',
   },
   {
     slug: 'online-presence',
@@ -128,6 +136,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
       'We refresh your website, set up your Google Business Profile, ask every customer for a review, and put every enquiry in one pipeline. Fixed price, live in 3–4 weeks.',
     topic: 'the online presence and lead engine',
     proof: ['luxeSeo', 'luxeReviews', 'luxePin'],
+    caseStudy: 'google',
     proofNote:
       'We ask every customer for a review, not just the happy ones, as Google’s rules require.',
   },
@@ -411,6 +420,127 @@ export const LP_ACCOUNTANTS = {
     'For a bookkeeping firm, every new lead now gets a text and an email straight away and goes to a named person.',
     'For Natif.ai, we built AI that pulls the fields out of invoices, forms and low-quality scans, so staff stop keying them in.',
     'Deadlines and checks are rules, so we run them as plain automation: predictable, logged and easy to test.',
+  ],
+} as const;
+
+/* ------------------------------------------------------------------------------------------------
+ * Guarantee, reviews and the Luxe case study (approved by Waris on 16 Nov 2026; marketing chat's
+ * note "lp proof, reviews and guarantee"). Don't add the build's duration or price: neither is
+ * published. Cameron Kashani's and Mohammed Jafar's quotes stay off the /lp pages for now.
+ * --------------------------------------------------------------------------------------------- */
+
+/**
+ * Option A, "works as agreed, or we fix it free". UK advertising rules want the significant
+ * conditions next to the promise, so the terms render right under the line (#guarantee-terms).
+ * Not about response times.
+ */
+export const LP_GUARANTEE = {
+  title: 'Our guarantee',
+  line: 'Every fixed-price build has a written scope and a go-live date. If it doesn’t do what the scope says, we fix it at no extra cost.',
+  secondHalf:
+    'On the pack and the online presence package, you pay the second half only once it works as agreed.',
+  terms: [
+    'Applies to fixed-price packages with a signed scope.',
+    '“Works as agreed” means the acceptance checks written into that scope.',
+    'Fixes during the package’s fix period are free.',
+    'Scope changes are quoted in writing first.',
+    'Doesn’t cover third-party outages or changes to a tool’s API.',
+  ],
+} as const;
+
+export type LpReviewId = 'mitchell' | 'bilel' | 'corcoran' | 'ernest';
+
+export interface LpReview {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  source?: { label: string; href: string };
+}
+
+/** Exact words from the public review or the site's testimonial; shorten with an ellipsis only. */
+export const LP_REVIEWS: Record<LpReviewId, LpReview> = {
+  mitchell: {
+    quote:
+      'I had a fantastic experience with Stack360. The team developed our Luxe Excursions Tenerife website and set up our Google and Meta advertising campaigns. They brought experience and guided us on the technical side of our business. I appreciate their availability and reliability; they help answer our users’ questions on both the technical and business sides. They automated booking and ticket generation based on the excursions a person selects, and implemented a dynamic booking system and CMS. I value their technical knowledge, flawless communication, helpful answers, and proactive work with us toward a common goal. I highly recommend them.',
+    name: 'Mitchell Woods',
+    role: 'Director',
+    company: 'Luxe Excursions Tenerife',
+    source: { label: 'Verified review on G2', href: SITE_PROFILES.g2 },
+  },
+  bilel: {
+    quote: 'The team successfully delivered the right feature on schedule.',
+    name: 'Bilel Kedidi',
+    role: 'CEO',
+    company: 'B-Solution',
+    source: { label: 'Verified review on Clutch', href: SITE_PROFILES.clutch },
+  },
+  corcoran: {
+    quote:
+      'I’m impressed with the personality and craftsmanship of the engineers… communication has always been great with keen attention to detail.',
+    name: 'John Corcoran',
+    role: 'CEO & Head of Product',
+    company: 'Full Blown Media',
+    source: { label: 'Verified review on Clutch', href: SITE_PROFILES.clutch },
+  },
+  ernest: {
+    quote:
+      'Stack360 built NPTAAS from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
+    name: 'Ernest Tomkiewicz',
+    role: 'Founder & Certified Public Accountant',
+    company: 'NPTAAS',
+  },
+};
+
+/** The Luxe case study (#luxe). Every line is on stack360.co (automation page, Luxe blog post). */
+export const LP_LUXE_CASE = {
+  eyebrow: 'Case study · Luxe Excursions Tenerife (UK company)',
+  title: 'A tour company that hears about every booking the moment it’s paid',
+  problem: [
+    'The old booking planner refused 3 in 4 trips: 75% of every 3-activity combination on a 3-day stay. All 164 refusals came from the weekday data in the CMS, and 3 of 4 partner timetables were wrong.',
+    'When a guest paid, only the guest got an email, so the team could miss a sale or a trip request.',
+    'Google review requests went out by hand, when someone remembered.',
+  ],
+  built: [
+    {
+      title: 'Pay first, schedule after',
+      text: 'Guests choose their activities and pay online, the booking and tickets follow on their own, and staff assign the times afterwards.',
+    },
+    {
+      title: 'Instant staff alerts',
+      text: 'An email the moment a booking is paid or a trip request comes in, with the guest as reply-to. Each alert goes out once per booking, so a payment retry never sends a duplicate.',
+    },
+    {
+      title: 'Review requests on autopilot',
+      text: 'One Google review request at 10:00 the day after the guest’s last activity, within a week of the trip, never twice, and never for test or agency bookings. Every guest is asked, as Google’s rules require.',
+    },
+    {
+      title: 'Tracking',
+      text: 'Bookings, trip requests and WhatsApp clicks tracked in Google Analytics, so Google Ads learns from them.',
+    },
+  ],
+  builtGoogle: [
+    {
+      title: 'Review requests',
+      text: 'Every guest gets one Google review request the day after their trip, and every guest is asked, as Google’s rules require.',
+    },
+    {
+      title: 'Business Profile fixed',
+      text: 'The Business Profile pin was about 460 m from the shop; we corrected it on Google, the website and Facebook.',
+    },
+    {
+      title: 'Fast, findable site',
+      text: 'Google’s own SEO check scores the site 100, and the main image shows in 1.3 seconds on a phone.',
+    },
+    {
+      title: 'Tracking',
+      text: 'Google Analytics tracks bookings, trip requests and WhatsApp clicks, and Google Ads learns from them.',
+    },
+  ],
+  result: [
+    'Booking refusals went from 75% to 0%.',
+    'The team hears about every sale and enquiry as it happens, and review requests go out on their own.',
+    'Staff edit tours, prices and images in the CMS without a developer.',
   ],
 } as const;
 

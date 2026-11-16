@@ -1,20 +1,23 @@
-import { ArrowRight, Check, MessageCircle, Quote, Star } from 'lucide-react';
+import { ArrowRight, Check, MessageCircle, Quote, ShieldCheck, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CookieSettingsButton } from '@/components/analytics/ConsentBanner';
 import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
-import { LANDING_TESTIMONIALS } from '@/constants/component/landing-data';
 import {
   formatPrice,
   getLpPageContent,
   LP_ACCOUNTANTS,
+  LP_GUARANTEE,
+  LP_LUXE_CASE,
   LP_PACKAGE_TERMS,
   LP_PACKAGES,
   LP_PROOF,
+  LP_REVIEWS,
   LP_SHORT_QUOTE,
   LP_TRUST,
   type LpPackage,
   type LpProofId,
+  type LpReview,
   type LpVariant,
   lpWhatsAppLink,
   VAT_LABEL,
@@ -39,8 +42,157 @@ const primaryButton =
 const whatsappButton =
   'inline-flex min-h-11 items-center justify-center gap-xs rounded-sm border border-neutral-300 bg-neutral-50 px-lg py-sm text-sm font-bold text-neutral-800 transition-colors hover:border-[#25D366] hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
 
-/** Mitchell's G2 review: the one client quote about automation, so every page shows it. */
-const REVIEW = LANDING_TESTIMONIALS.find((t) => t.name === 'Mitchell Woods');
+const caseLabel = 'font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500';
+
+/** Mitchell's G2 review: shortened on the first screen of every page. */
+const REVIEW = LP_REVIEWS.mitchell;
+
+function ReviewCaption({ review }: { review: LpReview }) {
+  return (
+    <>
+      <span className="font-bold text-neutral-900">{review.name}</span>, {review.role},{' '}
+      {review.company}
+      {review.source ? (
+        <>
+          {' · '}
+          <a
+            href={review.source.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-primary"
+          >
+            {review.source.label}
+          </a>
+        </>
+      ) : null}
+    </>
+  );
+}
+
+function ReviewFigure({ review }: { review: LpReview }) {
+  return (
+    <figure className="mt-xl rounded-xl border border-neutral-200 bg-neutral-100 p-lg md:p-xl">
+      <Quote className="h-6 w-6 text-primary" aria-hidden />
+      <blockquote className="mt-sm max-w-4xl text-pretty text-base leading-relaxed text-neutral-800 md:text-lg">
+        “{review.quote}”
+      </blockquote>
+      <figcaption className="mt-md text-sm text-neutral-600">
+        <ReviewCaption review={review} />
+      </figcaption>
+    </figure>
+  );
+}
+
+/** The Luxe case study (#luxe): Google Ads sitelinks may point straight at the id, so keep it. */
+function LuxeCaseStudy({ version }: { version: 'automation' | 'google' }) {
+  const built = version === 'google' ? LP_LUXE_CASE.builtGoogle : LP_LUXE_CASE.built;
+  return (
+    <article
+      id="luxe"
+      aria-labelledby="luxe-heading"
+      className="mt-xl scroll-mt-24 rounded-xl border border-neutral-200 bg-neutral-100 p-lg md:p-xl"
+    >
+      <p className={eyebrow}>{LP_LUXE_CASE.eyebrow}</p>
+      <h3
+        id="luxe-heading"
+        className="mt-sm max-w-3xl text-balance text-xl font-bold tracking-tight text-neutral-900 md:text-2xl"
+      >
+        {LP_LUXE_CASE.title}
+      </h3>
+      <div className="mt-lg grid grid-cols-1 gap-lg lg:grid-cols-[1fr_1.4fr_1fr] lg:gap-xl">
+        <div>
+          <h4 className={caseLabel}>The problem</h4>
+          <ul className="mt-sm space-y-sm">
+            {LP_LUXE_CASE.problem.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-sm text-sm leading-relaxed text-neutral-700"
+              >
+                <span
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-400"
+                  aria-hidden
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className={caseLabel}>What we built</h4>
+          <ul className="mt-sm space-y-md">
+            {built.map((item) => (
+              <li key={item.title} className="text-sm leading-relaxed text-neutral-700">
+                <p className="font-bold text-neutral-900">{item.title}</p>
+                <p className="mt-1">{item.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className={caseLabel}>The result</h4>
+          <ul className="mt-sm space-y-sm">
+            {LP_LUXE_CASE.result.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-sm text-sm leading-relaxed text-neutral-800"
+              >
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <figure className="mt-xl border-t border-neutral-200 pt-lg">
+        <Quote className="h-6 w-6 text-primary" aria-hidden />
+        <blockquote className="mt-sm max-w-4xl text-pretty text-base leading-relaxed text-neutral-800">
+          “{LP_REVIEWS.mitchell.quote}”
+        </blockquote>
+        <figcaption className="mt-md text-sm text-neutral-600">
+          <ReviewCaption review={LP_REVIEWS.mitchell} />
+        </figcaption>
+      </figure>
+    </article>
+  );
+}
+
+/** One strip under the pricing cards. The terms sit right under the promise (UK ad rules). */
+function GuaranteeStrip({ showSecondHalf }: { showSecondHalf: boolean }) {
+  return (
+    <div
+      id="guarantee"
+      className="mt-lg grid scroll-mt-24 grid-cols-1 gap-lg rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm md:p-xl lg:grid-cols-[1.6fr_1fr] lg:gap-xl"
+    >
+      <div className="flex items-start gap-md">
+        <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-primary" aria-hidden />
+        <div>
+          <h3 className="text-lg font-bold text-neutral-900">{LP_GUARANTEE.title}</h3>
+          <p className="mt-xs max-w-3xl text-pretty text-sm leading-relaxed text-neutral-800 md:text-base">
+            {LP_GUARANTEE.line}
+            {showSecondHalf ? ` ${LP_GUARANTEE.secondHalf}` : null}
+          </p>
+          <p id="guarantee-terms" className="mt-md scroll-mt-24 text-xs font-bold text-neutral-700">
+            Terms
+          </p>
+          <ul className="mt-1 list-disc space-y-1 pl-md text-xs leading-relaxed text-neutral-600 marker:text-neutral-400">
+            {LP_GUARANTEE.terms.map((term) => (
+              <li key={term}>{term}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <figure className="border-neutral-200 lg:border-l lg:pl-xl">
+        <Quote className="h-5 w-5 text-primary" aria-hidden />
+        <blockquote className="mt-xs text-pretty text-base leading-relaxed text-neutral-800">
+          “{LP_REVIEWS.bilel.quote}”
+        </blockquote>
+        <figcaption className="mt-sm text-xs text-neutral-600">
+          <ReviewCaption review={LP_REVIEWS.bilel} />
+        </figcaption>
+      </figure>
+    </div>
+  );
+}
 
 function ProofCard({ id }: { id: LpProofId }) {
   const proof = LP_PROOF[id];
@@ -180,29 +332,25 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
           <span className="font-semibold text-neutral-900">{lead.metricLabel}</span> · {lead.client}
         </p>
       </div>
-      {REVIEW ? (
-        <>
-          <blockquote className="mt-sm text-sm leading-relaxed text-neutral-700">
-            “{LP_SHORT_QUOTE}”
-          </blockquote>
-          <figcaption className="mt-xs text-xs text-neutral-500">
-            {REVIEW.name}, {REVIEW.role}, {REVIEW.company}
-            {REVIEW.source ? (
-              <>
-                {' · '}
-                <a
-                  href={REVIEW.source.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-neutral-600 underline underline-offset-2 hover:text-primary"
-                >
-                  {REVIEW.source.label}
-                </a>
-              </>
-            ) : null}
-          </figcaption>
-        </>
-      ) : null}
+      <blockquote className="mt-sm text-sm leading-relaxed text-neutral-700">
+        “{LP_SHORT_QUOTE}”
+      </blockquote>
+      <figcaption className="mt-xs text-xs text-neutral-500">
+        {REVIEW.name}, {REVIEW.role}, {REVIEW.company}
+        {REVIEW.source ? (
+          <>
+            {' · '}
+            <a
+              href={REVIEW.source.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-600 underline underline-offset-2 hover:text-primary"
+            >
+              {REVIEW.source.label}
+            </a>
+          </>
+        ) : null}
+      </figcaption>
     </figure>
   );
 
@@ -277,31 +425,12 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                 <ProofCard key={id} id={id} />
               ))}
             </div>
-            {REVIEW ? (
-              <figure className="mt-xl rounded-xl border border-neutral-200 bg-neutral-100 p-lg md:p-xl">
-                <Quote className="h-6 w-6 text-primary" aria-hidden />
-                <blockquote className="mt-sm max-w-4xl text-pretty text-base leading-relaxed text-neutral-800 md:text-lg">
-                  “{REVIEW.quote}”
-                </blockquote>
-                <figcaption className="mt-md text-sm text-neutral-600">
-                  <span className="font-bold text-neutral-900">{REVIEW.name}</span>, {REVIEW.role},{' '}
-                  {REVIEW.company}
-                  {REVIEW.source ? (
-                    <>
-                      {' · '}
-                      <a
-                        href={REVIEW.source.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline underline-offset-2 hover:text-primary"
-                      >
-                        {REVIEW.source.label}
-                      </a>
-                    </>
-                  ) : null}
-                </figcaption>
-              </figure>
-            ) : null}
+            {/* The case study carries Mitchell's full review; other pages show one quote. */}
+            {variant.caseStudy ? (
+              <LuxeCaseStudy version={variant.caseStudy} />
+            ) : (
+              <ReviewFigure review={LP_REVIEWS[variant.proofReview ?? 'mitchell']} />
+            )}
           </div>
         </section>
 
@@ -356,7 +485,15 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-md text-sm font-semibold text-neutral-900">
+                <figure className="mt-lg max-w-3xl border-l-2 border-primary/50 pl-md">
+                  <blockquote className="text-pretty text-sm leading-relaxed text-neutral-800 md:text-base">
+                    “{LP_REVIEWS.ernest.quote}”
+                  </blockquote>
+                  <figcaption className="mt-xs text-xs text-neutral-600">
+                    <ReviewCaption review={LP_REVIEWS.ernest} />
+                  </figcaption>
+                </figure>
+                <p className="mt-lg text-sm font-semibold text-neutral-900">
                   Single automation from {formatPrice(LP_PACKAGES.single.price)} + VAT at 20%, or 3
                   workflows from {formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%. Start with a
                   free 20-minute review.
@@ -412,6 +549,11 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                   />
                 ))}
               </div>
+
+              {/* The "second half on go-live" line only where a 50/50 package is on the page. */}
+              <GuaranteeStrip
+                showSecondHalf={variant.packages.some((id) => id === 'pack' || id === 'presence')}
+              />
 
               <p className="mt-lg text-sm font-semibold text-neutral-800">{LP_PACKAGE_TERMS}</p>
               <p className="mt-xs text-sm text-neutral-600">
