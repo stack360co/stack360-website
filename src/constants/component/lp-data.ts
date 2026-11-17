@@ -47,7 +47,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'automation',
     theme: 'automation',
-    packages: ['single', 'pack', 'presence', 'care'],
+    packages: ['single', 'pack', 'presence', 'monitoring', 'care'],
     title: 'Business Automation: Free 20-Minute Review',
     description:
       'Still retyping data between systems? We connect your tools so the data moves on its own. Fixed-price packages and a free 20-minute review.',
@@ -63,7 +63,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'ai-automation',
     theme: 'automation',
-    packages: ['single', 'pack', 'presence', 'care'],
+    packages: ['single', 'pack', 'presence', 'monitoring', 'care'],
     title: 'AI Automation: Free 20-Minute Review',
     description:
       'Jobs your team keeps forgetting? Staff get an alert the moment a lead or booking arrives. Fixed-price packages and a free 20-minute review.',
@@ -78,7 +78,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'n8n',
     theme: 'automation',
-    packages: ['single', 'pack', 'care'],
+    packages: ['single', 'pack', 'monitoring', 'care'],
     packageSummaries: {
       single: 'One workflow, built in your own n8n, cloud or self-hosted.',
       pack: '3 connected workflows in your own n8n that pass data between your tools.',
@@ -111,7 +111,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'ai-chatbots',
     theme: 'ai',
-    packages: ['chatbot', 'care'],
+    packages: ['chatbot', 'monitoring', 'care'],
     title: 'AI Chatbot Development: Free 20-Minute Review',
     description:
       'Answering the same questions all day? A chatbot that looks the answer up in your own records before it replies. Book a free 20-minute review.',
@@ -126,7 +126,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
   {
     slug: 'online-presence',
     theme: 'presence',
-    packages: ['presence', 'care'],
+    packages: ['presence', 'monitoring', 'care'],
     title: 'Google Business Profile, Reviews and Leads: Free 20-Minute Review',
     description:
       'Not showing up when local customers search on Google? We refresh your website, set up your Google Business Profile, ask every customer for a review and put every enquiry in one pipeline.',
@@ -171,7 +171,10 @@ export const VAT_LABEL = '+ VAT at 20% (business price)';
 
 export const formatPrice = (value: number) => `£${value.toLocaleString('en-GB')}`;
 
-export type LpPackageId = 'single' | 'pack' | 'presence' | 'care' | 'chatbot';
+export type LpPackageId = 'single' | 'pack' | 'presence' | 'chatbot' | 'monitoring' | 'care';
+
+/** The two monthly plans offered after go-live (approved by Waris on 17 Nov 2026). */
+export const isLpPlan = (id: LpPackageId) => id === 'monitoring' || id === 'care';
 
 export interface LpPackage {
   name: string;
@@ -255,27 +258,45 @@ export const LP_PACKAGES: Record<LpPackageId, LpPackage> = {
     excluded:
       'Model and hosting costs, paid direct (typically £20–£60 a month), WhatsApp API fees.',
   },
-  care: {
-    name: 'Care plan',
+  monitoring: {
+    name: 'Monitoring plan',
     price: 199,
     per: 'a month',
     timing: 'Monthly, cancel with 30 days’ notice',
     payment: 'Monthly in advance',
-    summary: 'We monitor and fix what we built. Offered with every package.',
+    summary: 'We watch what we built and tell you when something breaks.',
     includes: [
       'Monitoring of up to 5 automations, or one chatbot',
+      'Alerts when something breaks, and a one-page monthly report',
+      'Hosting and security updates for a site we built',
+      'The first 30 days after a build are included',
+      'Fixes and changes are quoted in writing first',
+    ],
+    excluded: 'New builds, third-party subscriptions.',
+  },
+  care: {
+    name: 'Care plan',
+    price: 700,
+    per: 'a month',
+    timing: 'Monthly, cancel with 30 days’ notice',
+    payment: 'Monthly in advance',
+    summary: 'Monitoring, plus fixes within 2 working days and monthly changes.',
+    includes: [
+      'Everything in Monitoring',
       'Fixes within 2 working days',
-      'Hosting and updates for a site we built',
-      'Up to 2 hours of changes a month',
-      'A one-page monthly report; the first 30 days after a build are included',
+      'Up to 5 hours of changes a month (unused hours don’t carry over)',
+      'Anything beyond that is quoted in writing first',
     ],
     excluded: 'New builds, third-party subscriptions.',
   },
 };
 
-/** True for every package. Shown under the cards. */
+/**
+ * True for every package. Shown under the cards. The last sentence keeps the plans in line with
+ * the guarantee: our own bugs are fixed free during the fix period, plan or no plan.
+ */
 export const LP_PACKAGE_TERMS =
-  'Every package is a fixed price, agreed up front. You own every account and workflow, and a care plan is offered with every package.';
+  'Every package is a fixed price, agreed up front. You own every account and workflow. After go-live you can add the Monitoring or Care plan, or run it all yourself. Bugs in what we built are fixed free during its fix period, with or without a plan.';
 
 /** A package's price with "from" and the period, for running text. */
 export const priceText = (id: LpPackageId) => {
@@ -616,9 +637,13 @@ function pricingFaqs(variant: LpVariant): LpFaq[] {
     ];
   }
   const list = variant.packages.map((id) => `${LP_PACKAGES[id].name} ${priceText(id)}`).join('; ');
-  const payment = variant.packages
-    .map((id) => `${LP_PACKAGES[id].name}: ${LP_PACKAGES[id].payment.toLowerCase()}.`)
-    .join(' ');
+  const builds = variant.packages
+    .filter((id) => !isLpPlan(id))
+    .map((id) => `${LP_PACKAGES[id].name}: ${LP_PACKAGES[id].payment.toLowerCase()}.`);
+  const plans = variant.packages.some(isLpPlan)
+    ? ['Monitoring and Care plans: monthly in advance, cancel with 30 days’ notice.']
+    : [];
+  const payment = [...builds, ...plans].join(' ');
   return [
     {
       id: 'cost',
@@ -745,7 +770,7 @@ export function getLpPageContent(variant: LpVariant): LpPageContent {
         {
           id: 'after',
           question: 'What happens after the 3–4 weeks?',
-          answer: `You can take the care plan at ${priceText('care')} + VAT at 20%, cancel with 30 days’ notice, or run it all yourself. You own every account either way.`,
+          answer: `You can add the Monitoring plan at ${priceText('monitoring')} or the Care plan at ${priceText('care')}, + VAT at 20%, and cancel with 30 days’ notice. Or run it all yourself. You own every account either way.`,
         },
         {
           id: 'ranking',

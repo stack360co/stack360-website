@@ -6,6 +6,7 @@ import FaqAccordion from '@/components/pages/our-work/shared/FaqAccordion';
 import {
   formatPrice,
   getLpPageContent,
+  isLpPlan,
   LP_ACCOUNTANTS,
   LP_GUARANTEE,
   LP_LUXE_CASE,
@@ -16,6 +17,7 @@ import {
   LP_SHORT_QUOTE,
   LP_TRUST,
   type LpPackage,
+  type LpPackageId,
   type LpProofId,
   type LpReview,
   type LpVariant,
@@ -212,9 +214,25 @@ function ProofCard({ id }: { id: LpProofId }) {
   );
 }
 
-function PackageCard({ pkg, summary }: { pkg: LpPackage; summary?: string }) {
+/** Cards sit on a 6-column grid: 3 builds sit above the 2 plans, otherwise rows are shared evenly. */
+function packageSpan(ids: readonly LpPackageId[], id: LpPackageId) {
+  const builds = ids.filter((pkgId) => !isLpPlan(pkgId)).length;
+  return builds === 2 || (builds === 3 && isLpPlan(id)) ? 'lg:col-span-3' : 'lg:col-span-2';
+}
+
+function PackageCard({
+  pkg,
+  summary,
+  className = '',
+}: {
+  pkg: LpPackage;
+  summary?: string;
+  className?: string;
+}) {
   return (
-    <div className="flex h-full flex-col rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm">
+    <div
+      className={`flex h-full flex-col rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm ${className}`}
+    >
       <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500">
         {pkg.timing}
       </p>
@@ -535,20 +553,13 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                 />
               </div>
 
-              <div
-                className={`mt-md grid grid-cols-1 gap-md ${
-                  variant.packages.length === 4
-                    ? 'sm:grid-cols-2 lg:grid-cols-4'
-                    : variant.packages.length === 3
-                      ? 'md:grid-cols-3'
-                      : 'md:grid-cols-2'
-                }`}
-              >
+              <div className="mt-md grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-6">
                 {variant.packages.map((id) => (
                   <PackageCard
                     key={id}
                     pkg={LP_PACKAGES[id]}
                     summary={variant.packageSummaries?.[id]}
+                    className={packageSpan(variant.packages, id)}
                   />
                 ))}
               </div>
