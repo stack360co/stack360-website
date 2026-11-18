@@ -20,13 +20,19 @@ const INLINE_OPTIONS = {
   primary_color: 'e77725',
 };
 
+/** The first signs that someone is using the page, as opposed to a page-speed test loading it. */
+const ENGAGE_EVENTS = ['pointerdown', 'pointermove', 'keydown', 'touchstart', 'wheel', 'scroll'];
+
 /**
- * The booking calendar, embedded in the page so visitors book without leaving it. Calendly's
- * script and iframe load once the box is near the screen, so they never hold up the first paint.
+ * The booking calendar, embedded in the page so visitors book without leaving it. Calendly's frame
+ * brings about 4.5 MB of its own scripts (Stripe, reCAPTCHA, its analytics), so it loads on the
+ * visitor's first tap, scroll, key press or mouse move once the box is near the screen, or when they
+ * press "Show available times". Until then the page stays light on a phone.
  * Calendly keeps its own cookie notice inside the calendar, which covers its cookies.
  */
 export default function CalendlyInline() {
   const boxRef = useRef<HTMLDivElement>(null);
+  const startRef = useRef<(() => void) | null>(null);
   const [state, setState] = useState<'waiting' | 'loading' | 'ready' | 'failed'>('waiting');
   const [fallbackUrl, setFallbackUrl] = useState<string | null>(null);
 
@@ -43,13 +49,20 @@ export default function CalendlyInline() {
 
     let cancelled = false;
     let started = false;
+    let engaged = false;
+    let near = false;
+    const stopListening = () => {
+      for (const type of ENGAGE_EVENTS) {
+        window.removeEventListener(type, onEngage, true);
+      }
+    };
     const start = () => {
       if (started) {
         return;
       }
       started = true;
       observer.disconnect();
-      window.clearTimeout(fallback);
+      stopListening();
       setState('loading');
       loadCalendlyWidget()
         .then((calendly) => {
@@ -67,28 +80,50 @@ export default function CalendlyInline() {
         });
     };
 
+    startRef.current = start;
+
+    // Showing and within 400px of the screen. Checked directly too, because some in-app browsers
+    // report intersections late.
+    const nearScreen = () =>
+      box.offsetParent !== null && box.getBoundingClientRect().top < window.innerHeight + 400;
+
+    function onEngage(event: Event) {
+      if (event.type === 'pointermove' && (event as PointerEvent).pointerType !== 'mouse') {
+        return;
+      }
+      engaged = true;
+      stopListening();
+      // After the interaction's next paint, so measuring the box and starting the load never slow
+      // the response to the first tap (INP).
+      window.requestAnimationFrame(() => {
+        window.setTimeout(() => {
+          if (!cancelled && (near || nearScreen())) {
+            start();
+          }
+        }, 0);
+      });
+    }
+    for (const type of ENGAGE_EVENTS) {
+      window.addEventListener(type, onEngage, { capture: true, passive: true });
+    }
+
     // A box hidden with display:none (the form tab on phones) never intersects, so the calendar
     // only loads once someone can see it.
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
+        near = entries.some((entry) => entry.isIntersecting);
+        if (near && engaged) {
           start();
         }
       },
       { rootMargin: '400px 0px' }
     );
     observer.observe(box);
-    // Some in-app browsers report intersections late. The calendar is near the top of the page,
-    // so load it after a few seconds anyway, as long as it is showing.
-    const fallback = window.setTimeout(() => {
-      if (box.offsetParent !== null) {
-        start();
-      }
-    }, 3000);
     return () => {
       cancelled = true;
+      startRef.current = null;
       observer.disconnect();
-      window.clearTimeout(fallback);
+      stopListening();
     };
   }, []);
 
@@ -109,11 +144,24 @@ export default function CalendlyInline() {
       <div className={`relative ${HEIGHT_CLASS} overflow-hidden rounded-md bg-white`}>
         {state !== 'ready' ? (
           <div
-            aria-hidden={state !== 'failed'}
+            aria-hidden={state === 'loading'}
             className="absolute inset-0 flex flex-col items-center justify-center gap-md p-lg text-center"
           >
             <CalendarClock className="h-8 w-8 text-primary/60" aria-hidden />
-            {state === 'failed' ? (
+            {state === 'waiting' ? (
+              <>
+                <p className="max-w-[20rem] text-sm text-neutral-700">
+                  Pick a time for your free 20-minute call.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => startRef.current?.()}
+                  className="inline-flex min-h-11 items-center justify-center gap-xs rounded-sm bg-primary px-lg py-sm text-sm font-bold text-neutral-50 shadow-md transition-colors hover:bg-primary-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
+                  Show available times
+                </button>
+              </>
+            ) : state === 'failed' ? (
               <p className="max-w-[20rem] text-sm text-neutral-700">
                 The calendar didn’t load here.{' '}
                 {fallbackUrl ? (

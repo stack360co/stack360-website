@@ -315,8 +315,11 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
         {variant.eyebrow} · Free 20-minute review
       </p>
       <h1 className="text-balance text-4xl font-black leading-tight tracking-tight text-neutral-900 md:text-5xl">
-        {variant.headline}
+        {variant.h1}
       </h1>
+      <p className="text-balance text-xl font-bold leading-snug text-neutral-800 md:text-2xl">
+        {variant.headline}
+      </p>
       <p className="max-w-[40rem] text-base leading-relaxed text-neutral-600 md:text-lg">
         {variant.subhead}
       </p>

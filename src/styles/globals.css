@@ -311,3 +311,32 @@ html:not(.js) .faq-panel {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+/* 404 page entrances, in CSS so the root layout (which every page loads) needs no motion library */
+@keyframes notfound-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes notfound-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.animate-notfound-pop {
+  animation: notfound-pop 0.3s ease-out both;
+}
+
+.animate-notfound-rise {
+  animation: notfound-rise 0.4s ease-out 0.15s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-notfound-pop,
+  .animate-notfound-rise {
+    animation: none;
+  }
+}
