@@ -152,6 +152,7 @@ export default function PrivacyPage() {
               <li>scheduling (Calendly);</li>
               <li>analytics (Google Analytics, Microsoft Clarity);</li>
               <li>advertising measurement (Google Ads), as described under cookies;</li>
+              <li>AI tools that help our team draft emails and handle replies (Anthropic);</li>
               <li>our own customer records and team chat systems.</li>
             </ul>
             <p className="text-pretty">
@@ -165,6 +166,8 @@ export default function PrivacyPage() {
               Some of these providers are based in the United States. When personal data leaves the
               UK, we protect it with the safeguards UK law provides: the UK–US data bridge for
               certified providers, or the UK International Data Transfer Agreement or Addendum.
+              Stack360 Ltd’s own staff may also access personal data from Pakistan, where our team
+              is based, under the same protections that apply in the UK.
             </p>
           </Section>
 
