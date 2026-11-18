@@ -1,7 +1,6 @@
 'use client';
 
 import { MoveLeft, RefreshCw, Terminal } from 'lucide-react';
-import { motion } from 'motion/react';
 import Link from 'next/link';
 
 const POPULAR_PAGES = [
@@ -32,15 +31,10 @@ export default function NotFoundView() {
 
         <div className="flex flex-col items-center text-center space-y-md">
           {/* 1. Status Indicator Pill */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-            className="inline-flex items-center gap-xs rounded-sm border border-danger/20 bg-danger/5 px-md py-xs text-xs font-mono font-bold uppercase tracking-widest text-danger"
-          >
+          <div className="animate-notfound-pop inline-flex items-center gap-xs rounded-sm border border-danger/20 bg-danger/5 px-md py-xs text-xs font-mono font-bold uppercase tracking-widest text-danger">
             <span className="h-2 w-2 rounded-full bg-danger animate-ping" />
             UNRESOLVED_ROUTE
-          </motion.div>
+          </div>
 
           {/* 2. Massive Digital Error Indicator */}
           <div className="space-y-xs">
@@ -53,12 +47,7 @@ export default function NotFoundView() {
           </div>
 
           {/* 3. Terminal Diagnostics Log Box */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.4 }}
-            className="w-full bg-neutral-black border border-neutral-900 rounded-sm p-md font-mono text-xs text-left text-neutral-500 space-y-xs"
-          >
+          <div className="animate-notfound-rise w-full bg-neutral-black border border-neutral-900 rounded-sm p-md font-mono text-xs text-left text-neutral-500 space-y-xs">
             <div className="flex items-center justify-between border-b border-neutral-900 pb-xs mb-xs">
               <span className="text-[10px] text-neutral-600 font-bold flex items-center gap-xs">
                 <Terminal size={10} /> DIAGNOSTICS_SHELL
@@ -70,7 +59,7 @@ export default function NotFoundView() {
             <p className="text-neutral-400 font-medium">
               › The file structure or layout directory does not exist.
             </p>
-          </motion.div>
+          </div>
 
           {/* 4. Structural Descriptive Copy */}
           <p className="text-sm leading-relaxed text-text-muted-on-dark max-w-4xl">

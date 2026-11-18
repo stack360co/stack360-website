@@ -2,24 +2,17 @@
 
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 import { type ChangeEvent, type FormEvent, useRef, useState } from 'react';
-import { z } from 'zod';
 import FormHoneypot from '@/components/shared/FormHoneypot';
 import { pushEvent } from '@/lib/analytics';
 import { FORM_FALLBACK_MESSAGE, formGuardFields } from '@/lib/form-guard';
 import { leadContext } from '@/lib/lead-context';
-import { contactSchema } from '@/schema/contact';
-
-/** The contact form's rules, with the company name required here. */
-const lpLeadSchema = contactSchema.extend({
-  company: z
-    .string()
-    .trim()
-    .min(2, 'Please enter your company name.')
-    .max(120, 'Please shorten your company name.'),
-});
-
-type Field = 'name' | 'email' | 'company' | 'message';
-type Values = Record<Field, string>;
+import {
+  checkLpLead,
+  checkLpLeadField,
+  type LpLeadField as Field,
+  LP_LEAD_FIELDS,
+  type LpLeadValues as Values,
+} from './lp-lead-rules';
 
 const EMPTY: Values = { name: '', email: '', company: '', message: '' };
 
@@ -56,13 +49,13 @@ export default function LpLeadForm({
   const startedAt = useRef(Date.now());
 
   const checkField = (field: Field, value: string) => {
-    const result = lpLeadSchema.shape[field].safeParse(value);
+    const problem = checkLpLeadField(field, value);
     setErrors((prev) => {
       const next = { ...prev };
-      if (result.success) {
-        delete next[field];
+      if (problem) {
+        next[field] = problem;
       } else {
-        next[field] = result.error.issues[0]?.message;
+        delete next[field];
       }
       return next;
     });
@@ -82,15 +75,11 @@ export default function LpLeadForm({
     event.preventDefault();
     setErrorMessage(null);
 
-    const parsed = lpLeadSchema.safeParse(values);
-    if (!parsed.success) {
-      const found: Partial<Record<Field, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const field = issue.path[0] as Field;
-        found[field] ??= issue.message;
-      }
+    const parsed = checkLpLead(values);
+    if (!parsed.ok) {
+      const found = parsed.errors;
       setErrors(found);
-      const first = (['name', 'email', 'company', 'message'] as const).find((f) => found[f]);
+      const first = LP_LEAD_FIELDS.find((f) => found[f]);
       if (first) {
         document.getElementById(`lp-${first}`)?.focus();
       }

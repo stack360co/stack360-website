@@ -1,10 +1,8 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import ConsentBanner from '@/components/analytics/ConsentBanner';
 import LeadAttribution from '@/components/analytics/LeadAttribution';
-import InitialLoadingGate from '@/components/layout/Loading/InitialLoadingGate';
 import { seo } from '@/constants/seo';
 import { GTM_HEAD_SNIPPET, GTM_ID } from '@/lib/analytics';
-import Providers from '@/providers';
 import type { ReactComponentChildren } from '@/types/component';
 import '@/styles/globals.css';
 
@@ -59,9 +57,9 @@ export default function RootLayout({ children }: Readonly<ReactComponentChildren
             }
           `}</style>
         </noscript>
-        <Providers>
-          <InitialLoadingGate>{children}</InitialLoadingGate>
-        </Providers>
+        {/* The site's loading cover, route progress bar and toasts live in the (pages) layout, so
+            the ads landing pages (/lp) don't download them. */}
+        {children}
         <ConsentBanner />
         <LeadAttribution />
       </body>
