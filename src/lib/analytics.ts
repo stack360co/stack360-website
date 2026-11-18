@@ -68,12 +68,16 @@ const CONSENT_REGIONS = [
  * Runs inline in <head>: consent defaults first, then any stored choice, then the GTM loader, so
  * the container's first hit already carries the right consent state.
  *
- * On the ads landing pages (/lp/) the container loads on the visitor's first tap, scroll, key press
- * or mouse move instead, just after that interaction's next paint, so it never slows the response
- * to the first tap (INP). The script itself loads async. Tag Manager and the tags it runs (Google tag, Clarity) were most of the
- * page's blocking time on a phone. Events pushed before then (generate_lead, WhatsApp clicks, a
- * consent choice) wait in dataLayer and are sent in order once it loads. Visitors who never touch
- * the page aren't counted in GA4 or recorded in Clarity.
+ * On the ads landing pages (/lp/) Tag Manager and the tags it runs (Google tag, Clarity) were most
+ * of the page's blocking time on a phone, so the container loads at whichever comes first:
+ * - the visitor's first tap, scroll, key press or mouse move, just after that interaction's next
+ *   paint, so it never slows the response to the first tap (INP);
+ * - a tap or Enter on a WhatsApp link, straight away, to give the container the best chance of
+ *   seeing that click before WhatsApp takes over the screen;
+ * - about 4 seconds after the page starts, once the browser is idle, so visitors who never touch
+ *   the page are still counted.
+ * The script itself always loads async. Events pushed before then (generate_lead, whatsapp_click, a
+ * consent choice) wait in dataLayer and are sent in order once it loads.
  */
 export const GTM_HEAD_SNIPPET = `
 window.dataLayer = window.dataLayer || [];
@@ -99,8 +103,10 @@ if(w.location.pathname.indexOf('/lp/')!==0){load();return;}
 var ev=['pointerdown','pointermove','keydown','touchstart','wheel','scroll'];
 function go(e){if(e.type==='pointermove'&&e.pointerType!=='mouse')return;
 for(var k=0;k<ev.length;k++)w.removeEventListener(ev[k],go,true);
+var t=e.target;if(t&&t.closest&&t.closest('a[href^="https://wa.me/"]')){load();return;}
 w.requestAnimationFrame(function(){w.setTimeout(load,0);});}
 for(var k=0;k<ev.length;k++)w.addEventListener(ev[k],go,{capture:true,passive:true});
+w.setTimeout(function(){if(w.requestIdleCallback)w.requestIdleCallback(load,{timeout:2000});else load();},4000);
 })(window,document,'script','dataLayer','${GTM_ID}');
 `.trim();
 
