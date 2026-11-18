@@ -25,7 +25,12 @@ export interface LpVariant {
   /** Meta description. The page is noindex, so this mostly shows when the link is shared. */
   description: string;
   eyebrow: string;
-  /** The searcher's problem, as a question. Matches the ads' first headline. */
+  /**
+   * The page's H1: the words people search for, so Google Ads rates the page relevant to the
+   * keyword. Never implies a UK office or a UK-based team.
+   */
+  h1: string;
+  /** The searcher's problem, as a question, under the H1. Matches the ads' first headline. */
   headline: string;
   /** The outcome, then the offer. */
   subhead: string;
@@ -48,10 +53,11 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     slug: 'automation',
     theme: 'automation',
     packages: ['single', 'pack', 'presence', 'monitoring', 'care'],
-    title: 'Business Automation: Free 20-Minute Review',
+    title: 'Business Automation Services for UK Firms',
     description:
       'Still retyping data between systems? We connect your tools so the data moves on its own. Fixed-price packages and a free 20-minute review.',
     eyebrow: 'Business automation',
+    h1: 'Business automation services for UK firms',
     headline: 'Still retyping data between systems?',
     subhead:
       'We connect your tools so the data moves on its own, with every run logged and failures flagged to a person. Start with a free 20-minute review.',
@@ -64,10 +70,11 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     slug: 'ai-automation',
     theme: 'automation',
     packages: ['single', 'pack', 'presence', 'monitoring', 'care'],
-    title: 'AI Automation: Free 20-Minute Review',
+    title: 'AI Automation Agency for UK Businesses',
     description:
       'Jobs your team keeps forgetting? Staff get an alert the moment a lead or booking arrives. Fixed-price packages and a free 20-minute review.',
     eyebrow: 'AI automation',
+    h1: 'AI automation agency for UK businesses',
     headline: 'Jobs your team keeps forgetting?',
     subhead:
       'We automate the jobs that depend on someone remembering, so staff get an alert the moment a lead or booking arrives. A free 20-minute review tells you what to automate first.',
@@ -83,10 +90,11 @@ export const LP_VARIANTS: readonly LpVariant[] = [
       single: 'One workflow, built in your own n8n, cloud or self-hosted.',
       pack: '3 connected workflows in your own n8n that pass data between your tools.',
     },
-    title: 'n8n Automation: Free 20-Minute Review',
+    title: 'n8n Agency: Workflows Built and Monitored for You',
     description:
       'n8n workflows breaking without anyone noticing? We build and look after n8n workflows that report their own failures, on your own servers if you want.',
     eyebrow: 'n8n automation',
+    h1: 'n8n agency: workflows built and monitored for you',
     headline: 'n8n workflows breaking without anyone noticing?',
     subhead:
       'We build and look after n8n workflows that log every run and alert a person when something fails, on your own servers if you want. Start with a free 20-minute review.',
@@ -97,10 +105,11 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     slug: 'ai-agents',
     theme: 'ai',
     packages: [],
-    title: 'AI Agent Development: Free 20-Minute Review',
+    title: 'AI Agent Development for UK Businesses',
     description:
       'Requests piling up and documents read by hand? AI agents that work from your own data, with a person checking where it matters.',
     eyebrow: 'AI agent development',
+    h1: 'AI agent development for UK businesses',
     headline: 'Requests piling up and documents read by hand?',
     subhead:
       'AI agents that work from your own data and tools, with a person checking where it matters. Start with a free 20-minute review of the task.',
@@ -112,10 +121,11 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     slug: 'ai-chatbots',
     theme: 'ai',
     packages: ['chatbot', 'monitoring', 'care'],
-    title: 'AI Chatbot Development: Free 20-Minute Review',
+    title: 'AI Chatbot Development for UK Businesses',
     description:
       'Answering the same questions all day? A chatbot that looks the answer up in your own records before it replies. Book a free 20-minute review.',
     eyebrow: 'AI chatbot development',
+    h1: 'AI chatbot development for UK businesses',
     headline: 'Answering the same questions all day?',
     subhead:
       'A chatbot that looks the answer up in your own records before it replies, so it doesn’t make things up. Start with a free 20-minute review.',
@@ -127,10 +137,11 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     slug: 'online-presence',
     theme: 'presence',
     packages: ['presence', 'monitoring', 'care'],
-    title: 'Google Business Profile, Reviews and Leads: Free 20-Minute Review',
+    title: 'Google Business Profile and Local SEO for Small Businesses',
     description:
       'Not showing up when local customers search on Google? We refresh your website, set up your Google Business Profile, ask every customer for a review and put every enquiry in one pipeline.',
     eyebrow: 'Local search and lead capture',
+    h1: 'Google Business Profile and local SEO for small businesses',
     headline: 'Not showing up when local customers search on Google?',
     subhead:
       'We refresh your website, set up your Google Business Profile, ask every customer for a review, and put every enquiry in one pipeline. Fixed price, live in 3–4 weeks.',
