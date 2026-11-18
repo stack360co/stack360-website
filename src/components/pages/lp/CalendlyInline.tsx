@@ -93,9 +93,15 @@ export default function CalendlyInline() {
       }
       engaged = true;
       stopListening();
-      if (near || nearScreen()) {
-        start();
-      }
+      // After the interaction's next paint, so measuring the box and starting the load never slow
+      // the response to the first tap (INP).
+      window.requestAnimationFrame(() => {
+        window.setTimeout(() => {
+          if (!cancelled && (near || nearScreen())) {
+            start();
+          }
+        }, 0);
+      });
     }
     for (const type of ENGAGE_EVENTS) {
       window.addEventListener(type, onEngage, { capture: true, passive: true });

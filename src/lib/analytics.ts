@@ -69,7 +69,8 @@ const CONSENT_REGIONS = [
  * the container's first hit already carries the right consent state.
  *
  * On the ads landing pages (/lp/) the container loads on the visitor's first tap, scroll, key press
- * or mouse move instead. Tag Manager and the tags it runs (Google tag, Clarity) were most of the
+ * or mouse move instead, just after that interaction's next paint, so it never slows the response
+ * to the first tap (INP). The script itself loads async. Tag Manager and the tags it runs (Google tag, Clarity) were most of the
  * page's blocking time on a phone. Events pushed before then (generate_lead, WhatsApp clicks, a
  * consent choice) wait in dataLayer and are sent in order once it loads. Visitors who never touch
  * the page aren't counted in GA4 or recorded in Clarity.
@@ -97,7 +98,8 @@ j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNo
 if(w.location.pathname.indexOf('/lp/')!==0){load();return;}
 var ev=['pointerdown','pointermove','keydown','touchstart','wheel','scroll'];
 function go(e){if(e.type==='pointermove'&&e.pointerType!=='mouse')return;
-for(var k=0;k<ev.length;k++)w.removeEventListener(ev[k],go,true);load();}
+for(var k=0;k<ev.length;k++)w.removeEventListener(ev[k],go,true);
+w.requestAnimationFrame(function(){w.setTimeout(load,0);});}
 for(var k=0;k<ev.length;k++)w.addEventListener(ev[k],go,{capture:true,passive:true});
 })(window,document,'script','dataLayer','${GTM_ID}');
 `.trim();
