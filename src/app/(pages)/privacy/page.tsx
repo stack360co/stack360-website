@@ -9,6 +9,7 @@ import {
   SITE_EMAIL_HREF,
   UK_COMPANY_NAME,
   UK_COMPANY_NUMBER,
+  UK_ICO_REGISTRATION_NUMBER,
   UK_OFFICE_ADDRESS,
 } from '@/constants/site';
 import { pageJsonLdFromMeta } from '@/lib/seo/json-ld';
@@ -16,7 +17,7 @@ import { pageJsonLdFromMeta } from '@/lib/seo/json-ld';
 export const metadata = seo.privacy;
 
 /** Bump when the notice changes. UK GDPR notices should say when they were last updated. */
-const LAST_UPDATED = '16 November 2026';
+const LAST_UPDATED = '18 November 2026';
 
 const linkClass = 'font-bold text-primary underline';
 
@@ -61,7 +62,9 @@ export default function PrivacyPage() {
             <p className="text-pretty">
               {UK_COMPANY_NAME} is the controller of the personal data described here. We are
               registered in England and Wales, company number {UK_COMPANY_NUMBER}, registered
-              office: {UK_OFFICE_ADDRESS}. For anything about your data, email <Email />.
+              office: {UK_OFFICE_ADDRESS}. {UK_COMPANY_NAME} is registered with the Information
+              Commissioner’s Office, registration number {UK_ICO_REGISTRATION_NUMBER}. For anything
+              about your data, email <Email />.
             </p>
           </Section>
 
