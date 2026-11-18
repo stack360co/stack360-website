@@ -44,6 +44,8 @@ export const LAHORE_OFFICE_MAP_URL =
 /** Stack360 Ltd, as registered at Companies House (incorporated 5 Nov 2026). */
 export const UK_COMPANY_NAME = 'Stack360 Ltd';
 export const UK_COMPANY_NUMBER = '17564014';
+/** ICO data protection fee registration (letter of 18 Nov 2026; new, so not on the public register yet). */
+export const UK_ICO_REGISTRATION_NUMBER = 'ZC305762';
 export const UK_OFFICE_ADDRESS =
   'Office 2253, 85 Dunstall Hill, Wolverhampton, WV6 0SR, United Kingdom';
 
