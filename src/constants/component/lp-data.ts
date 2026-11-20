@@ -42,6 +42,8 @@ export interface LpVariant {
   proofNote?: string;
   /** Adds the "law firms and accountants" section (#legal-accounting). */
   legalAccounting?: boolean;
+  /** Sections for one trade (LP_SECTORS), each at its own id, before the prices. */
+  sectors?: readonly LpSectorId[];
   /** Adds the Luxe case study (#luxe) after the proof cards: automation or Google-side version. */
   caseStudy?: 'automation' | 'google';
   /** The client quote in the proof section when there's no case study (default: Mitchell's). */
@@ -64,6 +66,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     topic: 'automation',
     proof: ['luxe', 'cercle', 'alertia'],
     legalAccounting: true,
+    sectors: ['lettings'],
     caseStudy: 'automation',
   },
   {
@@ -147,6 +150,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
       'We refresh your website, set up your Google Business Profile, ask every customer for a review, and put every enquiry in one pipeline. Fixed price, live in 3–4 weeks.',
     topic: 'the online presence and lead engine',
     proof: ['luxeSeo', 'luxeReviews', 'luxePin'],
+    sectors: ['vets'],
     caseStudy: 'google',
     proofNote:
       'We ask every customer for a review, not just the happy ones, as Google’s rules require.',
@@ -454,6 +458,108 @@ export const LP_ACCOUNTANTS = {
     'Deadlines and checks are rules, so we run them as plain automation: predictable, logged and easy to test.',
   ],
 } as const;
+
+/**
+ * Sections for one trade, at /lp/<slug>#<id>. The B02 cold emails (December 2026) link straight
+ * to them with utm_content=step2, so keep the ids. Brief from the cold email chat, 20 Nov 2026,
+ * from emails Waris approved. UK spelling.
+ *
+ * Every fact and date is from the GOV.UK page in `source`; add no more without one. Lettings:
+ * leave out the registration fee and any fines (only secondary sources give them). Vets: we help
+ * practices publish and run what the order asks for, never legal advice. Neither section has a
+ * client case study: none of our projects is in lettings or veterinary work.
+ */
+export type LpSectorId = 'lettings' | 'vets';
+
+export interface LpSector {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  changesTitle: string;
+  /** A label (region or date) with a date range, or with the list of what applies from then. */
+  changes: readonly { label: string; detail: string | readonly string[] }[];
+  source: { label: string; href: string };
+  buildTitle: string;
+  build: readonly string[];
+  note: string;
+  price: string;
+}
+
+export const LP_SECTORS: Record<LpSectorId, LpSector> = {
+  lettings: {
+    eyebrow: 'For letting agents',
+    title: 'Automations for letting agents: the rental register',
+    intro:
+      'England’s Register your rental property service opens region by region from 15 December 2026. Landlords start each registration. Agents can then add the tenancy details and the gas safety, EICR and EPC certificates through a link for each property. Landlords must keep the details up to date within 28 days of any change, and agents can send those updates for them.',
+    changesTitle: 'Each region’s registration window',
+    changes: [
+      { label: 'West Midlands', detail: '15 Dec 2026 to 14 Mar 2027' },
+      { label: 'East of England', detail: '15 Jan to 14 Apr 2027' },
+      { label: 'East Midlands', detail: '15 Feb to 14 May 2027' },
+      { label: 'South East', detail: '15 Mar to 14 Jun 2027' },
+      { label: 'Yorkshire and Humberside', detail: '15 Apr to 14 Jul 2027' },
+      { label: 'North West', detail: '15 May to 14 Aug 2027' },
+      { label: 'North East', detail: '15 Jun to 14 Sep 2027' },
+      { label: 'London', detail: '15 Jul to 14 Oct 2027' },
+      { label: 'South West', detail: '15 Aug to 14 Nov 2027' },
+    ],
+    source: {
+      label:
+        'GOV.UK: Register your rental property service, guidance for letting agents and property managers (29 October 2026)',
+      href: 'https://www.gov.uk/guidance/register-your-rental-property-service-guidance-for-letting-agents-and-property-managers',
+    },
+    buildTitle: 'What we automate',
+    build: [
+      'Expiry dates read from each new gas safety certificate, EICR and EPC, with that property’s register update queued for the right person.',
+      'Reminders to the contractor and the landlord before a certificate expires.',
+      'A nudge to landlords who haven’t registered before their region’s deadline.',
+      'Every viewing request and out-of-hours enquiry logged, with the right person alerted.',
+    ],
+    note: 'Updates still go through each property’s GOV.UK link. The automations make sure the right person knows when one is due, and every run is logged.',
+    // Exact, so no "from": the pack's base price includes three workflows (as in the emails).
+    price: `Three automations like these: a fixed ${formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%, and you pay the second half only once they work as agreed. A single automation from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%.`,
+  },
+  vets: {
+    eyebrow: 'For veterinary practices',
+    title: 'Ready for the CMA’s vet pricing rules',
+    intro:
+      'The Competition and Markets Authority’s order on veterinary services changes what practices must publish and send to pet owners. These are the dates for businesses with 14 or fewer practices.',
+    changesTitle: 'What the order asks for, and when',
+    changes: [
+      {
+        label: 'From 23 March 2027',
+        detail: [
+          'A price list on your website for the standard services in Schedule 1 (up to 36), also available at each of your premises',
+          'Information on who owns the business, its practices and how to complain',
+          'The consultation price and a link to the price list in every booking confirmation sent by email or text',
+          'Prices updated on the list before a new price is charged',
+        ],
+      },
+      {
+        label: 'From 23 September 2027',
+        detail: [
+          'Written estimates for treatment likely to cost £500 or more, in the cases the order sets out',
+          'Itemised bills',
+        ],
+      },
+    ],
+    source: {
+      label:
+        'GOV.UK: small veterinary businesses complying with the CMA’s order (updated 15 October 2026)',
+      href: 'https://www.gov.uk/guidance/small-veterinary-businesses-complying-with-the-cmas-order',
+    },
+    buildTitle: 'What we build',
+    build: [
+      'Your price list, ownership and complaints pages, kept in one place so a price change shows everywhere at once.',
+      'The consultation price and a link to the price list added to every booking confirmation.',
+      'Every complaint logged with the date it arrived.',
+      'Optional: answers to price questions out of hours, taken from the published list.',
+    ],
+    note: 'We help you publish and run these. It isn’t legal advice: check what applies to your practice in the CMA’s guidance.',
+    // Exact, so no "from": the base package's 6 pages cover the price list, ownership and complaints pages.
+    price: `The online presence package: a fixed ${formatPrice(LP_PACKAGES.presence.price)} + VAT at 20%, and you pay the second half only once it works as agreed. The booking-message automation on its own from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%.`,
+  },
+};
 
 /* ------------------------------------------------------------------------------------------------
  * Guarantee, reviews and the Luxe case study (approved by Waris on 16 Nov 2026; marketing chat's

@@ -14,12 +14,14 @@ import {
   LP_PACKAGES,
   LP_PROOF,
   LP_REVIEWS,
+  LP_SECTORS,
   LP_SHORT_QUOTE,
   LP_TRUST,
   type LpPackage,
   type LpPackageId,
   type LpProofId,
   type LpReview,
+  type LpSectorId,
   type LpVariant,
   lpWhatsAppLink,
   VAT_LABEL,
@@ -196,6 +198,87 @@ function GuaranteeStrip({ showSecondHalf }: { showSecondHalf: boolean }) {
         </figcaption>
       </figure>
     </div>
+  );
+}
+
+/** One trade's section (#lettings, #vets): cold emails link straight to the id, so keep it. */
+function SectorSection({ id, tinted }: { id: LpSectorId; tinted: boolean }) {
+  const sector = LP_SECTORS[id];
+  return (
+    <section
+      id={id}
+      aria-labelledby={`${id}-heading`}
+      className={`site-section scroll-mt-24 border-b border-neutral-200 py-2xl ${tinted ? 'bg-neutral-100' : ''}`}
+    >
+      <div className="site-container">
+        <p className={eyebrow}>{sector.eyebrow}</p>
+        <h2 id={`${id}-heading`} className={`mt-sm ${sectionTitle}`}>
+          {sector.title}
+        </h2>
+        <p className="mt-sm max-w-3xl text-pretty text-sm leading-relaxed text-neutral-700 md:text-base">
+          {sector.intro}
+        </p>
+        <div className="mt-xl grid grid-cols-1 gap-md lg:grid-cols-2">
+          <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-lg shadow-sm md:p-xl">
+            <h3 className="text-lg font-bold text-neutral-900">{sector.changesTitle}</h3>
+            <dl className="mt-sm divide-y divide-neutral-200 text-sm">
+              {sector.changes.map((row) =>
+                typeof row.detail === 'string' ? (
+                  <div
+                    key={row.label}
+                    className="grid grid-cols-1 gap-y-0.5 py-sm sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-x-md"
+                  >
+                    <dt className="font-semibold text-neutral-900">{row.label}</dt>
+                    <dd className="text-neutral-700">{row.detail}</dd>
+                  </div>
+                ) : (
+                  <div key={row.label} className="py-sm">
+                    <dt className="font-semibold text-neutral-900">{row.label}</dt>
+                    <dd>
+                      <ul className="mt-xs list-disc space-y-1 pl-md leading-relaxed text-neutral-700 marker:text-neutral-400">
+                        {row.detail.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </dd>
+                  </div>
+                )
+              )}
+            </dl>
+            <p className="mt-md text-xs leading-relaxed text-neutral-600">
+              Source:{' '}
+              <a
+                href={sector.source.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-primary"
+              >
+                {sector.source.label}
+              </a>
+            </p>
+          </div>
+          <div className="flex flex-col rounded-xl border-2 border-primary/40 bg-neutral-50 p-lg shadow-sm md:p-xl">
+            <h3 className="text-lg font-bold text-neutral-900">{sector.buildTitle}</h3>
+            <ul className="mt-md space-y-sm">
+              {sector.build.map((item) => (
+                <li key={item} className="flex items-start gap-sm text-sm text-neutral-800">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-md text-sm leading-relaxed text-neutral-600">{sector.note}</p>
+            <p className="mt-lg text-sm font-semibold leading-relaxed text-neutral-900">
+              {sector.price} Start with a free 20-minute review.
+            </p>
+            <a href="#book" className={`mt-lg self-start ${primaryButton}`}>
+              Book your free review
+              <ArrowRight size={14} aria-hidden />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -531,6 +614,15 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
             </div>
           </section>
         ) : null}
+
+        {/* Alternating backgrounds: the law firms section, when shown, is already tinted. */}
+        {variant.sectors?.map((id, index) => (
+          <SectorSection
+            key={id}
+            id={id}
+            tinted={(index + (variant.legalAccounting ? 1 : 0)) % 2 === 0}
+          />
+        ))}
 
         {variant.packages.length > 0 ? (
           <section
