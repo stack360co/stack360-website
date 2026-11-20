@@ -516,7 +516,8 @@ export const LP_SECTORS: Record<LpSectorId, LpSector> = {
       'Every viewing request and out-of-hours enquiry logged, with the right person alerted.',
     ],
     note: 'Updates still go through each property’s GOV.UK link. The automations make sure the right person knows when one is due, and every run is logged.',
-    price: `Three of these automations: fixed price from ${formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%, and you pay the second half only once they work as agreed. A single automation from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%.`,
+    // Exact, so no "from": the pack's base price includes three workflows (as in the emails).
+    price: `Three automations like these: a fixed ${formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%, and you pay the second half only once they work as agreed. A single automation from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%.`,
   },
   vets: {
     eyebrow: 'For veterinary practices',
@@ -555,7 +556,8 @@ export const LP_SECTORS: Record<LpSectorId, LpSector> = {
       'Optional: answers to price questions out of hours, taken from the published list.',
     ],
     note: 'We help you publish and run these. It isn’t legal advice: check what applies to your practice in the CMA’s guidance.',
-    price: `The online presence package: fixed price from ${formatPrice(LP_PACKAGES.presence.price)} + VAT at 20%, and you pay the second half only once it works as agreed. The booking-message automation on its own from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%.`,
+    // Exact, so no "from": the base package's 6 pages cover the price list, ownership and complaints pages.
+    price: `The online presence package: a fixed ${formatPrice(LP_PACKAGES.presence.price)} + VAT at 20%, and you pay the second half only once it works as agreed. The booking-message automation on its own from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%.`,
   },
 };
 
