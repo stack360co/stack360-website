@@ -1,6 +1,8 @@
 'use client';
 
+import { ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 import MotionCard from '@/components/shared/motion/MotionCard';
 import { EASE_OUT_EXPO, viewport } from '@/components/shared/motion/variants';
@@ -11,6 +13,8 @@ export interface IndustryCard {
   painPoints: readonly string[];
   solution: string;
   result: string;
+  /** A page with more for this industry. */
+  link?: { label: string; href: string };
 }
 
 interface IndustryGridProps {
@@ -68,6 +72,16 @@ export default function IndustryGrid({ industries }: IndustryGridProps) {
               >
                 {industry.result}
               </motion.p>
+
+              {'link' in industry && industry.link ? (
+                <Link
+                  href={industry.link.href}
+                  className="inline-flex items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
+                >
+                  {industry.link.label}
+                  <ArrowRight size={14} aria-hidden />
+                </Link>
+              ) : null}
             </div>
           </MotionCard>
         </motion.article>

@@ -1,4 +1,5 @@
 import {
+  Calculator,
   Factory,
   GraduationCap,
   HeartPulse,
@@ -18,6 +19,20 @@ export const INDUSTRIES_HERO = {
 } as const;
 
 export const INDUSTRIES = [
+  {
+    // Claims as on /who-we-help/accounting-firms (NPTAAS is a US firm).
+    name: 'Accounting & Bookkeeping',
+    icon: <Calculator className="h-5 w-5" />,
+    painPoints: [
+      'Clients chased for records every quarter',
+      'Client details typed into several systems',
+      'More quarterly deadlines as clients join MTD for Income Tax',
+    ],
+    solution:
+      'Document requests and reminders that send themselves, onboarding with secure document uploads, and syncs between the tools a firm already uses.',
+    result: 'Our project: NPTAAS (US) · client reviews from weeks to days',
+    link: { label: 'Automation for UK accounting firms', href: '/who-we-help/accounting-firms' },
+  },
   {
     name: 'Healthcare',
     icon: <HeartPulse className="h-5 w-5" />,

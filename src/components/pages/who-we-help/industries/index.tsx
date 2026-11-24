@@ -27,7 +27,7 @@ export default function IndustriesPage() {
           <MotionStagger className="max-w-3xl space-y-sm">
             <MotionStaggerItem>
               <h2 className="text-balance text-2xl font-bold tracking-tight text-neutral-900">
-                Domain expertise across eight verticals
+                Domain expertise across nine verticals
               </h2>
             </MotionStaggerItem>
             <MotionStaggerItem>

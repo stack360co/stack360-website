@@ -436,10 +436,19 @@ export const seo = {
   whoWeHelpIndustries: pageMeta({
     title: 'Industry Software Solutions',
     description:
-      'Future-proof software for Healthcare, FinTech, E-commerce, Logistics, and more. HIPAA and PCI-DSS aligned delivery with proven, measurable outcomes.',
+      'Future-proof software for Accounting, Healthcare, FinTech, E-commerce, Logistics, and more. HIPAA and PCI-DSS aligned delivery with proven, measurable outcomes.',
     path: '/who-we-help/industries',
     keywords:
       'industry software development, healthcare software, fintech development, ecommerce platform, logistics software, HIPAA compliant software, PCI-DSS development',
+  }),
+
+  whoWeHelpAccountingFirms: pageMeta({
+    title: 'Automation for UK Accounting Firms',
+    description:
+      'Automation for UK accountancy and bookkeeping firms: document requests and reminders that send themselves, client onboarding, MTD record chasing and data syncs.',
+    path: '/who-we-help/accounting-firms',
+    keywords:
+      'accounting automation, automation for accountants, accounting practice automation, bookkeeping automation, MTD client chasing, accountancy firm automation UK',
   }),
 
   whoWeHelpStartups: pageMeta({
