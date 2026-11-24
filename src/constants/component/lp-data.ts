@@ -10,7 +10,7 @@ import { SITE_PHONE_E164, SITE_PROFILES } from '@/constants/site';
  * The pages are noindex and left out of the sitemap, so they don't compete with the SEO pages.
  */
 
-export type LpTheme = 'automation' | 'ai' | 'presence';
+export type LpTheme = 'automation' | 'ai' | 'presence' | 'accounting';
 
 export interface LpVariant {
   slug: string;
@@ -48,6 +48,11 @@ export interface LpVariant {
   caseStudy?: 'automation' | 'google';
   /** The client quote in the proof section when there's no case study (default: Mitchell's). */
   proofReview?: LpReviewId;
+  /**
+   * The quote in the first screen, in full, next to the first proof card's figure. Default:
+   * Mitchell's, shortened. Set it when the first proof card isn't Luxe, so the two match.
+   */
+  heroReview?: LpReviewId;
 }
 
 export const LP_VARIANTS: readonly LpVariant[] = [
@@ -154,6 +159,28 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     caseStudy: 'google',
     proofNote:
       'We ask every customer for a review, not just the happy ones, as Google’s rules require.',
+  },
+  {
+    // Google Ads' accounting campaign (Waris, 24 Nov 2026: "lets go for accounting automations",
+    // "for uk accounting firms"). Written for UK firms' partners and practice managers; the proof
+    // says where each client is. NPTAAS claims follow HQ's note of 24 Nov ("NPTAAS facts").
+    slug: 'accounting-automation',
+    theme: 'accounting',
+    packages: ['single', 'pack', 'monitoring', 'care'],
+    title: 'Accounting Automation for UK Accountancy Firms',
+    description:
+      'Still chasing clients for records every quarter? We automate client onboarding, record chasing and MTD reminders for UK accountancy and bookkeeping firms. Fixed prices and a free 20-minute review.',
+    eyebrow: 'Accounting automation',
+    h1: 'Accounting automation for UK accountancy firms',
+    headline: 'Still chasing clients for records every quarter?',
+    subhead:
+      'We automate client onboarding, record chasing and MTD reminders for UK accountancy and bookkeeping firms, so your team stops chasing clients and retyping. Start with a free 20-minute review.',
+    topic: 'accounting automation',
+    proof: ['nptaas', 'bookkeeping', 'luxe'],
+    proofNote:
+      'Projects we have built and run. NPTAAS and the bookkeeping firm are US clients; Luxe Excursions is a UK company.',
+    sectors: ['practice-automation'],
+    heroReview: 'ernest',
   },
 ];
 
@@ -333,7 +360,8 @@ export type LpProofId =
   | 'bookkeeping'
   | 'natif'
   | 'moneyball'
-  | 'legalatoms';
+  | 'legalatoms'
+  | 'nptaas';
 
 export interface LpProof {
   client: string;
@@ -415,6 +443,17 @@ export const LP_PROOF: Record<LpProofId, LpProof> = {
     description:
       'Fans and analysts ask about NFL players and teams in plain English. Before the model writes anything, it queries a live sports database, so the numbers come from data, not memory.',
   },
+  // A US firm. Live portal features, and "weeks to days" as worded on stack360.co (confirmed by
+  // Waris, 24 Nov 2026). The AI audit modules are "in testing" only, with no figures (HQ's note
+  // "NPTAAS facts", 24 Nov 2026).
+  nptaas: {
+    client: 'NPTAAS',
+    context: 'US accounting, tax and audit firm',
+    metric: 'Weeks → days',
+    metricLabel: 'Client review process',
+    description:
+      'We build its multi-tenant platform, which cut a client review process from weeks to days. Clients fill in onboarding questionnaires, upload documents securely and chat with the firm, and everyone assigned to a client is notified. AI audit modules are in testing with the firm.',
+  },
   legalatoms: {
     client: 'LegalAtoms',
     context: 'Legal-tech SaaS',
@@ -461,15 +500,16 @@ export const LP_ACCOUNTANTS = {
 
 /**
  * Sections for one trade, at /lp/<slug>#<id>. The B02 cold emails (December 2026) link straight
- * to them with utm_content=step2, so keep the ids. Brief from the cold email chat, 20 Nov 2026,
- * from emails Waris approved. UK spelling.
+ * to #lettings and #vets with utm_content=step2, so keep those ids. Brief from the cold email
+ * chat, 20 Nov 2026, from emails Waris approved. UK spelling.
  *
- * Every fact and date is from the GOV.UK page in `source`; add no more without one. Lettings:
+ * Every fact and date is from the GOV.UK pages in `sources`; add no more without one. Lettings:
  * leave out the registration fee and any fines (only secondary sources give them). Vets: we help
  * practices publish and run what the order asks for, never legal advice. Neither section has a
- * client case study: none of our projects is in lettings or veterinary work.
+ * client case study: none of our projects is in lettings or veterinary work. Accountants
+ * (#practice-automation): we automate the chasing around MTD, never the filing itself.
  */
-export type LpSectorId = 'lettings' | 'vets';
+export type LpSectorId = 'lettings' | 'vets' | 'practice-automation';
 
 export interface LpSector {
   eyebrow: string;
@@ -478,7 +518,7 @@ export interface LpSector {
   changesTitle: string;
   /** A label (region or date) with a date range, or with the list of what applies from then. */
   changes: readonly { label: string; detail: string | readonly string[] }[];
-  source: { label: string; href: string };
+  sources: readonly { label: string; href: string }[];
   buildTitle: string;
   build: readonly string[];
   note: string;
@@ -503,11 +543,13 @@ export const LP_SECTORS: Record<LpSectorId, LpSector> = {
       { label: 'London', detail: '15 Jul to 14 Oct 2027' },
       { label: 'South West', detail: '15 Aug to 14 Nov 2027' },
     ],
-    source: {
-      label:
-        'GOV.UK: Register your rental property service, guidance for letting agents and property managers (29 October 2026)',
-      href: 'https://www.gov.uk/guidance/register-your-rental-property-service-guidance-for-letting-agents-and-property-managers',
-    },
+    sources: [
+      {
+        label:
+          'GOV.UK: Register your rental property service, guidance for letting agents and property managers (29 October 2026)',
+        href: 'https://www.gov.uk/guidance/register-your-rental-property-service-guidance-for-letting-agents-and-property-managers',
+      },
+    ],
     buildTitle: 'What we automate',
     build: [
       'Expiry dates read from each new gas safety certificate, EICR and EPC, with that property’s register update queued for the right person.',
@@ -543,11 +585,13 @@ export const LP_SECTORS: Record<LpSectorId, LpSector> = {
         ],
       },
     ],
-    source: {
-      label:
-        'GOV.UK: small veterinary businesses complying with the CMA’s order (updated 15 October 2026)',
-      href: 'https://www.gov.uk/guidance/small-veterinary-businesses-complying-with-the-cmas-order',
-    },
+    sources: [
+      {
+        label:
+          'GOV.UK: small veterinary businesses complying with the CMA’s order (updated 15 October 2026)',
+        href: 'https://www.gov.uk/guidance/small-veterinary-businesses-complying-with-the-cmas-order',
+      },
+    ],
     buildTitle: 'What we build',
     build: [
       'Your price list, ownership and complaints pages, kept in one place so a price change shows everywhere at once.',
@@ -558,6 +602,49 @@ export const LP_SECTORS: Record<LpSectorId, LpSector> = {
     note: 'We help you publish and run these. It isn’t legal advice: check what applies to your practice in the CMA’s guidance.',
     // Exact, so no "from": the base package's 6 pages cover the price list, ownership and complaints pages.
     price: `The online presence package: a fixed ${formatPrice(LP_PACKAGES.presence.price)} + VAT at 20%, and you pay the second half only once it works as agreed. The booking-message automation on its own from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%.`,
+  },
+  'practice-automation': {
+    eyebrow: 'For UK accountancy and bookkeeping firms',
+    title: 'The jobs we automate for accountancy firms',
+    intro:
+      'Making Tax Digital for Income Tax brings sole-trader and landlord clients into quarterly updates in three waves, by their qualifying income from self-employment and property. Each client who joins adds four quarterly updates a year, and each update starts with chasing records. Every new client also needs customer due diligence under the money laundering regulations.',
+    changesTitle: 'Making Tax Digital for Income Tax: who joins, and when',
+    changes: [
+      { label: 'From 6 April 2026', detail: 'Qualifying income over £50,000' },
+      { label: 'From 6 April 2027', detail: 'Qualifying income over £30,000' },
+      { label: 'From 6 April 2028', detail: 'Qualifying income over £20,000' },
+      {
+        label: 'Quarterly update deadlines',
+        // Non-breaking spaces keep each date on one line.
+        detail: '7\u00a0August, 7\u00a0November, 7\u00a0February and 7\u00a0May',
+      },
+    ],
+    sources: [
+      {
+        label:
+          'GOV.UK: find out if and when you need to use Making Tax Digital for Income Tax (updated 26 March 2026)',
+        href: 'https://www.gov.uk/guidance/find-out-if-and-when-you-need-to-use-making-tax-digital-for-income-tax',
+      },
+      {
+        label: 'GOV.UK: send quarterly updates',
+        href: 'https://www.gov.uk/guidance/use-making-tax-digital-for-income-tax/send-quarterly-updates',
+      },
+      {
+        label: 'GOV.UK: money laundering supervision for accountancy service providers',
+        href: 'https://www.gov.uk/guidance/money-laundering-regulations-accountancy-service-provider-registration',
+      },
+    ],
+    buildTitle: 'What we automate',
+    build: [
+      'Client onboarding: questionnaires, ID documents for your customer due diligence collected through a secure upload, and the engagement letter chased until it’s signed, all tracked per client.',
+      'Records chased with reminders until the client uploads them, and your staff alerted the moment files arrive.',
+      'Before each MTD quarterly update: reminders to sole-trader and landlord clients, and a list for your team of who is still missing what.',
+      'Bank and card statements matched against the general ledger, with exceptions flagged for a person to review.',
+      'Your forms, email, practice CRM and other tools with an API joined up in n8n or Make, so client details are entered once.',
+      'Every new enquiry answered straight away and assigned to a named person.',
+    ],
+    note: 'Your team still checks the work and sends each update from its MTD software. The automations do the chasing and the paperwork around it, and every run is logged.',
+    price: `A single automation from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%. Three automations like these: a fixed ${formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%, and you pay the second half only once they work as agreed.`,
   },
 };
 
@@ -721,6 +808,14 @@ const WHO: LpFaq = {
     'Stack360 Ltd is a UK company. We work with UK and US companies, and our engineering team in Lahore has delivered 200+ projects since 2019. A founder and a senior engineer join the first call.',
 };
 
+/** For pages written since the UK-first decision (17 Nov 2026): no location for the team. */
+const WHO_UK: LpFaq = {
+  id: 'who',
+  question: 'Who is Stack360?',
+  answer:
+    'Stack360 Ltd is a UK company. We have delivered 200+ projects since 2019 for UK and US businesses, and a founder and a senior engineer join the first call.',
+};
+
 const COMMIT: LpFaq = {
   id: 'commit',
   question: 'Does the review commit me to anything?',
@@ -839,6 +934,91 @@ export function getLpPageContent(variant: LpVariant): LpPageContent {
         title: 'Ready to hand off the repetitive work?',
         description:
           'Book a free 20-minute automation review. Tell us one job your team repeats, and we’ll show you what to automate first.',
+      },
+    };
+  }
+
+  if (variant.theme === 'accounting') {
+    return {
+      offer: {
+        title: 'Book a free 20-minute automation review',
+        cardTitle: 'Free 20-minute automation review',
+        description:
+          'Tell us one job your firm repeats every month or quarter. We’ll show you what to automate first and what to leave to your team.',
+      },
+      jobField: {
+        label: 'What job should we automate for your firm?',
+        placeholder: 'e.g. Chase clients for their records before each quarterly update',
+        tab: 'Send the job',
+      },
+      steps: [
+        {
+          phase: 'Step 1',
+          title: 'Free 20-minute review',
+          description:
+            'A founder and a senior engineer join the call. Bring one job your firm repeats, and we’ll tell you what to automate first.',
+        },
+        step2,
+        {
+          phase: 'Step 3',
+          title: 'Built and live',
+          description:
+            'Each automation is tested on real cases and switched on with a person able to override it. A single automation goes live in about a week, a pack of three in 2–3 weeks.',
+        },
+      ],
+      faqs: [
+        {
+          id: 'what',
+          question: 'What can you automate for an accountancy firm?',
+          answer:
+            'Client onboarding and engagement letters, record chasing, MTD reminders, deadline lists for your team, bank and ledger matching and replies to new enquiries. Jobs your team does the same way every time are the best place to start.',
+        },
+        {
+          id: 'mtd',
+          question: 'Do you send MTD quarterly updates for us?',
+          answer:
+            'No. Quarterly updates go to HMRC from compatible software, sent by you or your client. We automate the work around them: requesting records, reminding clients and showing your team who is still missing what.',
+        },
+        ...pricingFaqs(variant),
+        {
+          id: 'tools',
+          question: 'Which tools can you connect?',
+          answer:
+            'Tools with an API, such as practice management systems, CRMs, email, calendars, forms, e-signature and document storage. We check your tools in the free review before quoting, and if one has no API, we say so. We build in n8n, Make or Zapier, or as code, and n8n can run on your own servers.',
+        },
+        {
+          id: 'data',
+          question: 'How do you keep client data safe under UK GDPR?',
+          answer:
+            'We build in accounts you own, and n8n can run on your own servers, so client data stays in systems you control. We work through access you grant and can remove at any time, each automation only reaches the data it needs, and every run is logged. Before any personal data goes to an outside service, such as an AI model, we agree it with you. Our privacy notice sets out how we handle personal data.',
+        },
+        {
+          id: 'time',
+          question: 'How long does it take?',
+          answer:
+            'A single automation goes live in about a week, a pack of three in 2–3 weeks. You get a written plan with milestones within two business days of the free review.',
+        },
+        {
+          id: 'accountants',
+          question: 'Have you worked with accounting firms before?',
+          answer:
+            'Yes. For NPTAAS, a US accounting, tax and audit firm, we build a multi-tenant client portal with onboarding questionnaires, secure document upload, engagements, staff roles, chat and notifications, and it cut a client review process from weeks to days. For a US bookkeeping firm, every new lead gets a text and an email straight away and goes to a named person. We build the same kinds of automation for UK firms, around UK deadlines such as MTD.',
+        },
+        {
+          id: 'ai-audit',
+          question: 'Can you use AI for audit and review work?',
+          answer:
+            'Carefully. With NPTAAS we are testing AI modules that draft audit planning documents and match statements against the ledger. The AI reads the documents, plain code does every calculation, and people review every exception and conclusion. They are in testing with the firm, not live yet.',
+        },
+        COMMIT,
+        OWNERSHIP,
+        WHO_UK,
+        REPLY,
+      ],
+      closing: {
+        title: 'Ready to stop chasing clients for records?',
+        description:
+          'Book a free 20-minute automation review. Tell us one job your firm repeats, and we’ll show you what to automate first.',
       },
     };
   }

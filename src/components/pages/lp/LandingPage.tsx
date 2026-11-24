@@ -246,15 +246,20 @@ function SectorSection({ id, tinted }: { id: LpSectorId; tinted: boolean }) {
               )}
             </dl>
             <p className="mt-md text-xs leading-relaxed text-neutral-600">
-              Source:{' '}
-              <a
-                href={sector.source.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-primary"
-              >
-                {sector.source.label}
-              </a>
+              {sector.sources.length > 1 ? 'Sources: ' : 'Source: '}
+              {sector.sources.map((source, index) => (
+                <span key={source.href}>
+                  {index > 0 ? '; ' : null}
+                  <a
+                    href={source.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:text-primary"
+                  >
+                    {source.label}
+                  </a>
+                </span>
+              ))}
             </p>
           </div>
           <div className="flex flex-col rounded-xl border-2 border-primary/40 bg-neutral-50 p-lg shadow-sm md:p-xl">
@@ -390,6 +395,7 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
   const content = getLpPageContent(variant);
   const whatsapp = lpWhatsAppLink(variant);
   const lead = LP_PROOF[variant.proof[0]];
+  const heroReview = variant.heroReview ? LP_REVIEWS[variant.heroReview] : REVIEW;
   const year = new Date().getFullYear();
 
   const pitch = (
@@ -440,20 +446,20 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
         </p>
       </div>
       <blockquote className="mt-sm text-sm leading-relaxed text-neutral-700">
-        “{LP_SHORT_QUOTE}”
+        “{variant.heroReview ? heroReview.quote : LP_SHORT_QUOTE}”
       </blockquote>
       <figcaption className="mt-xs text-xs text-neutral-500">
-        {REVIEW.name}, {REVIEW.role}, {REVIEW.company}
-        {REVIEW.source ? (
+        {heroReview.name}, {heroReview.role}, {heroReview.company}
+        {heroReview.source ? (
           <>
             {' · '}
             <a
-              href={REVIEW.source.href}
+              href={heroReview.source.href}
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-600 underline underline-offset-2 hover:text-primary"
             >
-              {REVIEW.source.label}
+              {heroReview.source.label}
             </a>
           </>
         ) : null}
@@ -605,6 +611,14 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                   workflows from {formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%. Start with a
                   free 20-minute review.
                 </p>
+                {/* The accounting ads' own page. A plain link, so Next doesn't prefetch it. */}
+                <a
+                  href="/lp/accounting-automation"
+                  className="mt-sm inline-flex items-center gap-xs text-sm font-bold text-primary hover:text-primary-dark"
+                >
+                  More on what we automate for accountancy practices
+                  <ArrowRight size={14} aria-hidden />
+                </a>
               </div>
 
               <a href="#book" className={`mt-xl ${primaryButton}`}>
