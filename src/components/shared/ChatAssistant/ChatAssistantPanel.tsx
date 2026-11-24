@@ -896,12 +896,6 @@ export default function ChatAssistant() {
                             >
                               Work With Us
                             </Link>
-                            <Link
-                              href="/work-with-us/careers"
-                              className="inline-flex rounded-sm border border-neutral-300 px-md py-sm text-xs font-bold text-neutral-800 transition-colors hover:border-neutral-500"
-                            >
-                              Careers
-                            </Link>
                           </div>
                           <CopyableRow
                             label="Sales email"

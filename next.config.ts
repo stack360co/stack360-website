@@ -43,6 +43,13 @@ const nextConfig: NextConfig = {
         destination: '/who-we-are',
         permanent: true,
       },
+      // Careers is hidden for now (Waris, 24 Nov 2026: "Hide careers too"); job-site links land on
+      // the Work With Us hub. The page's code stays in the repo to bring it back.
+      {
+        source: '/work-with-us/careers/:path*',
+        destination: '/work-with-us',
+        permanent: true,
+      },
       // The office page came off the site with the other Lahore mentions (Waris, 24 Nov 2026).
       {
         source: '/who-we-are/lahore',

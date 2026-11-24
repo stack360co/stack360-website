@@ -191,19 +191,19 @@ export const WHO_WE_ARE_HUB: SectionHubProps = {
   ],
   cta: {
     title: 'Want to build with us?',
-    description: 'Partner with the studio or join the team.',
+    description: 'Partner with the studio or hire our engineers.',
     primary: { label: 'Work with us', href: '/work-with-us' },
-    secondary: { label: 'Careers', href: '/work-with-us/careers' },
+    secondary: { label: 'Hire talent', href: '/work-with-us/hire' },
   },
 };
 
 export const WORK_WITH_US_HUB: SectionHubProps = {
   crumb: 'Work With Us',
-  title: 'Partner or',
-  highlight: 'join the bench.',
+  title: 'Partner with us or',
+  highlight: 'hire our engineers.',
   description:
-    'Engage Stack360 as your software partner, hire dedicated engineers for your team, or explore open roles if you want to build here.',
-  exploreBlurb: 'Partner, hire talent, or apply — pick the path that fits.',
+    'Engage Stack360 as your software partner, or hire dedicated engineers for your team.',
+  exploreBlurb: 'Partner or hire talent — pick the path that fits.',
   chapters: [
     {
       title: 'Software partner',
@@ -217,16 +217,10 @@ export const WORK_WITH_US_HUB: SectionHubProps = {
       href: '/work-with-us/hire',
       cta: 'Hire developers',
     },
-    {
-      title: 'Careers',
-      blurb: 'Open positions, internships, and our hiring process.',
-      href: '/work-with-us/careers',
-      cta: 'View careers',
-    },
   ],
   cta: {
     title: 'Ready when you are.',
-    description: 'Tell us what you need — a build partner, embedded talent, or a role on the team.',
+    description: 'Tell us what you need — a build partner or embedded talent.',
     primary: { label: 'Contact us', href: '/contact' },
     secondary: { label: 'Our work', href: '/our-work' },
   },

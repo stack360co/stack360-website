@@ -5,7 +5,6 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { ContactSkeleton } from './ContactSkeleton';
 import GeneralLoadingScreen from './GeneralLoadingScreen';
 import HeroSectionLoading from './HeroSectionLoading';
-import OpenRolesSkeleton from './open-role-skeleton';
 
 /** Wait this long before showing a screen, so prefetched pages switch without a flash. */
 const SHOW_AFTER_MS = 150;
@@ -27,14 +26,6 @@ function screenFor(path: string): ReactNode {
       <>
         <GeneralLoadingScreen hideBody />
         <ContactSkeleton />
-      </>
-    );
-  }
-  if (path.startsWith('/work-with-us/careers')) {
-    return (
-      <>
-        <GeneralLoadingScreen hideBody />
-        <OpenRolesSkeleton />
       </>
     );
   }
