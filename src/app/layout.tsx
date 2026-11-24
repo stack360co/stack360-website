@@ -20,8 +20,14 @@ export const metadata = seo.root;
 
 export default function RootLayout({ children }: Readonly<ReactComponentChildren>) {
   return (
-    // suppressHydrationWarning: the head script adds `js` to <html> before React hydrates
-    <html lang="en" suppressHydrationWarning>
+    // suppressHydrationWarning: the head script adds `js` to <html> before React hydrates.
+    // The font variables sit on <html> because Tailwind's theme defines --font-sans on :root as
+    // var(--font-geist-sans); set only on <body>, it was undefined there and Geist never loaded.
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Runs before first paint, so `js-only` chrome (the navbar) takes its space from the
             start instead of popping in once the bundle loads, which shifted the page. */}
@@ -35,7 +41,7 @@ export default function RootLayout({ children }: Readonly<ReactComponentChildren
           dangerouslySetInnerHTML={{ __html: GTM_HEAD_SNIPPET }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
