@@ -59,7 +59,7 @@ export default function SoftwarePartnerPage() {
             <MotionStaggerItem>
               <p className="mt-md max-w-3xl text-sm leading-relaxed text-neutral-600">
                 Stack360 builds software and places dedicated developers for UK and US companies,
-                with our engineering team in Lahore, and a founder joins every discovery call.
+                and a founder joins every discovery call.
               </p>
             </MotionStaggerItem>
             <MotionStagger className="mt-lg space-y-sm">

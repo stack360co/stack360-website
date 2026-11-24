@@ -151,7 +151,7 @@ export const seo = {
   whatWeBuild: pageMeta({
     title: 'Software Development Services: Web, Mobile, AI',
     description:
-      'Custom software, web and mobile apps, AI, SaaS, ERP, CRM, cloud, DevOps and automation, built by our Lahore team for US and UK companies.',
+      'Custom software, web and mobile apps, AI, SaaS, ERP, CRM, cloud, DevOps and automation, built by our engineering team for US and UK companies.',
     path: '/what-we-build',
   }),
 
@@ -472,7 +472,7 @@ export const seo = {
   whoWeHelpEnterprises: pageMeta({
     title: 'Enterprise Software Development',
     description:
-      'Enterprise software development: dedicated teams, legacy system integration and cloud work on AWS, Azure and GCP, from our Lahore team for US and UK companies.',
+      'Enterprise software development: dedicated teams, legacy system integration and cloud work on AWS, Azure and GCP, for US and UK companies.',
     path: '/who-we-help/enterprises',
     keywords:
       'enterprise software development, dedicated development team, legacy system integration, enterprise cloud migration',
@@ -528,16 +528,16 @@ export const seo = {
   }),
 
   whoWeAre: pageMeta({
-    absoluteTitle: 'About Stack360 | Software House in DHA Lahore Since 2019',
+    absoluteTitle: 'About Stack360 | Software House Since 2019',
     description:
-      'Stack360 is a software house in DHA Lahore that has built software and placed dedicated developers for US and UK companies since 2019. Meet the team.',
+      'Stack360 is a software house that has built software and placed dedicated developers for US and UK companies since 2019. Meet the team.',
     path: '/who-we-are',
   }),
 
   whoWeAreHistory: pageMeta({
     title: 'Our History: Stack360 Since 2019',
     description:
-      'How Stack360 grew from its founding in 2019 into a Lahore team that has delivered 200+ projects for companies in the US and UK.',
+      'How Stack360 grew from its founding in 2019 into a team that has delivered 200+ projects for companies in the US and UK.',
     path: '/who-we-are/history',
   }),
 
@@ -553,13 +553,6 @@ export const seo = {
     description:
       'How a project runs with us: a discovery call with a founder, a plan within two business days, weekly demos and support after launch.',
     path: '/who-we-are/how-we-work',
-  }),
-
-  whoWeAreLahore: pageMeta({
-    absoluteTitle: 'Stack360 Lahore Office: Address, Hours and Directions',
-    description:
-      'Stack360’s office is at 82-G, First Floor, DHA Phase 1, Lahore 54660. Open Monday to Friday, 10 AM to 10 PM. Directions, contact details and our team.',
-    path: '/who-we-are/lahore',
   }),
 
   workWithUs: pageMeta({

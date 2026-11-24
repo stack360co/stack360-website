@@ -903,7 +903,7 @@ const WHO: LpFaq = {
   id: 'who',
   question: 'Who will I be working with?',
   answer:
-    'Stack360 Ltd is a UK company. We work with UK and US companies, and our engineering team in Lahore has delivered 200+ projects since 2019. A founder and a senior engineer join the first call.',
+    'Stack360 Ltd is a UK company. We work with UK and US companies and have delivered 200+ projects since 2019. A founder and a senior engineer join the first call.',
 };
 
 /** For pages written since the UK-first decision (17 Nov 2026): no location for the team. */

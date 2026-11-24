@@ -227,11 +227,6 @@ export const NAVIGATION_DATA: NavSection[] = [
             desc: 'How we plan, build, test and hand over your project.',
             href: '/who-we-are/how-we-work',
           },
-          {
-            title: 'Lahore Office',
-            desc: 'Where the whole team works: 82-G, DHA Phase 1. Address, hours and directions.',
-            href: '/who-we-are/lahore',
-          },
         ],
       },
     ],

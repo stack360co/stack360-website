@@ -46,7 +46,6 @@ const ROUTES = [
   '/who-we-are/history',
   '/who-we-are/culture',
   '/who-we-are/how-we-work',
-  '/who-we-are/lahore',
   '/work-with-us',
   '/work-with-us/software-partner',
   '/work-with-us/hire',
@@ -69,7 +68,6 @@ const PAGE_UPDATED: Record<string, string> = {
   '/privacy': '2026-11-16',
   '/terms': '2026-10-21',
   '/who-we-are': '2026-10-21',
-  '/who-we-are/lahore': '2026-10-16',
 };
 
 /** Posts, service pages and hire pages carry the date their content last changed; others use the site date. */

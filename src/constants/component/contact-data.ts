@@ -1,12 +1,7 @@
 import {
-  LAHORE_OFFICE_ADDRESS,
-  LAHORE_OFFICE_HOURS,
-  LAHORE_OFFICE_MAP_URL,
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE,
-  SITE_PHONE_PK,
-  SITE_PHONE_PK_HREF,
   SITE_PHONE_USA,
   SITE_PHONE_USA_HREF,
   SITE_WHATSAPP_HREF,
@@ -34,7 +29,7 @@ export const CONTACT_CHANNELS = [
     label: 'WhatsApp (UK)',
     value: SITE_PHONE,
     href: SITE_WHATSAPP_HREF,
-    hint: LAHORE_OFFICE_HOURS,
+    hint: 'Messages only · Mon–Fri',
     target: '_blank',
     rel: 'noopener noreferrer',
   },
@@ -43,7 +38,7 @@ export const CONTACT_CHANNELS = [
     label: 'US',
     value: SITE_PHONE_USA,
     href: SITE_PHONE_USA_HREF,
-    hint: LAHORE_OFFICE_HOURS,
+    hint: 'Mon–Fri',
     target: '_self',
     rel: undefined,
   },
@@ -59,15 +54,6 @@ export const CONTACT_CHANNELS = [
 ] as const;
 
 export const CONTACT_OFFICES = [
-  {
-    country: 'Pakistan',
-    role: 'Lahore office · where our team works',
-    flagSrc: 'https://flagcdn.com/pk.svg',
-    address: LAHORE_OFFICE_ADDRESS,
-    phone: { label: SITE_PHONE_PK, href: SITE_PHONE_PK_HREF },
-    hours: LAHORE_OFFICE_HOURS,
-    mapUrl: LAHORE_OFFICE_MAP_URL,
-  },
   {
     country: 'United States',
     role: 'Mailing address · Stack360 AI Solutions LLC',

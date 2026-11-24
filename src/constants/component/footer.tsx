@@ -4,8 +4,6 @@ import {
   SITE_EMAIL_HREF,
   SITE_PHONE,
   SITE_PHONE_E164,
-  SITE_PHONE_PK,
-  SITE_PHONE_PK_HREF,
   SITE_PHONE_USA,
   SITE_PHONE_USA_HREF,
   SITE_SOCIAL,
@@ -27,7 +25,7 @@ export interface FooterPhone {
 export interface FooterOffice {
   label: string;
   /** flagcdn.com country code. */
-  flag: 'pk' | 'us' | 'gb';
+  flag: 'us' | 'gb';
   lines: string[];
   phones: FooterPhone[];
   /** Page about this office, linked from its label. */
@@ -37,13 +35,6 @@ export interface FooterOffice {
 const whatsApp = (e164: string) => `https://wa.me/${e164.replace(/[^0-9]/g, '')}`;
 
 export const OFFICES: FooterOffice[] = [
-  {
-    label: 'Lahore office (where our team works)',
-    flag: 'pk',
-    href: '/who-we-are/lahore',
-    lines: ['82-G, First Floor, DHA Phase 1,', 'Lahore 54660, Punjab, Pakistan'],
-    phones: [{ label: SITE_PHONE_PK, href: SITE_PHONE_PK_HREF }],
-  },
   {
     label: 'US · Stack360 AI Solutions LLC (mailing address)',
     flag: 'us',

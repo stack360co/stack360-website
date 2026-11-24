@@ -265,7 +265,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: 'Agree the working hours',
-        body: 'Write down which hours overlap with your team, and who answers if something breaks outside them. A few shared hours a day cover standups, reviews and quick questions.\n\nOur engineers work full time on your project, from our team in Lahore, and overlap at least 4 hours with a US working day.',
+        body: 'Write down which hours overlap with your team, and who answers if something breaks outside them. A few shared hours a day cover standups, reviews and quick questions.\n\nOur engineers work full time on your project and overlap at least 4 hours with a US working day.',
       },
       {
         heading: 'Settle access and ownership before day one',
@@ -900,7 +900,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
       },
       {
         heading: '9. How does communication work across time zones?',
-        body: 'Ask for the overlap hours in writing, and who answers when something breaks.\n\nOurs: our team works from Lahore, and engineers overlap at least 4 hours with a US working day. Full Blown Media ran its project with us through Slack and Trello.',
+        body: 'Ask for the overlap hours in writing, and who answers when something breaks.\n\nOurs: engineers overlap at least 4 hours with a US working day. Full Blown Media ran its project with us through Slack and Trello.',
       },
       {
         heading: '10. What happens at the end?',

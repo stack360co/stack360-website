@@ -36,7 +36,7 @@ export const CULTURE_OFFICE_PHOTOS = [
   },
   {
     src: '/assets/who-we-are/office/dev-hall-way.webp',
-    alt: 'Development hallway at Stack360 Lahore office',
+    alt: 'Development hallway at the Stack360 office',
     caption: 'Dev corridor',
     width: 1040,
     height: 644,

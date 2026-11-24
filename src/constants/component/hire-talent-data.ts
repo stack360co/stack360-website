@@ -1,5 +1,4 @@
 import {
-  LAHORE_OFFICE_ADDRESS,
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE,
@@ -12,17 +11,12 @@ export const HIRE_HERO = {
   title: 'Hire reliable developers.',
   highlight: 'Close the talent gap.',
   description:
-    'Full-time engineers who join your team, vetted with four checks and shortlisted within 2 days. Or a managed dedicated team, from our team in Lahore for companies in the US and UK.',
+    'Full-time engineers who join your team, vetted with four checks and shortlisted within 2 days. Or a managed dedicated team, for companies in the US and UK.',
 } as const;
 
 export const HIRE_PROMISE = 'Get shortlists within 2 days. Hire in as fast as 1 week.';
 
 export const HIRE_CONTACT = [
-  {
-    label: 'Lahore office (where our team works)',
-    value: LAHORE_OFFICE_ADDRESS,
-    icon: 'building' as const,
-  },
   {
     label: 'US mailing address (Stack360 AI Solutions LLC)',
     value: '12828 Willow Centre Dr, Ste D, Houston, TX 77066, USA',
@@ -156,8 +150,7 @@ export const HIRE_TEAM_OPTIONS: readonly HireInfoItem[] = [
 export const HIRE_TERMS: readonly HireInfoItem[] = [
   {
     title: 'Working hours',
-    description:
-      'Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day. Pakistan doesn’t change its clocks, so the gap moves by an hour when the US and UK do.',
+    description: 'Our engineers overlap at least 4 hours with a US working day.',
   },
   {
     title: 'You own the work',

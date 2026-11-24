@@ -7,7 +7,7 @@ export const SITE_TAGLINE = 'Your Reliable Software Development Agency';
 
 /** Company description for the homepage meta and Organization schema; the same line as the footer. */
 export const SITE_DESCRIPTION =
-  'Stack360 builds software, automation and dedicated developer teams for UK and US companies. 200+ projects since 2019, built by our engineering team in Lahore.';
+  'Stack360 builds software, automation and dedicated developer teams for UK and US companies. 200+ projects since 2019, built by our engineering team.';
 
 /** Sales inbox — display value and mailto target. */
 export const SITE_EMAIL = 'sales@stack360.co';
@@ -26,20 +26,6 @@ export const SITE_PHONE_USA = '+1 (713) 443 9180';
 /** US phone — E.164 and tel: link (the display value is SITE_PHONE_USA). */
 export const SITE_PHONE_USA_E164 = '+17134439180';
 export const SITE_PHONE_USA_HREF = `tel:${SITE_PHONE_USA_E164}` as const;
-
-/**
- * Lahore office, where the team works. Address, postcode, phone and hours match the
- * Google Business Profile (postcode 54660, confirmed 2026-10-16).
- */
-export const SITE_PHONE_PK = '+92 331 1111753';
-export const SITE_PHONE_PK_E164 = '+923311111753';
-export const SITE_PHONE_PK_HREF = `tel:${SITE_PHONE_PK_E164}` as const;
-export const LAHORE_OFFICE_POSTCODE = '54660';
-export const LAHORE_OFFICE_ADDRESS = `82-G, First Floor, DHA Phase 1, Lahore ${LAHORE_OFFICE_POSTCODE}, Punjab, Pakistan`;
-export const LAHORE_OFFICE_HOURS = 'Mon–Fri • 10:00 AM–10:00 PM Pakistan time (UTC+5)';
-/** The Business Profile's own Maps place, so directions land on the right building. */
-export const LAHORE_OFFICE_MAP_URL =
-  'https://www.google.com/maps/place/?q=place_id:ChIJEwYaJrcFGTkRC8hxET6XWgo';
 
 /** Stack360 Ltd, as registered at Companies House (incorporated 5 Nov 2026). */
 export const UK_COMPANY_NAME = 'Stack360 Ltd';
@@ -74,16 +60,12 @@ export const SITE_PROFILES = {
   techbehemoths: 'https://techbehemoths.com/company/stack360',
 } as const;
 
+/**
+ * The company's addresses for the Organization schema. The team's location isn't shown on the
+ * public site (Waris, 24 Nov 2026: "just remove lahore"); the privacy notice still discloses
+ * where personal data is accessed from.
+ */
 export const SITE_OFFICES = [
-  {
-    country: 'Pakistan',
-    role: 'Lahore office',
-    streetAddress: '82-G, First Floor, DHA Phase 1',
-    addressLocality: 'Lahore',
-    addressRegion: 'Punjab',
-    postalCode: LAHORE_OFFICE_POSTCODE,
-    addressCountry: 'PK',
-  },
   {
     country: 'United States',
     role: 'Stack360 AI Solutions LLC',
