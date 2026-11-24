@@ -218,6 +218,28 @@ export default function CapabilityPage({ data, meta }: CapabilityPageProps) {
                 </MotionStaggerItem>
               ))}
             </MotionStagger>
+
+            {data.audience ? (
+              <MotionReveal>
+                <Link
+                  href={data.audience.href}
+                  className="group flex flex-col gap-sm rounded-xl border-2 border-primary/30 bg-neutral-50 p-lg transition-colors hover:border-primary/60 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <span>
+                    <span className="block text-base font-bold text-neutral-900">
+                      {data.audience.title}
+                    </span>
+                    <span className="mt-xs block text-sm leading-relaxed text-neutral-600">
+                      {data.audience.description}
+                    </span>
+                  </span>
+                  <span className="inline-flex shrink-0 items-center gap-xs text-sm font-bold text-primary group-hover:text-primary-dark">
+                    {data.audience.label}
+                    <ArrowUpRight size={14} aria-hidden />
+                  </span>
+                </Link>
+              </MotionReveal>
+            ) : null}
           </div>
         </div>
       </MotionSection>

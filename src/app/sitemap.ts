@@ -29,6 +29,7 @@ const ROUTES = [
   '/what-we-build/digital-marketing',
   '/who-we-help',
   '/who-we-help/industries',
+  '/who-we-help/accounting-firms',
   '/who-we-help/startups',
   '/who-we-help/smes',
   '/who-we-help/enterprises',

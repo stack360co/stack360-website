@@ -84,6 +84,8 @@ export interface CapabilityPageData {
   capabilitiesTitle: string;
   capabilitiesIntro: string;
   capabilities: { title: string; description: string }[];
+  /** A link under the capabilities to a page for one audience, e.g. accounting firms. */
+  audience?: { title: string; description: string; href: string; label: string };
   /** Optional project story rendered after the capabilities section. */
   story?: CapabilityStory;
   /** Who reviewed the page; shown under the hero and in the page schema. */
@@ -1982,6 +1984,13 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
           'Automated tests, including Selenium browser tests, that check every release before it goes live.',
       },
     ],
+    audience: {
+      title: 'For UK accounting firms',
+      description:
+        'Document requests and reminders that send themselves, client onboarding and MTD record chasing for accountancy and bookkeeping firms.',
+      href: '/who-we-help/accounting-firms',
+      label: 'Automation for accounting firms',
+    },
     story: {
       eyebrow: 'Project story · Luxe Excursions',
       title: 'Automating the busywork behind a Tenerife tour company',
