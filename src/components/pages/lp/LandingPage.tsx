@@ -303,7 +303,7 @@ function JobsSection({ jobs }: { jobs: LpJobs }) {
         <h2 id="jobs-heading" className={`mt-sm ${sectionTitle}`}>
           {jobs.title}
         </h2>
-        <ul className="mt-xl grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-xl grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
           {jobs.items.map((item) => (
             <li
               key={item.title}

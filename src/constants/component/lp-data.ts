@@ -174,20 +174,21 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     // "for uk accounting firms"). Matches the marketing chat's "accounting automation Ads plan"
     // (24 Nov): its 3 ad groups and sitelinks point here (HQ chose this URL over /lp/accountants)
     // and at #book, #pricing, #care, #proof, #mtd and #ai, so keep the slug and those ids. NPTAAS claims follow HQ's note of 24 Nov
-    // ("NPTAAS facts"). Kept out until Waris says otherwise: AML/ID checks, engagement letters,
-    // tool-integration claims.
+    // ("NPTAAS facts"). Written for firms, never for businesses doing their own books. We collect
+    // ID and AML documents through a secure upload; never say we run AML or ID checks. Kept out
+    // until Waris says otherwise: engagement letters, tool-integration claims, ATC/Zoho.
     slug: 'accounting-automation',
     theme: 'accounting',
     packages: ['single', 'pack', 'monitoring', 'care'],
-    title: 'Automation for UK Accounting and Bookkeeping Practices',
+    title: 'Automation for UK Accountancy and Bookkeeping Firms',
     description:
-      'Chasing clients for records every quarter? Document requests and reminders that go out on their own, client onboarding and data syncs for UK accounting practices. Free 20-minute review.',
-    eyebrow: 'Automation for accountants',
-    h1: 'Automation for UK accounting and bookkeeping practices',
+      'Chasing clients for records every quarter? Document requests, reminders until clients upload, onboarding and data syncs for UK accountancy and bookkeeping firms. Free 20-minute review.',
+    eyebrow: 'For UK accountancy firms',
+    h1: 'Automation for UK accountancy and bookkeeping firms',
     headline: 'Chasing clients for records every quarter?',
     subhead:
-      'Document requests and reminders that go out on their own, client onboarding that lands in your practice tools, and syncs so nobody retypes data. Start with a free 20-minute review.',
-    topic: 'automation for my accounting practice',
+      'Document requests and reminders that go out to your clients on their own, onboarding that lands in your practice tools, and syncs so nobody retypes data. Start with a free 20-minute review.',
+    topic: 'automation for my accountancy firm',
     proof: ['nptaas', 'bookkeeping', 'luxe'],
     proofNote:
       'Projects we have built and run. NPTAAS and the bookkeeping firm are US clients; Luxe Excursions is a UK company.',
@@ -196,19 +197,27 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     proofReview: 'ernest',
     jobs: {
       eyebrow: 'What we automate',
-      title: 'The admin that eats your team’s week',
+      title: 'The admin that eats your firm’s week',
       items: [
         {
           title: 'Document requests, automated',
           text: 'Requests go out to clients on their own before each deadline, so nobody has to remember to send them.',
         },
         {
-          title: 'Reminders that send themselves',
-          text: 'Clients get reminded until they send what you need, and your team sees who is still missing what.',
+          title: 'Reminders until clients upload',
+          text: 'Reminders that send themselves until the client uploads what you asked for, and a list of who is still missing what.',
+        },
+        {
+          title: 'Staff alerted when files land',
+          text: 'The right person hears the moment a client’s files arrive, instead of checking an inbox.',
         },
         {
           title: 'Client onboarding, automated',
-          text: 'A new client’s details land in your practice tools once, instead of being typed in by hand.',
+          text: 'Onboarding questionnaires, and secure uploads for the ID and AML documents your checks need. You run the checks; the details land in your practice tools once.',
+        },
+        {
+          title: 'A client portal for your firm',
+          text: 'One secure place where clients answer questionnaires, upload documents and message your team, like the portal we build for NPTAAS. A portal is quoted after the review.',
         },
         {
           title: 'Syncs so nobody retypes data',
@@ -1060,7 +1069,7 @@ export function getLpPageContent(variant: LpVariant): LpPageContent {
           id: 'what',
           question: 'What can you automate for an accountancy firm?',
           answer:
-            'Document requests and reminders, client onboarding into your practice tools, syncs between your systems, record chasing for MTD, deadline lists for your team and replies to new enquiries. Jobs your team does the same way every time are the best place to start.',
+            'Document requests and reminders, onboarding questionnaires and secure document uploads, alerts when client files arrive, syncs between your systems, record chasing for MTD and replies to new enquiries. We can also build a client portal for your firm. Jobs your team does the same way every time are the best place to start.',
         },
         {
           id: 'mtd',
