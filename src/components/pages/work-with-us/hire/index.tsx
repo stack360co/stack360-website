@@ -103,7 +103,7 @@ export default function HireTalentPage() {
         tinted
       />
 
-      <HireInfoSection title="Hours, location and contracts" items={HIRE_TERMS} columns={4} />
+      <HireInfoSection title="Hours and contracts" items={HIRE_TERMS} columns={4} />
 
       <MotionSection className="border-b border-neutral-200 py-2xl">
         <div className="site-container">

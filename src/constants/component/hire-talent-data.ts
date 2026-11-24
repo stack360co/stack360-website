@@ -146,7 +146,7 @@ export const HIRE_TEAM_OPTIONS: readonly HireInfoItem[] = [
   },
 ];
 
-/** Hours, location and contract terms, worded the same on the hub and the team page. */
+/** Hours and contract terms, worded the same on the hub and the team page. */
 export const HIRE_TERMS: readonly HireInfoItem[] = [
   {
     title: 'Working hours',

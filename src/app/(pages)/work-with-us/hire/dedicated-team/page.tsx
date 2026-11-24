@@ -11,12 +11,12 @@ import { pageJsonLdFromMeta, serviceJsonLd } from '@/lib/seo/json-ld';
 
 export const metadata = seo.workWithUsDedicatedTeam;
 
+// DEDICATED_TEAM_FAQS: what's different, growing the team, contract terms.
 const faqs = [
   ...DEDICATED_TEAM_FAQS.slice(0, 2),
   HIRE_VETTING_FAQ,
-  DEDICATED_TEAM_FAQS[2],
   HIRE_REPLACEMENT_FAQ,
-  DEDICATED_TEAM_FAQS[3],
+  DEDICATED_TEAM_FAQS[2],
   HIRE_OWNERSHIP_FAQ,
 ];
 
