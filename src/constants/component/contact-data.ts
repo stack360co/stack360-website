@@ -62,7 +62,7 @@ export const CONTACT_OFFICES = [
   },
   {
     country: 'United Kingdom',
-    role: 'UK office · Stack360 Ltd',
+    role: 'Registered office · Stack360 Ltd',
     flagSrc: 'https://flagcdn.com/gb.svg',
     address: UK_OFFICE_ADDRESS,
   },

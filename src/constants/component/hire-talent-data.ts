@@ -23,7 +23,7 @@ export const HIRE_CONTACT = [
     icon: 'building' as const,
   },
   {
-    label: 'UK office (Stack360 Ltd)',
+    label: 'Registered office (Stack360 Ltd)',
     value: UK_OFFICE_ADDRESS,
     icon: 'building' as const,
   },
