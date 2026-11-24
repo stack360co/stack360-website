@@ -43,6 +43,12 @@ const nextConfig: NextConfig = {
         destination: '/who-we-are',
         permanent: true,
       },
+      // The office page came off the site with the other Lahore mentions (Waris, 24 Nov 2026).
+      {
+        source: '/who-we-are/lahore',
+        destination: '/who-we-are',
+        permanent: true,
+      },
       {
         source: '/services',
         destination: '/what-we-build',

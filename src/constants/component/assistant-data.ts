@@ -1,5 +1,4 @@
 import {
-  LAHORE_OFFICE_ADDRESS,
   SITE_EMAIL,
   SITE_EMAIL_HREF,
   SITE_PHONE,
@@ -75,11 +74,6 @@ export const ASSISTANT_CONTACT: AssistantContactField[] = [
     value: SITE_PHONE,
     href: SITE_WHATSAPP_HREF,
     copyValue: SITE_PHONE_E164,
-  },
-  {
-    label: 'Pakistan · Lahore office',
-    value: LAHORE_OFFICE_ADDRESS,
-    copyValue: LAHORE_OFFICE_ADDRESS,
   },
   {
     label: 'United Kingdom · Stack360 Ltd',
@@ -205,12 +199,11 @@ export const ASSISTANT_SERVICES: Record<string, AssistantServiceResult[]> = {
 
 export const ASSISTANT_WHO_WE_ARE = {
   intro:
-    'Stack360 builds software, automates operations and places dedicated developers for UK and US companies. Since 2019 our engineering team in Lahore has delivered 200+ projects.',
+    'Stack360 builds software, automates operations and places dedicated developers for UK and US companies. Since 2019 our engineering team has delivered 200+ projects.',
   links: [
     { label: 'Our History', href: '/who-we-are/history' },
     { label: 'Culture', href: '/who-we-are/culture' },
     { label: 'How We Work', href: '/who-we-are/how-we-work' },
-    { label: 'Lahore Office', href: '/who-we-are/lahore' },
   ],
 } as const;
 

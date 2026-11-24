@@ -151,7 +151,7 @@ export const WHO_WE_HELP_HUB: SectionHubProps = {
 
 export const WHO_WE_ARE_HUB: SectionHubProps = {
   crumb: 'Who We Are',
-  title: 'A Lahore software team',
+  title: 'A software team',
   highlight: 'building for US and UK companies.',
   description:
     'Stack360 is a software development agency founded in 2019 by Azmat Rana. Here is our history, our culture and how we ship.',
@@ -187,13 +187,6 @@ export const WHO_WE_ARE_HUB: SectionHubProps = {
       blurb: 'How we plan, build, test and hand over your project.',
       href: '/who-we-are/how-we-work',
       cta: 'How we work',
-    },
-    {
-      title: 'Lahore Office',
-      blurb:
-        'Our office in DHA Phase 1, where the whole team works. Address, hours and directions.',
-      href: '/who-we-are/lahore',
-      cta: 'Our Lahore office',
     },
   ],
   cta: {

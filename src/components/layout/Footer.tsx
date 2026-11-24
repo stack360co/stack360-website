@@ -60,8 +60,7 @@ export default function Footer() {
             <Stack360Logo animateWordmark={false} />
             <p className="max-w-content text-pretty text-sm leading-relaxed text-neutral-600">
               Stack360 builds software, automates operations and places dedicated developers for UK
-              and US companies. Since 2019 our engineering team in Lahore has delivered 200+
-              projects.
+              and US companies. Since 2019 our engineering team has delivered 200+ projects.
             </p>
 
             <div className="space-y-xl">

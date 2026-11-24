@@ -1,13 +1,11 @@
 import type { Metadata } from 'next';
 import { CULTURE_FOUNDER } from '@/constants/component/who-we-are-culture-data';
 import {
-  LAHORE_OFFICE_MAP_URL,
   SITE_DESCRIPTION,
   SITE_EMAIL,
   SITE_NAME,
   SITE_OFFICES,
   SITE_PHONE_E164,
-  SITE_PHONE_PK_E164,
   SITE_PROFILES,
   SITE_SOCIAL,
   SITE_URL,
@@ -79,42 +77,6 @@ export function organizationJsonLd(): JsonLd {
         availableLanguage: ['English'],
       },
     ],
-  };
-}
-
-export const LAHORE_OFFICE_ID = `${SITE_URL}/contact#lahore-office`;
-
-/** The Lahore office as a local business; name, address, phone and hours match the Google Business Profile. */
-export function lahoreOfficeJsonLd(): JsonLd {
-  const office = SITE_OFFICES.find((item) => item.addressCountry === 'PK');
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    '@id': LAHORE_OFFICE_ID,
-    name: SITE_NAME,
-    url: SITE_URL,
-    image: `${SITE_URL}/stack360-icon.png`,
-    telephone: SITE_PHONE_PK_E164,
-    ...(office
-      ? {
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: office.streetAddress,
-            addressLocality: office.addressLocality,
-            addressRegion: office.addressRegion,
-            postalCode: office.postalCode,
-            addressCountry: office.addressCountry,
-          },
-        }
-      : {}),
-    hasMap: LAHORE_OFFICE_MAP_URL,
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '10:00',
-      closes: '22:00',
-    },
-    parentOrganization: { '@id': ORGANIZATION_ID },
   };
 }
 
@@ -246,7 +208,6 @@ const PAGE_LABELS: Readonly<Record<string, string>> = {
   '/who-we-are/history': 'Our History',
   '/who-we-are/culture': 'Our Culture',
   '/who-we-are/how-we-work': 'How We Work',
-  '/who-we-are/lahore': 'Lahore Office',
   '/work-with-us': 'Work With Us',
   '/work-with-us/software-partner': 'Software Partner',
   '/work-with-us/hire': 'Hire Talent',

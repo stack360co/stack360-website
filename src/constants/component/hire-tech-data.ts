@@ -155,8 +155,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -289,8 +288,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -401,8 +399,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -529,8 +526,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -633,8 +629,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -779,8 +774,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -894,8 +888,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1021,8 +1014,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1147,8 +1139,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1262,8 +1253,7 @@ export const HIRE_TECH_PAGES: readonly HireTechPage[] = [
       {
         id: 'time-zone',
         question: 'Do they overlap with US working hours?',
-        answer:
-          'Yes. Our engineers work from our team in Lahore, Pakistan, and overlap at least 4 hours with a US working day.',
+        answer: 'Yes. Our engineers overlap at least 4 hours with a US working day.',
       },
     ],
   },
@@ -1370,12 +1360,6 @@ export const HIRE_HUB_FAQS: readonly HireTechFaq[] = [
     answer: 'We send a shortlist within 2 days, and hiring can take as little as a week.',
   },
   {
-    id: 'location',
-    question: 'Where do your engineers work?',
-    answer:
-      'From our team in Lahore, Pakistan, for clients in the US and UK. They overlap at least 4 hours with a US working day.',
-  },
-  {
     id: 'team',
     question: 'Can we hire a whole team?',
     answer:
@@ -1395,12 +1379,6 @@ export const DEDICATED_TEAM_FAQS: readonly HireTechFaq[] = [
     id: 'grow',
     question: 'Can we start with one engineer and grow?',
     answer: 'Yes. Some clients start with one or two engineers and add roles as the work grows.',
-  },
-  {
-    id: 'location',
-    question: 'Where does the team work?',
-    answer:
-      'From our team in Lahore, Pakistan. The team overlaps at least 4 hours with a US working day.',
   },
   {
     id: 'contract',
