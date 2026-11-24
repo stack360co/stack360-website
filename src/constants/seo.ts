@@ -558,7 +558,7 @@ export const seo = {
   workWithUs: pageMeta({
     title: 'Work With Us: Partner, Hire or Join',
     description:
-      'Three ways to work with Stack360: build a product with us, hire developers or a dedicated team, or join our team in Lahore.',
+      'Three ways to work with Stack360: build a product with us, hire developers or a dedicated team, or join our team.',
     path: '/work-with-us',
   }),
 
