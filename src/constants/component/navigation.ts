@@ -261,16 +261,6 @@ export const NAVIGATION_DATA: NavSection[] = [
           },
         ],
       },
-      {
-        title: 'For Builders',
-        items: [
-          {
-            title: 'Looking for a Career',
-            desc: 'Browse Open Positions, check out modern Internship options, and learn our strict Hiring Process.',
-            href: '/work-with-us/careers',
-          },
-        ],
-      },
     ],
   },
 ];

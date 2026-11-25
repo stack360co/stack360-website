@@ -51,7 +51,6 @@ const ROUTES = [
   '/work-with-us/hire',
   ...getHireTechSlugs().map((slug) => `/work-with-us/hire/${slug}`),
   '/work-with-us/hire/dedicated-team',
-  '/work-with-us/careers',
   '/privacy',
   '/terms',
 ] as readonly string[];

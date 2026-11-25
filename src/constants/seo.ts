@@ -558,7 +558,7 @@ export const seo = {
   workWithUs: pageMeta({
     title: 'Work With Us: Partner, Hire or Join',
     description:
-      'Three ways to work with Stack360: build a product with us, hire developers or a dedicated team, or join our team.',
+      'Two ways to work with Stack360: build a product with us, or hire developers or a dedicated team.',
     path: '/work-with-us',
   }),
 
@@ -581,13 +581,6 @@ export const seo = {
     description:
       'Single engineers or a managed dedicated team with a project manager, QA, UI/UX and DevOps. Vetted with four checks and shortlisted within 2 days.',
     path: '/work-with-us/hire/dedicated-team',
-  }),
-
-  workWithUsCareers: pageMeta({
-    title: 'Careers at Stack360 in Lahore',
-    description:
-      'Open roles and internships at Stack360 in Lahore, and how our hiring process works. Join a team building software for US and UK clients.',
-    path: '/work-with-us/careers',
   }),
 } satisfies Record<string, Metadata>;
 

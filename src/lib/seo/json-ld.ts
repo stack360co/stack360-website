@@ -212,7 +212,6 @@ const PAGE_LABELS: Readonly<Record<string, string>> = {
   '/work-with-us/software-partner': 'Software Partner',
   '/work-with-us/hire': 'Hire Talent',
   '/work-with-us/hire/dedicated-team': 'Dedicated Teams',
-  '/work-with-us/careers': 'Careers',
 };
 
 function breadcrumbTrail(path: string, label: string) {
