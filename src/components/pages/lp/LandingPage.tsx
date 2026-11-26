@@ -641,10 +641,10 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
                 </ul>
                 <figure className="mt-lg max-w-3xl border-l-2 border-primary/50 pl-md">
                   <blockquote className="text-pretty text-sm leading-relaxed text-neutral-800 md:text-base">
-                    “{LP_REVIEWS.ernest.quote}”
+                    “{LP_REVIEWS.auditFounder.quote}”
                   </blockquote>
                   <figcaption className="mt-xs text-xs text-neutral-600">
-                    <ReviewCaption review={LP_REVIEWS.ernest} />
+                    <ReviewCaption review={LP_REVIEWS.auditFounder} />
                   </figcaption>
                 </figure>
                 <p className="mt-lg text-sm font-semibold text-neutral-900">

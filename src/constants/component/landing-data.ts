@@ -446,13 +446,14 @@ export const LANDING_TESTIMONIALS: readonly Testimonial[] = [
   },
   {
     quote:
-      'Stack360 built NPTAAS from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
-    name: 'Ernest Tomkiewicz',
-    role: 'Founder & Certified Public Accountant',
-    company: 'NPTAAS',
+      'Stack360 built … from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
+    // The client asked not to be named (Waris, 26 Nov 2026): role only, no photo. The firm's
+    // name is cut from the quote with an ellipsis.
+    name: 'Founder',
+    role: 'Certified Public Accountant',
+    company: 'A US auditing firm',
     industry: 'Accounting & Taxation · United States',
     rating: 5,
-    avatar: '/assets/clients/ernest-tomkiewicz.webp',
   },
   {
     quote:

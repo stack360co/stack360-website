@@ -173,8 +173,8 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     // Google Ads' accounting campaign (Waris, 24 Nov 2026: "lets go for accounting automations",
     // "for uk accounting firms"). Matches the marketing chat's "accounting automation Ads plan"
     // (24 Nov): its 3 ad groups and sitelinks point here (HQ chose this URL over /lp/accountants)
-    // and at #book, #pricing, #care, #proof, #mtd and #ai, so keep the slug and those ids. NPTAAS claims follow HQ's note of 24 Nov
-    // ("NPTAAS facts"). Written for firms, never for businesses doing their own books. We collect
+    // and at #book, #pricing, #care, #proof, #mtd and #ai, so keep the slug and those ids. The auditing firm is never named (Waris,
+    // 26 Nov 2026); its claims follow HQ's note of 24 Nov. Written for firms, never for businesses doing their own books. We collect
     // ID and AML documents through a secure upload; never say we run AML or ID checks. Kept out
     // until Waris says otherwise: engagement letters, tool-integration claims, ATC/Zoho.
     slug: 'accounting-automation',
@@ -189,12 +189,12 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     subhead:
       'Document requests and reminders that go out to your clients on their own, onboarding that lands in your practice tools, and syncs so nobody retypes data. Start with a free 20-minute review.',
     topic: 'automation for my accountancy firm',
-    proof: ['nptaas', 'bookkeeping', 'luxe'],
+    proof: ['auditFirm', 'bookkeeping', 'luxe'],
     proofNote:
-      'Projects we have built and run. NPTAAS and the bookkeeping firm are US clients; Luxe Excursions is a UK company.',
+      'Projects we have built and run. The auditing firm and the bookkeeping firm are US clients; Luxe Excursions is a UK company.',
     sectors: ['mtd', 'ai'],
-    heroReview: 'ernest',
-    proofReview: 'ernest',
+    heroReview: 'auditFounder',
+    proofReview: 'auditFounder',
     jobs: {
       eyebrow: 'What we automate',
       title: 'The admin that eats your firm’s week',
@@ -217,7 +217,7 @@ export const LP_VARIANTS: readonly LpVariant[] = [
         },
         {
           title: 'A client portal for your firm',
-          text: 'One secure place where clients answer questionnaires, upload documents and message your team, like the portal we build for NPTAAS. A portal is quoted after the review.',
+          text: 'One secure place where clients answer questionnaires, upload documents and message your team, like the portal we build for a US auditing firm. A portal is quoted after the review.',
         },
         {
           title: 'Syncs so nobody retypes data',
@@ -406,7 +406,7 @@ export type LpProofId =
   | 'natif'
   | 'moneyball'
   | 'legalatoms'
-  | 'nptaas';
+  | 'auditFirm';
 
 export interface LpProof {
   client: string;
@@ -488,12 +488,11 @@ export const LP_PROOF: Record<LpProofId, LpProof> = {
     description:
       'Fans and analysts ask about NFL players and teams in plain English. Before the model writes anything, it queries a live sports database, so the numbers come from data, not memory.',
   },
-  // A US firm. Live portal features, and "weeks to days" as worded on stack360.co (confirmed by
-  // Waris, 24 Nov 2026). The AI audit modules are "in testing" only, with no figures (HQ's note
-  // "NPTAAS facts", 24 Nov 2026).
-  nptaas: {
-    client: 'NPTAAS',
-    context: 'US accounting, tax and audit firm',
+  // A US auditing firm that asked not to be named (Waris, 26 Nov 2026). Live portal features, and
+  // "weeks to days" as worded on stack360.co; the AI audit modules are "in testing" only.
+  auditFirm: {
+    client: 'A US auditing firm',
+    context: 'Client portal and audit workflows',
     metric: 'Weeks → days',
     metricLabel: 'Client review process',
     description:
@@ -552,8 +551,8 @@ export const LP_ACCOUNTANTS = {
  * leave out the registration fee and any fines (only secondary sources give them). Vets: we help
  * practices publish and run what the order asks for, never legal advice. Neither section has a
  * client case study: none of our projects is in lettings or veterinary work. Accountants (#mtd,
- * #ai on /lp/accounting-automation): we automate the chasing around MTD, never the filing itself; NPTAAS's
- * AI audit modules are only ever "in testing".
+ * #ai on /lp/accounting-automation): we automate the chasing around MTD, never the filing itself; the auditing
+ * firm's AI audit modules are only ever "in testing", and the firm is never named.
  */
 export type LpSectorId = 'lettings' | 'vets' | 'mtd' | 'ai';
 
@@ -735,7 +734,7 @@ export const LP_SECTORS: Record<LpSectorId, LpSector> = {
     build: [
       'For Natif.ai, we built AI that pulls the fields out of invoices, forms and low-quality scans, so staff stop keying them in. A person reviewed every extraction before it was used.',
       'For Alertia, plain rules instead of AI spared the client an AI bill of around $1,000.',
-      'For NPTAAS, a US accounting, tax and audit firm, AI audit modules are in testing with the firm. AI reads the documents, plain code does every calculation, and people review every exception and conclusion.',
+      'For a US auditing firm, AI audit modules are in testing with the firm. AI reads the documents, plain code does every calculation, and people review every exception and conclusion.',
     ],
     note: 'In the free review we tell you which of your jobs need AI and which don’t.',
     price: `A single automation, with one AI step allowed, from ${formatPrice(LP_PACKAGES.single.price)} + VAT at 20%. Three automations: a fixed ${formatPrice(LP_PACKAGES.pack.price)} + VAT at 20%, and you pay the second half only once they work as agreed.`,
@@ -767,7 +766,7 @@ export const LP_GUARANTEE = {
   ],
 } as const;
 
-export type LpReviewId = 'mitchell' | 'bilel' | 'corcoran' | 'ernest';
+export type LpReviewId = 'mitchell' | 'bilel' | 'corcoran' | 'auditFounder';
 
 export interface LpReview {
   quote: string;
@@ -804,14 +803,16 @@ export const LP_REVIEWS: Record<LpReviewId, LpReview> = {
     company: 'Full Blown Media',
     source: { label: 'Verified review on Clutch', href: SITE_PROFILES.clutch },
   },
-  ernest: {
+  // Role only and no firm name, at the client's request (Waris, 26 Nov 2026); the name is cut from
+  // the quote with an ellipsis.
+  auditFounder: {
     quote:
-      'Stack360 built NPTAAS from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
+      'Stack360 built … from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
     short:
-      'Stack360 built NPTAAS from the ground up, including multi-tenant workflows, secure client portals…',
-    name: 'Ernest Tomkiewicz',
-    role: 'Founder & Certified Public Accountant',
-    company: 'NPTAAS',
+      'Stack360 built … from the ground up, including multi-tenant workflows, secure client portals…',
+    name: 'Founder',
+    role: 'Certified Public Accountant',
+    company: 'A US auditing firm',
   },
 };
 
@@ -1100,13 +1101,13 @@ export function getLpPageContent(variant: LpVariant): LpPageContent {
           id: 'accountants',
           question: 'Have you worked with accounting firms before?',
           answer:
-            'Yes. For NPTAAS, a US accounting, tax and audit firm, we build a multi-tenant client portal with onboarding questionnaires, secure document upload, engagements, staff roles, chat and notifications, and it cut a client review process from weeks to days. For a US bookkeeping firm, every new lead gets a text and an email straight away and goes to a named person. We build the same kinds of automation for UK firms, around UK deadlines such as MTD.',
+            'Yes. For a US auditing firm, we build a multi-tenant client portal with onboarding questionnaires, secure document upload, engagements, staff roles, chat and notifications, and it cut a client review process from weeks to days. For a US bookkeeping firm, every new lead gets a text and an email straight away and goes to a named person. We build the same kinds of automation for UK firms, around UK deadlines such as MTD.',
         },
         {
           id: 'ai-audit',
           question: 'Can you use AI for audit and review work?',
           answer:
-            'Carefully. With NPTAAS we are testing AI modules that draft audit planning documents and match statements against the ledger. The AI reads the documents, plain code does every calculation, and people review every exception and conclusion. They are in testing with the firm, not live yet.',
+            'Carefully. With a US auditing firm we are testing AI modules that draft audit planning documents and match statements against the ledger. The AI reads the documents, plain code does every calculation, and people review every exception and conclusion. They are in testing with the firm, not live yet.',
         },
         COMMIT,
         OWNERSHIP,

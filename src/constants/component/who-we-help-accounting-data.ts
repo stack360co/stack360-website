@@ -4,8 +4,8 @@
  * page /lp/accounting-automation, but shows no prices (prices are on the /lp pages and in ads only)
  * and doesn't link to the /lp page, so organic visitors stay on indexed pages.
  *
- * Rules (HQ's note "NPTAAS facts", 24 Nov 2026):
- * - NPTAAS is always "a US accounting, tax and audit firm". Its AI audit modules are only ever
+ * Rules (HQ's note of 24 Nov 2026, and Waris on 26 Nov):
+ * - The auditing firm is never named: "a US auditing firm". Its AI audit modules are only ever
  *   "in testing", with no figures. "Weeks to days" is worded as elsewhere on the site.
  * - We collect ID and AML documents; never say we run AML or ID checks.
  * - Not here until Waris OKs them: engagement letters, tool-integration claims (Xero, QuickBooks,
@@ -51,7 +51,7 @@ export const ACCOUNTING_JOBS = {
     {
       title: 'A client portal for your firm',
       description:
-        'One secure place where clients answer questionnaires, upload documents and message your team, like the portal we build for NPTAAS.',
+        'One secure place where clients answer questionnaires, upload documents and message your team, like the portal we build for a US auditing firm.',
     },
     {
       title: 'Syncs so nobody retypes data',
@@ -100,11 +100,11 @@ export const ACCOUNTING_MTD = {
 export const ACCOUNTING_PROOF = {
   title: 'Work we have built',
   intro:
-    'NPTAAS and the bookkeeping firm are US clients; Luxe Excursions is a UK company. The same kinds of automation work for UK firms, around UK deadlines such as MTD.',
+    'The auditing firm and the bookkeeping firm are US clients; Luxe Excursions is a UK company. The same kinds of automation work for UK firms, around UK deadlines such as MTD.',
   items: [
     {
-      client: 'NPTAAS',
-      context: 'US accounting, tax and audit firm',
+      client: 'A US auditing firm',
+      context: 'Client portal and audit workflows',
       metric: 'Weeks → days',
       metricLabel: 'Client review process',
       description:
@@ -137,10 +137,10 @@ export const ACCOUNTING_PROOF = {
   ],
   review: {
     quote:
-      'Stack360 built NPTAAS from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
-    name: 'Ernest Tomkiewicz',
-    role: 'Founder & Certified Public Accountant',
-    company: 'NPTAAS',
+      'Stack360 built … from the ground up, including multi-tenant workflows, secure client portals, and the automation we needed to run a modern accounting and tax practice at scale.',
+    name: 'Founder',
+    role: 'Certified Public Accountant',
+    company: 'A US auditing firm',
   },
 } as const;
 
@@ -193,13 +193,13 @@ export const ACCOUNTING_FAQS = [
     id: 'accounting-experience',
     question: 'Have you worked with accounting firms before?',
     answer:
-      'Yes. For NPTAAS, a US accounting, tax and audit firm, we build a multi-tenant client portal with onboarding questionnaires, secure document upload, engagements, staff roles, chat and notifications, and it cut a client review process from weeks to days. For a US bookkeeping firm, every new lead gets a text and an email straight away and goes to a named person.',
+      'Yes. For a US auditing firm, we build a multi-tenant client portal with onboarding questionnaires, secure document upload, engagements, staff roles, chat and notifications, and it cut a client review process from weeks to days. For a US bookkeeping firm, every new lead gets a text and an email straight away and goes to a named person.',
   },
   {
     id: 'accounting-ai-audit',
     question: 'Can you use AI for audit and review work?',
     answer:
-      'Carefully. With NPTAAS we are testing AI modules that draft audit planning documents and match statements against the ledger. The AI reads the documents, plain code does every calculation, and people review every exception and conclusion. They are in testing with the firm, not live yet.',
+      'Carefully. With a US auditing firm we are testing AI modules that draft audit planning documents and match statements against the ledger. The AI reads the documents, plain code does every calculation, and people review every exception and conclusion. They are in testing with the firm, not live yet.',
   },
   {
     id: 'accounting-who',

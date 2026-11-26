@@ -176,7 +176,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Portals and dashboards',
         description:
-          'Logged-in views for customers or staff. NPTAAS cut a client review process from weeks to days with automated audit scoring and reports.',
+          'Logged-in views for customers or staff. For a US auditing firm, automated audit scoring and reports cut a client review process from weeks to days.',
       },
       {
         title: 'Guided forms and workflows',
@@ -1155,7 +1155,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Pipelines that match your process',
         description:
-          'Stages for projects, renewals or reviews as well as sales deals. NPTAAS tracks each client review from scheduling to the final report.',
+          'Stages for projects, renewals or reviews as well as sales deals. A US auditing firm’s platform tracks each client review from scheduling to the final report.',
       },
       {
         title: 'Client portals',
@@ -1966,7 +1966,7 @@ export const CAPABILITY_PAGES: Record<CapabilitySlug, CapabilityPageData> = {
       {
         title: 'Report generation',
         description:
-          'Reports built automatically from the data. NPTAAS generates its audit reports with no manual calculation.',
+          'Reports built automatically from the data. A US auditing firm’s platform generates its audit reports with no manual calculation.',
       },
       {
         title: 'Document workflows',

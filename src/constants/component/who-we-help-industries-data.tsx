@@ -20,7 +20,7 @@ export const INDUSTRIES_HERO = {
 
 export const INDUSTRIES = [
   {
-    // Claims as on /who-we-help/accounting-firms (NPTAAS is a US firm).
+    // Claims as on /who-we-help/accounting-firms (the auditing firm is a US client, never named).
     name: 'Accounting & Bookkeeping',
     icon: <Calculator className="h-5 w-5" />,
     painPoints: [
@@ -30,7 +30,7 @@ export const INDUSTRIES = [
     ],
     solution:
       'Document requests and reminders that send themselves, onboarding with secure document uploads, and syncs between the tools a firm already uses.',
-    result: 'Our project: NPTAAS (US) · client reviews from weeks to days',
+    result: 'Our project: a US auditing firm · client reviews from weeks to days',
     link: { label: 'Automation for UK accounting firms', href: '/who-we-help/accounting-firms' },
   },
   {

@@ -10,9 +10,7 @@ interface ContactChannelProps {
   testimonialName?: string;
 }
 
-export default function ContactChannel({
-  testimonialName = 'Ernest Tomkiewicz',
-}: ContactChannelProps = {}) {
+export default function ContactChannel({ testimonialName = 'Founder' }: ContactChannelProps = {}) {
   return (
     <div className="space-y-xl lg:col-span-5">
       <MotionStagger className="space-y-md">

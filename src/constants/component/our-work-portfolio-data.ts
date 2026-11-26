@@ -165,8 +165,8 @@ export const PORTFOLIO_GROUPS: PortfolioGroup[] = [
         metricLabel: 'Guard patrol tracking',
       },
       {
-        slug: 'nptaas',
-        name: 'NPTAAS',
+        slug: 'us-auditing-firm',
+        name: 'A US auditing firm',
         industry: 'Automated Auditing & Compliance',
         duration: '6 months',
         requirement:

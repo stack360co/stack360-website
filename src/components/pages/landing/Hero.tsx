@@ -13,8 +13,10 @@ const ROTATING_PHRASES = LANDING_HERO.phrases;
 
 /** Clients whose testimonials appear on the site. */
 const TEAM_AVATARS = [
-  { src: '/assets/clients/cameron-kashani.webp', alt: 'Cameron Kashani, Data & Analytics Specialist, Google' },
-  { src: '/assets/clients/ernest-tomkiewicz.webp', alt: 'Ernest Tomkiewicz, founder, NPTAAS' },
+  {
+    src: '/assets/clients/cameron-kashani.webp',
+    alt: 'Cameron Kashani, Data & Analytics Specialist, Google',
+  },
   { src: '/assets/clients/mohammad-jafar.webp', alt: 'Mohammed Jafar, founder, Somer Pharmacy' },
 ] as const;
 
