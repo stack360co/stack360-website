@@ -440,7 +440,7 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
       <p className="font-mono text-xs font-bold uppercase tracking-widest text-primary">
         {variant.eyebrow} · Free 20-minute review
       </p>
-      <h1 className="text-balance text-4xl font-black leading-tight tracking-tight text-neutral-900 md:text-5xl">
+      <h1 className="text-balance text-3xl font-black leading-tight tracking-tight text-neutral-900 sm:text-4xl md:text-5xl">
         {variant.h1}
       </h1>
       <p className="text-balance text-xl font-bold leading-snug text-neutral-800 md:text-2xl">
@@ -449,6 +449,27 @@ export default function LandingPage({ variant }: { variant: LpVariant }) {
       <p className="max-w-[40rem] text-base leading-relaxed text-neutral-600 md:text-lg">
         {variant.subhead}
       </p>
+      {variant.topics ? (
+        <nav aria-label="On this page">
+          <ul className="flex flex-wrap gap-xs">
+            {variant.topics.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className="inline-flex min-h-9 items-center rounded-full border border-neutral-300 bg-neutral-50 px-md text-sm font-semibold text-neutral-800 transition-colors hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
+      {/* Phones: the calendar sits below the first screen, so the next step is a button here. */}
+      <a href="#book" className={`w-full sm:w-auto lg:hidden ${primaryButton}`}>
+        Book your free 20-minute review
+        <ArrowRight size={14} aria-hidden />
+      </a>
       <ul className="flex flex-wrap gap-x-lg gap-y-xs pt-xs" aria-label="Ratings and track record">
         {LP_TRUST.map((item) => (
           <li

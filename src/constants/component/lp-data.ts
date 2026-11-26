@@ -55,6 +55,11 @@ export interface LpVariant {
   heroReview?: LpReviewId;
   /** A "what we automate" block right after the first screen (#what-we-automate). */
   jobs?: LpJobs;
+  /**
+   * Short links under the intro that repeat the ad groups' own terms, each to the section that
+   * covers it, so the first screen matches the ad that was clicked.
+   */
+  topics?: readonly { label: string; href: string }[];
 }
 
 export interface LpJobs {
@@ -186,8 +191,15 @@ export const LP_VARIANTS: readonly LpVariant[] = [
     eyebrow: 'For UK accountancy firms',
     h1: 'Automation for UK accountancy and bookkeeping firms',
     headline: 'Chasing clients for records every quarter?',
+    // "Document chasing", "client onboarding" and "AI for accounting firms" are the ad groups'
+    // terms (HQ, 26 Nov 2026: landing page experience rated below average).
     subhead:
-      'Document requests and reminders that go out to your clients on their own, onboarding that lands in your practice tools, and syncs so nobody retypes data. Start with a free 20-minute review.',
+      'Document chasing and client onboarding, automated. Requests and reminders go out to your clients on their own, and new clients’ details land in your practice tools once. Start with a free 20-minute review.',
+    topics: [
+      { label: 'Client onboarding', href: '#what-we-automate' },
+      { label: 'Document chasing', href: '#mtd' },
+      { label: 'AI for accounting firms', href: '#ai' },
+    ],
     topic: 'automation for my accountancy firm',
     proof: ['nptaas', 'bookkeeping', 'luxe'],
     proofNote:
